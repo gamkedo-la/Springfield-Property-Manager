@@ -29,7 +29,9 @@ function loadImages() {
 		var imageList = [
 			{varName: propertyPic, theFile: "landMarker.png"},
 			
-			{trackType: TILE_ROAD, theFile: "road.png"},
+			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
+			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},
+			{trackType: TILE_ROAD_INT, theFile: "road_intersection.png"},
 			{trackType: TILE_GRASS, theFile: "grass.png"}
 		];
 			

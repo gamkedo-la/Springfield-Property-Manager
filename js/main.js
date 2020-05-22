@@ -3,6 +3,10 @@ var canvasContext;
 
 var propertyOne = new propertyClass();
 var propertyTwo = new propertyClass();
+var vehicleOne = new vehicleClass();
+var vehicleTwo = new vehicleClass();
+var personOne = new peopleClass();
+var personTwo = new peopleClass();
 
 window.onload = function(){
 			
@@ -33,10 +37,18 @@ function imageLoadingDoneSoStartGame(){
 	}, 1000/framesPerSecond);
 	propertyOne.init(propertyPic, "1");
 	propertyTwo.init(propertyPic, "2");
+	personOne.init("orange", "1");
+	personTwo.init("blue", "2");
+	vehicleOne.init("yellow", "1");
+	vehicleTwo.init("purple", "2");
 }
 			
 function moveEverything() {
-					
+	vehicleOne.move();
+	vehicleTwo.move();
+	personOne.move();
+	personTwo.move();
+	
 }
 			
 function calculateMousePos(evt) {
@@ -54,4 +66,8 @@ function drawEverything() {
 	drawLandScape();
 	propertyOne.draw();
 	propertyTwo.draw();
+	vehicleOne.draw();
+	vehicleTwo.draw();
+	personOne.draw();
+	personTwo.draw();
 }
