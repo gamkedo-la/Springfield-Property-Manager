@@ -72,10 +72,10 @@ function initializeAssets(){
 		
 function moveEverything() {
 	for (var i = 0; i < vehicleList.length; i++) {
-		vehicleList[i].reset();
+		vehicleList[i].move();
 	}
 	for (var i = 0; i < peopleList.length; i++) {
-		peopleList[i].reset();
+		peopleList[i].move();
 	}
 	
 }
