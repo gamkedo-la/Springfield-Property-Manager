@@ -3,7 +3,7 @@ function vehicleClass() {
 	this.y = 110;
 	this.velX = 1;
 	this.velY = 1;
-	this.color = ["purple", "blue", "yellow","white","black","green","grey"];
+	this.color = ["purple", "blue", "yellow","white","red","green","grey"];
 	this.whichColor = 0;
 	this.moveWest = false;
 	this.moveEast = false;
