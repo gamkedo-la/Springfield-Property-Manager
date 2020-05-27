@@ -18,13 +18,14 @@ function propertyClass() {
 	}
 
 	
-	this.init = function(whichGraphic, whichName) {
-		this.graphic = whichGraphic;
-		this.myName = whichName;
+	this.init = function(propertyName) {
+		this.propertyNumber = propertyName;
 		this.reset();
 	}	
 	 		
 	this.draw = function(){
-		drawBitmapAtLocation(this.graphic, this.x, this.y)
+		drawBitmapAtLocation(propertyPic, this.x, this.y)
+		colorText("Lot Number", this.x + 5, this.y + 50, "white", "14px Arial Black")
+		colorText(this.propertyNumber, this.x + 40, this.y + 70, "white", "14px Arial Black")
 	}
 }

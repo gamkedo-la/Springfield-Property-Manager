@@ -16,3 +16,10 @@ function drawBitmapAtLocation(graphic, atX, atY){
 	canvasContext.drawImage(graphic, 0, 0); //center, draws car
 	canvasContext.restore();
 }
+
+function colorText(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+  canvasContext.textAlign = "left";
+  canvasContext.fillStyle = fillColor;
+  canvasContext.font = font;
+  canvasContext.fillText(showWords, textX, textY);
+}

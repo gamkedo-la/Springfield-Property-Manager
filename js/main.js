@@ -5,10 +5,6 @@ var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
 
-var propertyOne = new propertyClass();
-var propertyTwo = new propertyClass();
-
-
 window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');
@@ -19,10 +15,10 @@ window.onload = function(){
 		
 	canvas.addEventListener('mousemove', function(evt) {
 	
-	var mousePos = calculateMousePos(evt);
-	
-	MousePosX = mousePos.x;
-	MousePosY = mousePos.y;
+		var mousePos = calculateMousePos(evt);
+		
+		MousePosX = mousePos.x;
+		MousePosY = mousePos.y;
 	});
 	
 	document.addEventListener("keydown", keyPressed);
@@ -61,7 +57,8 @@ function initializeAssets(){
 				vehicleList.push(newObject);
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();
-				newObject.init();
+				var propertyNumber = tileIndex;
+				newObject.init(propertyNumber);
 				propertyList.push(newObject);
 			}
 		tileTopEdgeY += TILE_H;	
