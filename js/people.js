@@ -10,7 +10,7 @@ function peopleClass() {
 	this.moveNorth = false;
 	this.dontMove = false;
 	
-	this.reset = function(){				
+	this.reset = function(){	
 		if(this.homeX == undefined) {
 			for(var i=0; i<roomGrid.length; i++){
 				if( roomGrid[i] == TILE_PERSON) {
@@ -18,6 +18,7 @@ function peopleClass() {
 					var tileCol	= i%MAP_COLS;
 					this.homeX = tileCol * TILE_W;
 					this.homeY = tileRow * TILE_H;
+					console.log(roomGrid[i]);
 					roomGrid[i] = TILE_ROAD_WE;
 					break;
 				}

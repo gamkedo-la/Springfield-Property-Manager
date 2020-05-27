@@ -4,16 +4,16 @@ const MAP_COLS = 16;
 const MAP_ROWS = 12;
 
 var roomGrid = [
-					1,0,3,1,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
-					6,5,4,2,2,2,2,2,2,2,2,2,2,4,2,2,
+					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
+					2,5,4,2,2,2,2,2,2,2,2,2,2,4,2,2,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,			
-					2,2,4,2,2,5,2,2,6,2,2,2,2,4,2,2,
+					2,2,4,2,2,2,2,2,2,2,2,2,2,4,2,2,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0
 					];
@@ -47,9 +47,12 @@ function drawLandScape(){
 			if(tileTypeHasTransparency(trackTypeHere)) {
 				canvasContext.drawImage(trackPics[TILE_ROAD], tileLeftEdgeX, tileTopEdgeY);
 			}
+			
 			canvasContext.drawImage(trackPics[trackTypeHere], tileLeftEdgeX, tileTopEdgeY);
+			
 			tileIndex++;
 			tileLeftEdgeX += TILE_W;
+			
 				
 		} // end of each col
 		
