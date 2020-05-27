@@ -18,7 +18,6 @@ function peopleClass() {
 					var tileCol	= i%MAP_COLS;
 					this.homeX = tileCol * TILE_W;
 					this.homeY = tileRow * TILE_H;
-					console.log(roomGrid[i]);
 					roomGrid[i] = TILE_ROAD_WE;
 					break;
 				}

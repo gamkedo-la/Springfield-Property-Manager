@@ -38,7 +38,6 @@ function imageLoadingDoneSoStartGame(){
 
 
 function initializeAssets(){
-	console.log("Made it to Initialize Assets");
 	var tileIndex = 0;
 	var tileLeftEdgeX = 0;
 	var tileTopEdgeY = 0;
@@ -50,7 +49,6 @@ function initializeAssets(){
 				newObject = new peopleClass();
 				newObject.init("blue", "1");
 				peopleList.push(newObject);
-				console.log(peopleList.length);
 			} else if (roomGrid[ tileIndex ] == TILE_VEHICLE) {
 				newObject = new vehicleClass();
 				newObject.init("orange","1");
@@ -74,7 +72,7 @@ function moveEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].move();
 	}
-	
+	updateTime(); 
 }
 			
 function calculateMousePos(evt) {
@@ -99,4 +97,5 @@ function drawEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].draw();
 	}
+	displayGameTime();
 }
