@@ -3,6 +3,8 @@ function vehicleClass() {
 	this.y = 110;
 	this.velX = 1;
 	this.velY = 1;
+	this.color = ["purple", "blue", "yellow","white","black","green","grey"];
+	this.whichColor = 0;
 	this.moveWest = false;
 	this.moveEast = false;
 	this.moveSouth = false;
@@ -26,6 +28,7 @@ function vehicleClass() {
 		this.y = this.homeY;
 		
 		let randomDirection = randomIntFromInterval(1,2)
+		this.whichColor = randomIntFromInterval(1,7) - 1;
 		if(randomDirection == 1){
 			this.moveEast = true;
 			this.y = this.y + 20;
@@ -34,12 +37,11 @@ function vehicleClass() {
 		}
 	}
 
-	
-	this.init = function(whichGraphic, whichName) {
-		this.color = whichGraphic;
+	this.init = function(whichName) {
 		this.myName = whichName;
 		this.reset();
 	}
+	
 	this.move = function() {
 		this.checkBoundaries();
 		
@@ -70,6 +72,6 @@ function vehicleClass() {
 	}
 	
 	this.draw = function () {
-		colorRect(this.x, this.y + 10, 20, 10, this.color);
+		colorRect(this.x, this.y + 10, 20, 10, this.color[this.whichColor]);
 	}
 }

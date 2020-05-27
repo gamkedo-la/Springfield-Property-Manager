@@ -47,11 +47,11 @@ function initializeAssets(){
 		for(var eachCol=0; eachCol<MAP_COLS; eachCol++) {
 			if (roomGrid[ tileIndex ] == TILE_PERSON) {
 				newObject = new peopleClass();
-				newObject.init("blue", "1");
+				newObject.init("1");
 				peopleList.push(newObject);
 			} else if (roomGrid[ tileIndex ] == TILE_VEHICLE) {
 				newObject = new vehicleClass();
-				newObject.init("orange","1");
+				newObject.init("1");
 				vehicleList.push(newObject);
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();

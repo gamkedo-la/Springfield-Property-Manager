@@ -3,7 +3,8 @@ function peopleClass() {
 	this.y = 100;
 	this.velX = .5;
 	this.velY = .5;
-	this.color = "purple";
+	this.color = ["purple", "blue", "yellow","white","black","green","grey"];
+	this.whichColor = 0;
 	this.moveWest = false;
 	this.moveEast = false;
 	this.moveSouth = false;
@@ -25,7 +26,8 @@ function peopleClass() {
 		}
 		this.x = this.homeX;
 		this.y = this.homeY;
-		let randomDirection = randomIntFromInterval(1,2)
+		let randomDirection = randomIntFromInterval(1,2);
+		this.whichColor = randomIntFromInterval(1,7) - 1;
 		if(randomDirection == 1){
 			this.moveEast = true;
 		} else if (randomDirection == 2){
@@ -34,8 +36,7 @@ function peopleClass() {
 	}
 
 	
-	this.init = function(whichGraphic, whichName) {
-		this.color = whichGraphic;
+	this.init = function(whichName) {
 		this.myName = whichName;
 		this.reset();
 	}
@@ -69,6 +70,6 @@ function peopleClass() {
 	}
 	
 	this.draw = function () {
-		 colorCircle(this.x, this.y, 4, this.color);
+		 colorCircle(this.x, this.y, 4, this.color[this.whichColor]);
 	}
 }
