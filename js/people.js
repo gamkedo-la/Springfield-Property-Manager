@@ -40,7 +40,6 @@ function peopleClass() {
 		}
 	}
 
-	
 	this.init = function(whichName) {
 		this.myName = whichName;
 		this.reset();
@@ -48,6 +47,26 @@ function peopleClass() {
 	this.move = function() {
 		this.checkBoundaries();
 		
+		if((this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
+		   (this.x == 147) && (this.y == 100) ||
+		   (this.x == 103) && (this.y == 145) ||
+		   (this.x == 147) && (this.y == 145) ||
+		   (this.x == 653) && (this.y == 100) || //Intersection 2 (Top Right)
+		   (this.x == 697) && (this.y == 100) ||
+		   (this.x == 653) && (this.y == 145) ||
+		   (this.x == 697) && (this.y == 145) ||
+		   (this.x == 103) && (this.y == 450) || //Intersection 3 (Bottom Left)
+		   (this.x == 147) && (this.y == 450) ||
+		   (this.x == 103) && (this.y == 495) ||
+		   (this.x == 147) && (this.y == 495) ||
+		   (this.x == 653) && (this.y == 450) || //Intersection 4 (Bottom Right)
+		   (this.x == 697) && (this.y == 450) ||
+		   (this.x == 653) && (this.y == 495) ||
+		   (this.x == 697) && (this.y == 495)  		   
+		){
+			this.changeDirection();
+		}
+			
 		if(this.moveWest){
 			this.x = this.x - this.velX;
 		} else if(this.moveEast){
@@ -55,11 +74,28 @@ function peopleClass() {
 		} else if(this.moveSouth){
 			this.y = this.y + this.velY;
 		} else if(this.moveNorth){
-			this.x = this.y - this.velY;
+			this.y = this.y - this.velY;
 		} else {
 			this.velX = 0;
 			this.velY = 0;
 		}
+	}
+	
+	this.changeDirection = function(){
+		let randomDirection = randomIntFromInterval(1,4);
+		this.moveEast = false;
+		this.moveWest = false;
+		this.moveNorth = false;
+		this.moveSouth = false;
+		if(randomDirection == 1){
+			this.moveEast = true;
+		} else if (randomDirection == 2){
+			this.moveWest = true;
+		} else if (randomDirection == 3){
+			this.moveNorth = true;
+		} else if (randomDirection == 4){
+			this.moveSouth = true;
+		}						
 	}
 	
 	this.checkBoundaries = function(){
