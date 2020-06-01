@@ -8,6 +8,8 @@ const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 
+var mousePosX = 0;
+var mousePosY = 0;
 
 function initInput(){
 	
@@ -15,8 +17,8 @@ function initInput(){
 	
 		var mousePos = calculateMousePos(evt);
 	
-		MousePosX = mousePos.x;
-		MousePosY = mousePos.y;
+		mousePosX = mousePos.x;
+		mousePosY = mousePos.y;
 	});
 	
 	document.addEventListener("keydown", keyPressed);

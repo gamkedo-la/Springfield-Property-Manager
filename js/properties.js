@@ -1,4 +1,7 @@
 function propertyClass() {
+	this.height = 100;
+	this.width = 100;
+	this.selected = false;
 	
 	this.reset = function(){				
 		if(this.homeX == undefined) {
@@ -25,7 +28,13 @@ function propertyClass() {
 	 		
 	this.draw = function(){
 		drawBitmapAtLocation(propertyPic, this.x, this.y)
-		colorText("Lot Number", this.x + 5, this.y + 50, "white", "14px Arial Black")
-		colorText(this.propertyNumber, this.x + 40, this.y + 70, "white", "14px Arial Black")
+		if(this.selected){
+			colorText("Lot Number", this.x + 5, this.y + 50, "red", "14px Arial Black");
+			colorText(this.propertyNumber, this.x + 40, this.y + 70, "red", "14px Arial Black");
+		} else {
+			colorText("Lot Number", this.x + 5, this.y + 50, "white", "14px Arial Black");
+			colorText(this.propertyNumber, this.x + 40, this.y + 70, "white", "14px Arial Black");
+		}
+		
 	}
 }

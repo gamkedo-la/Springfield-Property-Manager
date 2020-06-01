@@ -12,6 +12,7 @@ window.onload = function(){
 		
 	initializeAssets();
 	loadImages();
+	initInput();
 		
 	canvas.addEventListener('mousemove', function(evt) {
 	
@@ -72,6 +73,7 @@ function moveEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].move();
 	}
+	checkForPropertySelection();
 	updateTime(); 
 }
 			

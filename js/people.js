@@ -46,26 +46,8 @@ function peopleClass() {
 	}
 	this.move = function() {
 		this.checkBoundaries();
+		this.checkIntersections();
 		
-		if((this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
-		   (this.x == 147) && (this.y == 100) ||
-		   (this.x == 103) && (this.y == 145) ||
-		   (this.x == 147) && (this.y == 145) ||
-		   (this.x == 653) && (this.y == 100) || //Intersection 2 (Top Right)
-		   (this.x == 697) && (this.y == 100) ||
-		   (this.x == 653) && (this.y == 145) ||
-		   (this.x == 697) && (this.y == 145) ||
-		   (this.x == 103) && (this.y == 450) || //Intersection 3 (Bottom Left)
-		   (this.x == 147) && (this.y == 450) ||
-		   (this.x == 103) && (this.y == 495) ||
-		   (this.x == 147) && (this.y == 495) ||
-		   (this.x == 653) && (this.y == 450) || //Intersection 4 (Bottom Right)
-		   (this.x == 697) && (this.y == 450) ||
-		   (this.x == 653) && (this.y == 495) ||
-		   (this.x == 697) && (this.y == 495)  		   
-		){
-			this.changeDirection();
-		}
 			
 		if(this.moveWest){
 			this.x = this.x - this.velX;
@@ -107,6 +89,27 @@ function peopleClass() {
 			this.y = 0;
 		} else if (this.y < 0){
 			this.y = canvas.height;
+		}
+	}
+	
+	this.checkIntersections = function(){
+		if((this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
+		   (this.x == 147) && (this.y == 100) ||
+		   (this.x == 103) && (this.y == 145) ||
+		   (this.x == 147) && (this.y == 145) ||
+		   (this.x == 653) && (this.y == 100) || //Intersection 2 (Top Right)
+		   (this.x == 697) && (this.y == 100) ||
+		   (this.x == 653) && (this.y == 145) ||
+		   (this.x == 697) && (this.y == 145) ||
+		   (this.x == 103) && (this.y == 450) || //Intersection 3 (Bottom Left)
+		   (this.x == 147) && (this.y == 450) ||
+		   (this.x == 103) && (this.y == 495) ||
+		   (this.x == 147) && (this.y == 495) ||
+		   (this.x == 653) && (this.y == 450) || //Intersection 4 (Bottom Right)
+		   (this.x == 697) && (this.y == 450) ||
+		   (this.x == 653) && (this.y == 495) ||
+		   (this.x == 697) && (this.y == 495)){
+			this.changeDirection();
 		}
 	}
 	
