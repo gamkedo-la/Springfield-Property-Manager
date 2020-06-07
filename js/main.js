@@ -22,6 +22,7 @@ window.onload = function(){
 		MousePosY = mousePos.y;
 	});
 	
+	canvas.addEventListener('mousedown', handleMouseClick);
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 }
@@ -73,7 +74,7 @@ function moveEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].move();
 	}
-	checkForPropertySelection();
+	checkForPropertyHovering();
 	updateTime(); 
 }
 			

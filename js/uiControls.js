@@ -11,6 +11,7 @@ const KEY_DOWN_ARROW = 40;
 var mousePosX = 0;
 var mousePosY = 0;
 
+
 function initInput(){
 	
 	canvas.addEventListener('mousemove', function(evt) {
@@ -25,6 +26,11 @@ function initInput(){
 	document.addEventListener("keyup", keyReleased);
 }
 
+function handleMouseClick(evt){
+	
+	checkForPropertySelection();
+}
+
 function keyPressed(evt) {
 	evt.preventDefault();
 }
@@ -36,6 +42,5 @@ function keyReleased(evt) {
 
 function setKeyHoldState(thisKey, thisWarrior, setTo) {
 	
-
 }
 

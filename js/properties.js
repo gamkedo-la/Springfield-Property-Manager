@@ -1,7 +1,10 @@
 function propertyClass() {
 	this.height = 100;
 	this.width = 100;
-	this.selected = false;
+	this.mouseHovering = false;
+	this.mouseSelected = false;
+	this.salePrice = "$10,000";
+	this.zoned = "Commercial";
 	
 	this.reset = function(){				
 		if(this.homeX == undefined) {
@@ -27,14 +30,24 @@ function propertyClass() {
 	}	
 	 		
 	this.draw = function(){
-		drawBitmapAtLocation(propertyPic, this.x, this.y)
-		if(this.selected){
+		drawBitmapAtLocation(propertyPic, this.x, this.y);
+		
+		if(this.mouseSelected){
+			colorRect(this.x + 6, this.y + 6, this.width - 12, this.height - 26, "white");
+			colorRect(this.x + 6, this.y + this.height - 26, this.width - 12, this.height - 80, "blue");
+			colorText("Lot Number " + this.propertyNumber, this.x + 12, this.y + 14, "black", "10px Arial Black");
+			colorText("Sale Price: ", this.x + 18, this.y + 28, "black", "10px Arial Black");
+			colorText(this.salePrice, this.x + 18, this.y + 40, "black", "10px Arial Black");
+			colorText("Zoned: ", this.x + 18, this.y + 52, "black", "10px Arial Black");
+			colorText(this.zoned, this.x + 18, this.y + 64, "black", "10px Arial Black");
+			colorText("Purchase?", this.x + 18, this.y + 88, "red", "10px Arial Black");
+			
+		} else if (this.mouseHovering){
 			colorText("Lot Number", this.x + 5, this.y + 50, "red", "14px Arial Black");
 			colorText(this.propertyNumber, this.x + 40, this.y + 70, "red", "14px Arial Black");
 		} else {
 			colorText("Lot Number", this.x + 5, this.y + 50, "white", "14px Arial Black");
 			colorText(this.propertyNumber, this.x + 40, this.y + 70, "white", "14px Arial Black");
 		}
-		
 	}
 }

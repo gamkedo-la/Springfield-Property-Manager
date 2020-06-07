@@ -24,7 +24,7 @@ function displayGameTime(){
 	colorText(gameMonth[whichMonth] + " " + gameYear, 330, 300, "orange", "18px Arial Black");
 	if(gameDay < 5){
 		if (gameYear > 2020 || whichMonth > 0){
-			colorText("Pay the Mortgage!", 310, 330, "red", "18px Arial Black");
+			colorText("Bills are due!", 310, 330, "red", "18px Arial Black");
 		}
 	}
 	
