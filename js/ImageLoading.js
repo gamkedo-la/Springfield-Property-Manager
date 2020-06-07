@@ -1,4 +1,6 @@
 var propertyPic = document.createElement("img");
+var residentialForSaleSignPic = document.createElement("img");
+var commercialForSaleSignPic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -28,6 +30,8 @@ function loadImages() {
 	
 		var imageList = [
 			{varName: propertyPic, theFile: "landMarker.png"},
+			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
+			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
 			
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},

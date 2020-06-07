@@ -4,7 +4,7 @@ function propertyClass() {
 	this.mouseHovering = false;
 	this.mouseSelected = false;
 	this.salePrice = "$10,000";
-	this.zoned = "Commercial";
+	this.zoned;
 	
 	this.reset = function(){				
 		if(this.homeX == undefined) {
@@ -26,16 +26,29 @@ function propertyClass() {
 	
 	this.init = function(propertyName) {
 		this.propertyNumber = propertyName;
+		let randomZone = randomIntFromInterval(1,2);
+		if(randomZone == 1){
+			this.zoned = "Commercial";
+		} else if (randomZone == 2){
+			this.zoned = "Residential";
+		}
 		this.reset();
 	}	
 	 		
 	this.draw = function(){
 		drawBitmapAtLocation(propertyPic, this.x, this.y);
 		
+		if(this.zoned == "Commercial"){
+			drawBitmapAtLocation(commercialForSaleSignPic, this.x + 50, this.y);	
+		} else if(this.zoned == "Residential"){
+			drawBitmapAtLocation(residentialForSaleSignPic, this.x + 50, this.y);
+		}
+			
+		
 		if(this.mouseSelected){
 			colorRect(this.x + 6, this.y + 6, this.width - 12, this.height - 26, "white");
 			colorRect(this.x + 6, this.y + this.height - 26, this.width - 12, this.height - 80, "blue");
-			colorText("Lot Number " + this.propertyNumber, this.x + 12, this.y + 14, "black", "10px Arial Black");
+			colorText("Lot Number " + this.propertyNumber, this.x + 8, this.y + 14, "black", "10px Arial Black");
 			colorText("Sale Price: ", this.x + 18, this.y + 28, "black", "10px Arial Black");
 			colorText(this.salePrice, this.x + 18, this.y + 40, "black", "10px Arial Black");
 			colorText("Zoned: ", this.x + 18, this.y + 52, "black", "10px Arial Black");
