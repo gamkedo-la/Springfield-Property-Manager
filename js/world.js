@@ -1,7 +1,16 @@
-const TILE_W = 50;
-const TILE_H = 50;
+const TILE_W = 100;
+const TILE_H = 100;
 const MAP_COLS = 16;
 const MAP_ROWS = 12;
+
+const ISO_GRID_W = 100;
+const ISO_GRID_H = ISO_GRID_W / 2;
+const ISO_TILE_GROUND_Y = 0;
+const ISO_TILE_DRAW_W = 100;
+const ISO_TILE_DRAW_H = 50;
+
+var isoDrawX = 0;
+var isoDrawY = 0;
 
 var roomGrid = [
 					1,0,3,1,0,1,0,1,0,1,0,1,0,3,1,0,
@@ -35,25 +44,25 @@ function drawLandScape(){
 	var tileIndex = 0;
 	var tileLeftEdgeX = 0;
 	var tileTopEdgeY = 0;
+	var isoTileLeftEdgeX = 0;
+	var isoTileTopEdgeX = 0;
 	
-	for(var eachRow = 0; eachRow<MAP_ROWS; eachRow++){
-		
+	for(var eachRow = 0; eachRow < MAP_ROWS; eachRow++){
 		tileLeftEdgeX = 0;
-		
 		for(var eachCol=0; eachCol<MAP_COLS; eachCol++) {
-			
+			tileLeftEdgeX += TILE_W;
+			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY) / 2;
+			isoTileTopEdgeX = (tileLeftEdgeX + tileTopEdgeY) / 4;
+			tileCoordToIsoCoord(eachCol, eachRow);
 			var trackTypeHere = roomGrid[tileIndex];
 			
 			if(tileTypeHasTransparency(trackTypeHere)) {
-				canvasContext.drawImage(trackPics[TILE_ROAD], tileLeftEdgeX, tileTopEdgeY);
+				canvasContext.drawImage(trackPics[TILE_ROAD], isoTileLeftEdgeX, isoTileTopEdgeX);
 			}
 			
-			canvasContext.drawImage(trackPics[trackTypeHere], tileLeftEdgeX, tileTopEdgeY);
+			canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
 			
-			tileIndex++;
-			tileLeftEdgeX += TILE_W;
-			
-				
+			tileIndex++;				
 		} // end of each col
 		
 		tileTopEdgeY += TILE_H;
@@ -89,9 +98,22 @@ function getTileIndexAtPixelCoord(pixelX,pixelY){
 	var tileIndex = roomTileToIndex(tileCol, tileRow);
 	return tileIndex;
 }		
-
-			
+		
 function roomTileToIndex(tileCol, tileRow) {
 	return(tileCol + MAP_COLS*tileRow);
+}
+
+function tileCoordToIsoCoord(tileC, tileR ) {
+	gameCoordToIsoCoord(tileC * TILE_W, tileR * TILE_H);
+}
+
+function gameCoordToIsoCoord (pixelX, pixelY) {
+	var camPanX = 0;
+	var camPanY = 0;
+	var tileCFraction = pixelX / TILE_W;
+	var tileRFraction = pixelY / TILE_H;
+
+	isoDrawX = -camPanX + tileCFraction * (ISO_GRID_W/2) - tileRFraction * (ISO_GRID_W/2);
+	isoDrawY = -camPanY + tileCFraction * (ISO_GRID_H/2) + tileRFraction * (ISO_GRID_H/2);
 }
 			
