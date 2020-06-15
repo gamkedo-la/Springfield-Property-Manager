@@ -10,7 +10,7 @@ const KEY_DOWN_ARROW = 40;
 
 var mousePosX = 0;
 var mousePosY = 0;
-
+var mouseOverIdx = -1;
 
 function initInput(){
 	
@@ -20,6 +20,8 @@ function initInput(){
 	
 		mousePosX = mousePos.x;
 		mousePosY = mousePos.y;
+		mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
+		
 	});
 	
 	document.addEventListener("keydown", keyPressed);

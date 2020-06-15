@@ -59,9 +59,9 @@ function drawLandScape(){
 			if(tileTypeHasTransparency(trackTypeHere)) {
 				canvasContext.drawImage(trackPics[TILE_ROAD], isoTileLeftEdgeX, isoTileTopEdgeX);
 			}
-			
-			canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
-			
+			if(tileIndex != mouseOverIdx){
+				canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
+			}
 			tileIndex++;				
 		} // end of each col
 		
@@ -81,8 +81,8 @@ function rowColToArrayIndex(col, row) {
 	return col + ROOM_COLS * row;
 }			
 
-			
-function getTileIndexAtPixelCoord(pixelX,pixelY){
+
+function getTileIndexAtPixelCoord(pixelX,pixelY){ // pixelX and pixelY are in Game Space not Screen Space 
 	var tileCol = pixelX / TILE_W;		
 	var tileRow = pixelY / TILE_H;
 				
@@ -108,12 +108,11 @@ function tileCoordToIsoCoord(tileC, tileR ) {
 }
 
 function gameCoordToIsoCoord (pixelX, pixelY) {
-	var camPanX = 0;
-	var camPanY = 0;
+	
 	var tileCFraction = pixelX / TILE_W;
 	var tileRFraction = pixelY / TILE_H;
 
-	isoDrawX = -camPanX + tileCFraction * (ISO_GRID_W/2) - tileRFraction * (ISO_GRID_W/2);
-	isoDrawY = -camPanY + tileCFraction * (ISO_GRID_H/2) + tileRFraction * (ISO_GRID_H/2);
+	isoDrawX = tileCFraction * (ISO_GRID_W/2) - tileRFraction * (ISO_GRID_W/2);
+	isoDrawY = tileCFraction * (ISO_GRID_H/2) + tileRFraction * (ISO_GRID_H/2);
 }
 			
