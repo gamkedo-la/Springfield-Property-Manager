@@ -5,24 +5,26 @@ const MAP_ROWS = 12;
 
 const ISO_GRID_W = 100;
 const ISO_GRID_H = ISO_GRID_W / 2;
-const ISO_TILE_GROUND_Y = 0;
-const ISO_TILE_DRAW_W = 100;
-const ISO_TILE_DRAW_H = 50;
+
+const GAME_WIDTH = MAP_COLS * TILE_W;
+const GAME_HEIGHT = MAP_ROWS * TILE_H;
 
 var isoDrawX = 0;
 var isoDrawY = 0;
 
+
+
 var roomGrid = [
 					1,0,3,1,0,1,0,1,0,1,0,1,0,3,1,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
-					5,5,4,5,5,6,5,5,5,5,5,6,5,4,5,5,
+					2,2,4,2,2,6,2,2,2,2,2,2,2,4,2,2,
 					1,0,3,1,0,1,0,1,0,1,0,1,0,3,1,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					1,0,3,1,0,0,0,0,0,0,0,1,0,3,1,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,
 					1,0,3,1,0,1,0,1,0,1,0,1,0,3,1,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,			
-					5,6,4,5,5,6,5,6,2,6,6,5,5,4,5,5,
+					5,5,4,5,5,4,5,5,2,5,5,5,5,4,5,5,
 					1,0,3,1,0,1,0,1,0,1,0,1,0,3,1,0,
 					0,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0
 					];
@@ -50,7 +52,6 @@ function drawLandScape(){
 	for(var eachRow = 0; eachRow < MAP_ROWS; eachRow++){
 		tileLeftEdgeX = 0;
 		for(var eachCol=0; eachCol<MAP_COLS; eachCol++) {
-			tileLeftEdgeX += TILE_W;
 			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY) / 2;
 			isoTileTopEdgeX = (tileLeftEdgeX + tileTopEdgeY) / 4;
 			tileCoordToIsoCoord(eachCol, eachRow);
@@ -62,11 +63,11 @@ function drawLandScape(){
 			if(tileIndex != mouseOverIdx){
 				canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
 			}
-			tileIndex++;				
+			tileIndex++;
+			tileLeftEdgeX += TILE_W;			
 		} // end of each col
 		
 		tileTopEdgeY += TILE_H;
-		
 	} // end of each row
 }
 

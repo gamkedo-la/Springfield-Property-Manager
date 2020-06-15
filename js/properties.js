@@ -37,12 +37,12 @@ function propertyClass() {
 	 		
 	this.draw = function(){
 		gameCoordToIsoCoord(this.x, this.y);
-		drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY+24);
+		drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);
 		
 		if(this.zoned == "Commercial"){
-			drawBitmapAtLocation(commercialForSaleSignPic, isoDrawX + 50, isoDrawY);	
+			drawBitmapAtLocation(commercialForSaleSignPic, isoDrawX, isoDrawY);	
 		} else if(this.zoned == "Residential"){
-			drawBitmapAtLocation(residentialForSaleSignPic, isoDrawX + 50, isoDrawY);
+			drawBitmapAtLocation(residentialForSaleSignPic, isoDrawX, isoDrawY);
 		}
 			
 		

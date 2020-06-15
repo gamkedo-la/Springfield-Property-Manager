@@ -27,14 +27,14 @@ function vehicleClass() {
 		this.x = this.homeX;
 		this.y = this.homeY;
 		
-		let randomDirection = randomIntFromInterval(1,2)
+		let randomDirection = randomIntFromInterval(2)
 		this.whichColor = randomIntFromInterval(1,7) - 1;
-		if(randomDirection == 1){
+		//if(randomDirection == 1){
 			this.moveEast = true;
 			this.y = this.y + 20;
-		} else if (randomDirection == 2){
-			this.moveWest = true;
-		}
+		//} else if (randomDirection == 2){
+		//	this.moveWest = true;
+		//}
 	}
 
 	this.init = function(whichName) {
@@ -60,14 +60,14 @@ function vehicleClass() {
 	}
 	
 	this.checkBoundaries = function(){
-		if(this.x > canvas.width){
+		if(this.x > GAME_WIDTH){
 			this.x = 0;
 		} else if (this.x < 0){
-			this.x = canvas.width;
-		} else if (this.y > canvas.height){
+			this.x = GAME_WIDTH;
+		} else if (this.y > GAME_HEIGHT){
 			this.y = 0;
 		} else if (this.y < 0){
-			this.y = canvas.height;
+			this.y = GAME_HEIGHT;
 		}
 	}
 	

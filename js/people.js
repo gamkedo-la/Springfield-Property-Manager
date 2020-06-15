@@ -81,14 +81,14 @@ function peopleClass() {
 	}
 	
 	this.checkBoundaries = function(){
-		if(this.x > canvas.width){
+		if(this.x > GAME_WIDTH){
 			this.x = 0;
 		} else if (this.x < 0){
-			this.x = canvas.width;
-		} else if (this.y > canvas.height){
+			this.x = GAME_WIDTH;
+		} else if (this.y > GAME_HEIGHT){
 			this.y = 0;
 		} else if (this.y < 0){
-			this.y = canvas.height;
+			this.y = GAME_HEIGHT;
 		}
 	}
 	
