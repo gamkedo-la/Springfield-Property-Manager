@@ -32,6 +32,20 @@ function handleMouseClick(evt){
 }
 
 function keyPressed(evt) {
+	switch(evt.keyCode){
+		case KEY_W:
+		camPanY -= camPanSpeed;
+		break;
+		case KEY_S:
+		camPanY += camPanSpeed;
+		break;
+		case KEY_A:
+		camPanX -= camPanSpeed;
+		break;
+		case KEY_D:
+		camPanX += camPanSpeed;
+		break;
+	}
 	evt.preventDefault();
 }
 

@@ -114,6 +114,7 @@ function peopleClass() {
 	}
 	
 	this.draw = function () {
-		 colorCircle(this.x, this.y, 4, this.color[this.whichColor]);
+		gameCoordToIsoCoord(this.x, this.y);
+		colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
 	}
 }

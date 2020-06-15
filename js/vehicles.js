@@ -72,6 +72,7 @@ function vehicleClass() {
 	}
 	
 	this.draw = function () {
-		colorRect(this.x, this.y + 10, 20, 10, this.color[this.whichColor]);
+		gameCoordToIsoCoord(this.x, this.y);
+		colorRect(isoDrawX, isoDrawY, 20, 10, this.color[this.whichColor]);
 	}
 }

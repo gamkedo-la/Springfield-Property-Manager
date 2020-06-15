@@ -5,6 +5,11 @@ var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
 
+var camPanX = 0;
+var camPanY = 0;
+var camPanSpeed = 5;
+
+
 window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');
@@ -89,7 +94,9 @@ function calculateMousePos(evt) {
 }
 						
 function drawEverything() {		
-	colorRect(0,0,canvas.width,canvas.height, 'black');		
+	colorRect(0,0,canvas.width,canvas.height, 'black');
+	canvasContext.save();
+	canvasContext.translate(-camPanX, -camPanY/2);
 	drawLandScape();
 	for (var i = 0; i < propertyList.length; i++) {
 		propertyList[i].draw();
@@ -100,5 +107,6 @@ function drawEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].draw();
 	}
+	canvasContext.restore();
 	displayGameTime();
 }

@@ -36,31 +36,32 @@ function propertyClass() {
 	}	
 	 		
 	this.draw = function(){
-		drawBitmapAtLocation(propertyPic, this.x, this.y);
+		gameCoordToIsoCoord(this.x, this.y);
+		drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY+24);
 		
 		if(this.zoned == "Commercial"){
-			drawBitmapAtLocation(commercialForSaleSignPic, this.x + 50, this.y);	
+			drawBitmapAtLocation(commercialForSaleSignPic, isoDrawX + 50, isoDrawY);	
 		} else if(this.zoned == "Residential"){
-			drawBitmapAtLocation(residentialForSaleSignPic, this.x + 50, this.y);
+			drawBitmapAtLocation(residentialForSaleSignPic, isoDrawX + 50, isoDrawY);
 		}
 			
 		
 		if(this.mouseSelected){
-			colorRect(this.x + 6, this.y + 6, this.width - 12, this.height - 26, "white");
-			colorRect(this.x + 6, this.y + this.height - 26, this.width - 12, this.height - 80, "blue");
-			colorText("Lot Number " + this.propertyNumber, this.x + 8, this.y + 14, "black", "10px Arial Black");
-			colorText("Sale Price: ", this.x + 18, this.y + 28, "black", "10px Arial Black");
-			colorText(this.salePrice, this.x + 18, this.y + 40, "black", "10px Arial Black");
-			colorText("Zoned: ", this.x + 18, this.y + 52, "black", "10px Arial Black");
-			colorText(this.zoned, this.x + 18, this.y + 64, "black", "10px Arial Black");
-			colorText("Purchase?", this.x + 18, this.y + 88, "red", "10px Arial Black");
+			colorRect(isoDrawX + 6, isoDrawY + 6, this.width - 12, this.height - 26, "white");
+			colorRect(isoDrawX + 6, isoDrawY + this.height - 26, this.width - 12, this.height - 80, "blue");
+			colorText("Lot Number " + this.propertyNumber, isoDrawX + 8, isoDrawY + 14, "black", "10px Arial Black");
+			colorText("Sale Price: ", isoDrawX + 18, isoDrawY + 28, "black", "10px Arial Black");
+			colorText(this.salePrice, isoDrawX + 18, isoDrawY + 40, "black", "10px Arial Black");
+			colorText("Zoned: ", isoDrawX + 18, isoDrawY + 52, "black", "10px Arial Black");
+			colorText(this.zoned, isoDrawX + 18, isoDrawY + 64, "black", "10px Arial Black");
+			colorText("Purchase?", isoDrawX + 18, isoDrawY + 88, "red", "10px Arial Black");
 			
 		} else if (this.mouseHovering){
-			colorText("Lot Number", this.x + 5, this.y + 50, "red", "14px Arial Black");
-			colorText(this.propertyNumber, this.x + 40, this.y + 70, "red", "14px Arial Black");
+			colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "red", "14px Arial Black");
+			colorText(this.propertyNumber, isoDrawX+ 40, isoDrawY + 70, "red", "14px Arial Black");
 		} else {
-			colorText("Lot Number", this.x + 5, this.y + 50, "white", "14px Arial Black");
-			colorText(this.propertyNumber, this.x + 40, this.y + 70, "white", "14px Arial Black");
+			colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "white", "14px Arial Black");
+			colorText(this.propertyNumber, isoDrawX + 40, isoDrawY + 70, "white", "14px Arial Black");
 		}
 	}
 }
