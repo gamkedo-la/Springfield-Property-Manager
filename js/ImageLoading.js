@@ -1,6 +1,8 @@
 var propertyPic = document.createElement("img");
 var residentialForSaleSignPic = document.createElement("img");
 var commercialForSaleSignPic = document.createElement("img");
+var buildingPic = document.createElement("img");
+var building2Pic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -30,6 +32,8 @@ function loadImages() {
 	
 		var imageList = [
 			{varName: propertyPic, theFile: "landMarker.png"},
+			{varName: buildingPic, theFile: "building.png"},
+			{varName: building2Pic, theFile: "building2.png"},
 			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
 			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
 			
