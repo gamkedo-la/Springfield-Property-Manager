@@ -27,7 +27,7 @@ function propertyClass() {
 
     this.init = function(propertyName) {
         this.propertyNumber = propertyName;
-        let randomZone = randomIntFromInterval(1, 4);
+        let randomZone = randomIntFromInterval(1, 5);
         if (randomZone == 1) {
             this.zoned = "Commercial";
         } else if (randomZone == 2) {
@@ -35,7 +35,10 @@ function propertyClass() {
         } else if (randomZone == 3) {
             this.zoned = "Commercial";
             this.building = "restaurant";
-        } else if (randomZone == 4) {
+		} else if (randomZone == 4) {
+            this.zoned = "Residential";
+            this.building = "apartment";
+        } else if (randomZone == 5) {
             this.zoned = "Commercial";
             this.building = "OfficeBuilding";
 		}
@@ -46,6 +49,9 @@ function propertyClass() {
         gameCoordToIsoCoord(this.x, this.y);
         if (this.building == "restaurant") {
             drawBitmapAtLocation(buildingPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+		} else if (this.building == "apartment") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 250;
             drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
