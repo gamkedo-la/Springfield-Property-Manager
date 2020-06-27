@@ -21,6 +21,7 @@ function updateTime(){
 }
 
 function displayGameTime(){
+	colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "white", "14px Ariel Black");
 	colorText(gameMonth[whichMonth] + " " + gameYear, 330, 300, "orange", "18px Arial Black");
 	if(gameDay < 5){
 		if (gameYear > 2020 || whichMonth > 0){

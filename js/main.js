@@ -108,5 +108,6 @@ function drawEverything() {
 		peopleList[i].draw();
 	}
 	canvasContext.restore();
+	//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
 	displayGameTime();
 }

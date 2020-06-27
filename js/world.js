@@ -116,4 +116,25 @@ function gameCoordToIsoCoord (pixelX, pixelY) {
 	isoDrawX = tileCFraction * (ISO_GRID_W/2) - tileRFraction * (ISO_GRID_W/2);
 	isoDrawY = tileCFraction * (ISO_GRID_H/2) + tileRFraction * (ISO_GRID_H/2);
 }
-			
+
+function isoCoordToGameCoord(pixelX, pixelY) {
+	var workingX = pixelX + camPanX - ISO_GRID_W/2;
+	var workingY = (pixelY + camPanY)*2; // 2X vertical, since isometric
+
+	// accounting for affect of isometric motion on coordinate
+	var unIsoX = workingX+workingY;
+	var unIsoY = workingY-workingX;
+
+	// going from game coordinate to tile index through normal calculation
+	var indexUnderPixel = getTileIndexAtPixelCoord(unIsoX,unIsoY);
+
+	// debugging output 
+	/*
+	gameCoordToIsoCoord(unIsoX,unIsoY);
+	var debugCoordX = isoDrawX;
+	var debugCoordY = isoDrawY;
+	colorRect(unIsoX,unIsoY,10,10,"red"); // check if iso motion aligns as up/down, side-side
+	console.log("X: " + Math.floor(unIsoX) + " Y: " + Math.floor(unIsoY));
+	*/
+	return {x: unIsoX, y: unIsoY, idx: indexUnderPixel};
+}

@@ -20,7 +20,7 @@ function initInput(){
 	
 		mousePosX = mousePos.x;
 		mousePosY = mousePos.y;
-		mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
+		//mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
 		
 	});
 	
@@ -29,7 +29,6 @@ function initInput(){
 }
 
 function handleMouseClick(evt){
-	
 	checkForPropertySelection();
 }
 
@@ -56,7 +55,7 @@ function keyReleased(evt) {
 }
 
 
-function setKeyHoldState(thisKey, thisWarrior, setTo) {
+function setKeyHoldState(thisKey, thisSelection, setTo) {
 	
 }
 
