@@ -33,6 +33,7 @@ function handleMouseClick(evt){
 }
 
 function keyPressed(evt) {
+	cheats(evt.key);
 	switch(evt.keyCode){
 		case KEY_W:
 		camPanY -= camPanSpeed;
