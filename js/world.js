@@ -119,7 +119,7 @@ function gameCoordToIsoCoord (pixelX, pixelY) {
 
 function isoCoordToGameCoord(pixelX, pixelY) {
 	var workingX = pixelX + camPanX - ISO_GRID_W/2;
-	var workingY = (pixelY + camPanY)*2; // 2X vertical, since isometric
+	var workingY = (pixelY*2) + camPanY; // 2X vertical, since isometric
 
 	// accounting for affect of isometric motion on coordinate
 	var unIsoX = workingX+workingY;

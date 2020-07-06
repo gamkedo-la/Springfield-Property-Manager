@@ -1,11 +1,12 @@
-function checkForPropertyHovering(){
+function checkForPropertyHovering() {
 	var selectedTile = isoCoordToGameCoord(mousePosX, mousePosY);
 	var selectedTileIndex = selectedTile.idx;
 	mouseOverIdx = selectedTileIndex;
 	
-	for(i = 0; i < propertyList.length; i++){
-		if (mousePosX > propertyList[i].x && mousePosX < (propertyList[i].x + propertyList[i].width) &&
-			mousePosY > propertyList[i].y && mousePosY < (propertyList[i].y + propertyList[i].height ))
+	for(i = 0; i < propertyList.length; i++) {
+		gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
+		if (mousePosX > isoDrawX + (TILE_W/2) - camPanX && mousePosX < (isoDrawX + (TILE_W/2) - camPanX + (TILE_W/2)) &&
+			mousePosY > isoDrawY - (camPanY/2) && mousePosY < (isoDrawY - (camPanY/2) + (TILE_H/2) ))
 			{
 			propertyList[i].mouseHovering = true;
 		} else {
@@ -14,11 +15,13 @@ function checkForPropertyHovering(){
 	}
 }
 
-function checkForPropertySelection(){
+function checkForPropertySelection() {
 	isoCoordToGameCoord(mousePosX, mousePosY);
-	for(i = 0; i < propertyList.length; i++){
-		if (mousePosX > propertyList[i].x && mousePosX < (propertyList[i].x + propertyList[i].width) &&
-			mousePosY > propertyList[i].y && mousePosY < (propertyList[i].y + propertyList[i].height ))
+
+	for(i = 0; i < propertyList.length; i++) {
+		gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
+		if (mousePosX > isoDrawX + (TILE_W/2) - camPanX && mousePosX < (isoDrawX + (TILE_W/2) - camPanX + (TILE_W/2)) &&
+			mousePosY > isoDrawY - (camPanY/2) && mousePosY < (isoDrawY - (camPanY/2) + (TILE_H/2) ))
 			{
 			propertyList[i].mouseSelected = true;
 		} else {

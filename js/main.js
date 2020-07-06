@@ -110,4 +110,15 @@ function drawEverything() {
 	canvasContext.restore();
 	//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
 	displayGameTime();
+
+	//TEMP CODE: Displays the CLICK/SELECT AREA for the property
+	//FIX IT: It is rectangle but it should be isometric.
+	for(i = 0; i < propertyList.length; i++)
+	{
+		if(propertyList[i].mouseHovering || propertyList[i].mouseSelected)
+		{
+			gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
+			colorRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "#00ff0099");
+		}
+	}
 }
