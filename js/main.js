@@ -31,12 +31,17 @@ window.onload = function(){
 	canvas.addEventListener('mousedown', handleMouseClick);
 	document.addEventListener("keydown", keyPressed);
     document.addEventListener("keyup", keyReleased);
-    document.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResize);
 }
 
 function onResize() {
+    console.log("screen resized");
+    // make the canvas full size
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    // re-center the world
+    camPanX = -1 * Math.round(canvas.width/2 - 150);
+    camPanY = -1 * Math.round(canvas.height/2 - 300);
 }
 
 
