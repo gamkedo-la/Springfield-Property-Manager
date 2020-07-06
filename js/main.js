@@ -13,7 +13,8 @@ var camPanSpeed = 5;
 window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');
-	canvasContext = canvas.getContext('2d');
+    canvasContext = canvas.getContext('2d');
+    onResize();
 		
 	initializeAssets();
 	loadImages();
@@ -29,10 +30,19 @@ window.onload = function(){
 	
 	canvas.addEventListener('mousedown', handleMouseClick);
 	document.addEventListener("keydown", keyPressed);
-	document.addEventListener("keyup", keyReleased);
+    document.addEventListener("keyup", keyReleased);
+    window.addEventListener("resize", onResize);
 }
 
-
+function onResize() {
+    console.log("screen resized");
+    // make the canvas full size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    // re-center the world
+    camPanX = -1 * Math.round(canvas.width/2 - 150);
+    camPanY = -1 * Math.round(canvas.height/2 - 300);
+}
 
 
 function imageLoadingDoneSoStartGame(){
