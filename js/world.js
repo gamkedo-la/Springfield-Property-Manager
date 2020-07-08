@@ -12,8 +12,6 @@ const GAME_HEIGHT = MAP_ROWS * TILE_H;
 var isoDrawX = 0;
 var isoDrawY = 0;
 
-
-
 var roomGrid = [
 					0,1,3,1,0,0,0,0,0,0,0,0,1,3,1,0,
 					1,1,3,1,1,1,1,1,1,1,1,1,1,3,1,1,

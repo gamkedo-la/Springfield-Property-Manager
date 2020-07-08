@@ -35,7 +35,7 @@ window.onload = function(){
 }
 
 function onResize() {
-    console.log("screen resized");
+    // console.log("screen resized");
     // make the canvas full size
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

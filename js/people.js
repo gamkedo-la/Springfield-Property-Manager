@@ -37,7 +37,11 @@ function peopleClass() {
 		console.log(randomSideWalkSide);
 		if (randomSideWalkSide == 2){
 			this.y = this.y + 45;
-		}
+        }
+        
+        // in order to kick off the ai right away
+        this.changeDirection();
+        
 	}
 
 	this.init = function(whichName) {
@@ -64,11 +68,20 @@ function peopleClass() {
 	}
 	
 	this.changeDirection = function(){
-		let randomDirection = randomIntFromInterval(1,4);
-		this.moveEast = false;
+
+        // reset
+        this.moveEast = false;
 		this.moveWest = false;
 		this.moveNorth = false;
 		this.moveSouth = false;
+
+        // default: pure random
+        let randomDirection = randomIntFromInterval(1,4);
+
+        // navigate using the world heatmap?
+        if (USE_HEATMAP) randomDirection = heatMapBestDirection("Commercial",this.x,this.y);
+
+        // select a new direction
 		if(randomDirection == 1){
 			this.moveEast = true;
 		} else if (randomDirection == 2){
@@ -92,7 +105,7 @@ function peopleClass() {
 		}
 	}
 	
-	this.checkIntersections = function(){
+    this.checkIntersections = function(){
 		if((this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
 		   (this.x == 147) && (this.y == 100) ||
 		   (this.x == 103) && (this.y == 145) ||
