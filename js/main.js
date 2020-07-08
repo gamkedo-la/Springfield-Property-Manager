@@ -72,8 +72,7 @@ function initializeAssets(){
 				vehicleList.push(newObject);
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();
-				var propertyNumber = tileIndex;
-				newObject.init(propertyNumber);
+				newObject.init(tileIndex);
 				propertyList.push(newObject);
 			}
 		tileTopEdgeY += TILE_H;	

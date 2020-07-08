@@ -1,5 +1,13 @@
+const EAST = 1;
+const WEST = 2;
+const NORTH = 3;
+const SOUTH = 4;
+
 function peopleClass() {
-	this.x = 0;
+    
+    const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
+    
+    this.x = 0;
 	this.y = 100;
 	this.velX = .5;
 	this.velY = .5;
@@ -28,9 +36,9 @@ function peopleClass() {
 		this.y = this.homeY;
 		let randomDirection = randomIntFromInterval(1,2);
 		this.whichColor = randomIntFromInterval(1,8) - 1;
-		if(randomDirection == 1){
+		if(randomDirection == EAST){
 			this.moveEast = true;
-		} else if (randomDirection == 2){
+		} else if (randomDirection == WEST){
 			this.moveWest = true;
 		}
 		let randomSideWalkSide = randomIntFromInterval(1,2);
@@ -38,9 +46,6 @@ function peopleClass() {
 		if (randomSideWalkSide == 2){
 			this.y = this.y + 45;
         }
-        
-        // in order to kick off the ai right away
-        this.changeDirection();
         
 	}
 
@@ -82,19 +87,20 @@ function peopleClass() {
         if (USE_HEATMAP) randomDirection = heatMapBestDirection("Commercial",this.x,this.y);
 
         // select a new direction
-		if(randomDirection == 1){
+		if(randomDirection == EAST){
 			this.moveEast = true;
-		} else if (randomDirection == 2){
+		} else if (randomDirection == WEST){
 			this.moveWest = true;
-		} else if (randomDirection == 3){
+		} else if (randomDirection == NORTH){
 			this.moveNorth = true;
-		} else if (randomDirection == 4){
+		} else if (randomDirection == SOUTH){
 			this.moveSouth = true;
 		}						
 	}
 	
 	this.checkBoundaries = function(){
-		if(this.x > GAME_WIDTH){
+        // wrap around to the other side
+        if(this.x > GAME_WIDTH){
 			this.x = 0;
 		} else if (this.x < 0){
 			this.x = GAME_WIDTH;
@@ -106,22 +112,28 @@ function peopleClass() {
 	}
 	
     this.checkIntersections = function(){
-		if((this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
-		   (this.x == 147) && (this.y == 100) ||
-		   (this.x == 103) && (this.y == 145) ||
-		   (this.x == 147) && (this.y == 145) ||
-		   (this.x == 653) && (this.y == 100) || //Intersection 2 (Top Right)
-		   (this.x == 697) && (this.y == 100) ||
-		   (this.x == 653) && (this.y == 145) ||
-		   (this.x == 697) && (this.y == 145) ||
-		   (this.x == 103) && (this.y == 450) || //Intersection 3 (Bottom Left)
-		   (this.x == 147) && (this.y == 450) ||
-		   (this.x == 103) && (this.y == 495) ||
-		   (this.x == 147) && (this.y == 495) ||
-		   (this.x == 653) && (this.y == 450) || //Intersection 4 (Bottom Right)
-		   (this.x == 697) && (this.y == 450) ||
-		   (this.x == 653) && (this.y == 495) ||
-		   (this.x == 697) && (this.y == 495)){
+		if((Math.random()<RANDOM_DIR_CHANGE_CHANCE) || // from time to time, do it randomly!
+            
+            // FIXME: account for any shape of map/road
+            // and remove these hardcoded exact pixel locations
+            // maybe we could look at roomGrid[] for TILE_ROAD_INT?
+
+            (this.x == 103) && (this.y == 100) || //Intersection 1 (Top Left)
+            (this.x == 147) && (this.y == 100) ||
+            (this.x == 103) && (this.y == 145) ||
+            (this.x == 147) && (this.y == 145) ||
+            (this.x == 653) && (this.y == 100) || //Intersection 2 (Top Right)
+            (this.x == 697) && (this.y == 100) ||
+            (this.x == 653) && (this.y == 145) ||
+            (this.x == 697) && (this.y == 145) ||
+            (this.x == 103) && (this.y == 450) || //Intersection 3 (Bottom Left)
+            (this.x == 147) && (this.y == 450) ||
+            (this.x == 103) && (this.y == 495) ||
+            (this.x == 147) && (this.y == 495) ||
+            (this.x == 653) && (this.y == 450) || //Intersection 4 (Bottom Right)
+            (this.x == 697) && (this.y == 450) ||
+            (this.x == 653) && (this.y == 495) ||
+            (this.x == 697) && (this.y == 495)){
 			this.changeDirection();
 		}
 	}

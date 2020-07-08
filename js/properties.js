@@ -7,6 +7,7 @@ function propertyClass() {
     this.salePrice = "$10,000";
     this.zoned;
     this.building = "none";
+    this.propertyTileMapIndex = -1; // set in  init()
 
     this.reset = function() {
         if (this.homeX == undefined) {
@@ -25,8 +26,8 @@ function propertyClass() {
         this.y = this.homeY;
     }
 
-    this.init = function(propertyName) {
-        this.propertyNumber = propertyName;
+    this.init = function(propertyTileMapIndex) {
+        this.propertyTileMapIndex = propertyTileMapIndex;
         let randomZone = randomIntFromInterval(1, 5);
         if (randomZone == 1) {
             this.zoned = "Commercial";
@@ -67,7 +68,7 @@ function propertyClass() {
         if (this.mouseSelected) {
             colorRect(isoDrawX + 6, isoDrawY + 6, this.width - 12, this.height - 26, "white");
             colorRect(isoDrawX + 6, isoDrawY + this.height - 26, this.width - 12, this.height - 80, "blue");
-            colorText("Lot Number " + this.propertyNumber, isoDrawX + 8, isoDrawY + 14, "black", "10px Arial Black");
+            colorText("Lot Number " + this.propertyTileMapIndex, isoDrawX + 8, isoDrawY + 14, "black", "10px Arial Black");
             colorText("Sale Price: ", isoDrawX + 18, isoDrawY + 28, "black", "10px Arial Black");
             colorText(this.salePrice, isoDrawX + 18, isoDrawY + 40, "black", "10px Arial Black");
             colorText("Zoned: ", isoDrawX + 18, isoDrawY + 52, "black", "10px Arial Black");
@@ -76,10 +77,10 @@ function propertyClass() {
 
         } else if (this.mouseHovering) {
             colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "red", "14px Arial Black");
-            colorText(this.propertyNumber, isoDrawX + 40, isoDrawY + 70, "red", "14px Arial Black");
+            colorText(this.propertyTileMapIndex, isoDrawX + 40, isoDrawY + 70, "red", "14px Arial Black");
         } else {
             colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "white", "14px Arial Black");
-            colorText(this.propertyNumber, isoDrawX + 40, isoDrawY + 70, "white", "14px Arial Black");
+            colorText(this.propertyTileMapIndex, isoDrawX + 40, isoDrawY + 70, "white", "14px Arial Black");
         }
     }
 }
