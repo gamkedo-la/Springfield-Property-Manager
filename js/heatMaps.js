@@ -4,7 +4,7 @@ const DEBUG_HEATMAP = true; // if true, spam the console
 var heatMaps = {}; // contains arrays the size size as roomGrid[]
 // arrays names match values like "Commercial" from buildings.zoned
 
-function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=5) {
+function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=4) {
     if (DEBUG_HEATMAP) console.log("Calculating heatMap for: " + hotness);
     var heat, tile, lot, dist, prop, tx, ty, px, py, score;
     // which map? 
@@ -47,11 +47,7 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=5) {
         var alpha = 1;
         for (tile=0; tile<heat.length; tile++) {
             debugString += heat[tile];
-            if (heat[tile] > 250) {
-                red = 0; green = Math.min(255,heat[tile]/2);
-            } else {
-                red = Math.min(255,heat[tile]); green = 0;
-            }
+            green = Math.min(255,heat[tile]/2);
             htmlString += "<span style='color:rgba("+red+","+green+","+blue+","+alpha+")'>█</span>"
             if (tile % MAP_COLS == MAP_COLS-1) {
                 debugString += "\n";
