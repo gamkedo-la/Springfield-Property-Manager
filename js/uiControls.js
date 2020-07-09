@@ -14,6 +14,7 @@ var mouseOverIdx = -1;
 
 function initInput(){
 	canvas.addEventListener('mousemove', mouseMove);
+	canvas.addEventListener('mousedown', handleMouseClick);
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 }
