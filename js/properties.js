@@ -76,11 +76,9 @@ function propertyClass() {
             colorText("Purchase?", isoDrawX + 18, isoDrawY + 88, "red", "10px Arial Black");
 
         } else if (this.mouseHovering) {
-            colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "red", "14px Arial Black");
-            colorText(this.propertyTileMapIndex, isoDrawX + 40, isoDrawY + 70, "red", "14px Arial Black");
+            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
         } else {
-            colorText("Lot Number", isoDrawX + 5, isoDrawY + 50, "white", "14px Arial Black");
-            colorText(this.propertyTileMapIndex, isoDrawX + 40, isoDrawY + 70, "white", "14px Arial Black");
+            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "white", "8px Arial Black");
         }
     }
 }
