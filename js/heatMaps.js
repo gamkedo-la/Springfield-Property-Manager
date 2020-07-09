@@ -4,12 +4,12 @@ const DEBUG_HEATMAP = true; // if true, spam the console
 var heatMaps = {}; // contains arrays the size size as roomGrid[]
 // arrays names match values like "Commercial" from buildings.zoned
 
-function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=4) {
-    if (DEBUG_HEATMAP) console.log("Calculating heatMap for: " + hotness);
+function heatMapRegenerate(zone="Commercial",subtype="restaurant",scaledScore=100,tileRange=4) {
+    if (DEBUG_HEATMAP) console.log("Calculating heatMap for: " + zone);
     var heat, tile, lot, dist, prop, tx, ty, px, py, score;
     // which map? 
-    if (!heatMaps[hotness]) heatMaps[hotness] = []; // create a new one
-    heat = heatMaps[hotness];
+    if (!heatMaps[zone]) heatMaps[zone] = []; // create a new one
+    heat = heatMaps[zone];
     // gather heat    
     for (tile=0; tile<roomGrid.length; tile++) {
 
@@ -25,7 +25,8 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=4) {
             px = prop.propertyTileMapIndex % MAP_COLS;
             py = Math.floor((prop.propertyTileMapIndex-px) / MAP_ROWS);
 
-            if (prop.zoned==hotness) {
+            if (prop.zoned==zone &&
+                (!subtype || prop.building==subtype)) {
                 // found an interesting property!
                 dist = Math.sqrt((px-tx)*(px-tx)+(py-ty)*(py-ty));
                 if (dist <= tileRange) { // close enough?
@@ -40,7 +41,7 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=4) {
     // debug display of entire heatmap
     if (DEBUG_HEATMAP) {
         var debugString = "";
-        var htmlString = "HEATMAP ["+hotness+"]<br>";
+        var htmlString = zone+(subtype?" - "+subtype:"")+"<br><br>";
         var red = 0;
         var green = 0;
         var blue = 0;
@@ -59,7 +60,7 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=4) {
             var div = document.getElementById("heatmapDebug");
             if (div) div.innerHTML = htmlString;
         }
-        console.log("HEATMAP for "+hotness+":\n"+debugString);
+        console.log("HEATMAP for "+zone+":\n"+debugString);
     }
 }
 
