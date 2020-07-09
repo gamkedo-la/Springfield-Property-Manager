@@ -13,19 +13,16 @@ var mousePosY = 0;
 var mouseOverIdx = -1;
 
 function initInput(){
-	
-	canvas.addEventListener('mousemove', function(evt) {
-	
-		var mousePos = calculateMousePos(evt);
-	
-		mousePosX = mousePos.x;
-		mousePosY = mousePos.y;
-		//mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
-		
-	});
-	
+	canvas.addEventListener('mousemove', mouseMove);
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
+}
+
+function mouseMove(evt) {
+    var mousePos = calculateMousePos(evt);
+    mousePosX = mousePos.x;
+    mousePosY = mousePos.y;
+    //mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
 }
 
 function handleMouseClick(evt){
