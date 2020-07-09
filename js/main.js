@@ -14,24 +14,13 @@ window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
+    window.addEventListener("resize", onResize);
     onResize();
 		
 	initializeAssets();
 	loadImages();
 	initInput();
 		
-	canvas.addEventListener('mousemove', function(evt) {
-	
-		var mousePos = calculateMousePos(evt);
-		
-		MousePosX = mousePos.x;
-		MousePosY = mousePos.y;
-	});
-	
-	canvas.addEventListener('mousedown', handleMouseClick);
-	document.addEventListener("keydown", keyPressed);
-    document.addEventListener("keyup", keyReleased);
-    window.addEventListener("resize", onResize);
 }
 
 function onResize() {

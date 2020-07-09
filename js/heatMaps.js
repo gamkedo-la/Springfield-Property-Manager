@@ -5,7 +5,7 @@ var heatMaps = {}; // contains arrays the size size as roomGrid[]
 // arrays names match values like "Commercial" from buildings.zoned
 
 function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=5) {
-    if (DEBUG_HEATMAP) console.log("heatMap.regenerate " + hotness);
+    if (DEBUG_HEATMAP) console.log("Calculating heatMap for: " + hotness);
     var heat, tile, lot, dist, prop, tx, ty, px, py, score;
     // which map? 
     if (!heatMaps[hotness]) heatMaps[hotness] = []; // create a new one
@@ -30,7 +30,7 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=5) {
                 dist = Math.sqrt((px-tx)*(px-tx)+(py-ty)*(py-ty));
                 if (dist <= tileRange) { // close enough?
                     score = Math.round((1-(dist/tileRange)) * scaledScore);
-                    if (DEBUG_HEATMAP) console.log(tx+','+ty+' to '+px+','+py+' dist='+dist.toFixed(1)+' score: '+score);
+                    //if (DEBUG_HEATMAP) console.log(tx+','+ty+' to '+px+','+py+' dist='+dist.toFixed(1)+' score: '+score);
                     // add more heat based on proximity
                     heat[tile] += score;
                 }
@@ -40,7 +40,7 @@ function heatMapRegenerate(hotness="Commercial",scaledScore=100,tileRange=5) {
     // debug display of entire heatmap
     if (DEBUG_HEATMAP) {
         var debugString = "";
-        var htmlString = "Heatmap ["+hotness+"]<br>";
+        var htmlString = "HEATMAP ["+hotness+"]<br>";
         var red = 0;
         var green = 0;
         var blue = 0;

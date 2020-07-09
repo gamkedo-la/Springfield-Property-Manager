@@ -42,7 +42,7 @@ function peopleClass() {
 			this.moveWest = true;
 		}
 		let randomSideWalkSide = randomIntFromInterval(1,2);
-		console.log(randomSideWalkSide);
+		//console.log(randomSideWalkSide);
 		if (randomSideWalkSide == 2){
 			this.y = this.y + 45;
         }
