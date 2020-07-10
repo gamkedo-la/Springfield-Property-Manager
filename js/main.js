@@ -4,10 +4,21 @@ var canvasContext;
 var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
+var inGameMenu = null;
 
 var camPanX = 0;
 var camPanY = 0;
 var camPanSpeed = 5;
+
+function changeState(toState){
+	if(inGameMenu != null){
+		inGameMenu.exit();
+	}
+	inGameMenu = toState;
+	if(inGameMenu != null){
+		inGameMenu.init();
+	}
+}
 
 
 window.onload = function(){
@@ -79,6 +90,9 @@ function moveEverything() {
 	}
 	checkForPropertyHovering();
 	updateTime(); 
+	if(inGameMenu != null){
+		inGameMenu.update();
+	}
 }
 			
 function calculateMousePos(evt) {
@@ -118,5 +132,12 @@ function drawEverything() {
 			gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
 			colorRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "#00ff0099");
 		}
+	}
+	
+	if(inGameMenu != null){
+		canvasContext.globalAlpha = 0.5;
+		colorRect(0,0,canvas.width,canvas.height, "black");
+		canvasContext.globalAlpha = 1.0;
+		inGameMenu.draw();
 	}
 }

@@ -2,6 +2,7 @@ const KEY_W = 87; // "W"
 const KEY_S = 83; // "S"
 const KEY_A = 65; // "A"
 const KEY_D = 68; // "D"
+const KEY_P = 80; // "P"
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -31,6 +32,10 @@ function handleMouseClick(evt){
 }
 
 function keyPressed(evt) {
+	if(inGameMenu != null){
+		inGameMenu.handleKey(evt.keyCode);
+		return;
+	}
 	cheats(evt.key);
 	switch(evt.keyCode){
 		case KEY_W:
@@ -44,6 +49,9 @@ function keyPressed(evt) {
 		break;
 		case KEY_D:
 		camPanX += camPanSpeed;
+		break;
+		case KEY_P:
+			changeState(menuState_propertyInformation);
 		break;
 	}
 	evt.preventDefault();
