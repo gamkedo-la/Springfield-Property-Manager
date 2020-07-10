@@ -49,10 +49,10 @@ function propertyClass() {
     this.draw = function() {
         gameCoordToIsoCoord(this.x, this.y);
         if (this.building == "restaurant") {
-            drawBitmapAtLocation(buildingPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+            drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
 		} else if (this.building == "apartment") {
             this.isoBuildingHeight = 50;
-            drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+            drawBitmapAtLocation(buildingPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 250;
             drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
