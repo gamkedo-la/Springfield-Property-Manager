@@ -61,22 +61,26 @@ function initializeAssets(){
 	var tileLeftEdgeX = 0;
 	var tileTopEdgeY = 0;
 	
-	for(var eachRow = 0; eachRow<MAP_ROWS; eachRow++){
+	for(var eachRow = 0; eachRow < MAP_ROWS; eachRow++){
 		tileLeftEdgeX = 0;		
-		for(var eachCol=0; eachCol<MAP_COLS; eachCol++) {
+
+		for(var eachCol = 0; eachCol < MAP_COLS; eachCol++) {
 			if (roomGrid[ tileIndex ] == TILE_PERSON) {
 				newObject = new peopleClass();
 				newObject.init("1");
 				peopleList.push(newObject);
+
 			} else if (roomGrid[ tileIndex ] == TILE_VEHICLE) {
 				newObject = new vehicleClass();
 				newObject.init("1");
 				vehicleList.push(newObject);
+				
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();
 				newObject.init(tileIndex);
 				propertyList.push(newObject);
 			}
+			
 		tileTopEdgeY += TILE_H;	
 		tileIndex++;
 		}

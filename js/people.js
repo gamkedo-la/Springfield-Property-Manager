@@ -5,9 +5,9 @@ const SOUTH = 4;
 
 function peopleClass() {
     
-    const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
+  const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
     
-    this.x = 0;
+  this.x = 0;
 	this.y = 100;
 	this.velX = .5;
 	this.velY = .5;
@@ -34,25 +34,34 @@ function peopleClass() {
 		}
 		this.x = this.homeX;
 		this.y = this.homeY;
-		let randomDirection = randomIntFromInterval(1,2);
+
 		this.whichColor = randomIntFromInterval(1,8) - 1;
+
+		let randomDirection = randomIntFromInterval(1,2);
+
 		if(randomDirection == EAST){
 			this.moveEast = true;
 		} else if (randomDirection == WEST){
 			this.moveWest = true;
 		}
+
 		let randomSideWalkSide = randomIntFromInterval(1,2);
 		//console.log(randomSideWalkSide);
+
 		if (randomSideWalkSide == 2){
 			this.y = this.y + 45;
-        }
+    }
         
 	}
 
 	this.init = function(whichName) {
 		this.myName = whichName;
 		this.reset();
+
+		// const typeOfPerson = new peopleCharacteristics();
+		// this.typeOfPerson = typeOfPerson.decideTypeOfPerson();
 	}
+
 	this.move = function() {
 		this.checkBoundaries();
 		this.checkIntersections();
@@ -74,19 +83,19 @@ function peopleClass() {
 	
 	this.changeDirection = function(){
 
-        // reset
-        this.moveEast = false;
+    // reset
+    this.moveEast = false;
 		this.moveWest = false;
 		this.moveNorth = false;
 		this.moveSouth = false;
 
-        // default: pure random
-        let randomDirection = randomIntFromInterval(1,4);
+    // default: pure random
+    let randomDirection = randomIntFromInterval(1,4);
 
-        // navigate using the world heatmap?
-        if (USE_HEATMAP) randomDirection = heatMapBestDirection("Commercial",this.x,this.y);
+    // navigate using the world heatmap?
+    if (USE_HEATMAP) randomDirection = heatMapBestDirection("Commercial",this.x,this.y);
 
-        // select a new direction
+    // select a new direction
 		if(randomDirection == EAST){
 			this.moveEast = true;
 		} else if (randomDirection == WEST){
@@ -99,8 +108,8 @@ function peopleClass() {
 	}
 	
 	this.checkBoundaries = function(){
-        // wrap around to the other side
-        if(this.x > GAME_WIDTH){
+    // wrap around to the other side
+    if(this.x > GAME_WIDTH){
 			this.x = 0;
 		} else if (this.x < 0){
 			this.x = GAME_WIDTH;
