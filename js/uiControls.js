@@ -51,7 +51,8 @@ function keyPressed(evt) {
 		camPanX += camPanSpeed;
 		break;
 		case KEY_P:
-			changeState(menuState_propertyInformation);
+			paused = !paused;
+			// changeState(menuState_propertyInformation);
 		break;
 	}
 	evt.preventDefault();

@@ -10,6 +10,8 @@ var camPanX = 0;
 var camPanY = 0;
 var camPanSpeed = 5;
 
+var paused = false;
+
 function changeState(toState){
 	if(inGameMenu != null){
 		inGameMenu.exit();
@@ -82,6 +84,10 @@ function initializeAssets(){
 }
 		
 function moveEverything() {
+	if(paused) {
+		return;
+	}
+
 	for (var i = 0; i < vehicleList.length; i++) {
 		vehicleList[i].move();
 	}
