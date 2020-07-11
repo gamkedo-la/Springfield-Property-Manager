@@ -58,8 +58,8 @@ function peopleClass() {
 		this.myName = whichName;
 		this.reset();
 
-		// const typeOfPerson = new peopleCharacteristics();
-		// this.typeOfPerson = typeOfPerson.decideTypeOfPerson();
+        // wealth, hunger, favorite food, etc
+        this.characteristics = new peopleCharacteristics();
 	}
 
 	this.move = function() {
