@@ -1,8 +1,9 @@
-const KEY_W = 87; // "W"
-const KEY_S = 83; // "S"
-const KEY_A = 65; // "A"
-const KEY_D = 68; // "D"
-const KEY_P = 80; // "P"
+const KEY_W = 87; // MOVE SCREEN UP
+const KEY_S = 83; // MOVE SCREEN DOWN
+const KEY_A = 65; // MOVE SCREEN LEFT
+const KEY_D = 68; // MOVE SCREEN RIGHT
+const KEY_P = 80; // PAUSE GAME
+const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -52,7 +53,9 @@ function keyPressed(evt) {
 		break;
 		case KEY_P:
 			paused = !paused;
-			// changeState(menuState_propertyInformation);
+		break;
+		case KEY_I:
+			changeState(menuState_propertyInformation);
 		break;
 	}
 	evt.preventDefault();
