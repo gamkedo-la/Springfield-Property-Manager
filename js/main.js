@@ -4,6 +4,7 @@ var canvasContext;
 var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
+var ui = new uiClass();
 var inGameMenu = null;
 
 var camPanX = 0;
@@ -129,6 +130,7 @@ function drawEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].draw();
 	}
+	ui.draw();
 	canvasContext.restore();
 	//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
 	displayGameTime();

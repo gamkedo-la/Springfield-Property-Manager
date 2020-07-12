@@ -26,6 +26,7 @@ function checkForPropertySelection() {
 			propertyList[i].mouseSelected = true;
 		} else {
 			propertyList[i].mouseSelected = false;
+			ui.drawPropertyUI(false);
 		}
 	}
 }

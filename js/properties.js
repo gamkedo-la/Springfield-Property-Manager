@@ -66,15 +66,7 @@ function propertyClass() {
         }
 
         if (this.mouseSelected) {
-            colorRect(isoDrawX + 6, isoDrawY + 6, this.width - 12, this.height - 26, "white");
-            colorRect(isoDrawX + 6, isoDrawY + this.height - 26, this.width - 12, this.height - 80, "blue");
-            colorText("Lot Number " + this.propertyTileMapIndex, isoDrawX + 8, isoDrawY + 14, "black", "10px Arial Black");
-            colorText("Sale Price: ", isoDrawX + 18, isoDrawY + 28, "black", "10px Arial Black");
-            colorText(this.salePrice, isoDrawX + 18, isoDrawY + 40, "black", "10px Arial Black");
-            colorText("Zoned: ", isoDrawX + 18, isoDrawY + 52, "black", "10px Arial Black");
-            colorText(this.zoned, isoDrawX + 18, isoDrawY + 64, "black", "10px Arial Black");
-            colorText("Purchase?", isoDrawX + 18, isoDrawY + 88, "red", "10px Arial Black");
-
+            ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex, this.salePrice, this.zoned);
         } else if (this.mouseHovering) {
             colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
         } else {
