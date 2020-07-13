@@ -4,6 +4,7 @@ var commercialForSaleSignPic = document.createElement("img");
 var buildingPic = document.createElement("img");
 var building2Pic = document.createElement("img");
 var building3Pic = document.createElement("img");
+var restuarantPic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -33,6 +34,7 @@ function loadImages() {
 	
 		var imageList = [
 			{varName: propertyPic, theFile: "landMarker.png"},
+			{varName: restuarantPic, theFile: "restaurant.png"},
 			{varName: buildingPic, theFile: "building.png"},
 			{varName: building2Pic, theFile: "building2.png"},
 			{varName: building3Pic, theFile: "building3.png"},
