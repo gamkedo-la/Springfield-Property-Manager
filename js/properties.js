@@ -28,7 +28,7 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 5);
+        let randomZone = randomIntFromInterval(1, 6);
         if (randomZone == 1) {
             this.zoned = "Commercial";
         } else if (randomZone == 2) {
@@ -42,6 +42,9 @@ function propertyClass() {
         } else if (randomZone == 5) {
             this.zoned = "Commercial";
             this.building = "OfficeBuilding";
+		} else if (randomZone == 6) {
+            this.zoned = "Residential";
+            this.building = "basicDuplex";
 		}
         this.reset();
     }
@@ -53,6 +56,9 @@ function propertyClass() {
 		} else if (this.building == "apartment") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(buildingPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+        } else if (this.building == "basicDuplex") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);

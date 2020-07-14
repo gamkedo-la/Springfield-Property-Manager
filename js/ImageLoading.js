@@ -36,7 +36,7 @@ function loadImages() {
 			{varName: propertyPic, theFile: "landMarker.png"},
 			{varName: restuarantPic, theFile: "restaurant.png"},
 			{varName: buildingPic, theFile: "building.png"},
-			{varName: building2Pic, theFile: "building2.png"},
+			{varName: building2Pic, theFile: "regular_duplex.png"},
 			{varName: building3Pic, theFile: "building3.png"},
 			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
 			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
