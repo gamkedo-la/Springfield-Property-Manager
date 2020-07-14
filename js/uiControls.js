@@ -4,6 +4,7 @@ const KEY_A = 65; // MOVE SCREEN LEFT
 const KEY_D = 68; // MOVE SCREEN RIGHT
 const KEY_P = 80; // PAUSE GAME
 const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
+const KEY_L = 76; // TEMPORARY ACCESS TO LAND PURCHASING SCREEN
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -56,6 +57,9 @@ function keyPressed(evt) {
 		break;
 		case KEY_I:
 			changeState(menuState_propertyInformation);
+		break;
+		case KEY_L:
+			changeState(menuState_purchasingLand);
 		break;
 	}
 	evt.preventDefault();
