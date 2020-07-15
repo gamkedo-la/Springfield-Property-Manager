@@ -1,0 +1,57 @@
+body, canvas { 
+  margin:0; 
+  padding:0; 
+  overflow:hidden; 
+  background:black; 
+}
+
+#debugText { 
+  position:absolute; bottom:8px; left:8px; z-index:99999; 
+}
+
+#heatmapDebug { 
+  position:absolute; 
+  bottom:8px; 
+  right:8px; 
+  z-index:99999; 
+  display:block; 
+  color:silver; 
+  letter-spacing:-1px; 
+  line-height:10px; 
+  font-size:16px; 
+  font-family: lexendpeta; }
+
+
+@font-face {
+  font-family: 'b612regular';
+  src: url('/css/fonts/B612Mono-Regular.ttf');
+}
+
+/* This looks good for 'Bills Are Due!' alert */
+@font-face {
+  font-family: 'bebasregular';
+  src: url('/css/fonts/BebasNeue-Regular.ttf');
+}
+
+/* Main font */
+@font-face {
+  font-family: 'lexendpeta';
+  src: url('/css/fonts/LexendPeta-Regular.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'odibeesans';
+  src: url('/css/fonts/OdibeeSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'squadaone';
+  src: url('/css/fonts/SquadaOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'zcool';
+  src: url('/css/fonts/ZCOOLQingKeHuangYou-Regular.ttf');
+}
+

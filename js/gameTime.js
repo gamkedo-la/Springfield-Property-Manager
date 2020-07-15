@@ -21,11 +21,11 @@ function updateTime(){
 }
 
 function displayGameTime(){
-	colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "white", "14px Ariel Black");
-	colorText(gameMonth[whichMonth] + " " + gameYear, 330, 300, "orange", "18px Arial Black");
+	colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "white", "14px 'b612regular'");
+	colorText(gameMonth[whichMonth] + " " + gameYear, 330, 300, "orange", "30px 'lexendpeta'");
 	if(gameDay < 5){
 		if (gameYear > 2020 || whichMonth > 0){
-			colorText("Bills are due!", 310, 330, "red", "18px Arial Black");
+			colorText("Bills are due!", 310, 330, "red", "25px 'lexendpeta'");
 		}
 	}
 	
