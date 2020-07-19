@@ -1,13 +1,29 @@
+const restaurantTypes = [
+  {
+    name : "italianFood",
+    foodPrice : 50
+  },
+  {
+    name : "chineseFood",
+    foodPrice : 30
+  },
+  {
+    name : "indianFood",
+    foodPrice : 20
+  }
+];
+
 function propertyClass() {
     this.height = 100;
     this.isoBuildingHeight = 50;
     this.width = 100;
     this.mouseHovering = false;
     this.mouseSelected = false;
-    this.salePrice = "$10,000";
+    this.salePrice = 10000;
     this.zoned;
     this.building = "none";
     this.propertyTileMapIndex = -1; // set in  init()
+    this.restaurantType = '';
 
     this.reset = function() {
         if (this.homeX == undefined) {
@@ -36,6 +52,7 @@ function propertyClass() {
         } else if (randomZone == 3) {
             this.zoned = "Commercial";
             this.building = "restaurant";
+            this.restaurantType = randomIntFromInterval(0, restaurantTypes.length-1);
 		} else if (randomZone == 4) {
             this.zoned = "Residential";
             this.building = "apartment";
@@ -73,7 +90,7 @@ function propertyClass() {
         }
 
         if (this.mouseSelected) {
-            ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex, this.salePrice, this.zoned);
+            ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned);
         } else if (this.mouseHovering) {
             colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
         } else {
