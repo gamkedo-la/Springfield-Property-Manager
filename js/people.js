@@ -4,9 +4,9 @@ const NORTH = 3;
 const SOUTH = 4;
 
 function peopleClass() {
-    
+
   const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
-    
+
   this.x = 0;
 	this.y = 100;
 	this.velX = .5;
@@ -18,8 +18,8 @@ function peopleClass() {
 	this.moveSouth = false;
 	this.moveNorth = false;
 	this.dontMove = false;
-	
-	this.reset = function(){	
+
+	this.reset = function(){
 		if(this.homeX == undefined) {
 			for(var i=0; i<roomGrid.length; i++){
 				if( roomGrid[i] == TILE_PERSON) {
@@ -51,7 +51,7 @@ function peopleClass() {
 		if (randomSideWalkSide == 2){
 			this.y = this.y + 45;
     }
-        
+
 	}
 
 	this.init = function(whichName) {
@@ -63,10 +63,15 @@ function peopleClass() {
 	}
 
 	this.move = function() {
-		this.checkBoundaries();
-		this.checkIntersections();
-		
-			
+    if (this.characteristics.propertyToGo == null) {
+      this.checkBoundaries();
+      this.checkIntersections();
+    }
+    else {
+      this.moveToProperty();
+    }
+
+
 		if(this.moveWest){
 			this.x = this.x - this.velX;
 		} else if(this.moveEast){
@@ -80,7 +85,26 @@ function peopleClass() {
 			this.velY = 0;
 		}
 	}
-	
+
+  this.moveToProperty = function(){
+    this.moveEast = false;
+		this.moveWest = false;
+		this.moveNorth = false;
+		this.moveSouth = false;
+    if (this.characteristics.propertyToGo.x < this.x) {
+      this.moveWest = true;
+    }
+    else if (this.characteristics.propertyToGo.x > this.x) {
+      this.moveEast = true;
+    }
+    else if (this.characteristics.propertyToGo.y < this.y) {
+      this.moveNorth = true;
+    }
+    else if (this.characteristics.propertyToGo.y > this.y) {
+      this.moveSouth = true;
+    }
+  };
+
 	this.changeDirection = function(){
 
     // reset
@@ -104,9 +128,9 @@ function peopleClass() {
 			this.moveNorth = true;
 		} else if (randomDirection == SOUTH){
 			this.moveSouth = true;
-		}						
+		}
 	}
-	
+
 	this.checkBoundaries = function(){
     // wrap around to the other side
     if(this.x > GAME_WIDTH){
@@ -119,10 +143,10 @@ function peopleClass() {
 			this.y = GAME_HEIGHT;
 		}
 	}
-	
+
     this.checkIntersections = function(){
 		if((Math.random()<RANDOM_DIR_CHANGE_CHANCE) || // from time to time, do it randomly!
-            
+
             // FIXME: account for any shape of map/road
             // and remove these hardcoded exact pixel locations
             // maybe we could look at roomGrid[] for TILE_ROAD_INT?
@@ -146,7 +170,7 @@ function peopleClass() {
 			this.changeDirection();
 		}
 	}
-	
+
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
 		colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
