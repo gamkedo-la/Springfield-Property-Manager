@@ -23,7 +23,7 @@ function propertyClass() {
     this.zoned;
     this.building = "none";
     this.propertyTileMapIndex = -1; // set in  init()
-    this.restaurantType = '';
+    this.restaurantType = null;
 
     this.reset = function() {
         if (this.homeX == undefined) {
@@ -52,7 +52,7 @@ function propertyClass() {
         } else if (randomZone == 3) {
             this.zoned = "Commercial";
             this.building = "restaurant";
-            this.restaurantType = randomIntFromInterval(0, restaurantTypes.length-1);
+            this.restaurantType = restaurantTypes[randomIntFromInterval(0, restaurantTypes.length-1)];
 		} else if (randomZone == 4) {
             this.zoned = "Residential";
             this.building = "apartment";

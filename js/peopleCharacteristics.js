@@ -3,7 +3,7 @@ function peopleCharacteristics() {
 
     // person stats
     this.cash = 0; // number
-    this.preferences = ''; // string - favorite food
+    this.preferences = null; // objct - restaurantTypes - favorite food
     this.isHungry = false; // boolean
     this.isHomeless = false; // boolean
     this.homePreference = ''; //string - home preference
@@ -27,7 +27,7 @@ function peopleCharacteristics() {
 
     this.decidePreferences = function () {
         let rand = randomIntFromInterval(0, restaurantTypes.length-1);
-        this.preferences = rand;
+        this.preferences = restaurantTypes[rand];
         // switch (rand) {
         //     case 1:
         //         this.preferences = 'italianFood';
@@ -75,6 +75,7 @@ function peopleCharacteristics() {
     };
 
     this.decideNextThingToBuy = function(){
+      this.propertyToGo = null;
       if (this.isHomeless) {//Priority over isHungry
         this.selectHomeToBuy();
       }
@@ -100,7 +101,7 @@ function peopleCharacteristics() {
     this.selectRestaurantToEat = function () {
       let propertiesToChooseFrom = [];
       for (var i = 0; i < propertyList.length; i++) {
-        if (propertyList[i].building === 'restaurant' && propertyList[i].restaurantType === this.preferences && restaurantTypes[this.preferences].foodPrice <= this.cash) {
+        if (propertyList[i].building === 'restaurant' && propertyList[i].restaurantType === this.preferences && this.preferences.foodPrice <= this.cash) {
           propertiesToChooseFrom.push(propertyList[i]);
         }
       }

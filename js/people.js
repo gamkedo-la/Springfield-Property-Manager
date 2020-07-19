@@ -69,6 +69,7 @@ function peopleClass() {
     }
     else {
       this.moveToProperty();
+      this.buyFromProperty();
     }
 
 
@@ -104,6 +105,25 @@ function peopleClass() {
       this.moveSouth = true;
     }
   };
+
+  this.buyFromProperty = function(){
+    var property = this.characteristics.propertyToGo;
+    if (property.x - 5 < this.x &&
+        property.x + 5 > this.x &&
+        property.y - 5 < this.y &&
+        property.y + 5 > this.y) {
+      if (property.building === "restaurant" ) {
+        console.log("Someone bought " + property.restaurantType.name);
+        this.characteristics.cash -= property.restaurantType.foodPrice;
+        this.characteristics.isHungry = false;
+        this.characteristics.decideNextThingToBuy();
+      }
+      else if(property.zoned === "Residential"){
+        // TODO: Buying home is not implemented.
+        this.characteristics.decideNextThingToBuy();
+      }
+    }
+  }
 
 	this.changeDirection = function(){
 
