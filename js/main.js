@@ -6,6 +6,7 @@ var vehicleList = [];
 var peopleList = [];
 var ui = new uiClass();
 var inGameMenu = null;
+var openningStoryScreen = false;
 
 var camPanX = 0;
 var camPanY = 0;
@@ -89,7 +90,7 @@ function initializeAssets(){
 }
 		
 function moveEverything() {
-	if(paused) {
+	if(paused || openningStoryScreen) {
 		return;
 	}
 
@@ -118,38 +119,43 @@ function calculateMousePos(evt) {
 						
 function drawEverything() {		
 	colorRect(0,0,canvas.width,canvas.height, 'black');
-	canvasContext.save();
-	canvasContext.translate(-camPanX, -camPanY/2);
-	drawLandScape();
-	for (var i = 0; i < propertyList.length; i++) {
-		propertyList[i].draw();
-	}
-	for (var i = 0; i < vehicleList.length; i++) {
-		vehicleList[i].draw();
-	}
-	for (var i = 0; i < peopleList.length; i++) {
-		peopleList[i].draw();
-	}
-	ui.draw();
-	canvasContext.restore();
-	//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
-	displayGameTime();
-
-	//TEMP CODE: Displays the CLICK/SELECT AREA for the property
-	//FIX IT: It is rectangle but it should be isometric.
-	for(i = 0; i < propertyList.length; i++)
-	{
-		if(propertyList[i].mouseHovering || propertyList[i].mouseSelected)
-		{
-			gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
-			colorRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "#00ff0099");
+	if(openningStoryScreen){ 
+		drawOpenningStory();
+	} else { //in game
+		
+		canvasContext.save();
+		canvasContext.translate(-camPanX, -camPanY/2);
+		drawLandScape();
+		for (var i = 0; i < propertyList.length; i++) {
+			propertyList[i].draw();
 		}
-	}
-	
-	if(inGameMenu != null){
-		canvasContext.globalAlpha = 0.5;
-		colorRect(0,0,canvas.width,canvas.height, "black");
-		canvasContext.globalAlpha = 1.0;
-		inGameMenu.draw();
+		for (var i = 0; i < vehicleList.length; i++) {
+			vehicleList[i].draw();
+		}
+		for (var i = 0; i < peopleList.length; i++) {
+			peopleList[i].draw();
+		}
+		ui.draw();
+		canvasContext.restore();
+		//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
+		displayGameTime();
+
+		//TEMP CODE: Displays the CLICK/SELECT AREA for the property
+		//FIX IT: It is rectangle but it should be isometric.
+		for(i = 0; i < propertyList.length; i++)
+		{
+			if(propertyList[i].mouseHovering || propertyList[i].mouseSelected)
+			{
+				gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
+				colorRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "#00ff0099");
+			}
+		}
+		
+		if(inGameMenu != null){
+			canvasContext.globalAlpha = 0.5;
+			colorRect(0,0,canvas.width,canvas.height, "black");
+			canvasContext.globalAlpha = 1.0;
+			inGameMenu.draw();
+		}
 	}
 }

@@ -5,6 +5,8 @@ var buildingPic = document.createElement("img");
 var building2Pic = document.createElement("img");
 var building3Pic = document.createElement("img");
 var restuarantPic = document.createElement("img");
+var openningStory1Pic = document.createElement("img");
+var openningStory2Pic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -40,6 +42,8 @@ function loadImages() {
 			{varName: building3Pic, theFile: "building3.png"},
 			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
 			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
+			{varName: openningStory1Pic, theFile: "openningStory1.png"},
+			{varName: openningStory2Pic, theFile: "openningStory2.png"},
 			
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},
