@@ -11,13 +11,8 @@ function updateTime(){
 		gameDay++
 	}
 	if(gameDay == 30){
-		whichMonth++;
-		gameDay = 0;
-		if(whichMonth > gameMonth.length){
-			whichMonth = 0;
-			gameYear++;
-		}
-	}		
+		ChangeMonth();
+	}
 }
 
 function displayGameTime(){
@@ -28,5 +23,22 @@ function displayGameTime(){
 			colorText("Bills are due!", 310, 330, "red", "25px 'lexendpeta'");
 		}
 	}
-	
+
+}
+
+function ChangeMonth(){
+	for (var i = 0; i < peopleList.length; i++) {
+		peopleList[i].characteristics.isHungry = true;
+		if (peopleList[i].characteristics.propertyToGo === null) {
+			peopleList[i].characteristics.decideNextThingToBuy();
+			console.log("Someone decided next thing to buy for the month");
+		}
+	}
+
+	whichMonth++;
+	gameDay = 0;
+	if(whichMonth > gameMonth.length){
+		whichMonth = 0;
+		gameYear++;
+	}
 }
