@@ -7,6 +7,7 @@ var building3Pic = document.createElement("img");
 var restuarantPic = document.createElement("img");
 var openningStory1Pic = document.createElement("img");
 var openningStory2Pic = document.createElement("img");
+var brazilianSteakhousePic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -40,6 +41,7 @@ function loadImages() {
 			{varName: buildingPic, theFile: "building.png"},
 			{varName: building2Pic, theFile: "regular_duplex.png"},
 			{varName: building3Pic, theFile: "building3.png"},
+			{varName: brazilianSteakhousePic, theFile: "brazilianSteakHouse.png"},
 			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
 			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
 			{varName: openningStory1Pic, theFile: "openningStory1.png"},

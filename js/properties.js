@@ -44,25 +44,32 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 6);
-        if (randomZone == 1) {
-            this.zoned = "Commercial";
-        } else if (randomZone == 2) {
+        let randomZone = randomIntFromInterval(1, 41);
+		
+		if (randomZone >= 1 && randomZone <= 10) {
+			this.zoned = "Commercial";
+        } else if (randomZone >= 11 && randomZone <= 20) {
             this.zoned = "Residential";
-        } else if (randomZone == 3) {
+        } else if (randomZone >= 21 && randomZone <= 25) {
             this.zoned = "Commercial";
             this.building = "restaurant";
             this.restaurantType = restaurantTypes[randomIntFromInterval(0, restaurantTypes.length-1)];
-		} else if (randomZone == 4) {
+		} else if (randomZone >= 26 && randomZone <= 28) {
             this.zoned = "Residential";
             this.building = "apartment";
-        } else if (randomZone == 5) {
+        } else if (randomZone >= 29 && randomZone <= 30) {
             this.zoned = "Commercial";
             this.building = "OfficeBuilding";
-		} else if (randomZone == 6) {
+		} else if (randomZone >= 31 && randomZone <= 40) {
             this.zoned = "Residential";
             this.building = "basicDuplex";
-		}
+		} else if (randomZone == 41) {
+            this.zoned = "Commercial";
+            this.building = "brazilianSteakhouse";
+		} 
+		
+		
+		
         this.reset();
     }
 
@@ -79,6 +86,10 @@ function propertyClass() {
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+
+        } else if (this.building == "brazilianSteakhouse") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(brazilianSteakhousePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
 
         } else { // no building, draw a for sale sign based on commercial or residential
             drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);

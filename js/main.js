@@ -8,7 +8,7 @@ var vehicleList = [];
 var peopleList = [];
 var ui = new uiClass();
 var inGameMenu = null;
-var openningStoryScreen = true;
+var openningStoryScreen = false;
 
 var camPanX = 0;
 var camPanY = 0;

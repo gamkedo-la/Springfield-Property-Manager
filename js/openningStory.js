@@ -14,7 +14,7 @@ var storyData = [
 	{displaySec: 5, img: openningStory2Pic, lines: ['Nephews and Nieces, I’m glad you were able to make it.','You will each be given $10,000.']},
 	{displaySec: 5, img: openningStory2Pic, lines: ['If you look over to the corner, you’ll notice that there is a treasure chest.',' What’s inside?  Only one of you will find out.']},
 	{displaySec: 5, img: openningStory1Pic, lines: ['With the $10,000, I want you to invest into my town of Springfield.','The person with the highest Net Worth in 10 years from today will receive the key to the chest,']},
-	{displaySec: 3, img: openningStory1Pic, lines: ['and all what is inside of it.','Invest wisely.']},
+	{displaySec: 3, img: openningStory1Pic, lines: ['and all what is inside of it.','Invest wisely!  You are all Property Managers now.']},
 	{displaySec: 1, img: openningStory1Pic, lines: []}
 ]
 
