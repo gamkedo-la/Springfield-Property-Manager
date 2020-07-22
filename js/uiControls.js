@@ -30,6 +30,7 @@ function mouseMove(evt) {
 }
 
 function handleMouseClick(evt){
+	gesture();
 	checkForPropertySelection();
 }
 
