@@ -1,3 +1,5 @@
+var framesPerSecond = 60;
+
 var canvas;
 var canvasContext;
 
@@ -50,7 +52,7 @@ function onResize() {
 
 
 function imageLoadingDoneSoStartGame(){
-	var framesPerSecond = 60;
+	
 	setInterval(function() {
 		moveEverything();
 		drawEverything();
