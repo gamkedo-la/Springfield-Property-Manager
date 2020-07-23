@@ -136,6 +136,7 @@ function drawEverything() {
 		}
 		for (var i = 0; i < peopleList.length; i++) {
 			peopleList[i].draw();
+			console.log(peopleList[0].displayMessageTimer);
 		}
 		ui.draw();
 		canvasContext.restore();

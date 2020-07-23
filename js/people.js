@@ -18,6 +18,9 @@ function peopleClass() {
 	this.moveSouth = false;
 	this.moveNorth = false;
 	this.dontMove = false;
+	this.displayMessageTimer = 0;
+	this.messageStartTimer = randomIntFromInterval(100,300);
+	this.messageStopTimer = randomIntFromInterval(500,700);
 
 	this.reset = function(){
 		if(this.homeX == undefined) {
@@ -113,7 +116,7 @@ function peopleClass() {
         property.y - 5 < this.y &&
         property.y + 5 > this.y) {
       if (property.building === "restaurant" ) {
-        console.log("Someone bought " + property.restaurantType.name);
+        //console.log("Someone bought " + property.restaurantType.name);
         this.characteristics.cash -= property.restaurantType.foodPrice;
         this.characteristics.isHungry = false;
         this.characteristics.decideNextThingToBuy();
@@ -194,5 +197,16 @@ function peopleClass() {
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
 		colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
+
+		this.displayMessageTimer++;
+		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
+			if(this.characteristics.isHungry){
+				colorText("I'm Hungry!", isoDrawX, isoDrawY - 5, "white", "10px Arial Black");
+			} else if(this.characteristics.isHomeless){
+				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, "white", "10px Arial Black");
+			}
+		} else if(this.displayMessageTimer > 1000){// reset displayMessageTimer
+			this.displayMessageTimer = 0;
+		}
 	}
 }
