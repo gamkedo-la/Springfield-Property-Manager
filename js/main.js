@@ -6,6 +6,7 @@ var canvasContext;
 var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
+
 var ui = new uiClass();
 var inGameMenu = null;
 var openningStoryScreen = false;
@@ -136,7 +137,7 @@ function drawEverything() {
 		}
 		for (var i = 0; i < peopleList.length; i++) {
 			peopleList[i].draw();
-			console.log(peopleList[0].displayMessageTimer);
+			//console.log(peopleList[0].displayMessageTimer);
 		}
 		ui.draw();
 		canvasContext.restore();
@@ -160,5 +161,9 @@ function drawEverything() {
 			canvasContext.globalAlpha = 1.0;
 			inGameMenu.draw();
 		}
+
+		// draw population total
+		var population = peopleList.length;
+		colorText(`TOTAL POPULATION: ${population}`, 0, canvas.height-50, 'white', font = "14px 'lexendpeta'") 
 	}
 }
