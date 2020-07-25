@@ -121,7 +121,7 @@ function calculateMousePos(evt) {
 }
 						
 function drawEverything() {		
-	colorRect(0,0,canvas.width,canvas.height, 'black');
+	colorRect(0,0,canvas.width,canvas.height, '#16171a');
 	if(openningStoryScreen){ 
 		drawOpenningStory();
 	} else { //in game
