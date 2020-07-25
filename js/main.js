@@ -26,7 +26,7 @@ function changeState(toState){
 	}
 }
 
-//Practicing github check-in commit. will remove.
+
 window.onload = function(){
 			
 	canvas = document.getElementById('gameCanvas');
