@@ -205,7 +205,7 @@ function peopleClass() {
 			} else if(this.characteristics.isHomeless){
 				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, "white", "10px Arial Black");
 			}
-		} else if(this.displayMessageTimer > 1000){// reset displayMessageTimer
+		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;
 		}
 	}
