@@ -24,6 +24,7 @@ function propertyClass() {
     this.building = "none";
     this.propertyTileMapIndex = -1; // set in  init()
     this.restaurantType = null;
+	this.owner = OWNER_NONE;
 
     this.reset = function() {
         if (this.homeX == undefined) {

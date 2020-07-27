@@ -145,8 +145,10 @@ function soundMultiBufferClass(fullFilenameWithPath, voices = 2) {
 		sounds[soundIndex].currentTime = 0;
 		sounds[soundIndex].volume = Math.pow(getRandomVolume() * effectsVolume * !isMuted, 2);
 		sounds[soundIndex].play();
-
-		soundIndex = ++soundIndex == sounds.length ? 0;
+		soundIndex++;
+		if(soundIndex >= sounds.length){
+			soundIndex = 0;
+		}
 	}
 
 	this.stop = function() {

@@ -1,3 +1,5 @@
+
+
 var framesPerSecond = 60;
 
 var canvas;
@@ -38,6 +40,7 @@ window.onload = function(){
 	initializeAssets();
 	loadImages();
 	initInput();
+	setUpOwners();
 		
 }
 
@@ -165,5 +168,9 @@ function drawEverything() {
 		// draw population total
 		var population = peopleList.length;
 		colorText(`TOTAL POPULATION: ${population}`, 0, canvas.height-50, 'white', font = "14px 'lexendpeta'") 
+		
+		for(var i = 0; i < ownerList.length; i++){
+			ownerList[i].drawStatus();
+		}
 	}
 }

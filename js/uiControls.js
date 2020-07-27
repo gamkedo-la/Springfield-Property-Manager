@@ -5,6 +5,7 @@ const KEY_D = 68; // MOVE SCREEN RIGHT
 const KEY_P = 80; // PAUSE GAME
 const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
 const KEY_L = 76; // TEMPORARY ACCESS TO LAND PURCHASING SCREEN
+const KEY_SPACEBAR = 32; // PURCHASE
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -14,6 +15,7 @@ const KEY_DOWN_ARROW = 40;
 var mousePosX = 0;
 var mousePosY = 0;
 var mouseOverIdx = -1;
+var gesture = false;
 
 function initInput(){
 	canvas.addEventListener('mousemove', mouseMove);
@@ -30,7 +32,7 @@ function mouseMove(evt) {
 }
 
 function handleMouseClick(evt){
-	gesture();
+	//gesture();   //current bug, crashes when mouse clicks
 	checkForPropertySelection();
 }
 
@@ -62,6 +64,11 @@ function keyPressed(evt) {
 		case KEY_L:
 			changeState(menuState_purchasingLand);
 		break;
+		case KEY_SPACEBAR:
+		if(ownerList[OWNER_HUMAN].atProperty != null){
+			ownerList[OWNER_HUMAN].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+		}
+		break;		
 	}
 	evt.preventDefault();
 }
