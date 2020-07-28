@@ -1,3 +1,7 @@
+const PROPERTY_FONT = "8px Arial Black"; // used in mouse hover info
+const PROPERTY_TXTX = 32; // offsets from building xy 
+const PROPERTY_TXTY = 60;
+
 const restaurantTypes = [
   {
     name : "italianFood",
@@ -104,18 +108,18 @@ function propertyClass() {
         if (this.mouseSelected) {
             ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
         } else if (this.mouseHovering){
-            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
+            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "red", PROPERTY_FONT);
         } else {
 			if(this.owner == OWNER_HUMAN){
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "white", "8px Arial Black");
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "white", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_1){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "blue", "8px Arial Black");
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "blue", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_2){		
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "green", "8px Arial Black");
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "green", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_3){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "purple", "8px Arial Black");
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "purple", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_4){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "yellow", "8px Arial Black");		
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);		
 			}
 		}
     }

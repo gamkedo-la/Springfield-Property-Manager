@@ -1,3 +1,6 @@
+const PROPERTY_TITLE_FONT = "26px Arial Black"
+const PROPERTY_INFO_FONT = "14px Arial Black";
+
 function inGameMenu_PropertyInformation_Definition(){
 	this.propertyInformationTextXPos = 20;
 	this.propertyInformationTextYPos = 80;
@@ -21,12 +24,12 @@ function inGameMenu_PropertyInformation_Definition(){
 		colorRect(10,320,810, 300, "white"); //Space to put future graph
 		colorRect(420,50,400,260, "white");  // Property Picture Space
 		//Text for Menu Title
-		colorText("Property Information", 280, 33, "black", font = "26px Arial Black");
+		colorText("Property Information", 280, 33, "black", PROPERTY_TITLE_FONT);
 		//Property Picture
 		drawBitmapAtLocation(buildingPic, 570, 100);
 		//Text Data for Property Information
 		for(i = 0; i < this.propertyInformation.length; i++){
-			colorText(this.propertyInformation[i], this.propertyInformationTextXPos, this.propertyInformationTextYPos + (this.textLineSpacing * [i]), "black", font = "14px Arial Black");
+			colorText(this.propertyInformation[i], this.propertyInformationTextXPos, this.propertyInformationTextYPos + (this.textLineSpacing * [i]), "black", PROPERTY_INFO_FONT);
 		}		
 	}
 	this.handleKey = function(keyCode){

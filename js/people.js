@@ -1,3 +1,5 @@
+const PEOPLE_FONT = "10px Arial Black"; // used for thought bubbles
+
 const EAST = 1;
 const WEST = 2;
 const NORTH = 3;
@@ -201,9 +203,9 @@ function peopleClass() {
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
 			if(this.characteristics.isHungry){
-				colorText("I'm Hungry!", isoDrawX, isoDrawY - 5, "white", "10px Arial Black");
+				colorText("I'm Hungry!", isoDrawX, isoDrawY - 5, "white", PEOPLE_FONT);
 			} else if(this.characteristics.isHomeless){
-				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, "white", "10px Arial Black");
+				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, "white", PEOPLE_FONT);
 			}
 		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;
