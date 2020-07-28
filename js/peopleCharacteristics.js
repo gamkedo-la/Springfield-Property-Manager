@@ -82,7 +82,7 @@ function peopleCharacteristics() {
       if(this.isHungry && this.propertyToGo == null){
         this.selectRestaurantToEat();
       }
-      console.log(this.propertyToGo);
+     // console.log(this.propertyToGo);
     };
 
     this.selectHomeToBuy = function(){

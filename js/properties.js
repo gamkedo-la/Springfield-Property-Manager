@@ -102,7 +102,7 @@ function propertyClass() {
         }
 
         if (this.mouseSelected) {
-            ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned);
+            ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
         } else if (this.mouseHovering) {
             colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
         } else {

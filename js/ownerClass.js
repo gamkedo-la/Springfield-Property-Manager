@@ -51,7 +51,7 @@ function ownerClass() {
 	}
 	
 	this.checkForPropertiesOwned = function(){
-		this.propertyOwned = []; // reset as empty
+		this.propertyOwned = []; 
 		for(var i = 0; i < propertyList.length; i++){
 			if(this.myOwnerID == propertyList[i].owner){
 				newProperty = propertyList[i].propertyTileMapIndex;

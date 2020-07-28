@@ -19,11 +19,11 @@ function uiClass() {
             colorText(this.propertyUI.salePrice, this.propertyUI.x + 18, this.propertyUI.y + 40, "black", "10px lexendpeta");
             colorText("Zoned: ", this.propertyUI.x + 18, this.propertyUI.y + 52, "black", "10px lexendpeta");
             colorText(this.propertyUI.zoned, this.propertyUI.x + 18, this.propertyUI.y + 64, "black", "10px lexendpeta");
-            colorText("Purchase?", this.propertyUI.x + 18, this.propertyUI.y + 88, "red", "10px lexendpeta");                    
+            colorText("Owner:" + this.propertyUI.owner, this.propertyUI.x + 18, this.propertyUI.y + 88, "red", "10px lexendpeta");                    
         }
     };
 
-    this.drawPropertyUI = function(drawing, x, y, width, height, tilemapIndex, salePrice, zoned) { 
+    this.drawPropertyUI = function(drawing, x, y, width, height, tilemapIndex, salePrice, zoned, ownedBy) { 
         this.propertyUI.drawing = drawing;
         this.propertyUI.x = x;
         this.propertyUI.y = y;
@@ -32,5 +32,6 @@ function uiClass() {
         this.propertyUI.tilemapIndex = tilemapIndex;
         this.propertyUI.salePrice = salePrice;
         this.propertyUI.zoned = zoned;
+		this.propertyUI.owner = ownedBy;
     };
 }

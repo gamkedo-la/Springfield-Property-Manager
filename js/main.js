@@ -151,7 +151,7 @@ function drawEverything() {
 		ui.draw();
 		canvasContext.restore();
 		//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
-		displayGameTime();
+		
 
 		//TEMP CODE: Displays the CLICK/SELECT AREA for the property
 		//FIX IT: It is rectangle but it should be isometric.
@@ -178,5 +178,6 @@ function drawEverything() {
 		for(var i = 0; i < ownerList.length; i++){
 			ownerList[i].drawStatus();
 		}
+		displayGameTime();
 	}
 }
