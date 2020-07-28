@@ -8,7 +8,7 @@ const OWNER_CPU_3 = 3;
 const OWNER_CPU_4 = 4;
 const HOW_MANY_OWNERS = 5;
 
-const INITIAL_CASH = 10000;
+const INITIAL_CASH = 20000;
 var ownerList = [];
 
 function setUpOwners(){
@@ -23,6 +23,7 @@ function ownerClass() {
 	this.cash;
 	this.myOwnerID;
 	this.atProperty;
+	this.propertyOwned = [];
 	
 	this.reset = function(myID){
 		this.cash = INITIAL_CASH;
@@ -49,15 +50,30 @@ function ownerClass() {
 		console.log("Purchase to Buy Complete. " + propertyToBuy.zoned + " " + propertyToBuy.building + " " + this.myOwnerID); 
 	}
 	
+	this.checkForPropertiesOwned = function(){
+		this.propertyOwned = []; // reset as empty
+		for(var i = 0; i < propertyList.length; i++){
+			if(this.myOwnerID == propertyList[i].owner){
+				newProperty = propertyList[i].propertyTileMapIndex;
+				this.propertyOwned.push(newProperty);
+			}
+		}
+	}
+	
 	this.drawStatus = function(){
-		var textX = 100 * (1+this.myOwnerID);
+		var textX = 140 * (1+this.myOwnerID);
 		var textY = 25;
 		var textSkipY = 20;
-		colorText(this.myOwnerID, textX, textY, "yellow");
+		colorText("Player: " + this.myOwnerID, textX, textY, "yellow");
 		textY += textSkipY;
 		colorText("$:" + this.cash, textX, textY, "yellow");
 		textY += textSkipY;
 		colorText("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "yellow");
+		textY += textSkipY;
+		colorText("Lots Owned: ", textX, textY, "yellow");
+		for(var i = 0; i < this.propertyOwned.length; i++){
+			textY += textSkipY;
+			colorText("Lot " + this.propertyOwned[i], textX, textY, "yellow");
+		}
 	}
-	
 }

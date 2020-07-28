@@ -108,9 +108,15 @@ function moveEverything() {
 	}
 	checkForPropertyHovering();
 	updateTime(); 
+	
+	for(var i = 0; i < ownerList.length; i++){
+		ownerList[i].checkForPropertiesOwned();
+	}
+		
 	if(inGameMenu != null){
 		inGameMenu.update();
 	}
+	
 }
 			
 function calculateMousePos(evt) {
