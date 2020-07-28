@@ -103,10 +103,20 @@ function propertyClass() {
 
         if (this.mouseSelected) {
             ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
-        } else if (this.mouseHovering) {
+        } else if (this.mouseHovering){
             colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "red", "8px Arial Black");
         } else {
-            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "white", "8px Arial Black");
-        }
+			if(this.owner == OWNER_HUMAN){
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "white", "8px Arial Black");
+			} else if (this.owner == OWNER_CPU_1){			
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "blue", "8px Arial Black");
+			} else if (this.owner == OWNER_CPU_2){		
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "green", "8px Arial Black");
+			} else if (this.owner == OWNER_CPU_3){			
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "purple", "8px Arial Black");
+			} else if (this.owner == OWNER_CPU_4){			
+				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + 32, isoDrawY + 60, "yellow", "8px Arial Black");		
+			}
+		}
     }
 }

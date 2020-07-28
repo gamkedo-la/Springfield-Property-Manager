@@ -5,7 +5,11 @@ const KEY_D = 68; // MOVE SCREEN RIGHT
 const KEY_P = 80; // PAUSE GAME
 const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
 const KEY_L = 76; // TEMPORARY ACCESS TO LAND PURCHASING SCREEN
-const KEY_SPACEBAR = 32; // PURCHASE
+const KEY_SPACEBAR = 32; // PURCHASE - TEMPORARY
+const KEY_V = 86; // PURCHASE CPU 1 - TEMPORARY
+const KEY_B = 66; // PURCHASE CPU 2 - TEMPORARY
+const KEY_N = 78; // PURCHASE CPU 3 - TEMPORARY
+const KEY_M = 77; // PURCHASE CPU 4 - TEMPORARY
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -68,7 +72,28 @@ function keyPressed(evt) {
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_HUMAN].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;		
+		break;
+		///// V, B, N, and M are just for testing CPU's buying ability
+		case KEY_V:
+		if(ownerList[OWNER_HUMAN].atProperty != null){
+			ownerList[OWNER_CPU_1].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+		}
+		break;	
+		case KEY_B:
+		if(ownerList[OWNER_HUMAN].atProperty != null){
+			ownerList[OWNER_CPU_2].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+		}
+		break;	
+		case KEY_N:
+		if(ownerList[OWNER_HUMAN].atProperty != null){
+			ownerList[OWNER_CPU_3].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+		}
+		break;	
+		case KEY_M:
+		if(ownerList[OWNER_HUMAN].atProperty != null){
+			ownerList[OWNER_CPU_4].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+		}
+		break;			
 	}
 	evt.preventDefault();
 }
