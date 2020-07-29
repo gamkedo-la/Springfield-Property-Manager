@@ -1,4 +1,6 @@
 function vehicleClass() {
+	const CAR_WIDTH = 24;
+	const CAR_HEIGHT = 24;
 	this.x = 0;
 	this.y = 110;
 	this.velX = 1;
@@ -27,6 +29,9 @@ function vehicleClass() {
 		}
 		this.x = this.homeX;
 		this.y = this.homeY;
+		
+		this.spriteSheetOffSet = randomIntFromInterval(0, vehiclesSheet.width/CAR_WIDTH + 1)*CAR_WIDTH;
+		console.log('OFFSET', this.spriteSheetOffSet);
 		
 		let randomDirection = randomIntFromInterval(2)
 		this.whichColor = randomIntFromInterval(1,7) - 1;
@@ -74,7 +79,13 @@ function vehicleClass() {
 	
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
-		drawBitmapAtLocation(car, isoDrawX+this.vehicleImageOffset, isoDrawY);
-		//colorRect(isoDrawX, isoDrawY, 20, 10, this.color[this.whichColor]);
+		canvasContext.save();
+		canvasContext.translate(isoDrawX+this.vehicleImageOffset, isoDrawY);
+		canvasContext.drawImage(vehiclesSheet,
+								this.spriteSheetOffSet, 0, // sx, sy
+								CAR_WIDTH, CAR_HEIGHT, // sWidth, sHeight
+								0, 0, // dx, dy
+								CAR_WIDTH, CAR_HEIGHT); // dWidth, dHeight
+		canvasContext.restore();
 	}
 }
