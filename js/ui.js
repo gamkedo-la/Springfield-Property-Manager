@@ -12,14 +12,19 @@ function uiClass() {
 
     this.draw = function() {
         if (this.propertyUI.drawing) {
-            colorRect(this.propertyUI.x + 6, this.propertyUI.y + 6, this.propertyUI.width - 12, this.propertyUI.height - 26, "white");
-            colorRect(this.propertyUI.x + 6, this.propertyUI.y + this.propertyUI.height - 26, this.propertyUI.width - 12, this.propertyUI.height - 80, "blue");
-            colorText("Lot Number " + this.propertyUI.tilemapIndex, this.propertyUI.x + 8, this.propertyUI.y + 14, "black", "10px lexendpeta");
-            colorText("Sale Price: ", this.propertyUI.x + 18, this.propertyUI.y + 28, "black", "10px lexendpeta");
-            colorText(this.propertyUI.salePrice, this.propertyUI.x + 18, this.propertyUI.y + 40, "black", "10px lexendpeta");
-            colorText("Zoned: ", this.propertyUI.x + 18, this.propertyUI.y + 52, "black", "10px lexendpeta");
-            colorText(this.propertyUI.zoned, this.propertyUI.x + 18, this.propertyUI.y + 64, "black", "10px lexendpeta");
-            colorText("Owner:" + this.propertyUI.owner, this.propertyUI.x + 18, this.propertyUI.y + 88, "red", "10px lexendpeta");                    
+            colorRect(this.propertyUI.x + 6, this.propertyUI.y + 6, this.propertyUI.width, this.propertyUI.height, "white");
+						colorRect(this.propertyUI.x + 6, this.propertyUI.y + this.propertyUI.height - 14, this.propertyUI.width, this.propertyUI.height - 80, "blue");
+						
+						colorText("Lot Number ", this.propertyUI.x + 15, this.propertyUI.y + 14, "black", "10px lexendpeta");
+						colorText(this.propertyUI.tilemapIndex, this.propertyUI.x + 45, this.propertyUI.y + 25, "black", "10px lexendpeta");
+
+            colorText("Sale Price: ", this.propertyUI.x + 18, this.propertyUI.y + 42, "black", "10px lexendpeta");
+						colorText(this.propertyUI.salePrice, this.propertyUI.x + 30, this.propertyUI.y + 52, "black", "10px lexendpeta");
+						
+            colorText("Zoned: ", this.propertyUI.x + 33, this.propertyUI.y + 68, "black", "10px lexendpeta");
+						colorText(this.propertyUI.zoned, this.propertyUI.x + 18, this.propertyUI.y + 78, "black", "10px lexendpeta");
+						
+            colorText("Owner:" + this.propertyUI.owner, this.propertyUI.x + 8, this.propertyUI.y + 98, "white", "9px lexendpeta");                    
         }
     };
 
@@ -32,6 +37,6 @@ function uiClass() {
         this.propertyUI.tilemapIndex = tilemapIndex;
         this.propertyUI.salePrice = salePrice;
         this.propertyUI.zoned = zoned;
-		this.propertyUI.owner = ownedBy;
+				this.propertyUI.owner = getOwnerName(ownedBy);
     };
 }

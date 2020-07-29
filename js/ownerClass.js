@@ -19,6 +19,33 @@ function setUpOwners(){
 	}
 }
 
+function getOwnerName(ownedBy) {
+	let owner;
+
+	switch(ownedBy) {
+		case -1:
+			owner = 'None';
+			break;
+		case 0:
+			owner = 'You';
+			break;
+		case 1:
+			owner = 'Player 1';
+			break;
+		case 2:
+			owner = 'Player 2';
+			break;
+		case 3:
+			owner = 'Player 3';
+			break;
+		case 4:
+			owner = 'Player 4';
+			break;
+	}
+
+	return owner;
+}
+
 function ownerClass() {
 	this.cash;
 	this.myOwnerID;
@@ -64,7 +91,10 @@ function ownerClass() {
 		var textX = 140 * (1+this.myOwnerID);
 		var textY = 25;
 		var textSkipY = 20;
-		colorText("Player: " + this.myOwnerID, textX, textY, "yellow");
+
+		var ownerName = getOwnerName(this.myOwnerID);
+
+		colorText(ownerName, textX, textY, "yellow");
 		textY += textSkipY;
 		colorText("$:" + this.cash, textX, textY, "yellow");
 		textY += textSkipY;
