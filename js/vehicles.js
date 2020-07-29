@@ -10,6 +10,7 @@ function vehicleClass() {
 	this.moveSouth = false;
 	this.moveNorth = false;
 	this.dontMove = false;
+	this.vehicleImageOffset = 20;
 
 	this.reset = function(){				
 		if(this.homeX == undefined) {
@@ -73,6 +74,7 @@ function vehicleClass() {
 	
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
-		colorRect(isoDrawX, isoDrawY, 20, 10, this.color[this.whichColor]);
+		drawBitmapAtLocation(car, isoDrawX+this.vehicleImageOffset, isoDrawY);
+		//colorRect(isoDrawX, isoDrawY, 20, 10, this.color[this.whichColor]);
 	}
 }

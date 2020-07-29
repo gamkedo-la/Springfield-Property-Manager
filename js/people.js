@@ -198,7 +198,8 @@ function peopleClass() {
 
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
-		colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
+		drawBitmapAtLocation(human, isoDrawX, isoDrawY);
+		//colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
