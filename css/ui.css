@@ -146,11 +146,17 @@ li {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: rgb(133, 133, 133);
+  cursor:pointer;
   /* TEMP - REPLACE WITH IMAGES */
   padding-top: 10px;
   text-align: center;
   font-size: .9em;
   color: bisque;
+}
+
+.tabs:hover {
+    background-color:bisque;
+    color:black;
 }
 
 .statsContainerInner {
