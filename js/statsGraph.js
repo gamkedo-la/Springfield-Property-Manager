@@ -1,9 +1,12 @@
 const USE_STATSGRAPH = true;
 const DEBUG_STATSGRAPH = true; // if true, spam the console
 
+var statsCanvas, statsContext, statsW, statsH;
+
 var statsData = {
     months:0, // how many values in each array?
     days:0, // total
+    totalClicks:0,
     people:[],
     vehicles:[],
     properties:[],
@@ -17,18 +20,18 @@ var statsData = {
 }
 
 function statsCountClick() {
-    statsData.clicks[statsData.clicks.length-1]++;
+    statsData.totalClicks++;
+    //statsData.clicks[statsData.clicks.length-1]++; // per time step
 }
 
-function updateStatsGraphMonthly() { // runs once per month
-    if (DEBUG_STATSGRAPH) console.log("updateStatsGraph");
-    statsData.months++;
-    // add one more month worth of data
+function stepStatsGraph() {
+    //if (DEBUG_STATSGRAPH) console.log("updateStatsGraph");
+    // add one more column of data
     statsData.people.push(peopleList.length);
     statsData.vehicles.push(vehicleList.length);
     statsData.properties.push(propertyList.length);
     statsData.owners.push(ownerList.length);
-    statsData.clicks.push(0);
+    statsData.clicks.push(statsData.totalClicks); // was reset to 0 each step
 }
 
 function drawStatsGraph() { // runs every second
@@ -37,10 +40,22 @@ function drawStatsGraph() { // runs every second
     // if first time, grab first month right away
     if (!statsData.initialized) {
         if (DEBUG_STATSGRAPH) console.log("initializing stats graph data");
-        updateStatsGraphMonthly();
+        stepStatsGraph();
         statsData.initialized = true;
     }
     
+    // init once only
+    if (!statsCanvas) {
+        statsCanvas = document.getElementById("statsCanvas");
+        statsContext = statsCanvas.getContext('2d');
+        statsW = statsContainerInner.clientWidth;
+        statsH = statsContainerInner.clientHeight + 4; // FIXME: extra size due to border?
+        statsCanvas.width = statsW;
+        statsCanvas.height = statsH;
+        statsContainerInner.appendChild(statsCanvas);
+    }
+
+    // text debug display
     var statsdiv = document.getElementById("statsGraph");
     statsdiv.innerHTML =
     "STATS GRAPH<br>"+
@@ -51,4 +66,45 @@ function drawStatsGraph() { // runs every second
     "Vehicles:"+statsData.vehicles.join(",")+"<br>"+
     "Properties:"+statsData.properties.join(",")+"<br>"+
     "Owners:"+statsData.owners.join(",");
+
+    // actually draw a nice line chart!
+    statsContext.fillStyle = "beige";
+	statsContext.fillRect(0,0,statsW,statsH);
+    drawLineGraph(statsData.clicks,"rgba(255,0,0,1.0)");
+    drawLineGraph(statsData.people,"rgba(0,0,255,0.5)");
+    drawLineGraph(statsData.vehicles,"rgba(128,128,128,0.5)");
+    drawLineGraph(statsData.properties,"rgba(0,255,0,0.5)");
+    drawLineGraph(statsData.owners,"rgba(255,0,255,0.5)");
+
+}
+
+function maxValue(arr) {
+    return arr.reduce(function(a,b) { return Math.max(a,b); });    
+}
+
+function drawLineGraph(data,colour) {
+
+    var stepW = statsW / data.length;
+    var maxVal = maxValue(data);
+    var stepH = statsH / maxVal;
+
+    // force small and infrequently changing stats to be small
+    if (maxVal < 20) maxVal = 20;
+
+    //statsContext.beginPath();
+    //statsContext.moveTo(0,statsH);
+    //statsContext.strokeStyle = colour;
+    //statsContext.lineWidth = 5;
+
+    for (var i=0; i<data.length; i++) {
+        //statsContext.lineTo(i*stepW, data[i]/maxVal);
+        statsContext.fillStyle = colour;
+        var x = i*stepW;
+        var y = statsH - (statsH * (data[i]/maxVal));
+        if (maxVal==0 || y>=statsH) y = statsH-1; // minimum 1 pixel
+	    statsContext.fillRect(x,y,stepW,statsH-y);
+    }
+
+    //statsContext.stroke();
+
 }
