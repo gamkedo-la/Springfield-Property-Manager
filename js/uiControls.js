@@ -37,7 +37,8 @@ function mouseMove(evt) {
 
 function handleMouseClick(evt){
 	//gesture();   //current bug, crashes when mouse clicks
-	checkForPropertySelection();
+    if (USE_STATSGRAPH) statsCountClick();
+    checkForPropertySelection();
 }
 
 function keyPressed(evt) {

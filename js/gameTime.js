@@ -5,10 +5,14 @@ var whichMonth = 0;
 var gameYear = 2020;
 
 function updateTime(){
+
+    drawStatsGraph(); // redraw when it changes
+
 	gameSeconds++;
-	if(gameSeconds == 60){ // every second advances 1 day
+	if(gameSeconds >= 60){ // every second advances 1 day
 		gameSeconds = 0;
-		gameDay++
+        gameDay++;
+        if (USE_STATSGRAPH) statsData.days++;
 	}
 	if(gameDay == 30){
 		ChangeMonth();
@@ -22,6 +26,9 @@ function displayGameTime(){
 }
 
 function ChangeMonth(){
+    
+    if (USE_STATSGRAPH) updateStatsGraphMonthly();
+
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].characteristics.isHungry = true;
 		if (peopleList[i].characteristics.propertyToGo === null) {

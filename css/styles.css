@@ -21,6 +21,19 @@ body, canvas {
   font-size:16px; 
   font-family: lexendpeta; }
 
+  #statsGraph { 
+    position:absolute; 
+    bottom:8px; 
+    right:200px; 
+    width:200px;
+    height:auto;
+    z-index:99999; 
+    display:block; 
+    background:rgb(54, 38, 38);
+    color:rgb(231, 223, 188);
+    font-size:16px; 
+    font-family: lexendpeta; }
+
 
 @font-face {
   font-family: 'b612regular';
