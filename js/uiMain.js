@@ -56,13 +56,11 @@ populationContainer.appendChild(populationCountContainer);
 populationCountContainer.classList.add('populationCountContainer');
 
 // Population Count Text
-const populationCountText = document.createElement('p')
+const populationCountText = document.createElement('div')
 populationCountContainer.appendChild(populationCountText);
 populationCountText.classList.add('populationCountText');
-populationCountText.innerText = '12';                     // UPDATE DYNAMICALLY
-		// draw population total
-		// var population = peopleList.length;
-		// colorText(`TOTAL POPULATION: ${population}`, 0, canvas.height-50, 'white', font = "14px 'lexendpeta'") 
+// let population = peopleList.length;                    // FIX: UPDATE DYNAMICALLY 
+populationCountText.innerHTML = '12';         
 
 /* STATS CONTAINER */
 const statsContainerMain = document.createElement('div');
