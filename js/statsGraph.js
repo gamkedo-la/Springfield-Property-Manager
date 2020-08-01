@@ -68,13 +68,13 @@ function drawStatsGraph() { // runs every second
     "Owners:"+statsData.owners.join(",");
 
     // actually draw a nice line chart!
-    statsContext.fillStyle = "beige";
+    statsContext.fillStyle = "#fafdff";
 	statsContext.fillRect(0,0,statsW,statsH);
-    drawLineGraph(statsData.clicks,"rgba(255,0,0,1.0)");
-    drawLineGraph(statsData.people,"rgba(0,0,255,0.5)");
-    drawLineGraph(statsData.vehicles,"rgba(128,128,128,0.5)");
-    drawLineGraph(statsData.properties,"rgba(0,255,0,0.5)");
-    drawLineGraph(statsData.owners,"rgba(255,0,255,0.5)");
+    drawLineGraph(statsData.people,"rgba(148,33,106,0.5)");
+    drawLineGraph(statsData.vehicles,"rgba(0,120,153,0.5)");
+    drawLineGraph(statsData.properties,"rgba(16,210,117,0.5)");
+    drawLineGraph(statsData.owners,"rgba(255,38,116,0.5)");
+    drawLineGraph(statsData.clicks,"rgba(22,23,26,1.0)");
 
 }
 

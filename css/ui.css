@@ -1,5 +1,5 @@
 :root {
-  --sign-font-color: #f7f1f1;
+  --sign-font-color: #fafdff;
 }
 
 * {
@@ -40,19 +40,19 @@ li {
   width: 380px;
   height: 145px;
   /* margin-left: 25px; */
-  border: 1px solid #cacaca;
-  background: #e0dfdf;
+  border: 1px solid #16171a;
+  background: #fafdff;
   border-radius: 10px;
 }
 
 .citySign {
   user-select: none;
-  border: 1px solid #0ca062;
+  border: 1px solid #10d275;
   width: 364px;
   height: 129px;
   border-radius: 10px;
   /* margin: 5px 0px 5px 0px; */
-  background-color: #0ca062;
+  background-color: #10d275;
 }
 
 .cityNameText {
@@ -92,7 +92,7 @@ li {
   color: var(--sign-font-color);
   width: 55px;
   border-radius: 1px;
-  background-color: #0a9158;
+  background-color: #234975;
   justify-content: center;
   align-items: center;
 }
@@ -115,7 +115,7 @@ li {
 .woodPosts {
   width: 25px;
   height: 15px;
-  background-color: rgb(83, 51, 27);
+  background-color: #7f0622;
 }
 
 .statsContainerMain {
@@ -123,9 +123,9 @@ li {
   flex-direction: column;
   width: 380px;
   height: 290px;
-  background-color: rgb(82, 81, 80);
+  background-color: #fafdff;
   padding: 0px 5px 2.5px 5px;
-  border: 1px solid #000000;
+  border: 1px solid #fafdff;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   /* margin-left: 25px; */
@@ -143,32 +143,32 @@ li {
 
 .tabs {
   width: 76px;
-  border: 1px solid #000000;
+  border: 1px solid #fafdff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  background-color: rgb(133, 133, 133);
+  background-color: #007899;
   cursor:pointer;
   user-select: none;
   /* TEMP - REPLACE WITH IMAGES */
   padding-top: 10px;
   text-align: center;
   font-size: .9em;
-  color: bisque;
+  color: #fafdff;
 }
 
 .tabs:hover {
-    background-color:bisque;
-    color:black;
+    background-color: #ff80a4;
+    color: #16171a;
 }
 
 .statsContainerInner {
   width: 370px;
   height: 305px;
   align-self: center;
-  border: 1px solid #000000;
+  border: 1px solid #fafdff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: rgb(196, 196, 196);
+  background-color: rgb(0, 0, 0);
 }
 
 .highlight {
