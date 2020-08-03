@@ -136,6 +136,9 @@ li {
 }
 
 .tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 76px;
   border: 1px solid #fafdff;
   border-top-left-radius: 20px;
@@ -144,10 +147,27 @@ li {
   cursor:pointer;
   user-select: none;
   /* TEMP - REPLACE WITH IMAGES */
-  padding-top: 10px;
+  /* padding-top: 10px;
   text-align: center;
   font-size: .9em;
-  color: #fafdff;
+  color: #fafdff; */
+}
+
+.tabs img {
+  width: 45px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.propertiesTab img {
+  width: 40px;
+  height: 40px;
+
+}
+.incomeTab img {
+  width: 35px;
+  height: 35px;
 }
 
 .tabs:hover {
@@ -166,7 +186,7 @@ li {
 }
 
 .highlight {
-  border: 3px solid #000000;
+  border: 1px solid #000000;
   background-color: rgb(201, 199, 199);
 }
 

@@ -79,15 +79,19 @@ statsContainerInner.classList.add('statsContainerInner');
 
 // Residents Tab/Screen
 const residentsTab = document.createElement('li');
+const residentsImg = document.createElement('img');
 tabsContainer.appendChild(residentsTab);
+residentsTab.appendChild(residentsImg);
 residentsTab.classList.add('residentsTab', 'tabs')
-residentsTab.innerText = 'Residents';                   // TEMP
+residentsImg.src = '/images/tab_residents.png';                 
 
 // Properties Tab/Screen
 const propertiesTab = document.createElement('li');
+const propertiesImg = document.createElement('img');
 tabsContainer.appendChild(propertiesTab);
+propertiesTab.appendChild(propertiesImg);
 propertiesTab.classList.add('propertiesTab', 'tabs')
-propertiesTab.innerText = 'Properties';                 // TEMP
+propertiesImg.src = '/images/tab_properties.png'; 
 
 // Build Tab/Screen
 const buildTab = document.createElement('li');
@@ -97,9 +101,11 @@ buildTab.innerText = 'Build';                          // TEMP
 
 // Income Tab/Screen
 const incomeTab = document.createElement('li');
+const incomeImg = document.createElement('img');
 tabsContainer.appendChild(incomeTab);
+incomeTab.appendChild(incomeImg);
 incomeTab.classList.add('incomeTab', 'tabs')
-incomeTab.innerText = 'Income';                        // TEMP
+incomeImg.src = '/images/tab_income.png';      // TEMP
 
 // Settings Tab/Screen
 const settingsTab = document.createElement('li');
