@@ -95,9 +95,11 @@ propertiesImg.src = '/images/tab_properties.png';
 
 // Build Tab/Screen
 const buildTab = document.createElement('li');
+const buildImg = document.createElement('img');
 tabsContainer.appendChild(buildTab);
+buildTab.appendChild(buildImg);
 buildTab.classList.add('buildTab', 'tabs')
-buildTab.innerText = 'Build';                          // TEMP
+buildImg.src = '/images/tab_build.png'; 
 
 // Income Tab/Screen
 const incomeTab = document.createElement('li');
@@ -105,11 +107,13 @@ const incomeImg = document.createElement('img');
 tabsContainer.appendChild(incomeTab);
 incomeTab.appendChild(incomeImg);
 incomeTab.classList.add('incomeTab', 'tabs')
-incomeImg.src = '/images/tab_income.png';      // TEMP
+incomeImg.src = '/images/tab_income.png';      
 
 // Settings Tab/Screen
 const settingsTab = document.createElement('li');
+const settingsImg = document.createElement('img');
 tabsContainer.appendChild(settingsTab);
+settingsTab.appendChild(settingsImg);
 settingsTab.classList.add('settingsTab', 'tabs');
-settingsTab.innerText = 'Settings';                    // TEMP
+settingsImg.src = '/images/tab_settings.png';
 
