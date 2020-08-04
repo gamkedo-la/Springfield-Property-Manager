@@ -83,7 +83,7 @@ const residentsImg = document.createElement('img');
 tabsContainer.appendChild(residentsTab);
 residentsTab.appendChild(residentsImg);
 residentsTab.classList.add('residentsTab', 'tabs')
-residentsImg.src = '/images/tab_residents.png';                 
+residentsImg.src = 'images/tab_residents.png';                 
 
 // Properties Tab/Screen
 const propertiesTab = document.createElement('li');
@@ -91,7 +91,7 @@ const propertiesImg = document.createElement('img');
 tabsContainer.appendChild(propertiesTab);
 propertiesTab.appendChild(propertiesImg);
 propertiesTab.classList.add('propertiesTab', 'tabs')
-propertiesImg.src = '/images/tab_properties.png'; 
+propertiesImg.src = 'images/tab_properties.png'; 
 
 // Build Tab/Screen
 const buildTab = document.createElement('li');
@@ -99,7 +99,7 @@ const buildImg = document.createElement('img');
 tabsContainer.appendChild(buildTab);
 buildTab.appendChild(buildImg);
 buildTab.classList.add('buildTab', 'tabs')
-buildImg.src = '/images/tab_build.png'; 
+buildImg.src = 'images/tab_build.png'; 
 
 // Income Tab/Screen
 const incomeTab = document.createElement('li');
@@ -107,7 +107,7 @@ const incomeImg = document.createElement('img');
 tabsContainer.appendChild(incomeTab);
 incomeTab.appendChild(incomeImg);
 incomeTab.classList.add('incomeTab', 'tabs')
-incomeImg.src = '/images/tab_income.png';      
+incomeImg.src = 'images/tab_income.png';      
 
 // Settings Tab/Screen
 const settingsTab = document.createElement('li');
@@ -115,5 +115,5 @@ const settingsImg = document.createElement('img');
 tabsContainer.appendChild(settingsTab);
 settingsTab.appendChild(settingsImg);
 settingsTab.classList.add('settingsTab', 'tabs');
-settingsImg.src = '/images/tab_settings.png';
+settingsImg.src = 'images/tab_settings.png';
 
