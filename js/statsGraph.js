@@ -1,5 +1,5 @@
 const USE_STATSGRAPH = true;
-const DEBUG_STATSGRAPH = true; // if true, spam the console
+const DEBUG_STATSGRAPH = false; // if true, spam the console AND the GUI in a div: this is very costly and affects FPS
 
 var statsCanvas, statsContext, statsW, statsH;
 
@@ -49,31 +49,35 @@ function drawStatsGraph() { // runs every second
         statsCanvas = document.getElementById("statsCanvas");
         statsContext = statsCanvas.getContext('2d');
         statsW = statsContainerInner.clientWidth;
-        statsH = statsContainerInner.clientHeight + 4; // FIXME: extra size due to border?
+        statsH = statsContainerInner.clientHeight;
         statsCanvas.width = statsW;
         statsCanvas.height = statsH;
         statsContainerInner.appendChild(statsCanvas);
+        console.log("Stats graph is "+statsW+"x"+statsH);
     }
 
     // text debug display
-    var statsdiv = document.getElementById("statsGraph");
-    statsdiv.innerHTML =
-    "STATS GRAPH<br>"+
-    "Days:"+statsData.days+"<br>"+
-    "Months:"+statsData.months+"<br>"+
-    "Clicks:"+statsData.clicks.join(",")+"<br>"+
-    "People:"+statsData.people.join(",")+"<br>"+
-    "Vehicles:"+statsData.vehicles.join(",")+"<br>"+
-    "Properties:"+statsData.properties.join(",")+"<br>"+
-    "Owners:"+statsData.owners.join(",");
+    if (DEBUG_STATSGRAPH) {
+        var statsdiv = document.getElementById("statsGraph");
+        statsdiv.innerHTML =
+        "STATS GRAPH<br>"+
+        "Days:"+statsData.days+"<br>"+
+        "Months:"+statsData.months+"<br>"+
+        "Clicks:"+statsData.clicks.join(",")+"<br>"+
+        "People:"+statsData.people.join(",")+"<br>"+
+        "Vehicles:"+statsData.vehicles.join(",")+"<br>"+
+        "Properties:"+statsData.properties.join(",")+"<br>"+
+        "Owners:"+statsData.owners.join(",");
+    }
 
-    // actually draw a nice line chart!
+    // clear
     statsContext.fillStyle = "#fafdff";
-	statsContext.fillRect(0,0,statsW,statsH);
-    drawLineGraph(statsData.people,"rgba(148,33,106,0.5)");
-    drawLineGraph(statsData.vehicles,"rgba(0,120,153,0.5)");
-    drawLineGraph(statsData.properties,"rgba(16,210,117,0.5)");
-    drawLineGraph(statsData.owners,"rgba(255,38,116,0.5)");
+    statsContext.fillRect(0,0,statsW,statsH);
+    // actually draw a nice line chart!
+    drawLineGraph(statsData.people,"rgba(148,33,106,1)");
+    drawLineGraph(statsData.vehicles,"rgba(0,120,153,1)");
+    drawLineGraph(statsData.properties,"rgba(16,210,117,1)");
+    drawLineGraph(statsData.owners,"rgba(255,38,116,1)");
     drawLineGraph(statsData.clicks,"rgba(22,23,26,1.0)");
 
 }
@@ -84,27 +88,32 @@ function maxValue(arr) {
 
 function drawLineGraph(data,colour) {
 
-    var stepW = statsW / data.length;
-    var maxVal = maxValue(data);
-    var stepH = statsH / maxVal;
+    const MAX_COLS = 30; // optimize: don't draw "entire history" it gets too slow
+
+    var startAt = Math.max(0,data.length-MAX_COLS);
+    var howMany = Math.min(MAX_COLS,data.length);
+    if (howMany<1) return;
+
+    var stepW = Math.ceil(statsW / howMany);
+    var maxVal = Math.ceil(maxValue(data)); // FIXME: this should only check howMany from the end
+    var stepH = Math.ceil(statsH / maxVal);
 
     // force small and infrequently changing stats to be small
     if (maxVal < 20) maxVal = 20;
 
-    //statsContext.beginPath();
-    //statsContext.moveTo(0,statsH);
-    //statsContext.strokeStyle = colour;
-    //statsContext.lineWidth = 5;
+    statsContext.beginPath();
+    statsContext.moveTo(0,statsH);
+    statsContext.strokeStyle = colour;
+    statsContext.lineWidth = 5;
 
-    for (var i=0; i<data.length; i++) {
-        //statsContext.lineTo(i*stepW, data[i]/maxVal);
+    for (var i=0; i<howMany; i++) {
         statsContext.fillStyle = colour;
         var x = i*stepW;
-        var y = statsH - (statsH * (data[i]/maxVal));
+        var y = statsH - (statsH * (data[startAt+i]/maxVal));
         if (maxVal==0 || y>=statsH) y = statsH-1; // minimum 1 pixel
-	    statsContext.fillRect(x,y,stepW,statsH-y);
+        statsContext.lineTo(x,y);
     }
 
-    //statsContext.stroke();
+    statsContext.stroke();
 
 }

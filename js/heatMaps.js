@@ -1,5 +1,5 @@
 const USE_HEATMAP = true; // is false, people move randomly
-const DEBUG_HEATMAP = true; // if true, spam the console
+const DEBUG_HEATMAP = false; // if true, spam the console
 
 var heatMaps = {}; // contains arrays the size size as roomGrid[]
 // arrays names match values like "Commercial" from buildings.zoned
@@ -60,7 +60,7 @@ function heatMapRegenerate(zone="Commercial",subtype="restaurant",scaledScore=10
             var div = document.getElementById("heatmapDebug");
             if (div) div.innerHTML = htmlString;
         }
-        console.log("HEATMAP for "+zone+":\n"+debugString);
+        if (DEBUG_HEATMAP) console.log("HEATMAP for "+zone+":\n"+debugString);
     }
 }
 
