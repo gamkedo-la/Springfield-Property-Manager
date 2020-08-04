@@ -1,5 +1,7 @@
 const USE_STATSGRAPH = true;
 const DEBUG_STATSGRAPH = false; // if true, spam the console AND the GUI in a div: this is very costly and affects FPS
+const STATS_GRAPH_WIDTH = 368;//370; // hardcoded because .clientWidth ignored border/padding
+const STATS_GRAPH_HEIGHT = 240;//305;
 
 var statsCanvas, statsContext, statsW, statsH;
 
@@ -48,8 +50,11 @@ function drawStatsGraph() { // runs every second
     if (!statsCanvas) {
         statsCanvas = document.getElementById("statsCanvas");
         statsContext = statsCanvas.getContext('2d');
-        statsW = statsContainerInner.clientWidth;
-        statsH = statsContainerInner.clientHeight;
+        // FIXME: this does not account for padding/border
+        //statsW = statsContainerInner.clientWidth;
+        //statsH = statsContainerInner.clientHeight;
+        statsW = STATS_GRAPH_WIDTH;
+        statsH = STATS_GRAPH_HEIGHT;
         statsCanvas.width = statsW;
         statsCanvas.height = statsH;
         statsContainerInner.appendChild(statsCanvas);
@@ -70,9 +75,13 @@ function drawStatsGraph() { // runs every second
         "Owners:"+statsData.owners.join(",");
     }
 
-    // clear
+    // fill clear
     statsContext.fillStyle = "#fafdff";
     statsContext.fillRect(0,0,statsW,statsH);
+
+    // just blank out instead, so CSS background shows through
+    //statsContext.clearRect(0,0,statsW,statsH); // transparent
+
     // actually draw a nice line chart!
     drawLineGraph(statsData.people,"rgba(148,33,106,1)");
     drawLineGraph(statsData.vehicles,"rgba(0,120,153,1)");
