@@ -119,18 +119,18 @@ function propertyClass() {
         if (this.mouseSelected) {
             ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
         } else if (this.mouseHovering){
-            colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "red", PROPERTY_FONT);
+            colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "rgba(255,64,64,1)", PROPERTY_FONT);
         } else {
 			if(this.owner == OWNER_HUMAN){
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "white", PROPERTY_FONT);
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "white", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_1){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "blue", PROPERTY_FONT);
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "blue", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_2){		
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "green", PROPERTY_FONT);
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "green", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_3){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "purple", PROPERTY_FONT);
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "purple", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_4){			
-				colorText("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);		
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);		
 			}
 		}
     }

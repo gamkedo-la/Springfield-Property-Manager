@@ -18,6 +18,8 @@ function drawBitmapAtLocation(graphic, atX, atY){
 }
 
 function colorText(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+  textX = Math.round(textX); // snap to integer coords for clearer text
+  textY = Math.round(textY);
   canvasContext.textAlign = "left";
   canvasContext.fillStyle = fillColor;
   canvasContext.font = font;
@@ -25,10 +27,21 @@ function colorText(showWords, textX, textY, fillColor, font = "14px Arial Black"
 }
 
 function colorTextShadow(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+    textX = Math.round(textX); // snap to integer coords for clearer text
+    textY = Math.round(textY);
     canvasContext.textAlign = "left";
     canvasContext.font = font;
     canvasContext.fillStyle = "black";
     canvasContext.fillText(showWords, textX+1, textY+1);
     canvasContext.fillStyle = fillColor;
     canvasContext.fillText(showWords, textX, textY);
+}
+
+function textBubble(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+    textX = Math.round(textX); // snap to integer coords for clearer text
+    textY = Math.round(textY);
+    if (window.textBubblePic) { // word bubble exists?
+        canvasContext.drawImage(textBubblePic,textX-64,textY-17);
+    }
+    colorText(showWords, textX, textY, fillColor, font);
 }
