@@ -4,6 +4,7 @@ const EAST = 1;
 const WEST = 2;
 const NORTH = 3;
 const SOUTH = 4;
+var peopleTextColor = "#fafdff";
 
 function peopleClass() {
 
@@ -203,10 +204,17 @@ function peopleClass() {
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
+			//Changes text color to be more visible depending on which month it is
+			if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
+					peopleTextColor = '#16171a';
+				} else {
+					peopleTextColor = '#fafdff';
+			}
+			
 			if(this.characteristics.isHungry){
-				colorText("I'm Hungry!", isoDrawX, isoDrawY - 5, "white", PEOPLE_FONT);
+				colorText("I'm Hungry!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
 			} else if(this.characteristics.isHomeless){
-				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, "white", PEOPLE_FONT);
+				colorText("I need a place to rent!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
 			}
 		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;
