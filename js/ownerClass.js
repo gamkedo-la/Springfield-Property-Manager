@@ -100,16 +100,16 @@ function ownerClass() {
 
 		var ownerName = getOwnerName(this.myOwnerID);
 
-		colorText(ownerName, textX, textY, "yellow");
+		colorTextShadow(ownerName, textX, textY, "yellow");
 		textY += textSkipY;
-		colorText("$:" + this.cash, textX, textY, "yellow");
+		colorTextShadow("$:" + this.cash, textX, textY, "yellow");
 		textY += textSkipY;
-		colorText("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "yellow");
+		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "yellow");
 		textY += textSkipY;
-		colorText("Lots Owned: ", textX, textY, "yellow");
+		colorTextShadow("Lots Owned: ", textX, textY, "yellow");
 		for(var i = 0; i < this.propertyOwned.length; i++){
 			textY += textSkipY;
-			colorText("Lot " + this.propertyOwned[i], textX, textY, "yellow");
+			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, "yellow");
 		}
 	}
 	

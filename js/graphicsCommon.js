@@ -23,3 +23,12 @@ function colorText(showWords, textX, textY, fillColor, font = "14px Arial Black"
   canvasContext.font = font;
   canvasContext.fillText(showWords, textX, textY);
 }
+
+function colorTextShadow(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+    canvasContext.textAlign = "left";
+    canvasContext.font = font;
+    canvasContext.fillStyle = "black";
+    canvasContext.fillText(showWords, textX+1, textY+1);
+    canvasContext.fillStyle = fillColor;
+    canvasContext.fillText(showWords, textX, textY);
+}
