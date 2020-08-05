@@ -11,6 +11,12 @@ const HOW_MANY_OWNERS = 5;
 const INITIAL_CASH = 20000;
 var ownerList = [];
 
+function callPurchaseProperty(){
+	for(var i = 0; i < ownerList.length; i++){
+		ownerList[i].decidingIfBuyingProperty();
+	}	
+}
+
 function setUpOwners(){
 	ownerList = [];
 	for(var i = 0; i < HOW_MANY_OWNERS; i++){
@@ -104,6 +110,16 @@ function ownerClass() {
 		for(var i = 0; i < this.propertyOwned.length; i++){
 			textY += textSkipY;
 			colorText("Lot " + this.propertyOwned[i], textX, textY, "yellow");
+		}
+	}
+	
+	this.decidingIfBuyingProperty = function(){
+		//console.log(propertyList.length, this.myOwnerID);
+		for(var i = 0; i < propertyList.length; i++){
+			if(propertyList[i].owner == OWNER_NONE){
+				ownerList[this.myOwnerID].buyProperty(propertyList[i]);	
+				return;
+			}
 		}
 	}
 }

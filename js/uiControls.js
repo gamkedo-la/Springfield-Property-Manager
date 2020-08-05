@@ -10,6 +10,7 @@ const KEY_V = 86; // PURCHASE CPU 1 - TEMPORARY
 const KEY_B = 66; // PURCHASE CPU 2 - TEMPORARY
 const KEY_N = 78; // PURCHASE CPU 3 - TEMPORARY
 const KEY_M = 77; // PURCHASE CPU 4 - TEMPORARY
+const KEY_Q = 81; // Decide to purchase a property
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -94,7 +95,10 @@ function keyPressed(evt) {
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_CPU_4].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;			
+		break;	
+		case KEY_Q:
+			callPurchaseProperty();
+		break;
 	}
 	evt.preventDefault();
 }
