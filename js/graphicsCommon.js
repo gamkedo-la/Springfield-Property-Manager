@@ -41,7 +41,9 @@ function textBubble(showWords, textX, textY, fillColor, font = "14px Arial Black
     textX = Math.round(textX); // snap to integer coords for clearer text
     textY = Math.round(textY);
     if (window.textBubblePic) { // word bubble exists?
+        canvasContext.globalAlpha = 0.4;
         canvasContext.drawImage(textBubblePic,textX-64,textY-17);
+        canvasContext.globalAlpha = 1;
     }
     colorText(showWords, textX, textY, fillColor, font);
 }
