@@ -34,6 +34,7 @@ var roomGrid = [
 	const TILE_ROAD_INT = 4;
 	const TILE_PERSON = 5;
 	const TILE_VEHICLE = 6;
+	const TILE_SNOW = 7;
 
 
 function tileTypeHasTransparency(checkTileType){
@@ -61,6 +62,20 @@ function drawLandScape(){
 			if(tileIndex != mouseOverIdx){
 				canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
 			}
+			
+			if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
+				//console.log(trackTypeHere);
+				if(trackTypeHere == TILE_GRASS){
+					canvasContext.drawImage(trackPics[TILE_SNOW], isoTileLeftEdgeX, isoTileTopEdgeX);
+					//roomGrid[i] = TILE_SNOW;
+				}
+			} else {
+				if(trackTypeHere == TILE_SNOW){
+					canvasContext.drawImage(trackPics[TILE_GRASS], isoTileLeftEdgeX, isoTileTopEdgeX);
+					//roomGrid[i] = TILE_GRASS;
+				}
+			}
+			
 			tileIndex++;
 			tileLeftEdgeX += TILE_W;			
 		} // end of each col

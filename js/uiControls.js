@@ -97,7 +97,7 @@ function keyPressed(evt) {
 		}
 		break;	
 		case KEY_Q:
-			callPurchaseProperty();
+			callPurchaseProperty(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
 	}
 	evt.preventDefault();

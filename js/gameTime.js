@@ -15,8 +15,17 @@ function updateTime(){
         stepStatsGraph(); // add a data point to all stats
         drawStatsGraph(); // redraw the charts
 	}
-	if(gameDay == 30){
-		ChangeMonth();
+	
+	if(gameDay == 28){
+		if(gameMonth[whichMonth] == "February"){
+			changeMonth();
+		}
+	} else if(gameDay == 30){
+		if(gameMonth[whichMonth] == "April" || gameMonth[whichMonth] == "June" || gameMonth[whichMonth] == "September" || gameMonth[whichMonth] == "November"){
+			changeMonth();
+		}
+	} else if(gameDay >= 30){
+		changeMonth();
 	}
 }
 
@@ -26,7 +35,7 @@ function displayGameTime(){
 	colorText("Day: " + gameDay, 1000,  900, "#ffd100", "30px 'lexendpeta'");
 }
 
-function ChangeMonth(){
+function changeMonth(){
     
     if (USE_STATSGRAPH) statsData.months++;
 
