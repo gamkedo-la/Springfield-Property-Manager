@@ -32,7 +32,7 @@ function updateTime(){
 function displayGameTime(){
 	//colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "#fafdff", "14px 'b612regular'");
 	colorText(gameMonth[whichMonth] + " " + gameYear, 800,  900, "#ffd100", "30px 'lexendpeta'");
-	colorText("Day: " + gameDay, 1000,  900, "#ffd100", "30px 'lexendpeta'");
+	colorText("- Day: " + gameDay, 1100,  900, "#ffd100", "30px 'lexendpeta'");
 }
 
 function changeMonth(){
