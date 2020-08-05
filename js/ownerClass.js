@@ -115,11 +115,17 @@ function ownerClass() {
 	
 	this.decidingIfBuyingProperty = function(){
 		//console.log(propertyList.length, this.myOwnerID);
+		var propertyToBuy = null;
 		for(var i = 0; i < propertyList.length; i++){
-			if(propertyList[i].owner == OWNER_NONE){
-				ownerList[this.myOwnerID].buyProperty(propertyList[i]);	
-				return;
+			if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
+				propertyToBuy = propertyList[i];
 			}
+		}
+		
+		if(propertyToBuy != null){
+			console.log(this.myOwnerID);
+			//next line commented out due to an error
+			//ownerList[this.myOwnerID].buyProperty(propertyList[i]);	
 		}
 	}
 }

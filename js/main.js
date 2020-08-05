@@ -86,6 +86,7 @@ function initializeAssets(){
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();
 				newObject.init(tileIndex);
+				newObject.salesPrice = randomIntFromInterval(1000,5000);
 				propertyList.push(newObject);
 			}
 			

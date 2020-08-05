@@ -77,6 +77,13 @@ function propertyClass() {
 		
         this.reset();
     }
+	
+	this.salesScore = function(ownerData){
+		if(ownerData.cash < this.salePrice || this.owner != OWNER_NONE){
+			return -1;
+		}
+		return this.salePrice;
+	}
 
     this.draw = function() {
         gameCoordToIsoCoord(this.x, this.y);
