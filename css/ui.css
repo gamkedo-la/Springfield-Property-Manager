@@ -146,16 +146,6 @@ li {
   background-color: #007899;
   cursor:pointer;
   user-select: none;
-  /* TEMP - REPLACE WITH IMAGES */
-  /* padding-top: 10px;
-  text-align: center;
-  font-size: .9em;
-  color: #fafdff; */
-}
-
-.tabs img {
-  border: none;
-  background-color: transparent;
 }
 
 .residentsTab img {
@@ -184,7 +174,7 @@ li {
 }
 
 .tabs:hover {
-    background-color: #ff80a4;
+    background-color: rgb(104, 174, 212); /* old #ff80a4 */
     color: #16171a;
 }
 
@@ -200,7 +190,7 @@ li {
 
 .highlight {
   border: 1px solid #000000;
-  background-color: rgb(201, 199, 199);
+  background-color: rgb(104, 174, 212); /* old: rgb(201, 199, 199) */
 }
 
 
