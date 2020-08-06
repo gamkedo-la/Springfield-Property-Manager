@@ -1,3 +1,4 @@
+
 /* MAIN CONTAINER */
 const gameCanvas = document.getElementById('gameCanvas');
 const uiContainerMain = document.createElement('div');
@@ -58,9 +59,10 @@ populationCountContainer.classList.add('populationCountContainer');
 // Population Count Text
 const populationCountText = document.createElement('div')
 populationCountContainer.appendChild(populationCountText);
-populationCountText.classList.add('populationCountText');
-// let population = peopleList.length;                    // FIX: UPDATE DYNAMICALLY 
-populationCountText.innerHTML = '12';         
+populationCountText.classList.add('populationCountText');   
+function updatePopulationGUI() {
+  populationCountText.innerHTML = peopleList.length+1;     
+}    
 
 /* STATS CONTAINER */
 const statsContainerMain = document.createElement('div');

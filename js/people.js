@@ -25,6 +25,8 @@ function peopleClass() {
 	this.messageStartTimer = randomIntFromInterval(100,300);
 	this.messageStopTimer = randomIntFromInterval(500,700);
 
+	updatePopulationGUI();
+
 	this.reset = function(){
 		if(this.homeX == undefined) {
 			for(var i=0; i<roomGrid.length; i++){
