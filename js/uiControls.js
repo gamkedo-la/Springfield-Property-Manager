@@ -6,6 +6,7 @@ const KEY_P = 80; // PAUSE GAME
 const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
 const KEY_L = 76; // TEMPORARY ACCESS TO LAND PURCHASING SCREEN
 const KEY_SPACEBAR = 32; // PURCHASE - TEMPORARY
+const KEY_TAB = 9; // TOGGLE HUD
 const KEY_V = 86; // PURCHASE CPU 1 - TEMPORARY
 const KEY_B = 66; // PURCHASE CPU 2 - TEMPORARY
 const KEY_N = 78; // PURCHASE CPU 3 - TEMPORARY
@@ -21,6 +22,7 @@ var mousePosX = 0;
 var mousePosY = 0;
 var mouseOverIdx = -1;
 var gesture = false;
+var isHudShown = true;
 
 function initInput(){
 	canvas.addEventListener('mousemove', mouseMove);
@@ -74,6 +76,10 @@ function keyPressed(evt) {
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_HUMAN].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
+		break;
+		case KEY_TAB:
+		isHudShown = !isHudShown;
+		document.getElementsByClassName('uiContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';
 		break;
 		///// V, B, N, and M are just for testing CPU's buying ability
 		case KEY_V:

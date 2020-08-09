@@ -165,17 +165,20 @@ function drawEverything() {
 			}
 		}
 		
-		if(inGameMenu != null){
-			canvasContext.globalAlpha = 0.5;
-			colorRect(0,0,canvas.width,canvas.height, "black");
-			canvasContext.globalAlpha = 1.0;
-			inGameMenu.draw();
-		}
+		if (isHudShown) {
+			if(inGameMenu != null){
+				canvasContext.globalAlpha = 0.5;
+				colorRect(0,0,canvas.width,canvas.height, "black");
+				canvasContext.globalAlpha = 1.0;
+				inGameMenu.draw();
+			}
 		
-		for(var i = 0; i < ownerList.length; i++){
-			ownerList[i].drawStatus();
+			for(var i = 0; i < ownerList.length; i++){
+				ownerList[i].drawStatus();
+			}		
+
+			drawOwnedProperties();
+			displayGameTime();
 		}
-		drawOwnedProperties();
-		displayGameTime();
 	}
 }
