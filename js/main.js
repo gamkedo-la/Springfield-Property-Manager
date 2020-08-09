@@ -175,6 +175,7 @@ function drawEverything() {
 		for(var i = 0; i < ownerList.length; i++){
 			ownerList[i].drawStatus();
 		}
+		drawOwnedProperties();
 		displayGameTime();
 	}
 }
