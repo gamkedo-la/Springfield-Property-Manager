@@ -23,7 +23,12 @@ let colHeight = 60;
 
 let cursor = 0;
 let menuList = ["New City", "Options", "Keys", "Tutorials", "Credits"];
-let menuPageText = [menuList, resumeList, optionsList, keysList, tutorialsList, creditsList, pausedList,];
+let optionsList = ["Sound", "Captions", "Resolution"];
+let keysList = [];
+let tutorialsList =[];
+let pausedList =["Save", "Mute", "Back"];
+let creditsList = [];
+let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList, pausedList];
 
 	this.menuMouse = function() {
 		for(let i=0; i < menuPageTExt[currentPage].length; i++) {
