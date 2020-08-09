@@ -2,9 +2,23 @@ function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor){
 	canvasContext.fillStyle = fillColor;
 	canvasContext.fillRect(topLeftX,topLeftY,boxWidth,boxHeight);
 }
+
+function colorIsoRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, lineWidth = 20, lineColor = 'yellow'){
+    canvasContext.beginPath();
+	canvasContext.fillStyle = fillColor;
+    canvasContext.strokeStyle = lineColor;
+    canvasContext.lineWidth = lineWidth;    
+    canvasContext.moveTo(topLeftX, topLeftY);
+    canvasContext.lineTo(topLeftX + boxWidth, topLeftY + boxHeight / 2);
+    canvasContext.lineTo(topLeftX, topLeftY + boxHeight);
+    canvasContext.lineTo(topLeftX - boxWidth, topLeftY + boxHeight / 2);
+    canvasContext.lineTo(topLeftX, topLeftY);
+    canvasContext.stroke();
+    canvasContext.fill();
+}
 			
 function colorCircle(centerX, centerY, radius, fillColor){
-	canvasContext.fillStyle = fillColor;
+	canvasContext.fillStyle =    fillColor;
 	canvasContext.beginPath();
 	canvasContext.arc(centerX,centerY,radius,0,Math.PI*2,true);
 	canvasContext.fill();

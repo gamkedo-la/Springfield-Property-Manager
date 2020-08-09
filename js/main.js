@@ -142,31 +142,35 @@ function drawEverything() {
 		canvasContext.save();
 		canvasContext.translate(-camPanX, -camPanY/2);
 		drawLandScape();
-		for (var i = 0; i < propertyList.length; i++) {
-			propertyList[i].draw();
-		}
+		
 		for (var i = 0; i < vehicleList.length; i++) {
 			vehicleList[i].draw();
 		}
 		for (var i = 0; i < peopleList.length; i++) {
 			peopleList[i].draw();
 			//console.log(peopleList[0].displayMessageTimer);
-		}
-		ui.draw();
+		}		
 		canvasContext.restore();
 		//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
 		
-
-		//TEMP CODE: Displays the CLICK/SELECT AREA for the property
-		//FIX IT: It is rectangle but it should be isometric.
 		for(i = 0; i < propertyList.length; i++)
 		{
 			if(propertyList[i].mouseHovering || propertyList[i].mouseSelected)
 			{
 				gameCoordToIsoCoord(propertyList[i].x, propertyList[i].y);
-				colorRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "#00ff0099");
+				colorIsoRect(isoDrawX + (TILE_W/2) - camPanX, isoDrawY - (camPanY/2), TILE_W/2, TILE_H/2, "yellow");
 			}
 		}
+
+		canvasContext.save();
+		canvasContext.translate(-camPanX, -camPanY/2);
+
+		for (var i = 0; i < propertyList.length; i++) {
+			propertyList[i].draw();
+		}
+		ui.draw();
+
+		canvasContext.restore();
 		
 		if (isHudShown) {
 			if(inGameMenu != null){
