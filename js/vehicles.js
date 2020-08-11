@@ -30,8 +30,7 @@ function vehicleClass() {
 		this.x = this.homeX;
 		this.y = this.homeY;
 		
-		this.spriteSheetOffSet = randomIntFromInterval(0, vehiclesSheet.width/CAR_WIDTH + 1)*CAR_WIDTH;
-		console.log('OFFSET', this.spriteSheetOffSet);
+		this.resetSprite();
 		
 		let randomDirection = randomIntFromInterval(2)
 		this.whichColor = randomIntFromInterval(1,7) - 1;
@@ -42,6 +41,10 @@ function vehicleClass() {
 		//	this.moveWest = true;
 		//}
 	}
+
+	this.resetSprite = function() {
+		this.spriteSheetOffSet = randomIntFromInterval(0, vehiclesSheet.width/CAR_WIDTH - 1)*CAR_WIDTH;
+	};
 
 	this.init = function(whichName) {
 		this.myName = whichName;
@@ -68,10 +71,12 @@ function vehicleClass() {
 	this.checkBoundaries = function(){
 		if(this.x > GAME_WIDTH){
 			this.x = 0;
+			this.resetSprite();
 		} else if (this.x < 0){
 			this.x = GAME_WIDTH;
 		} else if (this.y > GAME_HEIGHT){
 			this.y = 0;
+			this.resetSprite();
 		} else if (this.y < 0){
 			this.y = GAME_HEIGHT;
 		}
