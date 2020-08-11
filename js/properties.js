@@ -53,7 +53,7 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 41);
+        let randomZone = randomIntFromInterval(1, 42);
 		
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
@@ -69,16 +69,20 @@ function propertyClass() {
         } else if (randomZone >= 29 && randomZone <= 30) {
             this.zoned = "Commercial";
             this.building = "OfficeBuilding";
-		} else if (randomZone >= 31 && randomZone <= 40) {
+		} else if (randomZone >= 31 && randomZone <= 36) {
             this.zoned = "Residential";
             this.building = "basicDuplex";
+		} else if (randomZone >= 37 && randomZone <= 40) {
+            this.zoned = "Residential";
+            this.building = "LuxaryApartment";
 		} else if (randomZone == 41) {
             this.zoned = "Commercial";
             this.building = "brazilianSteakhouse";
+		} else if (randomZone == 42) {
+            this.zoned = "Commercial";
+            this.building = "luxaryOffice";
 		} 
-		
-		
-		
+		luxaryOfficePic
         this.reset();
     }
 	
@@ -99,6 +103,9 @@ function propertyClass() {
         } else if (this.building == "basicDuplex") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+        } else if (this.building == "LuxaryApartment") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(building4Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
@@ -106,7 +113,9 @@ function propertyClass() {
         } else if (this.building == "brazilianSteakhouse") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(brazilianSteakhousePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-
+		} else if (this.building == "luxaryOffice") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(luxaryOfficePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else { // no building, draw a for sale sign based on commercial or residential
             drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);
             if (this.zoned == "Commercial") {
