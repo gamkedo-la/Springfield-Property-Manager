@@ -1,6 +1,7 @@
 function vehicleClass() {
 	const CAR_WIDTH = 24;
 	const CAR_HEIGHT = 24;
+	const BIKER_SPRITE_OFFSET = 2*CAR_WIDTH;
 	this.x = 0;
 	this.y = 110;
 	this.velX = 1;
@@ -44,6 +45,10 @@ function vehicleClass() {
 
 	this.resetSprite = function() {
 		this.spriteSheetOffSet = randomIntFromInterval(0, vehiclesSheet.width/CAR_WIDTH - 1)*CAR_WIDTH;
+		// There can only be one Biker Brick cameo on screen!
+		if (this.spriteSheetOffSet == BIKER_SPRITE_OFFSET && vehicleList.filter(v => v.spriteSheetOffSet == BIKER_SPRITE_OFFSET).length > 1) {
+			this.resetSprite();
+		}
 	};
 
 	this.init = function(whichName) {
