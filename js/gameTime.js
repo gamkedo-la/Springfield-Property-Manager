@@ -46,6 +46,8 @@ function changeMonth(){
 			console.log("Someone decided next thing to buy for the month");
 		}
 	}
+	
+	callPurchaseProperty();
 
 	whichMonth++;
 	gameDay = 0;

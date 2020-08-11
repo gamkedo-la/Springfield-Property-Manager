@@ -12,7 +12,7 @@ const INITIAL_CASH = 20000;
 var ownerList = [];
 
 function callPurchaseProperty(){
-	for(var i = 0; i < ownerList.length; i++){
+	for(var i = 1; i < ownerList.length; i++){
 		ownerList[i].decidingIfBuyingProperty();
 	}	
 }
@@ -57,6 +57,7 @@ function ownerClass() {
 	this.myOwnerID;
 	this.atProperty;
 	this.propertyOwned = [];
+	this.computerWillingessToPurchase = randomIntFromInterval(1,10);
 	
 	this.reset = function(myID){
 		this.cash = INITIAL_CASH;
@@ -114,16 +115,20 @@ function ownerClass() {
 	}
 	
 	this.decidingIfBuyingProperty = function(){
-		var propertyToBuy = null;
-		for(var i = 0; i < propertyList.length; i++){
-			if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
-				propertyToBuy = propertyList[i];
+		consideringAPurchase = randomIntFromInterval(1,10);
+	
+		if(consideringAPurchase >= this.computerWillingessToPurchase){
+			var propertyToBuy = null;
+			for(var i = 0; i < propertyList.length; i++){
+				if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
+					propertyToBuy = propertyList[i];
+				}
 			}
-		}
-		
-		if(propertyToBuy != null){
-			ownerList[this.myOwnerID].buyProperty(propertyToBuy);
 			
+			if(propertyToBuy != null){
+				ownerList[this.myOwnerID].buyProperty(propertyToBuy);
+				
+			}	
 		}
 	}
 }
