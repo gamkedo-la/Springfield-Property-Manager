@@ -13,6 +13,8 @@ var brazilianSteakhousePic = document.createElement("img");
 const vehiclesSheet = document.createElement("img");
 var human = document.createElement("img");
 var textBubblePic = document.createElement("img");
+var cloud1Pic = document.createElement("img");
+var cloud2Pic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -56,6 +58,8 @@ function loadImages() {
 			{varName: vehiclesSheet, theFile: "vehicles.png"},
             {varName: human, theFile: "human.png"},
             {varName: textBubblePic, theFile: "textBubble.png"},
+			{varName: cloud1Pic, theFile: "cloud1.png"},
+            {varName: cloud2Pic, theFile: "cloud2.png"},
 			
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},

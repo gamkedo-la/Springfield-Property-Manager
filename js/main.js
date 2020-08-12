@@ -42,6 +42,7 @@ window.onload = function(){
 	loadImages();
 	initInput();
 	setUpOwners();
+	setUpClouds();
 		
 }
 
@@ -108,12 +109,18 @@ function moveEverything() {
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].move();
 	}
+	for (var i = 0; i < cloudList.length; i++){
+		cloudList[i].move();
+	}
 	checkForPropertyHovering();
 	updateTime(); 
 	
 	for(var i = 0; i < ownerList.length; i++){
 		ownerList[i].checkForPropertiesOwned();
 	}
+	
+			
+
 		
 	if(inGameMenu != null){
 		inGameMenu.update();
@@ -168,9 +175,16 @@ function drawEverything() {
 		for (var i = 0; i < propertyList.length; i++) {
 			propertyList[i].draw();
 		}
+		
+		for (var i = 0; i < cloudList.length; i++){
+			cloudList[i].draw();
+		}
+		
 		ui.draw();
 
 		canvasContext.restore();
+		
+	
 		
 		if (isHudShown) {
 			if(inGameMenu != null){
