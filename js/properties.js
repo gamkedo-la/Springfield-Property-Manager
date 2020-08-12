@@ -57,30 +57,39 @@ function propertyClass() {
 		
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
+			this.salePrice = 1000;
         } else if (randomZone >= 11 && randomZone <= 20) {
             this.zoned = "Residential";
+			  this.salePrice = 500;
         } else if (randomZone >= 21 && randomZone <= 25) {
             this.zoned = "Commercial";
             this.building = "restaurant";
+			this.salePrice = 10000;
             this.restaurantType = restaurantTypes[randomIntFromInterval(0, restaurantTypes.length-1)];
 		} else if (randomZone >= 26 && randomZone <= 28) {
             this.zoned = "Residential";
             this.building = "apartment";
+			this.salePrice = 5000;
         } else if (randomZone >= 29 && randomZone <= 30) {
             this.zoned = "Commercial";
             this.building = "OfficeBuilding";
+			this.salePrice = 15000;
 		} else if (randomZone >= 31 && randomZone <= 36) {
             this.zoned = "Residential";
             this.building = "basicDuplex";
+			this.salePrice = 2500;
 		} else if (randomZone >= 37 && randomZone <= 40) {
             this.zoned = "Residential";
             this.building = "LuxaryApartment";
+			this.salePrice = 10000;
 		} else if (randomZone == 41) {
             this.zoned = "Commercial";
             this.building = "brazilianSteakhouse";
+			this.salePrice = 15000;
 		} else if (randomZone == 42) {
             this.zoned = "Commercial";
             this.building = "luxaryOffice";
+			this.salePrice = 20000;
 		} 
 		luxaryOfficePic
         this.reset();

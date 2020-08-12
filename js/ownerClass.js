@@ -63,6 +63,12 @@ function ownerClass() {
 		this.cash = INITIAL_CASH;
 		this.myOwnerID = myID;
 		this.atProperty = null;
+		var randomPurchasingPreference = randomIntFromInterval(1,2)
+		if(randomPurchasingPreference == 1){
+			this.preferenceToEmptyLot = true;
+		} else {
+			this.preferenceToEmptyLot = false;
+		}
 	}
 	
 	this.buyProperty = function(propertyToBuy){
@@ -115,13 +121,20 @@ function ownerClass() {
 	}
 	
 	this.decidingIfBuyingProperty = function(){
-		consideringAPurchase = randomIntFromInterval(1,10);
+		consideringAPurchase = randomIntFromInterval(2,10);
 	
 		if(consideringAPurchase >= this.computerWillingessToPurchase){
+			
 			var propertyToBuy = null;
 			for(var i = 0; i < propertyList.length; i++){
-				if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
-					propertyToBuy = propertyList[i];
+				if(ownerList[this.myOwnerID].preferenceToEmptyLot){ 
+					if(propertyList[i].building == "none"){
+						propertyToBuy = propertyList[i];
+					}
+				} else {
+					if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
+						propertyToBuy = propertyList[i];
+					}
 				}
 			}
 			
