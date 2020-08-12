@@ -6,11 +6,19 @@ const NORTH = 3;
 const SOUTH = 4;
 var peopleTextColor = "#fafdff";
 
+function addPerson(){
+	newObject = new peopleClass();
+	newObject.init("1");
+	newObject.x = 0;
+	newObject.y = 100;
+	peopleList.push(newObject);
+}
+
 function peopleClass() {
 
   const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
 
-  this.x = 0;
+	this.x = 0;
 	this.y = 100;
 	this.velX = .5;
 	this.velY = .5;

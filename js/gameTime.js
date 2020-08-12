@@ -38,6 +38,11 @@ function displayGameTime(){
 function changeMonth(){
     
     if (USE_STATSGRAPH) statsData.months++;
+	
+	var chanceToAddAPerson = randomIntFromInterval(0,1)
+	if(chanceToAddAPerson == 1){
+		addPerson();	
+	}
 
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].characteristics.isHungry = true;
