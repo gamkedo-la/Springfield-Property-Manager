@@ -58,6 +58,7 @@ function ownerClass() {
 	this.atProperty;
 	this.propertyOwned = [];
 	this.computerWillingessToPurchase = randomIntFromInterval(1,10);
+	this.preferenceToEmptyLot = true;
 	
 	this.reset = function(myID){
 		this.cash = INITIAL_CASH;
@@ -127,21 +128,23 @@ function ownerClass() {
 			
 			var propertyToBuy = null;
 			for(var i = 0; i < propertyList.length; i++){
-				if(ownerList[this.myOwnerID].preferenceToEmptyLot){ 
+				if(this.preferenceToEmptyLot){ 
 					if(propertyList[i].building == "none"){
 						propertyToBuy = propertyList[i];
 					}
-				} else {
-					if(propertyToBuy == null || propertyList[i].salesScore(ownerList[this.myOwnerID]) > propertyToBuy.salesScore(ownerList[this.myOwnerID])){
+				} else { // comparing most desiriable property "I" can buy
+					if(propertyToBuy == null || propertyList[i].salesScore(this) > propertyToBuy.salesScore(this)){
 						propertyToBuy = propertyList[i];
 					}
 				}
 			}
-			
+
 			if(propertyToBuy != null){
 				ownerList[this.myOwnerID].buyProperty(propertyToBuy);
 				
-			}	
+			} else {
+				console.log(this.myOwnerID + "failed to buy a property and preference to an empty lot is " + this.preferenceToEmptyLot);
+			}
 		}
 	}
 }
