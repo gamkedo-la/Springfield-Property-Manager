@@ -124,7 +124,7 @@ function propertyClass() {
 		calculatedScore = this.salePrice;
 		if(this.zoned == "Commercial"){
 			//calculatedScore based on corner lots
-			if(cornerLot){
+			if(this.cornerLot){
 				calculatedScore *= 2;	
 			}
 			//if(apartmentAsANeighbor){

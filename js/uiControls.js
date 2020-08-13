@@ -48,8 +48,10 @@ function handleMouseClick(evt){
 }
 
 function keyPressed(evt) {
-	if(typeof inGameMenu !== "undefined"){
-		inGameMenu.handleKey(evt.keyCode);
+	if(typeof inGameMenu !== "undefined" && inGameMenu != inGameMenu){
+		if(typeof evt.keyCode != null) {
+			inGameMenu.handleKey(evt.keyCode);
+		}
 		return;
 	}
 	cheats(evt.key);
