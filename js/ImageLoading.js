@@ -15,6 +15,12 @@ var human = document.createElement("img");
 var textBubblePic = document.createElement("img");
 var cloud1Pic = document.createElement("img");
 var cloud2Pic = document.createElement("img");
+var playerOnePic = document.createElement("img");
+var playerTwoPic = document.createElement("img");
+var playerThreePic = document.createElement("img");
+var playerFourPic = document.createElement("img");
+
+
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -60,6 +66,10 @@ function loadImages() {
             {varName: textBubblePic, theFile: "textBubble.png"},
 			{varName: cloud1Pic, theFile: "cloud1.png"},
             {varName: cloud2Pic, theFile: "cloud2.png"},
+			{varName: playerOnePic, theFile: "playerOne.png"},
+			{varName: playerTwoPic, theFile: "playerTwo.png"},
+			{varName: playerThreePic, theFile: "playerThree.png"},
+			{varName: playerFourPic, theFile: "playerFour.png"},
 			
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},

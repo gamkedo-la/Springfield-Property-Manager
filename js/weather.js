@@ -1,5 +1,5 @@
 function setUpClouds(){
-	var howManyClouds = randomIntFromInterval(10,20);
+	var howManyClouds = randomIntFromInterval(10,30);
 	cloudList = [];
 	for(var i = 0; i < howManyClouds; i++){
 		cloudList[i] = new weatherClass();

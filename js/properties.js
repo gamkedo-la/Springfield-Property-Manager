@@ -143,12 +143,16 @@ function propertyClass() {
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "white", PROPERTY_FONT);
 			} else if (this.owner == OWNER_CPU_1){			
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "blue", PROPERTY_FONT);
+				drawBitmapAtLocation(playerOnePic, isoDrawX+40, isoDrawY);
 			} else if (this.owner == OWNER_CPU_2){		
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "green", PROPERTY_FONT);
+				drawBitmapAtLocation(playerTwoPic, isoDrawX+40, isoDrawY);
 			} else if (this.owner == OWNER_CPU_3){			
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "purple", PROPERTY_FONT);
+				drawBitmapAtLocation(playerThreePic, isoDrawX+40, isoDrawY);
 			} else if (this.owner == OWNER_CPU_4){			
-				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);		
+				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);
+				drawBitmapAtLocation(playerFourPic, isoDrawX+40, isoDrawY);				
 			}
 		}
     }
