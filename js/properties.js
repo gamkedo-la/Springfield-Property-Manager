@@ -91,15 +91,28 @@ function propertyClass() {
             this.building = "luxaryOffice";
 			this.salePrice = 20000;
 		} 
-		luxaryOfficePic
+		
         this.reset();
     }
 	
 	this.salesScore = function(ownerData){
+		var calculatedScore = 0;
 		if(ownerData.cash < this.salePrice || this.owner != OWNER_NONE){
 			return -1;
 		}
-		return this.salePrice;
+		calculatedScore = this.salePrice;
+		if(this.zoned == "Commercial"){
+			//calculatedScore based on corner lots
+			//if(cornorLot){
+			//	calculatedScore *= 2;	
+			//}
+			//if(apartmentAsANeighbor){
+			// calculatedScore *= 2;
+			//} if(iOwnTheNeighborProperty){
+			// calculatedScore *= 2;
+			//}	
+		}
+		return calculatedScore;
 	}
 
     this.draw = function() {
