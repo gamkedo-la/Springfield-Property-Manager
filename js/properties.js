@@ -29,6 +29,7 @@ function propertyClass() {
     this.propertyTileMapIndex = -1; // set in  init()
     this.restaurantType = null;
 	this.owner = OWNER_NONE;
+	this.cornerLot = false;
 
     this.reset = function() {
         if (this.homeX == undefined) {
@@ -49,6 +50,26 @@ function propertyClass() {
         }
         this.x = this.homeX;
         this.y = this.homeY;
+		
+		if(	this.propertyTileMapIndex == 17 || //corner lots
+			this.propertyTileMapIndex == 19 ||
+			this.propertyTileMapIndex == 49 ||
+			this.propertyTileMapIndex == 51 ||
+			this.propertyTileMapIndex == 28 ||
+			this.propertyTileMapIndex == 30 ||
+			this.propertyTileMapIndex == 60 ||
+			this.propertyTileMapIndex == 62 ||
+			this.propertyTileMapIndex == 129 ||
+			this.propertyTileMapIndex == 131 ||
+			this.propertyTileMapIndex == 161 ||
+			this.propertyTileMapIndex == 163 ||
+			this.propertyTileMapIndex == 140 ||
+			this.propertyTileMapIndex == 142 ||
+			this.propertyTileMapIndex == 172 ||
+			this.propertyTileMapIndex == 174 
+			){
+				this.cornerLot = true;
+		}
     }
 
     this.init = function(propertyTileMapIndex) {
@@ -94,7 +115,7 @@ function propertyClass() {
 		
         this.reset();
     }
-	
+
 	this.salesScore = function(ownerData){
 		var calculatedScore = 0;
 		if(ownerData.cash < this.salePrice || this.owner != OWNER_NONE){
@@ -103,9 +124,9 @@ function propertyClass() {
 		calculatedScore = this.salePrice;
 		if(this.zoned == "Commercial"){
 			//calculatedScore based on corner lots
-			//if(cornorLot){
-			//	calculatedScore *= 2;	
-			//}
+			if(cornerLot){
+				calculatedScore *= 2;	
+			}
 			//if(apartmentAsANeighbor){
 			// calculatedScore *= 2;
 			//} if(iOwnTheNeighborProperty){
@@ -146,6 +167,7 @@ function propertyClass() {
                 drawBitmapAtLocation(residentialForSaleSignPic, isoDrawX, isoDrawY);
             }
         }
+		
 
         if (this.mouseSelected) {
             ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
