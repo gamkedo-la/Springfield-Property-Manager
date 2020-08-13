@@ -48,7 +48,7 @@ function handleMouseClick(evt){
 }
 
 function keyPressed(evt) {
-	if(inGameMenu != null){
+	if(typeof inGameMenu !== "undefined"){
 		inGameMenu.handleKey(evt.keyCode);
 		return;
 	}
@@ -109,7 +109,9 @@ function keyPressed(evt) {
 			callPurchaseProperty(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
 	}
-	evt.preventDefault();
+	if(typeof evt.preventDefault !== "undefined"){
+		evt.preventDefault();
+	}
 }
 
 function keyReleased(evt) {

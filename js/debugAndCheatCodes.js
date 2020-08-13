@@ -40,6 +40,10 @@ let cheatList = [
 	let mightMatchCode = 0; //counts possible solutions
 	let keyBuffer = "";
 
+	if(typeof key === "undefined"){
+		return;
+	}
+
 	// Turn inputs to lowercase and special case buttons to uppercase letters
 	if(key.length === 1) {
 		keyBuffer = key.toLowerCase();
