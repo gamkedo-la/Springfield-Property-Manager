@@ -62,9 +62,9 @@ function stepStatsGraph() {
     statsData.properties.push(propertyList.length);
     statsData.owners.push(ownerList.length);
     statsData.clicks.push(statsData.totalClicks); // was reset to 0 each step
-    statsData.residential.push(0);
-    statsData.commercial.push(0);
-    statsData.vacant.push(0);
+    statsData.residential.push(countZone("Residential"));
+    statsData.commercial.push(countZone("Commercial"));
+    statsData.vacant.push(countVacant());
     statsData.income.push(0);
     statsData.cash.push(0);
 }
@@ -122,6 +122,22 @@ function maxValue(arr) {
     return arr.reduce(function(a,b) { return Math.max(a,b); });    
 }
 
+function countZone(zone) {
+    var count = 0;
+    for(let i=0; i<propertyList.length; i++) {
+        if (propertyList[i].zoned==zone) count++; // found one!
+    }
+    return count;
+}
+
+function countVacant() {
+    var count = 0;
+    for(let i=0; i<propertyList.length; i++) {
+        if (!propertyList[i].owner) count++; // of it has no owner
+    }
+    return count;
+}
+
 function drawLineGraph(data=[],colour="red",legend="value",statnum=0) {
 
     const MAX_COLS = 30; // optimize: don't draw "entire history" it gets too slow
@@ -146,7 +162,7 @@ function drawLineGraph(data=[],colour="red",legend="value",statnum=0) {
     statsContext.textAlign = "left";
     statsContext.font = "8px 'lexendpeta'";
     statsContext.fillStyle = colour;
-    statsContext.fillText(legend, textX, textY);
+    statsContext.fillText(data[data.length-1]+" "+legend, textX, textY);
 
     // draw the line
     statsContext.beginPath();
