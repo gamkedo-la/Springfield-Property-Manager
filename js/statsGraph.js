@@ -98,22 +98,22 @@ function drawStatsGraph() { // runs every second
     // actually draw a nice line chart!
     switch (currentStatsTab) {
         case TAB_PEOPLE:
-            drawLineGraph(statsData.people,"rgba(148,33,106,1)","population",0);
-            drawLineGraph(statsData.vehicles,"rgba(0,120,153,1)","vehicles",1);
+            drawLineGraph(statsData.people,"blue","population",0);
+            drawLineGraph(statsData.vehicles,"black","vehicles",1);
             break;
         case TAB_BUILDINGS:
-            drawLineGraph(statsData.residential,"rgba(16,210,117,1)","residential",0);
-            drawLineGraph(statsData.commercial,"rgba(16,210,117,1)","commercial",1);
-            drawLineGraph(statsData.vacant,"rgba(16,210,117,1)","vacant",2);
+            drawLineGraph(statsData.residential,"green","residential",0);
+            drawLineGraph(statsData.commercial,"orange","commercial",1);
+            drawLineGraph(statsData.vacant,"silver","vacant",2);
             break;
         case TAB_CONSTRUCTION:
-            drawLineGraph(statsData.properties,"rgba(16,210,117,1)","properties",0);
-            drawLineGraph(statsData.owners,"rgba(16,210,117,1)","owners",1);
+            drawLineGraph(statsData.properties,"blue","properties",0);
+            drawLineGraph(statsData.owners,"black","owners",1);
             break;
         case TAB_MONEY:
-            drawLineGraph(statsData.clicks,"rgba(22,23,26,1.0)","clicks",0);
-            drawLineGraph(statsData.income,"rgba(16,210,117,1)","income",1);
-            drawLineGraph(statsData.cash,"rgba(16,210,117,1)","cash",2);
+            drawLineGraph(statsData.clicks,"black","clicks",0);
+            drawLineGraph(statsData.income,"blue","income",1);
+            drawLineGraph(statsData.cash,"green","cash",2);
             break;
     }
 }
@@ -163,5 +163,10 @@ function drawLineGraph(data=[],colour="red",legend="value",statnum=0) {
     }
 
     statsContext.stroke();
-
 }
+
+function changeStatsTab(i) {
+    currentStatsTab = i;
+    console.log("Current stats tab: " + currentStatsTab);
+    drawStatsGraph();
+}      
