@@ -53,9 +53,9 @@ function getOwnerName(ownedBy) {
 }
 
 function ownerClass() {
-	this.cash;
-	this.myOwnerID;
-	this.atProperty;
+	this.cash = INITIAL_CASH;
+	this.myOwnerID = null;
+	this.atProperty = null;
 	this.propertyOwned = [];
 	this.computerWillingessToPurchase = randomIntFromInterval(1,10);
 	this.preferenceToEmptyLot = true;

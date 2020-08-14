@@ -65,8 +65,8 @@ function stepStatsGraph() {
     statsData.residential.push(countZone("Residential"));
     statsData.commercial.push(countZone("Commercial"));
     statsData.vacant.push(countVacant());
-    statsData.income.push(0);
-    statsData.cash.push(0);
+    statsData.income.push(0); // TODO.... not tracked? needs to be calculated
+    statsData.cash.push(ownerList[0].cash);
 }
 
 function drawStatsGraph() { // runs every second
