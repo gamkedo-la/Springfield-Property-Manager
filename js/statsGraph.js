@@ -5,10 +5,21 @@ const STATS_GRAPH_HEIGHT = 240;//305;
 
 var statsCanvas, statsContext, statsW, statsH;
 
+const TAB_PEOPLE = 0;
+const TAB_BUILDINGS = 1;
+const TAB_CONSTRUCTION = 2;
+const TAB_MONEY = 3;
+
+var currentStatsTab = TAB_PEOPLE;
+
 var statsData = {
-    months:0, // how many values in each array?
-    days:0, // total
+    
+    // all-time singule number stats
+    months:0,
+    days:0,
     totalClicks:0,
+
+    // arrays added to daily (once per second)
     people:[],
     vehicles:[],
     properties:[],
@@ -28,24 +39,7 @@ function statsCountClick() {
 
 function stepStatsGraph() {
     //if (DEBUG_STATSGRAPH) console.log("updateStatsGraph");
-    // add one more column of data
-    statsData.people.push(peopleList.length);
-    statsData.vehicles.push(vehicleList.length);
-    statsData.properties.push(propertyList.length);
-    statsData.owners.push(ownerList.length);
-    statsData.clicks.push(statsData.totalClicks); // was reset to 0 each step
-}
 
-function drawStatsGraph() { // runs every second
-    //if (DEBUG_STATSGRAPH) console.log("drawStatsGraph");
-    
-    // if first time, grab first month right away
-    if (!statsData.initialized) {
-        if (DEBUG_STATSGRAPH) console.log("initializing stats graph data");
-        stepStatsGraph();
-        statsData.initialized = true;
-    }
-    
     // init once only
     if (!statsCanvas) {
         statsCanvas = document.getElementById("statsCanvas");
@@ -59,8 +53,27 @@ function drawStatsGraph() { // runs every second
         statsCanvas.height = statsH;
         statsContainerInner.appendChild(statsCanvas);
         console.log("Stats graph is "+statsW+"x"+statsH);
+        statsData.initialized = true;
     }
 
+    // add one more column of data
+    statsData.people.push(peopleList.length);
+    statsData.vehicles.push(vehicleList.length);
+    statsData.properties.push(propertyList.length);
+    statsData.owners.push(ownerList.length);
+    statsData.clicks.push(statsData.totalClicks); // was reset to 0 each step
+    statsData.residential.push(0);
+    statsData.commercial.push(0);
+    statsData.vacant.push(0);
+    statsData.income.push(0);
+    statsData.cash.push(0);
+}
+
+function drawStatsGraph() { // runs every second
+    //if (DEBUG_STATSGRAPH) console.log("drawStatsGraph");
+    
+    if (!statsData.initialized) return;
+    
     // text debug display
     if (DEBUG_STATSGRAPH) {
         var statsdiv = document.getElementById("statsGraph");
@@ -83,19 +96,33 @@ function drawStatsGraph() { // runs every second
     //statsContext.clearRect(0,0,statsW,statsH); // transparent
 
     // actually draw a nice line chart!
-    drawLineGraph(statsData.people,"rgba(148,33,106,1)");
-    drawLineGraph(statsData.vehicles,"rgba(0,120,153,1)");
-    drawLineGraph(statsData.properties,"rgba(16,210,117,1)");
-    drawLineGraph(statsData.owners,"rgba(255,38,116,1)");
-    drawLineGraph(statsData.clicks,"rgba(22,23,26,1.0)");
-
+    switch (currentStatsTab) {
+        case TAB_PEOPLE:
+            drawLineGraph(statsData.people,"rgba(148,33,106,1)","population",0);
+            drawLineGraph(statsData.vehicles,"rgba(0,120,153,1)","vehicles",1);
+            break;
+        case TAB_BUILDINGS:
+            drawLineGraph(statsData.residential,"rgba(16,210,117,1)","residential",0);
+            drawLineGraph(statsData.commercial,"rgba(16,210,117,1)","commercial",1);
+            drawLineGraph(statsData.vacant,"rgba(16,210,117,1)","vacant",2);
+            break;
+        case TAB_CONSTRUCTION:
+            drawLineGraph(statsData.properties,"rgba(16,210,117,1)","properties",0);
+            drawLineGraph(statsData.owners,"rgba(16,210,117,1)","owners",1);
+            break;
+        case TAB_MONEY:
+            drawLineGraph(statsData.clicks,"rgba(22,23,26,1.0)","clicks",0);
+            drawLineGraph(statsData.income,"rgba(16,210,117,1)","income",1);
+            drawLineGraph(statsData.cash,"rgba(16,210,117,1)","cash",2);
+            break;
+    }
 }
 
 function maxValue(arr) {
     return arr.reduce(function(a,b) { return Math.max(a,b); });    
 }
 
-function drawLineGraph(data,colour) {
+function drawLineGraph(data=[],colour="red",legend="value",statnum=0) {
 
     const MAX_COLS = 30; // optimize: don't draw "entire history" it gets too slow
 
@@ -110,8 +137,20 @@ function drawLineGraph(data,colour) {
     // force small and infrequently changing stats to be small
     if (maxVal < 20) maxVal = 20;
 
+    // draw the legend
+    // why does this not display anything?
+    // because this is a different canvas!!!
+    // colorTextShadow(legend,8,statsH-16-12*statnum,colour,"8px 'lexendpeta'");
+    var textX = 8;
+    var textY = statsH-12*(statnum+1);    
+    statsContext.textAlign = "left";
+    statsContext.font = "8px 'lexendpeta'";
+    statsContext.fillStyle = colour;
+    statsContext.fillText(legend, textX, textY);
+
+    // draw the line
     statsContext.beginPath();
-    statsContext.moveTo(0,statsH);
+    statsContext.moveTo(0,statsH - (statsH * (data[startAt]/maxVal)));
     statsContext.strokeStyle = colour;
     statsContext.lineWidth = 5;
 
