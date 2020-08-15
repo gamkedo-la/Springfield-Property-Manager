@@ -7,7 +7,7 @@ const VOLUME_INCREMENT = 0.0333;
 
 
 //define sounds
-
+var backgroundSong = new soundLoopsClass("audio/gameplayMusicV1.mp3");
 
 
 //--//sound classes-----------------------------------------------------------
