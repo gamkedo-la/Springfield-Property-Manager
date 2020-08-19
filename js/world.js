@@ -86,6 +86,10 @@ function drawLandScape(){
 
 
 
+// fixme: this doesn't return the right value
+// it returns the world data array index of a row and col
+// but does not check what tile is stored there
+// and will always return a truthy value except at 0,0
 function isWallAtTileCoord(trackTileCol, trackTileRow){
 				var tileIndex = roomTileToIndex(tileCol, tileRow);
 				return tileIndex;

@@ -1,10 +1,15 @@
 const PEOPLE_FONT = "10px Arial Black"; // used for thought bubbles
-
 const EAST = 1;
 const WEST = 2;
 const NORTH = 3;
 const SOUTH = 4;
 var peopleTextColor = "#fafdff";
+
+// the offset from top left corner of sprite
+// to the center bottom where feet are
+// FIXME these seem wrong - not sure why 
+const peopleFootOffsetX = 8;
+const peopleFootOffsetY = 16;
 
 function addPerson(){
 	newObject = new peopleClass();
@@ -71,10 +76,10 @@ function peopleClass() {
 	}
 
 	this.init = function(whichName) {
-		this.myName = whichName;
+        console.log("Person init: " + whichName);
+        this.myName = whichName;
 		this.reset();
 
-        // wealth, hunger, favorite food, etc
         this.characteristics = new peopleCharacteristics();
 	}
 
@@ -82,6 +87,7 @@ function peopleClass() {
     if (this.characteristics.propertyToGo == null) {
       this.checkBoundaries();
       this.checkIntersections();
+      this.checkForDanger();
     }
     else {
       this.moveToProperty();
@@ -129,7 +135,7 @@ function peopleClass() {
         property.y - 5 < this.y &&
         property.y + 5 > this.y) {
       if (property.building === "restaurant" ) {
-        //console.log("Someone bought " + property.restaurantType.name);
+        console.log("Someone bought food at " + property.restaurantType.name);
         this.characteristics.cash -= property.restaurantType.foodPrice;
         this.characteristics.isHungry = false;
         this.characteristics.decideNextThingToBuy();
@@ -180,6 +186,35 @@ function peopleClass() {
 		}
 	}
 
+    // avoid walking in front of cars!
+    this.checkForDanger = function() {
+        const spd = 4; // pixels movement when we jump off road
+        var tileIndex = getTileIndexAtPixelCoord(this.x,this.y);
+        //var tileType = isWallAtTileCoord(tileIndex) // function is broken
+        var tileFound = roomGrid[tileIndex];
+        //console.log("WALKING ON TILE TYPE " + tileFound);
+        switch (tileFound) {
+            case TILE_ROAD_NS:
+            case TILE_ROAD_WE:
+            case TILE_ROAD_INT:
+                // on the street! lets shift over a bit
+                console.log("sliding off the street! tile type " + tileFound);
+                if (this.moveEast && this.moveNorth) { this.y+=spd; this.x+=spd; }
+                else if (this.moveWest && this.moveNorth) { this.y+=spd; this.x-=spd; }
+                else if (this.moveEast && this.moveSouth) { this.y-=spd; this.x+=spd; }
+                else if (this.moveWest && this.moveSouth) { this.y-=spd; this.x-=spd; }
+                else if (this.moveWest) { this.y+=spd; }
+                else if (this.moveEast) { this.y-=spd; }
+                else if (this.moveNorth) { this.x+=spd; }
+                else if (this.moveSouth) { this.x-=spd; }
+                break;
+            case TILE_GRASS:
+            case TILE_SNOW:
+                // we are perfectly safe here! 
+                break;
+        }
+    }
+
     this.checkIntersections = function(){
 		if((Math.random()<RANDOM_DIR_CHANGE_CHANCE) || // from time to time, do it randomly!
 
@@ -209,8 +244,10 @@ function peopleClass() {
 
 	this.draw = function () {
 		gameCoordToIsoCoord(this.x, this.y);
-		drawBitmapAtLocation(human, isoDrawX, isoDrawY);
-		//colorCircle(isoDrawX, isoDrawY, 4, this.color[this.whichColor]);
+        // FIXME: these feel offset from where the game thinks they are at
+        drawBitmapAtLocation(human, isoDrawX-peopleFootOffsetX, isoDrawY-peopleFootOffsetY);
+        // the dot is at the foot position
+        colorCircle(isoDrawX, isoDrawY, 1, this.color[this.whichColor]);
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
