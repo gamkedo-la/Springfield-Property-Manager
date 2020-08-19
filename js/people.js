@@ -189,7 +189,7 @@ function peopleClass() {
     // avoid walking in front of cars!
     this.checkForDanger = function() {
         const spd = 4; // pixels movement when we jump off road
-        var tileIndex = getTileIndexAtPixelCoord(this.x,this.y);
+        var tileIndex = getTileIndexAtPixelCoord(this.x,this.y); // FIXME!!!! WHY?
         //var tileType = isWallAtTileCoord(tileIndex) // function is broken
         var tileFound = roomGrid[tileIndex];
         //console.log("WALKING ON TILE TYPE " + tileFound);
@@ -198,15 +198,17 @@ function peopleClass() {
             case TILE_ROAD_WE:
             case TILE_ROAD_INT:
                 // on the street! lets shift over a bit
-                console.log("sliding off the street! tile type " + tileFound);
-                if (this.moveEast && this.moveNorth) { this.y+=spd; this.x+=spd; }
-                else if (this.moveWest && this.moveNorth) { this.y+=spd; this.x-=spd; }
-                else if (this.moveEast && this.moveSouth) { this.y-=spd; this.x+=spd; }
-                else if (this.moveWest && this.moveSouth) { this.y-=spd; this.x-=spd; }
-                else if (this.moveWest) { this.y+=spd; }
-                else if (this.moveEast) { this.y-=spd; }
-                else if (this.moveNorth) { this.x+=spd; }
-                else if (this.moveSouth) { this.x-=spd; }
+                console.log("crossing the street at "+this.x+","+this.y+" which is tile type " + tileFound);
+                // handle diagonal movement
+                if (this.moveEast && this.moveNorth)      { this.x+=spd; this.y+=spd; }
+                else if (this.moveWest && this.moveNorth) { this.x-=spd; this.y+=spd; }
+                else if (this.moveEast && this.moveSouth) { this.x+=spd; this.y-=spd; }
+                else if (this.moveWest && this.moveSouth) { this.x-=spd; this.y-=spd; }
+                // if only moving nsew, arbitrarily pick a side
+                else if (this.moveWest)  { this.x-=spd; this.y+=spd; }
+                else if (this.moveEast)  { this.x+=spd; this.y+=spd; }
+                else if (this.moveNorth) { this.x+=spd; this.y-=spd; }
+                else if (this.moveSouth) { this.x-=spd; this.y+=spd; }
                 break;
             case TILE_GRASS:
             case TILE_SNOW:
