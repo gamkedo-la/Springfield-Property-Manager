@@ -140,7 +140,14 @@ function calculateMousePos(evt) {
 						
 function drawEverything() {		
 	colorRect(0,0,canvas.width,canvas.height, '#16171a');
-	if(gameIsStarted === false || paused) {
+	var showInGameUI = (gameIsStarted && openningStoryScreen == false);
+	if (showInGameUI && uiContainerMain.style.display == "none") {
+		uiContainerMain.style.display = "flex";
+	} else if (showInGameUI == false && uiContainerMain.style.display != "none"){
+		uiContainerMain.style.display = "none";
+	}
+
+	if(gameIsStarted === false) {
 		 Menu.draw();
 	} 
 	else if(openningStoryScreen){ 

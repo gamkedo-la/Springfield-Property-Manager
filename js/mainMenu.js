@@ -14,7 +14,6 @@ const KEYS_PAGE = 3;
 const TUTORIALS_PAGE = 4;
 const CREDITS_PAGE = 5;
 const PAUSED_PAGE = 6;
-this.TESTVALUE = 7;
 
 let itemsX = 540;
 let topItemY = 240;
