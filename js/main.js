@@ -18,7 +18,7 @@ var camPanY = 0;
 var camPanSpeed = 5;
 
 var paused = false;
-var gameIsStarted = false;
+var gameIsStarted = true;
 
 function changeState(toState){
 	if(inGameMenu != null){
@@ -140,9 +140,10 @@ function calculateMousePos(evt) {
 						
 function drawEverything() {		
 	colorRect(0,0,canvas.width,canvas.height, '#16171a');
-	//if(gameIsStarted === false || paused) {
-	   // Menu.draw();} 
-	if(openningStoryScreen){ 
+	if(gameIsStarted === false || paused) {
+		 Menu.draw();
+	} 
+	else if(openningStoryScreen){ 
 		drawOpenningStory();
 	} else { //in game
 		

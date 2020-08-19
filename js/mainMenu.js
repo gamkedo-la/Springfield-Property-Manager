@@ -8,12 +8,13 @@ var openningStoryBoxWidth = 700;
 const Menu = new (function() {
 
 const NEW_CITY = 0;
-const RESUME = 1;
-const OPTIONS = 2;
-const KEYS = 3;
-const TUTORIALS = 4;
-const CREDITS = 5;
-const PAUSED = 6;
+const RESUME_PAGE = 1;
+const OPTIONS_PAGE = 2;
+const KEYS_PAGE = 3;
+const TUTORIALS_PAGE = 4;
+const CREDITS_PAGE = 5;
+const PAUSED_PAGE = 6;
+this.TESTVALUE = 7;
 
 let itemsX = 540;
 let topItemY = 240;
@@ -29,6 +30,7 @@ let tutorialsList =[];
 let pausedList =["Save", "Mute", "Back"];
 let creditsList = [];
 let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList, pausedList];
+let currentPage = [];
 
 	this.menuMouse = function() {
 		for(let i=0; i < menuPageTExt[currentPage].length; i++) {
@@ -37,9 +39,9 @@ let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList
 				cursor = i;
 			}
 		}	
-		}
+	}
 	
-	this .update - function () {
+	this.update = function () {
 		if (KeyPressed(KEY_SPACEBAR) || keyPressed(KEY_ENTER)){
 			this.cheState();
 			}
@@ -47,24 +49,24 @@ let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList
 			currentPage = MENU_PAGE;
 			cursor = 0;
 		}
-	}
+	
 
 		if(keyPressed(KEY_UP_ARROW)) {
 			cursor--;
 			//navigationSound.play();
-		if(cursor < 0) {
-			cursor = menuPageText[currentPage].length - 1;
+			if(cursor < 0) {
+				cursor = menuPageText[currentPage].length - 1;
+			}
 		}
-	}
 	
 		if(keyPressed(KEY_DOWN_ARROW)) {
 			cursor++;
 			//navigationSound.play();
-		if (cursor >= menuPageText[currentPage].length) {
-			cursor = 0;
+			if (cursor >= menuPageText[currentPage].length) {
+				cursor = 0;
+			}
 		}
 	}
-
 	this.checkState = function() {
 		if (currentPage == GAMEPLAY_PAGE || currentPage == CREDITS_PAGE) {
 			currentPage = MENU_PAGE;
@@ -82,7 +84,7 @@ let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList
 				break;
 			case "Options":
 				cursor = 0;
-				curentPage = OPTIONS_PAGE; 
+				curentPage = RESUME_PAGE; 
 				break;
 			case "Keys":
 				cursor = 0;
@@ -102,29 +104,28 @@ let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList
 			default:
 				break;
 		}
+	}
+	this.redraw = function () {
+		canvasContext.save();
+		canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+		canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+		canvasContext.restore();
+	}
 
-		this.redraw = function () {
-			canvasContext.save();
-			//canvasContext.setTransform(1, 0, 0, 1, 0, 0);
-			canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-			canvasContext.restore();
-		}
-
-		this.draw = function () {
-			if (gameIsStarted === false) {
-				if (currentPage == PAUSED_PAGE) {
-					currentPage = MENU_PAGE;
-				}
-				this.redraw();
-				//canvasContext.drawImage(logo, 0 ,0);
-				//canvasContext.drawImage(arrow, itemsX ,topItemY + (cursor * rowHeight));
-			} else {
-				currentPage = PAUSED_PAGE;
+	this.draw = function () {
+		if (gameIsStarted === false) {
+			if (currentPage == PAUSED_PAGE) {
+				currentPage = MENU_PAGE;
 			}
+			this.redraw();
+			colorRect(0, 0, canvas.width, canvas.height, "yellow");
+			//canvasContext.drawImage(logo, 0 ,0);
+			//canvasContext.drawImage(arrow, itemsX ,topItemY + (cursor * rowHeight));
+		} else {
+			currentPage = PAUSED_PAGE;
 		}
 	}
 })
-
 
 function drawOpenningStory(){
 	//clear Screen
