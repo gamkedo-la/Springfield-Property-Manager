@@ -99,6 +99,10 @@ function initializeAssets(){
 }
 		
 function moveEverything() {
+	if(gameIsStarted === false) {
+		Menu.update();
+		return;
+	}
 	if(paused || openningStoryScreen) {
 		return;
 	}
@@ -137,7 +141,7 @@ function calculateMousePos(evt) {
 		y: mouseY
 	};
 }
-						
+				
 function drawEverything() {		
 	colorRect(0,0,canvas.width,canvas.height, '#16171a');
 	var showInGameUI = (gameIsStarted && openningStoryScreen == false);
