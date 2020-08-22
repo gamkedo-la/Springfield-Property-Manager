@@ -1,5 +1,3 @@
-
-
 var framesPerSecond = 60;
 
 var canvas;
@@ -20,6 +18,9 @@ var camPanSpeed = 5;
 var paused = false;
 var gameIsStarted = true;
 
+var audioButton = new audioButtonClass();
+var siteActivatedWithClick = false;
+
 function changeState(toState){
 	if(inGameMenu != null){
 		inGameMenu.exit();
@@ -32,18 +33,18 @@ function changeState(toState){
 
 
 window.onload = function(){
-			
+
 	canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
     window.addEventListener("resize", onResize);
     onResize();
-		
+
 	initializeAssets();
 	loadImages();
 	initInput();
 	setUpOwners();
 	setUpClouds();
-		
+
 }
 
 function onResize() {
@@ -58,8 +59,9 @@ function onResize() {
 
 
 function imageLoadingDoneSoStartGame(){
-	
+
 	setInterval(function() {
+		playBackgroundMusic();
 		moveEverything();
 		drawEverything();
 	}, 1000/framesPerSecond);
@@ -70,9 +72,9 @@ function initializeAssets(){
 	var tileIndex = 0;
 	var tileLeftEdgeX = 0;
 	var tileTopEdgeY = 0;
-	
+
 	for(var eachRow = 0; eachRow < MAP_ROWS; eachRow++){
-		tileLeftEdgeX = 0;		
+		tileLeftEdgeX = 0;
 
 		for(var eachCol = 0; eachCol < MAP_COLS; eachCol++) {
 			if (roomGrid[ tileIndex ] == TILE_PERSON) {
@@ -84,20 +86,20 @@ function initializeAssets(){
 				newObject = new vehicleClass();
 				newObject.init("Vehicle from "+eachCol+","+eachRow);
 				vehicleList.push(newObject);
-				
+
 			} else if (roomGrid[ tileIndex ] == TILE_PROPERTY) {
 				newObject = new propertyClass();
 				newObject.init(tileIndex);
 				newObject.salesPrice = randomIntFromInterval(1000,5000);
 				propertyList.push(newObject);
 			}
-			
-		tileTopEdgeY += TILE_H;	
+
+		tileTopEdgeY += TILE_H;
 		tileIndex++;
 		}
 	}
 }
-		
+
 function moveEverything() {
 	if(gameIsStarted === false) {
 		Menu.update();
@@ -117,32 +119,32 @@ function moveEverything() {
 		cloudList[i].move();
 	}
 	checkForPropertyHovering();
-	updateTime(); 
-	
+	updateTime();
+
 	for(var i = 0; i < ownerList.length; i++){
 		ownerList[i].checkForPropertiesOwned();
 	}
-	
-			
 
-		
+	audioButton.checkHover();
+
+
 	if(inGameMenu != null){
 		inGameMenu.update();
 	}
-	
+
 }
-			
+
 function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 	var mouseX = evt.clientX - rect.left - root.scrollLeft;
 	var mouseY = evt.clientY - rect.top - root.scrollTop;
 	return {
-		x: mouseX, 
+		x: mouseX,
 		y: mouseY
 	};
 }
-				
-function drawEverything() {		
+
+function drawEverything() {
 	colorRect(0,0,canvas.width,canvas.height, '#16171a');
 	var showInGameUI = (gameIsStarted && openningStoryScreen == false);
 	if (showInGameUI && uiContainerMain.style.display == "none") {
@@ -153,25 +155,25 @@ function drawEverything() {
 
 	if(gameIsStarted === false) {
 		 Menu.draw();
-	} 
-	else if(openningStoryScreen){ 
+	}
+	else if(openningStoryScreen){
 		drawOpenningStory();
 	} else { //in game
-		
+
 		canvasContext.save();
 		canvasContext.translate(-camPanX, -camPanY/2);
 		drawLandScape();
-		
+
 		for (var i = 0; i < vehicleList.length; i++) {
 			vehicleList[i].draw();
 		}
 		for (var i = 0; i < peopleList.length; i++) {
 			peopleList[i].draw();
 			//console.log(peopleList[0].displayMessageTimer);
-		}		
+		}
 		canvasContext.restore();
 		//colorRect(debugBoxX, debugBoxY, 5, 5, "red");
-		
+
 		for(i = 0; i < propertyList.length; i++)
 		{
 			if(propertyList[i].mouseHovering || propertyList[i].mouseSelected)
@@ -187,17 +189,17 @@ function drawEverything() {
 		for (var i = 0; i < propertyList.length; i++) {
 			propertyList[i].draw();
 		}
-		
+
 		for (var i = 0; i < cloudList.length; i++){
 			cloudList[i].draw();
 		}
-		
+
 		ui.draw();
 
 		canvasContext.restore();
-		
-	
-		
+
+		audioButton.draw();
+
 		if (isHudShown) {
 			if(inGameMenu != null){
 				canvasContext.globalAlpha = 0.5;
@@ -205,10 +207,10 @@ function drawEverything() {
 				canvasContext.globalAlpha = 1.0;
 				inGameMenu.draw();
 			}
-		
+
 			for(var i = 0; i < ownerList.length; i++){
 				ownerList[i].drawStatus();
-			}		
+			}
 
 			drawOwnedProperties();
 			displayGameTime();

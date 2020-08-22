@@ -3,12 +3,12 @@ const KEY_S = 83; // MOVE SCREEN DOWN
 const KEY_A = 65; // MOVE SCREEN LEFT
 const KEY_D = 68; // MOVE SCREEN RIGHT
 const KEY_P = 80; // PAUSE GAME
-const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES 
+const KEY_I = 73; // DISPLAY INFORMATION ABOUT PROPERTIES
 const KEY_L = 76; // TEMPORARY ACCESS TO LAND PURCHASING SCREEN
 const KEY_SPACEBAR = 32; // PURCHASE - TEMPORARY
 const KEY_TAB = 9; // TOGGLE HUD
 const KEY_BACKSPACE = 8;
-const KEY_ENTER = 13; 
+const KEY_ENTER = 13;
 const KEY_SHIFT = 16;
 const KEY_V = 86; // PURCHASE CPU 1 - TEMPORARY
 const KEY_B = 66; // PURCHASE CPU 2 - TEMPORARY
@@ -44,7 +44,15 @@ function mouseMove(evt) {
 
 function handleMouseClick(evt){
 	//gesture();   //current bug, crashes when mouse clicks
-    if (USE_STATSGRAPH) statsCountClick();
+	if(!siteActivatedWithClick){
+		siteActivatedWithClick = true;
+	}
+    if (USE_STATSGRAPH){
+			statsCountClick();
+	}
+	if(audioButton.hovered){
+		audioButton.toggle();
+	}
     checkForPropertySelection();
 }
 
@@ -92,27 +100,28 @@ function keyPressed(evt) {
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_CPU_1].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;	
+		break;
 		case KEY_B:
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_CPU_2].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;	
+		break;
 		case KEY_N:
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_CPU_3].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;	
+		break;
 		case KEY_M:
 		if(ownerList[OWNER_HUMAN].atProperty != null){
 			ownerList[OWNER_CPU_4].buyProperty(ownerList[OWNER_HUMAN].atProperty);
 		}
-		break;	
+		break;
 		case KEY_Q:
 			callPurchaseProperty(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
 		case KEY_1:
-			backgroundSong.play(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
+			backgroundSong.play();
+			//this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
 	}
 	if(typeof evt.preventDefault !== "undefined"){
@@ -126,6 +135,5 @@ function keyReleased(evt) {
 
 
 function setKeyHoldState(thisKey, thisSelection, setTo) {
-	
-}
 
+}

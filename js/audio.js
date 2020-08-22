@@ -8,6 +8,47 @@ const VOLUME_INCREMENT = 0.0333;
 
 //define sounds
 var backgroundSong = new soundLoopsClass("audio/gameplayMusicV1.mp3");
+var invalidSelectSFX = new soundSingleBufferClass("audio/invalid_select_sfx.wav");
+var validSelectSFX = new soundSingleBufferClass("audio/valid_select_sfx.wav");
+
+//audio UI -----------------------------------------------------------
+function playBackgroundMusic(){
+	if(siteActivatedWithClick && audioButton.toggledOn){
+		backgroundSong.play();
+	}
+}
+
+function audioButtonClass(){
+	this.x = 800; //canvas.width doesn't work here for some reason???
+	this.y = 32;
+	this.hovered = false;
+	this.toggledOn = true;
+
+	this.draw = function(){
+		if(this.toggledOn){
+			canvasContext.drawImage(soundOnPic, canvas.width-64, this.y);
+		} else{
+			canvasContext.drawImage(soundOffPic, canvas.width-64, this.y);
+		}
+	}
+
+	this.checkHover = function(){
+		if(mousePosX > canvas.width-64 && mousePosX < canvas.width && mousePosY > this.y && mousePosY < this.y+64){
+			this.hovered = true;
+		} else{
+			this.hovered = false;
+		}
+	}
+
+	this.toggle = function(){
+		backgroundSong.stop();
+		if(this.toggledOn){
+			this.toggledOn = false;
+		} else{
+			this.toggledOn = true;
+		}
+	}
+}
 
 
 //--//sound classes-----------------------------------------------------------
@@ -122,7 +163,7 @@ function soundSingleBufferClass(fullFilenameWithPath) {
 
 		sound.currentTime = 0;
 		sound.volume = Math.pow(getRandomVolume() * effectsVolume * !isMuted, 2);
-		sounds.play();
+		sound.play();
 	}
 
 

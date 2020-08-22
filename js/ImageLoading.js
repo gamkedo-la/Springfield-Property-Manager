@@ -20,6 +20,8 @@ var playerOnePic = document.createElement("img");
 var playerTwoPic = document.createElement("img");
 var playerThreePic = document.createElement("img");
 var playerFourPic = document.createElement("img");
+var soundOnPic = document.createElement("img");
+var soundOffPic = document.createElement("img");
 
 
 
@@ -44,11 +46,11 @@ function beginLoadingImage(imgVar, fileName) {
 
 function loadImageForRoomCode(trackCode, fileName)  {
 	trackPics[trackCode] = document.createElement("img");
-	beginLoadingImage(trackPics[trackCode], fileName);	
+	beginLoadingImage(trackPics[trackCode], fileName);
 }
 
 function loadImages() {
-	
+
 		var imageList = [
 			{varName: propertyPic, theFile: "landMarker.png"},
 			{varName: restuarantPic, theFile: "restaurant.png"},
@@ -56,7 +58,7 @@ function loadImages() {
 			{varName: building2Pic, theFile: "regular_duplex.png"},
 			{varName: building3Pic, theFile: "building3.png"},
 			{varName: building4Pic, theFile: "building4.png"},
-			{varName: luxaryOfficePic, theFile: "Luxury2Office.png"},			
+			{varName: luxaryOfficePic, theFile: "Luxury2Office.png"},
 			{varName: brazilianSteakhousePic, theFile: "brazilianSteakHouse.png"},
 			{varName: commercialForSaleSignPic, theFile: "commercialForSaleSign.png"},
 			{varName: residentialForSaleSignPic, theFile: "residentialForSaleSign.png"},
@@ -72,14 +74,16 @@ function loadImages() {
 			{varName: playerTwoPic, theFile: "playerTwo.png"},
 			{varName: playerThreePic, theFile: "playerThree.png"},
 			{varName: playerFourPic, theFile: "playerFour.png"},
-			
+			{varName: soundOnPic, theFile: "sound_on.png"},
+			{varName: soundOffPic, theFile: "sound_off.png"},
+
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},
 			{trackType: TILE_ROAD_INT, theFile: "road_intersection.png"},
 			{trackType: TILE_GRASS, theFile: "grass.png"},
 			{trackType: TILE_SNOW, theFile: "snow.png"}
 		];
-			
+
 	picsToLoad = imageList.length;
 
 	for(var i=0; i<imageList.length; i++) {
