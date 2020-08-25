@@ -121,6 +121,7 @@ function keyPressed(evt) {
 		break;
 		case KEY_1:
 			backgroundSong.play();
+			cityambience.play();
 			//this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
 	}

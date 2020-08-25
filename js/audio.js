@@ -10,11 +10,14 @@ const VOLUME_INCREMENT = 0.0333;
 var backgroundSong = new soundLoopsClass("audio/gameplayMusicV1.mp3");
 var invalidSelectSFX = new soundSingleBufferClass("audio/invalid_select_sfx.wav");
 var validSelectSFX = new soundSingleBufferClass("audio/valid_select_sfx.wav");
+var cityambience = new soundLoopsClass("audio/amb_city.mp3");
 
 //audio UI -----------------------------------------------------------
 function playBackgroundMusic(){
 	if(siteActivatedWithClick && audioButton.toggledOn){
 		backgroundSong.play();
+		
+			cityambience.play();
 	}
 }
 
