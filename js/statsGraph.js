@@ -89,7 +89,8 @@ function drawStatsGraph() { // runs every second
     }
 
     // fill clear
-    statsContext.fillStyle = "#fafdff";
+    //statsContext.fillStyle = "#fafdff"; // off white
+    statsContext.fillStyle = "#10d275"; // logo road sign green
     statsContext.fillRect(0,0,statsW,statsH);
 
     // just blank out instead, so CSS background shows through
@@ -98,22 +99,22 @@ function drawStatsGraph() { // runs every second
     // actually draw a nice line chart!
     switch (currentStatsTab) {
         case TAB_PEOPLE:
-            drawLineGraph(statsData.people,"blue","population",0);
-            drawLineGraph(statsData.vehicles,"black","vehicles",1);
+            drawLineGraph(statsData.people,"#ffd100","population",0);
+            drawLineGraph(statsData.vehicles,"#002859","vehicles",1);
             break;
         case TAB_BUILDINGS:
-            drawLineGraph(statsData.residential,"green","residential",0);
-            drawLineGraph(statsData.commercial,"orange","commercial",1);
-            drawLineGraph(statsData.vacant,"silver","vacant",2);
+            drawLineGraph(statsData.residential,"#d4dd98","residential",0);
+            drawLineGraph(statsData.commercial,"#ff8426","commercial",1);
+            drawLineGraph(statsData.vacant,"#002859","vacant",2);
             break;
         case TAB_CONSTRUCTION:
-            drawLineGraph(statsData.properties,"blue","properties",0);
-            drawLineGraph(statsData.owners,"black","owners",1);
+            drawLineGraph(statsData.properties,"#ffd100","properties",0);
+            drawLineGraph(statsData.owners,"#002859","owners",1);
             break;
         case TAB_MONEY:
-            drawLineGraph(statsData.clicks,"black","clicks",0);
-            drawLineGraph(statsData.income,"blue","income",1);
-            drawLineGraph(statsData.cash,"green","cash",2);
+            drawLineGraph(statsData.clicks,"#002859","clicks",0);
+            drawLineGraph(statsData.income,"#ffd100","income",1);
+            drawLineGraph(statsData.cash,"#ff8426","cash",2);
             break;
     }
 }
