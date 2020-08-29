@@ -53,7 +53,7 @@ function onResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     // re-center the world
-    camPanX = -1 * Math.round(canvas.width/2 - 150);
+    camPanX = -1 * Math.round(canvas.width/2 + 100);
     camPanY = -1 * Math.round(canvas.height/2 - 300);
 }
 
