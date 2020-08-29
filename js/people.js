@@ -11,8 +11,8 @@ var peopleTextColor = "#fafdff";
 const peopleFootOffsetX = 8;
 const peopleFootOffsetY = 16;
 // offset from person xy to status effect bubble
-const peopleStatusOffsetX = 8;
-const peopleStatusOffsetY = -16;
+const peopleStatusOffsetX = -18;
+const peopleStatusOffsetY = -65;
 
 
 function addPerson(){
@@ -269,8 +269,8 @@ function peopleClass() {
             if(this.characteristics.isHungry){
 
                 //textBubble("I'm Hungry!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
-                drawBitmapAtLocation(statusBubble, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
-                drawBitmapAtLocation(statusHunger, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
+                drawBitmapAtLocation(statusBubble, isoDrawX+peopleStatusOffsetX, isoDrawY+peopleStatusOffsetY);
+                drawBitmapAtLocation(statusHunger, isoDrawX+peopleStatusOffsetX, isoDrawY+peopleStatusOffsetY);
                 
 			} else if(this.characteristics.isHomeless){
 
