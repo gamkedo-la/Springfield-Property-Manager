@@ -136,7 +136,8 @@ function moveEverything() {
 
 	audioButton.checkHover();
 
-
+	helpButton.hoverCheck();
+	
 	if(inGameMenu != null){
 		inGameMenu.update();
 	}

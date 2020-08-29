@@ -53,6 +53,10 @@ function handleMouseClick(evt){
 	if(audioButton.hovered){
 		audioButton.toggle();
 	}
+	if(helpButton.hoverCheck())
+	{
+		helpButton.setShow();
+	}
     checkForPropertySelection();
 }
 
