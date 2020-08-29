@@ -22,7 +22,10 @@ var playerThreePic = document.createElement("img");
 var playerFourPic = document.createElement("img");
 var soundOnPic = document.createElement("img");
 var soundOffPic = document.createElement("img");
-
+var statusBubble = document.createElement("img");
+var statusHunger = document.createElement("img");
+var statusHomeless = document.createElement("img");
+var italianRestaurant = document.createElement("img");
 
 
 //var titlepagePic = document.createElement("img");
@@ -76,6 +79,11 @@ function loadImages() {
 			{varName: playerFourPic, theFile: "playerFour.png"},
 			{varName: soundOnPic, theFile: "sound_on.png"},
 			{varName: soundOffPic, theFile: "sound_off.png"},
+			{varName: statusBubble, theFile: "statusBubble.png"},
+			{varName: statusHunger, theFile: "statusHunger.png"},
+			{varName: statusHomeless, theFile: "statusHomeless.png"},
+			{varName: italianRestaurant, theFile: "italianRestaurant.png"},
+            
 
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},

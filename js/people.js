@@ -10,6 +10,10 @@ var peopleTextColor = "#fafdff";
 // FIXME these seem wrong - not sure why 
 const peopleFootOffsetX = 8;
 const peopleFootOffsetY = 16;
+// offset from person xy to status effect bubble
+const peopleStatusOffsetX = 8;
+const peopleStatusOffsetY = -16;
+
 
 function addPerson(){
 	newObject = new peopleClass();
@@ -261,10 +265,19 @@ function peopleClass() {
 					peopleTextColor = '#fafdff';
 			}
 			
-			if(this.characteristics.isHungry){
-				textBubble("I'm Hungry!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
+            // STATUS EFFECTS
+            if(this.characteristics.isHungry){
+
+                //textBubble("I'm Hungry!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
+                drawBitmapAtLocation(statusBubble, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
+                drawBitmapAtLocation(statusHunger, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
+                
 			} else if(this.characteristics.isHomeless){
-				textBubble("I need a place to rent!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
+
+                //textBubble("I need a place to rent!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
+                drawBitmapAtLocation(statusBubble, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
+                drawBitmapAtLocation(statusHomeless, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
+                
 			}
 		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;
