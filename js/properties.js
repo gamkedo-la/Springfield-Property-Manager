@@ -17,6 +17,23 @@ const restaurantTypes = [
   }
 ];
 
+
+/*
+//Arrays that stores varnames to image assets
+//Unused const arrays that will allow to add more variation of buildings if more art of the same type of building is added
+const residentialDuplex    = [building2Pic];
+const residentialApartment = [buildingPic];
+const residentialLuxury    = [building4Pic];
+const officeBasic          = [building3Pic];
+*/
+
+const officeLuxury         = [luxuryOfficeType1,luxuryOfficeType2];
+
+let restaurantsAndShops  = new Map();
+restaurantsAndShops.set("brazilianSteakhouse",brazilianSteakhousePic);
+restaurantsAndShops.set("italianRestaurant",italianRestaurant);
+
+
 function propertyClass() {
     this.height = 100;
     this.isoBuildingHeight = 50;
@@ -26,6 +43,7 @@ function propertyClass() {
     this.salePrice = 10000;
     this.zoned;
     this.building = "none";
+    this.variation = "none";
     this.propertyTileMapIndex = -1; // set in  init()
     this.restaurantType = null;
 	this.owner = OWNER_NONE;
@@ -101,7 +119,7 @@ function propertyClass() {
 			this.salePrice = 2500;
 		} else if (randomZone >= 37 && randomZone <= 40) {
             this.zoned = "Residential";
-            this.building = "LuxaryApartment";
+            this.building = "LuxuryApartment";
 			this.salePrice = 10000;
 		} else if (randomZone == 41) {
             this.zoned = "Commercial";
@@ -109,7 +127,8 @@ function propertyClass() {
 			this.salePrice = 15000;
 		} else if (randomZone == 42) {
             this.zoned = "Commercial";
-            this.building = "luxaryOffice";
+            this.building = "LuxuryOffice";
+            this.variation = officeLuxury[randomIntFromInterval(0,officeLuxury.length-1)];
 			this.salePrice = 20000;
         } else if (randomZone >= 43 && randomZone <= 45) {
             this.zoned = "Commercial";
@@ -150,7 +169,7 @@ function propertyClass() {
         } else if (this.building == "basicDuplex") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-        } else if (this.building == "LuxaryApartment") {
+        } else if (this.building == "LuxuryApartment") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building4Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
@@ -158,13 +177,13 @@ function propertyClass() {
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "brazilianSteakhouse") {
             this.isoBuildingHeight = 50;
-            drawBitmapAtLocation(brazilianSteakhousePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+            drawBitmapAtLocation(restaurantsAndShops.get(this.building), isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "italianRestaurant") {
             this.isoBuildingHeight = 50;
-            drawBitmapAtLocation(italianRestaurant, isoDrawX, isoDrawY - this.isoBuildingHeight);
-        } else if (this.building == "luxaryOffice") {
+            drawBitmapAtLocation(restaurantsAndShops.get(this.building), isoDrawX, isoDrawY - this.isoBuildingHeight);
+        } else if (this.building == "LuxuryOffice") {
             this.isoBuildingHeight = 50;
-            drawBitmapAtLocation(luxaryOfficePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+            drawBitmapAtLocation(this.variation, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else { // no building, draw a for sale sign based on commercial or residential
             drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);
             if (this.zoned == "Commercial") {
