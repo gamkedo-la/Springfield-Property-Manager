@@ -193,8 +193,15 @@ function peopleClass() {
     // avoid walking in front of cars!
     this.checkForDanger = function() {
         const spd = 4; // pixels movement when we jump off road
-        var tileIndex = getTileIndexAtPixelCoord(this.x,this.y); // FIXME!!!! WHY?
+        
+        ///////////////////////////////////////////////////////////////////////////
+        // this function returns the wrong tile
+        var HACK = TILE_W/2; // temp workaround using guesswork
+        ///////////////////////////////////////////////////////////////////////////
+        var tileIndex = getTileIndexAtPixelCoord(this.x-HACK-HACK,this.y+HACK); // FIXME!!!!
+        ///////////////////////////////////////////////////////////////////////////
         //var tileType = isWallAtTileCoord(tileIndex) // function is broken
+
         var tileFound = roomGrid[tileIndex];
         //console.log("WALKING ON TILE TYPE " + tileFound);
         switch (tileFound) {
@@ -202,7 +209,7 @@ function peopleClass() {
             case TILE_ROAD_WE:
             case TILE_ROAD_INT:
                 // on the street! lets shift over a bit
-                console.log("crossing the street at "+this.x+","+this.y+" which is tile type " + tileFound);
+                //console.log("crossing the street at "+this.x+","+this.y+" which is tile type " + tileFound);
                 // handle diagonal movement
                 if (this.moveEast && this.moveNorth)      { this.x+=spd; this.y+=spd; }
                 else if (this.moveWest && this.moveNorth) { this.x-=spd; this.y+=spd; }
