@@ -18,7 +18,6 @@ var camPanSpeed = 5;
 var paused = false;
 var gameIsStarted = true;
 
-var audioButton = new audioButtonClass();
 var siteActivatedWithClick = false;
 
 var audioButton;
