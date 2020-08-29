@@ -39,6 +39,7 @@ window.onload = function(){
 	canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
     window.addEventListener("resize", onResize);
+    window.addEventListener('mousemove', calculateMousePos);
     onResize();
 
 	initializeAssets();
@@ -148,6 +149,7 @@ function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 	var mouseX = evt.clientX - rect.left - root.scrollLeft;
 	var mouseY = evt.clientY - rect.top - root.scrollTop;
+	// console.log(mouseX +" / "+ mouseY)
 	return {
 		x: mouseX,
 		y: mouseY
@@ -209,6 +211,7 @@ function drawEverything() {
 		canvasContext.restore();
 
 		audioButton.draw();
+		// canvasContext.drawImage(cityHallPic, isoDrawX, isoDrawY);
 
 		helpButton.draw();
 
