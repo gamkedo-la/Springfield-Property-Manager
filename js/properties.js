@@ -74,7 +74,7 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 42);
+        let randomZone = randomIntFromInterval(1, 45);
 		
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
@@ -111,8 +111,12 @@ function propertyClass() {
             this.zoned = "Commercial";
             this.building = "luxaryOffice";
 			this.salePrice = 20000;
-		} 
-		
+        } else if (randomZone >= 43 && randomZone <= 45) {
+            this.zoned = "Commercial";
+            this.building = "italianRestaurant";
+            this.salePrice = 32000;
+        }    
+
         this.reset();
     }
 
@@ -152,11 +156,13 @@ function propertyClass() {
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-
         } else if (this.building == "brazilianSteakhouse") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(brazilianSteakhousePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-		} else if (this.building == "luxaryOffice") {
+        } else if (this.building == "italianRestaurant") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(italianRestaurant, isoDrawX, isoDrawY - this.isoBuildingHeight);
+        } else if (this.building == "luxaryOffice") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(luxaryOfficePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else { // no building, draw a for sale sign based on commercial or residential
