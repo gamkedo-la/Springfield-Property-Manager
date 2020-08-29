@@ -28,7 +28,7 @@ var statusBubble = document.createElement("img");
 var statusHunger = document.createElement("img");
 var statusHomeless = document.createElement("img");
 var italianRestaurant = document.createElement("img");
-
+var helpButtonPic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -87,6 +87,7 @@ function loadImages() {
 			{varName: statusHunger, theFile: "statusHunger.png"},
 			{varName: statusHomeless, theFile: "statusHomeless.png"},
 			{varName: italianRestaurant, theFile: "italianRestaurant.png"},
+			{varName: helpButtonPic, theFile:"help.png"},
             
 
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},

@@ -22,7 +22,8 @@ function playBackgroundMusic(){
 }
 
 function audioButtonClass(){
-	this.x = 800; //canvas.width doesn't work here for some reason???
+	/* it should work now, check the main.js you instantiated the audio button before the canvas variable was defined therefore it was not accessible but it was accessible in the draw because it was called after canvas has been defined. (eddy casio101)*/
+	this.x = this.width; //canvas.width doesn't work here for some reason??? (fixed)
 	this.y = 32;
 	this.hovered = false;
 	this.toggledOn = true;

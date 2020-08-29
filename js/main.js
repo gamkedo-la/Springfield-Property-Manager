@@ -21,6 +21,9 @@ var gameIsStarted = true;
 var audioButton = new audioButtonClass();
 var siteActivatedWithClick = false;
 
+var audioButton;
+var helpButton;
+
 function changeState(toState){
 	if(inGameMenu != null){
 		inGameMenu.exit();
@@ -40,6 +43,7 @@ window.onload = function(){
     onResize();
 
 	initializeAssets();
+	createButtons();
 	loadImages();
 	initInput();
 	setUpOwners();
@@ -98,6 +102,12 @@ function initializeAssets(){
 		tileIndex++;
 		}
 	}
+}
+
+function createButtons()
+{
+	audioButton = new audioButtonClass();
+	helpButton = new helpMenu();
 }
 
 function moveEverything() {
@@ -199,6 +209,8 @@ function drawEverything() {
 		canvasContext.restore();
 
 		audioButton.draw();
+
+		helpButton.draw();
 
 		if (isHudShown) {
 			if(inGameMenu != null){
