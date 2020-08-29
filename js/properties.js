@@ -23,11 +23,11 @@ const restaurantTypes = [
 //Unused const arrays that will allow to add more variation of buildings if more art of the same type of building is added
 const residentialDuplex    = [building2Pic];
 const residentialApartment = [buildingPic];
-const residentialLuxury    = [building4Pic];
 const officeBasic          = [building3Pic];
 */
 
 const officeLuxury         = [luxuryOfficeType1,luxuryOfficeType2];
+const residentialLuxury    = [luxuryResidentialType1,luxuryResidentialType2];
 
 let restaurantsAndShops  = new Map();
 restaurantsAndShops.set("brazilianSteakhouse",brazilianSteakhousePic);
@@ -118,8 +118,9 @@ function propertyClass() {
             this.building = "basicDuplex";
 			this.salePrice = 2500;
 		} else if (randomZone >= 37 && randomZone <= 40) {
-            this.zoned = "Residential";
-            this.building = "LuxuryApartment";
+            this.zoned     = "Residential";
+            this.building  = "LuxuryResidential";
+            this.variation = residentialLuxury[randomIntFromInterval(0,residentialLuxury.length-1)];
 			this.salePrice = 10000;
 		} else if (randomZone == 41) {
             this.zoned = "Commercial";
@@ -169,9 +170,9 @@ function propertyClass() {
         } else if (this.building == "basicDuplex") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building2Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-        } else if (this.building == "LuxuryApartment") {
+        } else if (this.building == "LuxuryResidential") {
             this.isoBuildingHeight = 50;
-            drawBitmapAtLocation(building4Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+            drawBitmapAtLocation(this.variation, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "OfficeBuilding") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(building3Pic, isoDrawX, isoDrawY - this.isoBuildingHeight);

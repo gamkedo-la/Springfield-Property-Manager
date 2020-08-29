@@ -4,7 +4,8 @@ var commercialForSaleSignPic = document.createElement("img");
 var buildingPic = document.createElement("img");
 var building2Pic = document.createElement("img");
 var building3Pic = document.createElement("img");
-var building4Pic = document.createElement("img");
+var luxuryResidentialType1 = document.createElement("img");
+var luxuryResidentialType2 = document.createElement("img");
 var restuarantPic = document.createElement("img");
 var luxuryOfficeType1 = document.createElement("img");
 var luxuryOfficeType2 = document.createElement("img");
@@ -61,7 +62,8 @@ function loadImages() {
 			{varName: buildingPic, theFile: "building.png"},
 			{varName: building2Pic, theFile: "regular_duplex.png"},
 			{varName: building3Pic, theFile: "building3.png"},
-			{varName: building4Pic, theFile: "building4.png"},
+			{varName: luxuryResidentialType1, theFile:"building4.png"},
+			{varName: luxuryResidentialType2, theFile:"lux_residential_duplex.png"},
 			{varName: luxuryOfficeType1, theFile:"luxuryOfficeType1.png"},
 			{varName: luxuryOfficeType2, theFile:"luxuryOfficeType2.png"},
 			{varName: brazilianSteakhousePic, theFile: "brazilianSteakHouse.png"},
