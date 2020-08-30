@@ -15,13 +15,14 @@ tabClicked = (e) => {
     }
     // which tab was just clicked? used by statsGraph.js
     if (e.currentTarget==isHighlighted) {
+        if (i == TAB_BUILDINGS ||  drawPlayerDesignsOnly){
+          drawPlayerDesignsOnly = !drawPlayerDesignsOnly;
+          paused = drawPlayerDesignsOnly;
+        }
         changeStatsTab(i);
     }
   }
   // set current highlight
   e.currentTarget.classList.add('highlight');
 
-} 
-
-
-
+}

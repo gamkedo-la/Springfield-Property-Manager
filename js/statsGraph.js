@@ -13,7 +13,7 @@ const TAB_MONEY = 3;
 var currentStatsTab = TAB_PEOPLE;
 
 var statsData = {
-    
+
     // all-time singule number stats
     months:0,
     days:0,
@@ -71,9 +71,9 @@ function stepStatsGraph() {
 
 function drawStatsGraph() { // runs every second
     //if (DEBUG_STATSGRAPH) console.log("drawStatsGraph");
-    
+
     if (!statsData.initialized) return;
-    
+
     // text debug display
     if (DEBUG_STATSGRAPH) {
         var statsdiv = document.getElementById("statsGraph");
@@ -120,7 +120,7 @@ function drawStatsGraph() { // runs every second
 }
 
 function maxValue(arr) {
-    return arr.reduce(function(a,b) { return Math.max(a,b); });    
+    return arr.reduce(function(a,b) { return Math.max(a,b); });
 }
 
 function countZone(zone) {
@@ -159,7 +159,7 @@ function drawLineGraph(data=[],colour="red",legend="value",statnum=0) {
     // because this is a different canvas!!!
     // colorTextShadow(legend,8,statsH-16-12*statnum,colour,"8px 'lexendpeta'");
     var textX = 8;
-    var textY = statsH-12*(statnum+1);    
+    var textY = statsH-12*(statnum+1);
     statsContext.textAlign = "left";
     statsContext.font = "8px 'lexendpeta'";
     statsContext.fillStyle = colour;
@@ -186,4 +186,4 @@ function changeStatsTab(i) {
     currentStatsTab = i;
     console.log("Current stats tab: " + currentStatsTab);
     drawStatsGraph();
-}      
+}

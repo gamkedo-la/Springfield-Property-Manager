@@ -7,7 +7,7 @@ var peopleTextColor = "#fafdff";
 
 // the offset from top left corner of sprite
 // to the center bottom where feet are
-// FIXME these seem wrong - not sure why 
+// FIXME these seem wrong - not sure why
 const peopleFootOffsetX = 8;
 const peopleFootOffsetY = 16;
 // offset from person xy to status effect bubble
@@ -193,7 +193,7 @@ function peopleClass() {
     // avoid walking in front of cars!
     this.checkForDanger = function() {
         const spd = 4; // pixels movement when we jump off road
-        
+
         ///////////////////////////////////////////////////////////////////////////
         // this function returns the wrong tile
         var HACK = TILE_W/2; // temp workaround using guesswork
@@ -223,7 +223,7 @@ function peopleClass() {
                 break;
             case TILE_GRASS:
             case TILE_SNOW:
-                // we are perfectly safe here! 
+                // we are perfectly safe here!
                 break;
         }
     }
@@ -256,6 +256,9 @@ function peopleClass() {
 	}
 
 	this.draw = function () {
+		if (drawPlayerDesignsOnly) {
+			return;
+		}
 		gameCoordToIsoCoord(this.x, this.y);
         // FIXME: these feel offset from where the game thinks they are at
         drawBitmapAtLocation(human, isoDrawX-peopleFootOffsetX, isoDrawY-peopleFootOffsetY);
@@ -264,27 +267,27 @@ function peopleClass() {
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
-            
+
             //Changes text color to be more visible depending on which month it is
 			if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
 					peopleTextColor = '#16171a';
 				} else {
 					peopleTextColor = '#fafdff';
 			}
-			
+
             // STATUS EFFECTS
             if(this.characteristics.isHungry){
 
                 //textBubble("I'm Hungry!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
                 drawBitmapAtLocation(statusBubble, isoDrawX+peopleStatusOffsetX, isoDrawY+peopleStatusOffsetY);
                 drawBitmapAtLocation(statusHunger, isoDrawX+peopleStatusOffsetX, isoDrawY+peopleStatusOffsetY);
-                
+
 			} else if(this.characteristics.isHomeless){
 
                 //textBubble("I need a place to rent!", isoDrawX, isoDrawY - 5, peopleTextColor, PEOPLE_FONT);
                 drawBitmapAtLocation(statusBubble, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
                 drawBitmapAtLocation(statusHomeless, isoDrawX-peopleStatusOffsetX, isoDrawY-peopleStatusOffsetY);
-                
+
 			}
 		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;

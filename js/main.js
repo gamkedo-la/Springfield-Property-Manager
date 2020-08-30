@@ -23,6 +23,8 @@ var siteActivatedWithClick = false;
 var audioButton;
 var helpButton;
 
+var drawPlayerDesignsOnly = false;
+
 function changeState(toState){
 	if(inGameMenu != null){
 		inGameMenu.exit();
@@ -138,7 +140,7 @@ function moveEverything() {
 	audioButton.checkHover();
 
 	helpButton.hoverCheck();
-	
+
 	if(inGameMenu != null){
 		inGameMenu.update();
 	}

@@ -15,7 +15,7 @@ function vehicleClass() {
 	this.dontMove = false;
 	this.vehicleImageOffset = 20;
 
-	this.reset = function(){				
+	this.reset = function(){
 		if(this.homeX == undefined) {
 			for(var i=0; i<roomGrid.length; i++){
 				if( roomGrid[i] == TILE_VEHICLE) {
@@ -30,9 +30,9 @@ function vehicleClass() {
 		}
 		this.x = this.homeX;
 		this.y = this.homeY;
-		
+
 		this.resetSprite();
-		
+
 		let randomDirection = randomIntFromInterval(2)
 		this.whichColor = randomIntFromInterval(1,7) - 1;
 		//if(randomDirection == 1){
@@ -55,10 +55,10 @@ function vehicleClass() {
 		this.myName = whichName;
 		this.reset();
 	}
-	
+
 	this.move = function() {
 		this.checkBoundaries();
-		
+
 		if(this.moveWest){
 			this.x = this.x - this.velX;
 		} else if(this.moveEast){
@@ -72,7 +72,7 @@ function vehicleClass() {
 			this.velY = 0;
 		}
 	}
-	
+
 	this.checkBoundaries = function(){
 		if(this.x > GAME_WIDTH){
 			this.x = 0;
@@ -86,8 +86,11 @@ function vehicleClass() {
 			this.y = GAME_HEIGHT;
 		}
 	}
-	
+
 	this.draw = function () {
+		if (drawPlayerDesignsOnly) {
+			return;
+		}
 		gameCoordToIsoCoord(this.x, this.y);
 		canvasContext.save();
 		canvasContext.translate(isoDrawX+this.vehicleImageOffset, isoDrawY);

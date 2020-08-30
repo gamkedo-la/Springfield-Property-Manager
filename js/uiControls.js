@@ -82,7 +82,9 @@ function keyPressed(evt) {
 		camPanX += camPanSpeed;
 		break;
 		case KEY_P:
-			paused = !paused;
+		if (!drawPlayerDesignsOnly) {
+				paused = !paused;
+		}
 		break;
 		case KEY_I:
 			changeState(menuState_propertyInformation);

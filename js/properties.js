@@ -1,5 +1,5 @@
 const PROPERTY_FONT = "8px Arial Black"; // used in mouse hover info
-const PROPERTY_TXTX = 32; // offsets from building xy 
+const PROPERTY_TXTX = 32; // offsets from building xy
 const PROPERTY_TXTY = 60;
 
 const restaurantTypes = [
@@ -68,7 +68,7 @@ function propertyClass() {
         }
         this.x = this.homeX;
         this.y = this.homeY;
-		
+
 		if(	this.propertyTileMapIndex == 17 || //corner lots
 			this.propertyTileMapIndex == 19 ||
 			this.propertyTileMapIndex == 49 ||
@@ -84,7 +84,7 @@ function propertyClass() {
 			this.propertyTileMapIndex == 140 ||
 			this.propertyTileMapIndex == 142 ||
 			this.propertyTileMapIndex == 172 ||
-			this.propertyTileMapIndex == 174 
+			this.propertyTileMapIndex == 174
 			){
 				this.cornerLot = true;
 		}
@@ -93,7 +93,7 @@ function propertyClass() {
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
         let randomZone = randomIntFromInterval(1, 45);
-		
+
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
 			this.salePrice = 1000;
@@ -135,7 +135,7 @@ function propertyClass() {
             this.zoned = "Commercial";
             this.building = "italianRestaurant";
             this.salePrice = 32000;
-        }    
+        }
 
         this.reset();
     }
@@ -149,19 +149,22 @@ function propertyClass() {
 		if(this.zoned == "Commercial"){
 			//calculatedScore based on corner lots
 			if(this.cornerLot){
-				calculatedScore *= 2;	
+				calculatedScore *= 2;
 			}
 			//if(apartmentAsANeighbor){
 			// calculatedScore *= 2;
 			//} if(iOwnTheNeighborProperty){
 			// calculatedScore *= 2;
-			//}	
+			//}
 		}
 		return calculatedScore;
 	}
 
     this.draw = function() {
         gameCoordToIsoCoord(this.x, this.y);
+        if (drawPlayerDesignsOnly && this.owner != OWNER_HUMAN) {
+          return;
+        }
         if (this.building == "restaurant") {
             drawBitmapAtLocation(restuarantPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
 		} else if (this.building == "apartment") {
@@ -193,7 +196,7 @@ function propertyClass() {
                 drawBitmapAtLocation(residentialForSaleSignPic, isoDrawX, isoDrawY);
             }
         }
-		
+
 
         if (this.mouseSelected) {
             ui.drawPropertyUI(this.mouseSelected, isoDrawX, isoDrawY, this.width, this.height, this.propertyTileMapIndex,'$' + this.salePrice, this.zoned, this.owner);
@@ -202,18 +205,18 @@ function propertyClass() {
         } else {
 			if(this.owner == OWNER_HUMAN){
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "white", PROPERTY_FONT);
-			} else if (this.owner == OWNER_CPU_1){			
+			} else if (this.owner == OWNER_CPU_1){
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "blue", PROPERTY_FONT);
 				drawBitmapAtLocation(playerOnePic, isoDrawX+40, isoDrawY);
-			} else if (this.owner == OWNER_CPU_2){		
+			} else if (this.owner == OWNER_CPU_2){
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "green", PROPERTY_FONT);
 				drawBitmapAtLocation(playerTwoPic, isoDrawX+40, isoDrawY);
-			} else if (this.owner == OWNER_CPU_3){			
+			} else if (this.owner == OWNER_CPU_3){
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "purple", PROPERTY_FONT);
 				drawBitmapAtLocation(playerThreePic, isoDrawX+40, isoDrawY);
-			} else if (this.owner == OWNER_CPU_4){			
+			} else if (this.owner == OWNER_CPU_4){
 				colorTextShadow("Lot #"+this.propertyTileMapIndex, isoDrawX + PROPERTY_TXTX, isoDrawY + PROPERTY_TXTY, "yellow", PROPERTY_FONT);
-				drawBitmapAtLocation(playerFourPic, isoDrawX+40, isoDrawY);				
+				drawBitmapAtLocation(playerFourPic, isoDrawX+40, isoDrawY);
 			}
 		}
     }
