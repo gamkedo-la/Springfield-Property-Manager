@@ -67,8 +67,9 @@ function keyPressed(evt) {
 		}
 		return;
 	}
+
 	cheats(evt.key);
-	switch(evt.keyCode){
+	switch(evt.keyCode){		
 		case KEY_W:
 		camPanY -= camPanSpeed;
 		break;
@@ -130,6 +131,24 @@ function keyPressed(evt) {
 			cityambience.play();
 			//this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
+			case KEY_ENTER:	
+			case KEY_SPACEBAR:
+			if (gameIsStarted = false ) {
+				Menu.checkState()
+			}						   
+			break;		
+			case KEY_UP_ARROW:		
+			case KEY_W:
+			if (gameIsStarted = false ) {
+				Menu.cursor--;					
+			}			
+			break;			
+			case KEY_DOWN_ARROW:			
+			case KEY_S:	
+			if (gameIsStarted = false ) {
+				Menu.cursor++;					
+			}								
+			break;	
 	}
 	if(typeof evt.preventDefault !== "undefined"){
 		evt.preventDefault();

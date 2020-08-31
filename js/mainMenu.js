@@ -29,10 +29,10 @@ let tutorialsList =[];
 let pausedList =["Save", "Mute", "Back"];
 let creditsList = [];
 let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList, pausedList];
-let currentPage = [];
+let currentPage = 0;
 
 	this.menuMouse = function() {
-		for(let i=0; i < menuPageTExt[currentPage].length; i++) {
+		for(let i=0; i < menuPageText[currentPage].length; i++) {
 			if(mouseX > itemsX + (i * colHeight)&& mouseX + itemsWidth + (i+1) * colHeight &&
 				mouseY > topItemY + (i * rowHeight) && mouseY < topItemY + (i+1) * rowHeight ) {
 				cursor = i;
@@ -41,30 +41,39 @@ let currentPage = [];
 	}
 	
 	this.update = function () {
-		if (KeyPressed(KEY_SPACEBAR) || keyPressed(KEY_ENTER)){
-			this.cheState();
-			}
-		 else if (keyPressed(KEY_BACKSPACE)) {
-			currentPage = MENU_PAGE;
-			cursor = 0;
+		this.menuMouse();
+		if (this.cursor < 0){
+            this.cursor = menuPageText[currentPage].length - 1;
+        }
+
+        if (this.cursor >= menuPageText[currentPage].length){
+            this.cursor = 0;
 		}
+		// if (KeyPressed(KEY_SPACEBAR) || keyPressed(KEY_ENTER)){
+		// 	this.cheState();
+		// 	}
+		//  else if (keyPressed(KEY_BACKSPACE)) {
+		// 	currentPage = MENU_PAGE;
+		// 	cursor = 0;
+		// }
 	
 
-		if(keyPressed(KEY_UP_ARROW)) {
-			cursor--;
-			//navigationSound.play();
-			if(cursor < 0) {
-				cursor = menuPageText[currentPage].length - 1;
-			}
-		}
+		// if(keyPressed(KEY_UP_ARROW)) {
+		// 	cursor--;
+		// 	//navigationSound.play();
+		// 	if(cursor < 0) {
+		// 		cursor = menuPageText[currentPage].length - 1;
+		// 	}
+		// }
 	
-		if(keyPressed(KEY_DOWN_ARROW)) {
-			cursor++;
-			//navigationSound.play();
-			if (cursor >= menuPageText[currentPage].length) {
-				cursor = 0;
-			}
-		}
+		// if(keyPressed(KEY_DOWN_ARROW)) {
+		// 	cursor++;
+		// 	//navigationSound.play();
+		// 	if (cursor >= menuPageText[currentPage].length) {
+		// 		cursor = 0;
+		// 	}
+		// }
+
 	}
 	this.checkState = function() {
 		if (currentPage == GAMEPLAY_PAGE || currentPage == CREDITS_PAGE) {
@@ -75,30 +84,48 @@ let currentPage = [];
 
 		switch (menuPageText[currentPage][cursor]) {
 			case "New City":
-				cursor = 0;
+				gameIsStarted = true;
+				this.cursor = 0;
 				break;
 			case "Continue":
-				cursor = 0;
+				loadGame();
+				this.cursor = 0;
 				curentPage = OPTIONS_PAGE; 
 				break;
 			case "Options":
-				cursor = 0;
+				this.cursor = 0;
 				curentPage = RESUME_PAGE; 
 				break;
 			case "Keys":
-				cursor = 0;
+				this.cursor = 0;
 				curentPage = KEYS_PAGE; 
 				break;
 			case "Tutorials":
-				cursor = 0;
+				this.cursor = 0;
 				curentPage = TUTORIALS_PAGE; 
 				break;
 			case "Credits":
-				cursor = 0;
+				this.cursor = 0;
 				curentPage = TUTORIALS_PAGE; 
 				break;
+			case "Sound":
+				console.log("TODO implement volume changer");
+				break;
 			case "Paused":
+				paused = true;
 				curentPage = PAUSED_PAGE; 
+				break;
+			case "Back":
+				currentPage  = MENU_PAGE;
+				this.cursor = 0;
+				break;
+			case 'Mute':
+				toggleMute();
+				this.cursor = 0;
+			case 'Save':
+				//saveGame();
+				//saveConfirmed = " (done!)";
+				this.cursor = 0;
 				break;
 			default:
 				break;
