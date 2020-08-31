@@ -82,40 +82,49 @@ statsContainerInner.classList.add('statsContainerInner');
 // Residents Tab/Screen
 const residentsTab = document.createElement('li');
 const residentsImg = document.createElement('img');
+const residentsWindow = document.createElement('div');
 tabsContainer.appendChild(residentsTab);
 residentsTab.appendChild(residentsImg);
 residentsTab.classList.add('residentsTab', 'tabs')
-residentsImg.src = 'images/tab_residents.png';                 
+residentsImg.src = 'images/tab_residents.png'; 
+residentsWindow.classList.add('windowContainer', 'hidden', 'residents');
 
 // Properties Tab/Screen
 const propertiesTab = document.createElement('li');
 const propertiesImg = document.createElement('img');
+const propertiesWindow = document.createElement('div');
 tabsContainer.appendChild(propertiesTab);
 propertiesTab.appendChild(propertiesImg);
 propertiesTab.classList.add('propertiesTab', 'tabs')
 propertiesImg.src = 'images/tab_properties.png'; 
+propertiesWindow.classList.add('windowContainer', 'hidden', 'properties');
 
 // Build Tab/Screen
 const buildTab = document.createElement('li');
 const buildImg = document.createElement('img');
+const buildWindow = document.createElement('div');
 tabsContainer.appendChild(buildTab);
 buildTab.appendChild(buildImg);
 buildTab.classList.add('buildTab', 'tabs')
 buildImg.src = 'images/tab_build.png'; 
+buildWindow.classList.add('windowContainer', 'hidden', 'build');
 
 // Income Tab/Screen
 const incomeTab = document.createElement('li');
 const incomeImg = document.createElement('img');
+const incomeWindow = document.createElement('div');
 tabsContainer.appendChild(incomeTab);
 incomeTab.appendChild(incomeImg);
 incomeTab.classList.add('incomeTab', 'tabs')
 incomeImg.src = 'images/tab_income.png';      
+incomeWindow.classList.add('windowContainer', 'hidden', 'income');
 
 // Settings Tab/Screen
 const settingsTab = document.createElement('li');
 const settingsImg = document.createElement('img');
+const settingsWindow = document.createElement('div');
 tabsContainer.appendChild(settingsTab);
 settingsTab.appendChild(settingsImg);
 settingsTab.classList.add('settingsTab', 'tabs');
 settingsImg.src = 'images/tab_settings.png';
-
+settingsWindow.classList.add('windowContainer', 'hidden', 'settings');
