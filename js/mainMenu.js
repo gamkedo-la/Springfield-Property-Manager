@@ -30,6 +30,8 @@ let pausedList =["Save", "Mute", "Back"];
 let creditsList = [];
 let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList, pausedList];
 let currentPage = 0;
+let mouseX = 0;
+let mouseY = 0;
 
 	this.menuMouse = function() {
 		for(let i=0; i < menuPageText[currentPage].length; i++) {
@@ -144,9 +146,12 @@ let currentPage = 0;
 				currentPage = MENU_PAGE;
 			}
 			this.redraw();
-			colorRect(0, 0, canvas.width, canvas.height, "yellow");
-			//canvasContext.drawImage(logo, 0 ,0);
+			
+			canvasContext.drawImage(logo, 0 ,0);
 			//canvasContext.drawImage(arrow, itemsX ,topItemY + (cursor * rowHeight));
+			for (let i=0; i<menuPageText[currentPage].length; i++) {
+				colorTextShadow(menuPageText[currentPage][i], itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "Arial");
+			}
 		} else {
 			currentPage = PAUSED_PAGE;
 		}

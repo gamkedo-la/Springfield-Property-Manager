@@ -1,3 +1,4 @@
+var logo = document.createElement("img");
 var propertyPic = document.createElement("img");
 var residentialForSaleSignPic = document.createElement("img");
 var commercialForSaleSignPic = document.createElement("img");
@@ -58,6 +59,7 @@ function loadImageForRoomCode(trackCode, fileName)  {
 function loadImages() {
 
 		var imageList = [
+			{varName: logo, theFile: "logo.png"},
 			{varName: propertyPic, theFile: "landMarker.png"},
 			{varName: restuarantPic, theFile: "restaurant.png"},
 			{varName: buildingPic, theFile: "building.png"},
