@@ -19,6 +19,7 @@ var textBubblePic = document.createElement("img");
 var cloud1Pic = document.createElement("img");
 var cloud2Pic = document.createElement("img");
 var cloud3Pic = document.createElement("img");
+var lightningSpritePic = document.createElement("img");
 var playerOnePic = document.createElement("img");
 var playerTwoPic = document.createElement("img");
 var playerThreePic = document.createElement("img");
@@ -80,6 +81,7 @@ function loadImages() {
 			{varName: cloud1Pic, theFile: "cloud1.png"},
             {varName: cloud2Pic, theFile: "cloud2.png"},
 			{varName: cloud3Pic, theFile: "cloudStorm1.png"},
+			{varName: lightningSpritePic, theFile: "lightning_SpriteSheet.png"},
 			{varName: playerOnePic, theFile: "playerOne.png"},
 			{varName: playerTwoPic, theFile: "playerTwo.png"},
 			{varName: playerThreePic, theFile: "playerThree.png"},

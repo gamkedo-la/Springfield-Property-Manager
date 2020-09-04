@@ -15,7 +15,8 @@ const KEY_B = 66; // PURCHASE CPU 2 - TEMPORARY
 const KEY_N = 78; // PURCHASE CPU 3 - TEMPORARY
 const KEY_M = 77; // PURCHASE CPU 4 - TEMPORARY
 const KEY_Q = 81; // Decide to purchase a property
-const KEY_1 = 49; // Turn music on
+const KEY_1 = 49; // Turn music on 
+const KEY_Y = 89; //storming
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -131,24 +132,29 @@ function keyPressed(evt) {
 			cityambience.play();
 			//this will change to a function to randomize.  Keeping for now for trouble-shooting
 		break;
-			case KEY_ENTER:	
-			case KEY_SPACEBAR:
+		case KEY_ENTER:	
+		case KEY_SPACEBAR:
 			if (gameIsStarted = false ) {
 				Menu.checkState()
 			}						   
-			break;		
-			case KEY_UP_ARROW:		
-			case KEY_W:
+		break;		
+		case KEY_UP_ARROW:		
+		case KEY_W:
 			if (gameIsStarted = false ) {
 				Menu.cursor--;					
 			}			
-			break;			
-			case KEY_DOWN_ARROW:			
-			case KEY_S:	
+		break;			
+		case KEY_DOWN_ARROW:			
+		case KEY_S:	
 			if (gameIsStarted = false ) {
 				Menu.cursor++;					
 			}								
-			break;	
+		break;	
+		case KEY_Y:
+			isStorming = !isStorming;
+		break;
+		
+			
 	}
 	if(typeof evt.preventDefault !== "undefined"){
 		evt.preventDefault();
