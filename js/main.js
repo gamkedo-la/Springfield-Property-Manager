@@ -213,7 +213,6 @@ function drawEverything() {
 		canvasContext.restore();
 
 		audioButton.draw();
-		// canvasContext.drawImage(cityHallPic, isoDrawX, isoDrawY);
 
 		helpButton.draw();
 
