@@ -159,7 +159,12 @@ function calculateMousePos(evt) {
 }
 
 function drawEverything() {
-	colorRect(0,0,canvas.width,canvas.height, '#16171a');
+	if(isLightingStrikingNow){
+		isLightingStrikingNow = false;
+		colorRect(0,0,canvas.width,canvas.height, '#36373a');
+	} else { 
+		colorRect(0,0,canvas.width,canvas.height, '#16171a');
+	}
 	var showInGameUI = (gameIsStarted && openningStoryScreen == false);
 	if (showInGameUI && uiContainerMain.style.display == "none") {
 		uiContainerMain.style.display = "flex";
