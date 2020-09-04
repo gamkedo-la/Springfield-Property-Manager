@@ -91,8 +91,8 @@ function loadImages() {
 			{varName: statusHomeless, theFile: "statusHomeless.png"},
 			{varName: italianRestaurant, theFile: "italianRestaurant.png"},
 			{varName: helpButtonPic, theFile:"help.png"},
-			{varName: cityHallPic, theFile:"town_house.png"},
 
+			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
 			{trackType: TILE_ROAD_WE, theFile: "road_WE.png"},
 			{trackType: TILE_ROAD_INT, theFile: "road_intersection.png"},
