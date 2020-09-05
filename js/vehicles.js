@@ -4,8 +4,8 @@ function vehicleClass() {
 	const BIKER_SPRITE_OFFSET = 2*CAR_WIDTH;
 	this.x = 0;
 	this.y = 110;
-	this.velX = 1;
-	this.velY = 1;
+	this.velX = 1 + (-0.25 + Math.random() / 2);
+	this.velY = 1 + (-0.25 + Math.random() / 2);
 	this.color = ["purple", "blue", "yellow","white","red","green","grey"];
 	this.whichColor = 0;
 	this.moveWest = false;
