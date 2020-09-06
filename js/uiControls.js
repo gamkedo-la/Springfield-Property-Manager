@@ -74,95 +74,95 @@ function keyPressed(evt) {
 		return;
 	}
 
-	cheats(evt.key);
-	switch(evt.keyCode){		
-		case KEY_W:
-		camPanY -= camPanSpeed;
-		break;
-		case KEY_S:
-		camPanY += camPanSpeed;
-		break;
-		case KEY_A:
-		camPanX -= camPanSpeed;
-		break;
-		case KEY_D:
-		camPanX += camPanSpeed;
-		break;
-		case KEY_P:
-		if (!drawPlayerDesignsOnly) {
-				paused = !paused;
+	if (gameIsStarted == false){
+		switch(evt.keyCode){
+			case KEY_ENTER:	
+			case KEY_SPACEBAR:
+					Menu.checkState()					   
+			break;		
+			case KEY_UP_ARROW:		
+			case KEY_W:
+					Menu.cursor--;							
+			break;			
+			case KEY_DOWN_ARROW:			
+			case KEY_S:
+					Menu.cursor++;										
+			break;	
 		}
-		break;
-		case KEY_I:
-			changeState(menuState_propertyInformation);
-		break;
-		case KEY_L:
-			changeState(menuState_purchasingLand);
-		break;
-		case KEY_SPACEBAR:
-		if(ownerList[OWNER_HUMAN].atProperty != null){
-			ownerList[OWNER_HUMAN].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+	} else {
+
+		cheats(evt.key);
+		switch(evt.keyCode){		
+			case KEY_W:
+			camPanY -= camPanSpeed;
+			break;
+			case KEY_S:
+			camPanY += camPanSpeed;
+			break;
+			case KEY_A:
+			camPanX -= camPanSpeed;
+			break;
+			case KEY_D:
+			camPanX += camPanSpeed;
+			break;
+			case KEY_P:
+			if (!drawPlayerDesignsOnly) {
+					paused = !paused;
+			}
+			break;
+			case KEY_I:
+				changeState(menuState_propertyInformation);
+			break;
+			case KEY_L:
+				changeState(menuState_purchasingLand);
+			break;
+			case KEY_SPACEBAR:
+			if(ownerList[OWNER_HUMAN].atProperty != null){
+				ownerList[OWNER_HUMAN].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+			}
+			break;
+			case KEY_TAB:
+			isHudShown = !isHudShown;
+			document.getElementsByClassName('uiContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';		
+			document.getElementsByClassName('citySignContainer')[0].style.display = isHudShown ? 'flex' : 'none';
+			document.getElementsByClassName('statsContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';
+			break;
+			///// V, B, N, and M are just for testing CPU's buying ability
+			case KEY_V:
+			if(ownerList[OWNER_HUMAN].atProperty != null){
+				ownerList[OWNER_CPU_1].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+			}
+			break;
+			case KEY_B:
+			if(ownerList[OWNER_HUMAN].atProperty != null){
+				ownerList[OWNER_CPU_2].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+			}
+			break;
+			case KEY_N:
+			if(ownerList[OWNER_HUMAN].atProperty != null){
+				ownerList[OWNER_CPU_3].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+			}
+			break;
+			case KEY_M:
+			if(ownerList[OWNER_HUMAN].atProperty != null){
+				ownerList[OWNER_CPU_4].buyProperty(ownerList[OWNER_HUMAN].atProperty);
+			}
+			break;
+			case KEY_Q:
+				callPurchaseProperty(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
+			break;
+			case KEY_1:
+				backgroundSong.play();
+				cityambience.play();
+				//this will change to a function to randomize.  Keeping for now for trouble-shooting
+			break;
+			case KEY_Y:
+				isStorming = !isStorming;
+			break;
+			case KEY_Z:
+				zoom = 0;
+			break;
 		}
-		break;
-		case KEY_TAB:
-		isHudShown = !isHudShown;
-		document.getElementsByClassName('uiContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';		
-		document.getElementsByClassName('citySignContainer')[0].style.display = isHudShown ? 'flex' : 'none';
-		document.getElementsByClassName('statsContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';
-		break;
-		///// V, B, N, and M are just for testing CPU's buying ability
-		case KEY_V:
-		if(ownerList[OWNER_HUMAN].atProperty != null){
-			ownerList[OWNER_CPU_1].buyProperty(ownerList[OWNER_HUMAN].atProperty);
-		}
-		break;
-		case KEY_B:
-		if(ownerList[OWNER_HUMAN].atProperty != null){
-			ownerList[OWNER_CPU_2].buyProperty(ownerList[OWNER_HUMAN].atProperty);
-		}
-		break;
-		case KEY_N:
-		if(ownerList[OWNER_HUMAN].atProperty != null){
-			ownerList[OWNER_CPU_3].buyProperty(ownerList[OWNER_HUMAN].atProperty);
-		}
-		break;
-		case KEY_M:
-		if(ownerList[OWNER_HUMAN].atProperty != null){
-			ownerList[OWNER_CPU_4].buyProperty(ownerList[OWNER_HUMAN].atProperty);
-		}
-		break;
-		case KEY_Q:
-			callPurchaseProperty(); //this will change to a function to randomize.  Keeping for now for trouble-shooting
-		break;
-		case KEY_1:
-			backgroundSong.play();
-			cityambience.play();
-			//this will change to a function to randomize.  Keeping for now for trouble-shooting
-		break;
-		case KEY_ENTER:	
-		case KEY_SPACEBAR:
-			if (gameIsStarted = false ) {
-				Menu.checkState()
-			}						   
-		break;		
-		case KEY_UP_ARROW:		
-		case KEY_W:
-			if (gameIsStarted = false ) {
-				Menu.cursor--;					
-			}			
-		break;			
-		case KEY_DOWN_ARROW:			
-		case KEY_S:	
-			if (gameIsStarted = false ) {
-				Menu.cursor++;					
-			}								
-		break;	
-		case KEY_Y:
-			isStorming = !isStorming;
-		break;
-		case KEY_Z:
-			zoom = 0;
-		break;
 	}
 	if(typeof evt.preventDefault !== "undefined"){
 		evt.preventDefault();

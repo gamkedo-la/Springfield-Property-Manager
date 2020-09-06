@@ -21,7 +21,7 @@ let itemsWidth = 300;
 let rowHeight = 40;
 let colHeight = 60;
 
-let cursor = 0;
+this.cursor = 0;
 let menuList = ["New City", "Continue","Options", "Keys", "Tutorials", "Credits"];
 let optionsList = ["Sound", "Captions", "Resolution"];
 let keysList = [];
@@ -36,7 +36,7 @@ let currentPage = 0;
 		for(let i=0; i < menuPageText[currentPage].length; i++) {
 			if(//mousePosX > itemsX - 350 && mousePosX + itemsWidth &&
 				mousePosY + rowHeight / 2 > topItemY + (i * rowHeight) && mousePosY + rowHeight / 2 < topItemY + (i+1) * rowHeight ) {
-				cursor = i;
+				this.cursor = i;
 				this.checkState();
 			}
 		}	
@@ -80,11 +80,11 @@ let currentPage = 0;
 	this.checkState = function() {
 		if (currentPage == CREDITS_PAGE) {
 			currentPage = MENU_PAGE;
-			cursor = 0;
+			this.cursor = 0;
 			return;
 		}
 
-		switch (menuPageText[currentPage][cursor]) {
+		switch (menuPageText[currentPage][this.cursor]) {
 			case "New City":
 				gameIsStarted = true;
 				this.cursor = 0;
@@ -97,7 +97,7 @@ let currentPage = 0;
 			case "Options":
 				this.cursor = 0;
 				curentPage = OPTIONS_PAGE; 
-				console.log("Options game not yet implmented");
+				console.log("Options not yet implmented");
 				break;
 			case "Keys":
 				this.cursor = 0;
@@ -156,7 +156,7 @@ let currentPage = 0;
 			this.redraw();
 			
 			canvasContext.drawImage(logo, 0 ,0);
-			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (cursor * rowHeight)- 30);
+			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (this.cursor * rowHeight)- 30);
 			for (let i=0; i<menuPageText[currentPage].length; i++) {
 				colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
 			}
