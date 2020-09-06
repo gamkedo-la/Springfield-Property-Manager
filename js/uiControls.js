@@ -101,7 +101,9 @@ function keyPressed(evt) {
 		break;
 		case KEY_TAB:
 		isHudShown = !isHudShown;
-		document.getElementsByClassName('uiContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';
+		document.getElementsByClassName('uiContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';		
+		document.getElementsByClassName('citySignContainer')[0].style.display = isHudShown ? 'flex' : 'none';
+		document.getElementsByClassName('statsContainerMain')[0].style.display = isHudShown ? 'flex' : 'none';
 		break;
 		///// V, B, N, and M are just for testing CPU's buying ability
 		case KEY_V:

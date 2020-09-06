@@ -166,7 +166,7 @@ function drawEverything() {
 		colorRect(0,0,canvas.width,canvas.height, '#16171a');
 	}
 	var showInGameUI = (gameIsStarted && openningStoryScreen == false);
-	if (showInGameUI && uiContainerMain.style.display == "none") {
+	if (isHudShown && showInGameUI && uiContainerMain.style.display == "none") {
 		uiContainerMain.style.display = "flex";
 	} else if (showInGameUI == false && uiContainerMain.style.display != "none"){
 		uiContainerMain.style.display = "none";
