@@ -3,6 +3,10 @@ var framesPerSecond = 60;
 var canvas;
 var canvasContext;
 
+var zoom = 0;
+const ZOOM_MAX = 0.3;
+const ZOOM_MIN = -0.3;
+
 var propertyList = [];
 var vehicleList = [];
 var peopleList = [];
@@ -41,7 +45,8 @@ window.onload = function(){
 	canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
     window.addEventListener("resize", onResize);
-    window.addEventListener('mousemove', calculateMousePos);
+	window.addEventListener('mousemove', calculateMousePos);
+	canvas.addEventListener('wheel', handleMouseWheel);
     onResize();
 
 	initializeAssets();
@@ -151,11 +156,20 @@ function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 	var mouseX = evt.clientX - rect.left - root.scrollLeft;
 	var mouseY = evt.clientY - rect.top - root.scrollTop;
-	// console.log(mouseX +" / "+ mouseY)
+	mouseX += -mouseX * zoom + zoom * canvas.width / 2;
+	mouseY += -mouseY * zoom + zoom * canvas.height / 2;
+	// console.log(mouseX + " / "+ mouseY)
 	return {
 		x: mouseX,
 		y: mouseY
 	};
+}
+
+
+function handleMouseWheel(evt) {	
+	zoom += evt.deltaY * -0.01;		
+	zoom = Math.min(Math.max(ZOOM_MIN, zoom), ZOOM_MAX);
+	isZooming = true;
 }
 
 function drawEverything() {
@@ -179,10 +193,16 @@ function drawEverything() {
 		drawOpenningStory();
 	} else { //in game
 
-		var isBackground = true;
+		canvasContext.save();
+
+		canvasContext.translate(canvas.width / 2, canvas.height / 2);
+		canvasContext.scale(1 + zoom, 1 + zoom);
+		canvasContext.translate(-canvas.width / 2, -canvas.height / 2);
 
 		canvasContext.save();
 		canvasContext.translate(-camPanX, -camPanY/2);
+		var isBackground = true;
+
 		drawLandScape(isBackground); // Draw in the background, snow, grass, etc.
 
 		for (var i = 0; i < vehicleList.length; i++) {
@@ -206,18 +226,20 @@ function drawEverything() {
 
 		canvasContext.save();
 		canvasContext.translate(-camPanX, -camPanY/2);
-
+		
 		for (var i = 0; i < propertyList.length; i++) {
 			propertyList[i].draw();
 		}
-
+		
 		drawLandScape(!isBackground); // Draw in the foreground, so that other properties are not drawn above buildings that are too high (e.g. the city hall).
-
+		
 		for (var i = 0; i < cloudList.length; i++){
 			cloudList[i].draw();
-		}
+		}		
 
 		ui.draw();
+		
+		canvasContext.restore();
 
 		canvasContext.restore();
 

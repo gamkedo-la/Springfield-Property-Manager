@@ -17,6 +17,7 @@ const KEY_M = 77; // PURCHASE CPU 4 - TEMPORARY
 const KEY_Q = 81; // Decide to purchase a property
 const KEY_1 = 49; // Turn music on 
 const KEY_Y = 89; //storming
+const KEY_Z = 90; // reset zoom
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -31,7 +32,7 @@ var isHudShown = true;
 
 function initInput(){
 	canvas.addEventListener('mousemove', mouseMove);
-	canvas.addEventListener('mousedown', handleMouseClick);
+	canvas.addEventListener('mousedown', handleMouseClick);	
 	document.addEventListener("keydown", keyPressed);
 	document.addEventListener("keyup", keyReleased);
 }
@@ -155,8 +156,9 @@ function keyPressed(evt) {
 		case KEY_Y:
 			isStorming = !isStorming;
 		break;
-		
-			
+		case KEY_Z:
+			zoom = 0;
+		break;
 	}
 	if(typeof evt.preventDefault !== "undefined"){
 		evt.preventDefault();
