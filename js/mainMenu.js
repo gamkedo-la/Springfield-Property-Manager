@@ -22,7 +22,7 @@ let rowHeight = 40;
 let colHeight = 60;
 
 let cursor = 0;
-let menuList = ["New City", "Options", "Keys", "Tutorials", "Credits"];
+let menuList = ["New City", "Continue","Options", "Keys", "Tutorials", "Credits"];
 let optionsList = ["Sound", "Captions", "Resolution"];
 let keysList = [];
 let tutorialsList =[];
@@ -92,11 +92,10 @@ let mouseY = 0;
 			case "Continue":
 				loadGame();
 				this.cursor = 0;
-				curentPage = OPTIONS_PAGE; 
 				break;
 			case "Options":
 				this.cursor = 0;
-				curentPage = RESUME_PAGE; 
+				curentPage = OPTIONS_PAGE; 
 				break;
 			case "Keys":
 				this.cursor = 0;
@@ -148,9 +147,9 @@ let mouseY = 0;
 			this.redraw();
 			
 			canvasContext.drawImage(logo, 0 ,0);
-			//canvasContext.drawImage(arrow, itemsX ,topItemY + (cursor * rowHeight));
+			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (cursor * rowHeight));
 			for (let i=0; i<menuPageText[currentPage].length; i++) {
-				colorTextShadow(menuPageText[currentPage][i], itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "Arial");
+				colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
 			}
 		} else {
 			currentPage = PAUSED_PAGE;
