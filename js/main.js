@@ -179,9 +179,11 @@ function drawEverything() {
 		drawOpenningStory();
 	} else { //in game
 
+		var isBackground = true;
+
 		canvasContext.save();
 		canvasContext.translate(-camPanX, -camPanY/2);
-		drawLandScape();
+		drawLandScape(isBackground); // Draw in the background, snow, grass, etc.
 
 		for (var i = 0; i < vehicleList.length; i++) {
 			vehicleList[i].draw();
@@ -208,6 +210,8 @@ function drawEverything() {
 		for (var i = 0; i < propertyList.length; i++) {
 			propertyList[i].draw();
 		}
+
+		drawLandScape(!isBackground); // Draw in the foreground, so that other properties are not drawn above buildings that are too high (e.g. the city hall).
 
 		for (var i = 0; i < cloudList.length; i++){
 			cloudList[i].draw();

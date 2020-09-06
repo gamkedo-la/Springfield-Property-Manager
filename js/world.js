@@ -45,7 +45,7 @@ function tileTypeHasTransparency(checkTileType){
 	return
 }
 
-function drawLandScape(){
+function drawLandScape(isBackground = true){
 	var tileIndex = 0;
 	var tileLeftEdgeX = 0;
 	var tileTopEdgeY = 0;
@@ -60,41 +60,49 @@ function drawLandScape(){
 				cityHallisoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY) / 2;
 				cityHallisoTileTopEdgeX = (tileLeftEdgeX + tileTopEdgeY) / 4;
 			}
-
+			
 			isoTileLeftEdgeX = (tileLeftEdgeX - tileTopEdgeY) / 2;
 			isoTileTopEdgeX = (tileLeftEdgeX + tileTopEdgeY) / 4;
 			tileCoordToIsoCoord(eachCol, eachRow);
 			var trackTypeHere = roomGrid[tileIndex];
 
-			if(tileTypeHasTransparency(trackTypeHere)) {
-				canvasContext.drawImage(trackPics[TILE_ROAD], isoTileLeftEdgeX, isoTileTopEdgeX);
-			}
-			if(tileIndex != mouseOverIdx){
-				if(trackTypeHere == TILE_CITY_HALL){
-					if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
-							canvasContext.drawImage(trackPics[TILE_SNOW], isoTileLeftEdgeX, isoTileTopEdgeX);
-					} else {
-							canvasContext.drawImage(trackPics[TILE_GRASS], isoTileLeftEdgeX, isoTileTopEdgeX);
+			if (isBackground) {
+				// Draw in the background
+
+				if(tileTypeHasTransparency(trackTypeHere)) {
+					canvasContext.drawImage(trackPics[TILE_ROAD], isoTileLeftEdgeX, isoTileTopEdgeX);
+				}
+				if(tileIndex != mouseOverIdx){
+					if(trackTypeHere == TILE_CITY_HALL){
+						if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
+								canvasContext.drawImage(trackPics[TILE_SNOW], isoTileLeftEdgeX, isoTileTopEdgeX);
+						} else {
+								canvasContext.drawImage(trackPics[TILE_GRASS], isoTileLeftEdgeX, isoTileTopEdgeX);
+						}
+
+					} else{
+						canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
 					}
-
-				} else{
-					canvasContext.drawImage(trackPics[trackTypeHere], isoTileLeftEdgeX, isoTileTopEdgeX);
 				}
+				if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
+					//console.log(trackTypeHere);
+					if(trackTypeHere == TILE_GRASS){
+						canvasContext.drawImage(trackPics[TILE_SNOW], isoTileLeftEdgeX, isoTileTopEdgeX);
+						//roomGrid[i] = TILE_SNOW;
+					}
+				} else {
+					if(trackTypeHere == TILE_SNOW){
+						canvasContext.drawImage(trackPics[TILE_GRASS], isoTileLeftEdgeX, isoTileTopEdgeX);
+						//roomGrid[i] = TILE_GRASS;
+					}
+				}
+				
 			}
-
-			if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
-				//console.log(trackTypeHere);
-				if(trackTypeHere == TILE_GRASS){
-					canvasContext.drawImage(trackPics[TILE_SNOW], isoTileLeftEdgeX, isoTileTopEdgeX);
-					//roomGrid[i] = TILE_SNOW;
-				}
-			} else {
-				if(trackTypeHere == TILE_SNOW){
-					canvasContext.drawImage(trackPics[TILE_GRASS], isoTileLeftEdgeX, isoTileTopEdgeX);
-					//roomGrid[i] = TILE_GRASS;
-				}
+			else { 
+				// Draw in the foreground
+				
 			}
-
+			
 			tileIndex++;
 			tileLeftEdgeX += TILE_W;
 		} // end of each col
@@ -102,7 +110,13 @@ function drawLandScape(){
 		tileTopEdgeY += TILE_H;
 	} // end of each row
 
-	canvasContext.drawImage(trackPics[TILE_CITY_HALL],cityHallisoTileLeftEdgeX,cityHallisoTileTopEdgeX)
+	if (isBackground) {
+		// Draw in the background
+	} 
+	else {
+		// Draw in the foreground
+		canvasContext.drawImage(trackPics[TILE_CITY_HALL],cityHallisoTileLeftEdgeX,cityHallisoTileTopEdgeX);
+	}
 }
 
 
