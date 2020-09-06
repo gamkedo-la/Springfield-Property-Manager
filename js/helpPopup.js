@@ -19,11 +19,12 @@ function helpMenu()
 		"Pause Game",
 		"Purchase",
 		"Display Properties Info",
+		"Reset Zoom",
 		"Toggle HUD",
 		"Mute/Unmute",
 	];
 
-	this.keys=["W","S","A","D","P","SPACE","I","TAB","1"];
+	this.keys=["W","S","A","D","P","SPACE","I","Z","TAB","1"];
 
 	this.fontSize=14;
 	this.line=1;
