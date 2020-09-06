@@ -44,6 +44,10 @@ function mouseMove(evt) {
 }
 
 function handleMouseClick(evt){
+	if(gameIsStarted === false) {
+		Menu.menuMouse();
+		return;
+	}
 	//gesture();   //current bug, crashes when mouse clicks
 	if(!siteActivatedWithClick){
 		siteActivatedWithClick = true;

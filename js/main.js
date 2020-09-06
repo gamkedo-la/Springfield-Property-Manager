@@ -16,7 +16,7 @@ var camPanY = 0;
 var camPanSpeed = 5;
 
 var paused = false;
-var gameIsStarted = true;
+var gameIsStarted = false;
 
 var siteActivatedWithClick = false;
 

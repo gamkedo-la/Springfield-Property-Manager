@@ -30,20 +30,20 @@ let pausedList =["Save", "Mute", "Back"];
 let creditsList = [];
 let menuPageText = [menuList,  optionsList, keysList, tutorialsList, creditsList, pausedList];
 let currentPage = 0;
-let mouseX = 0;
-let mouseY = 0;
 
 	this.menuMouse = function() {
+	//colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
 		for(let i=0; i < menuPageText[currentPage].length; i++) {
-			if(mouseX > itemsX + (i * colHeight)&& mouseX + itemsWidth + (i+1) * colHeight &&
-				mouseY > topItemY + (i * rowHeight) && mouseY < topItemY + (i+1) * rowHeight ) {
+			if(//mousePosX > itemsX - 350 && mousePosX + itemsWidth &&
+				mousePosY + rowHeight / 2 > topItemY + (i * rowHeight) && mousePosY + rowHeight / 2 < topItemY + (i+1) * rowHeight ) {
 				cursor = i;
+				this.checkState();
 			}
 		}	
 	}
 	
 	this.update = function () {
-		this.menuMouse();
+		//this.menuMouse();
 		if (this.cursor < 0){
             this.cursor = menuPageText[currentPage].length - 1;
         }
@@ -78,7 +78,7 @@ let mouseY = 0;
 
 	}
 	this.checkState = function() {
-		if (currentPage == GAMEPLAY_PAGE || currentPage == CREDITS_PAGE) {
+		if (currentPage == CREDITS_PAGE) {
 			currentPage = MENU_PAGE;
 			cursor = 0;
 			return;
@@ -90,42 +90,51 @@ let mouseY = 0;
 				this.cursor = 0;
 				break;
 			case "Continue":
-				loadGame();
+				//loadGame(); 
+				console.log("load game not yet implmented");
 				this.cursor = 0;
 				break;
 			case "Options":
 				this.cursor = 0;
 				curentPage = OPTIONS_PAGE; 
+				console.log("Options game not yet implmented");
 				break;
 			case "Keys":
 				this.cursor = 0;
-				curentPage = KEYS_PAGE; 
+				curentPage = KEYS_PAGE;
+				console.log("Keys ot yet implmented"); 
 				break;
 			case "Tutorials":
 				this.cursor = 0;
 				curentPage = TUTORIALS_PAGE; 
+				console.log("Credits not yet implmented"); 
 				break;
 			case "Credits":
 				this.cursor = 0;
-				curentPage = TUTORIALS_PAGE; 
+				curentPage = CREDITS_PAGE;
+				console.log("Credits not yet implmented"); 
 				break;
 			case "Sound":
-				console.log("TODO implement volume changer");
+				console.log("sound>>TODO implement volume changer");
 				break;
 			case "Paused":
 				paused = true;
-				curentPage = PAUSED_PAGE; 
+				curentPage = PAUSED_PAGE;
+				console.log("Paused not yet implmented"); 
 				break;
 			case "Back":
 				currentPage  = MENU_PAGE;
 				this.cursor = 0;
 				break;
 			case 'Mute':
-				toggleMute();
+				//toggleMute();
+				console.log("mute not tested");
 				this.cursor = 0;
+				break;
 			case 'Save':
 				//saveGame();
 				//saveConfirmed = " (done!)";
+				console.log("save not yet implmented"); 
 				this.cursor = 0;
 				break;
 			default:
@@ -147,7 +156,7 @@ let mouseY = 0;
 			this.redraw();
 			
 			canvasContext.drawImage(logo, 0 ,0);
-			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (cursor * rowHeight));
+			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (cursor * rowHeight)- 30);
 			for (let i=0; i<menuPageText[currentPage].length; i++) {
 				colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
 			}
