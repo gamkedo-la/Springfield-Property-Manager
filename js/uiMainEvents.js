@@ -44,9 +44,10 @@ tabClicked = (e) => {
           paused = drawPlayerDesignsOnly;
         }
         changeStatsTab(i);
-        // changeWindow(i); 
+        // changeWindow(i);
     }
   }
+  tabSelectSFX.play();
   // set current highlight
   e.currentTarget.classList.add('highlight');
 }
@@ -90,7 +91,7 @@ function changeWindow(i) {
   currentWindow = i;
   console.log(`Tab ${currentWindow} was clicked`);
 
-}   
+}
 
 drawUIWindows();
 */
