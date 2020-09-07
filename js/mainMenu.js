@@ -39,9 +39,9 @@ let currentPage = 0;
 				this.cursor = i;
 				this.checkState();
 			}
-		}	
+		}
 	}
-	
+
 	this.update = function () {
 		//this.menuMouse();
 		if (this.cursor < 0){
@@ -58,7 +58,7 @@ let currentPage = 0;
 		// 	currentPage = MENU_PAGE;
 		// 	cursor = 0;
 		// }
-	
+
 
 		// if(keyPressed(KEY_UP_ARROW)) {
 		// 	cursor--;
@@ -67,7 +67,7 @@ let currentPage = 0;
 		// 		cursor = menuPageText[currentPage].length - 1;
 		// 	}
 		// }
-	
+
 		// if(keyPressed(KEY_DOWN_ARROW)) {
 		// 	cursor++;
 		// 	//navigationSound.play();
@@ -90,29 +90,29 @@ let currentPage = 0;
 				this.cursor = 0;
 				break;
 			case "Continue":
-				//loadGame(); 
+				//loadGame();
 				console.log("load game not yet implmented");
 				this.cursor = 0;
 				break;
 			case "Options":
 				this.cursor = 0;
-				curentPage = OPTIONS_PAGE; 
+				curentPage = OPTIONS_PAGE;
 				console.log("Options not yet implmented");
 				break;
 			case "Keys":
 				this.cursor = 0;
 				curentPage = KEYS_PAGE;
-				console.log("Keys ot yet implmented"); 
+				console.log("Keys ot yet implmented");
 				break;
 			case "Tutorials":
 				this.cursor = 0;
-				curentPage = TUTORIALS_PAGE; 
-				console.log("Credits not yet implmented"); 
+				curentPage = TUTORIALS_PAGE;
+				console.log("Credits not yet implmented");
 				break;
 			case "Credits":
 				this.cursor = 0;
 				curentPage = CREDITS_PAGE;
-				console.log("Credits not yet implmented"); 
+				console.log("Credits not yet implmented");
 				break;
 			case "Sound":
 				console.log("sound>>TODO implement volume changer");
@@ -120,7 +120,7 @@ let currentPage = 0;
 			case "Paused":
 				paused = true;
 				curentPage = PAUSED_PAGE;
-				console.log("Paused not yet implmented"); 
+				console.log("Paused not yet implmented");
 				break;
 			case "Back":
 				currentPage  = MENU_PAGE;
@@ -134,7 +134,7 @@ let currentPage = 0;
 			case 'Save':
 				//saveGame();
 				//saveConfirmed = " (done!)";
-				console.log("save not yet implmented"); 
+				console.log("save not yet implmented");
 				this.cursor = 0;
 				break;
 			default:
@@ -154,11 +154,11 @@ let currentPage = 0;
 				currentPage = MENU_PAGE;
 			}
 			this.redraw();
-			
+
 			canvasContext.drawImage(logo, 0 ,0);
 			canvasContext.drawImage(arrow, itemsX - 390 ,topItemY + (this.cursor * rowHeight)- 30);
 			for (let i=0; i<menuPageText[currentPage].length; i++) {
-				colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
+				colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#94216a", "35px Arial");
 			}
 		} else {
 			currentPage = PAUSED_PAGE;
@@ -170,6 +170,5 @@ function drawOpenningStory(){
 	//clear Screen
 	colorRect(0, 0, canvas.width, canvas.height, "black");
 	colorRect(openningStoryBoxXPos, openningStoryBoxYPos, openningStoryBoxWidth, openningStoryBoxHeight, "white");
-	colorTextShadow('It’s been a few months since Uncle Marty passed away.  He was a witty old man with a sense of humor.', openningStoryTextXPos, openningStoryTextYPos, "black"); 
+	colorTextShadow('It’s been a few months since Uncle Marty passed away.  He was a witty old man with a sense of humor.', openningStoryTextXPos, openningStoryTextYPos, "black");
 }
-	
