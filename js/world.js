@@ -100,7 +100,12 @@ function drawLandScape(isBackground = true){
 			}
 			else { 
 				// Draw in the foreground
-				
+				if (trackTypeHere == TILE_ROAD_NS && tileIndex % 3 == 0) {
+					canvasContext.drawImage(streetLightPic, 0, 0, streetLightPic.width/2, streetLightPic.height, isoTileLeftEdgeX-streetLightPic.height*0.8, isoTileTopEdgeX, streetLightPic.width/2, streetLightPic.height);
+				}
+				if (trackTypeHere == TILE_ROAD_WE && tileIndex % 3 == 0) {
+					canvasContext.drawImage(streetLightPic, streetLightPic.width/2, 0, streetLightPic.width/2, streetLightPic.height, isoTileLeftEdgeX+streetLightPic.width, isoTileTopEdgeX-streetLightPic.height*0.7, streetLightPic.width/2, streetLightPic.height);
+				}
 			}
 			
 			tileIndex++;

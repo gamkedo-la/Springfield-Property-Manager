@@ -33,6 +33,7 @@ var statusHomeless = document.createElement("img");
 var italianRestaurant = document.createElement("img");
 var helpButtonPic = document.createElement("img");
 var cityHallPic = document.createElement("img");
+var streetLightPic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -95,6 +96,7 @@ function loadImages() {
 			{varName: statusHomeless, theFile: "statusHomeless.png"},
 			{varName: italianRestaurant, theFile: "italianRestaurant.png"},
 			{varName: helpButtonPic, theFile:"help.png"},
+			{varName: streetLightPic, theFile:"streetlight1.png"},		  
 
 			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
