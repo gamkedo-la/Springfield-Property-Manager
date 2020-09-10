@@ -12,6 +12,9 @@ var invalidSelectSFX = new soundSingleBufferClass("audio/invalid_select_sfx.wav"
 var validSelectSFX = new soundSingleBufferClass("audio/valid_select_sfx.wav");
 var cityambience = new soundLoopsClass("audio/amb_city.mp3");
 var tabSelectSFX = new soundSingleBufferClass("audio/tab_select_sfx.wav");
+var navigationSFX = new soundSingleBufferClass("audio/navigate.wav");
+var selectionSFX = new soundSingleBufferClass("audio/select.wav");
+
 
 //audio UI -----------------------------------------------------------
 function playBackgroundMusic(){

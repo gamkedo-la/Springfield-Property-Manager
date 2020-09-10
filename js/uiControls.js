@@ -78,15 +78,18 @@ function keyPressed(evt) {
 		switch(evt.keyCode){
 			case KEY_ENTER:	
 			case KEY_SPACEBAR:
-					Menu.checkState()					   
+					Menu.checkState()
+					selectionSFX.play();	
 			break;		
 			case KEY_UP_ARROW:		
 			case KEY_W:
-					Menu.cursor--;							
+					Menu.cursor--;
+					navigationSFX.play();
 			break;			
 			case KEY_DOWN_ARROW:			
 			case KEY_S:
-					Menu.cursor++;										
+					Menu.cursor++;	
+					navigationSFX.play();
 			break;	
 		}
 	} else {

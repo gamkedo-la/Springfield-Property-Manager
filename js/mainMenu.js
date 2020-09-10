@@ -38,6 +38,7 @@ let currentPage = 0;
 				mousePosY + rowHeight / 2 > topItemY + (i * rowHeight) && mousePosY + rowHeight / 2 < topItemY + (i+1) * rowHeight ) {
 				this.cursor = i;
 				this.checkState();
+				selectionSFX.play();
 			}
 		}
 	}
@@ -107,7 +108,7 @@ let currentPage = 0;
 			case "Tutorials":
 				this.cursor = 0;
 				curentPage = TUTORIALS_PAGE;
-				console.log("Credits not yet implmented");
+				console.log("Tutorials not yet implmented");
 				break;
 			case "Credits":
 				this.cursor = 0;
