@@ -21,6 +21,8 @@ function vehicleClass() {
 				if( roomGrid[i] == TILE_VEHICLE) {
 					var tileRow = Math.floor(i/MAP_COLS);
 					var tileCol	= i%MAP_COLS;
+					if(tileRow === 2 || tileRow === 9) this.moveEast = true;
+					if(tileCol === 2 || tileCol === 13) this.moveSouth = true;
 					this.homeX = tileCol * TILE_W;
 					this.homeY = tileRow * TILE_H;
 					roomGrid[i] = TILE_ROAD_WE;
@@ -33,14 +35,9 @@ function vehicleClass() {
 
 		this.resetSprite();
 
-		let randomDirection = randomIntFromInterval(2)
 		this.whichColor = randomIntFromInterval(1,7) - 1;
-		//if(randomDirection == 1){
-			this.moveEast = true;
-			this.y = this.y + 20;
-		//} else if (randomDirection == 2){
-		//	this.moveWest = true;
-		//}
+		if(this.moveEast) this.y += 20;
+		if(this.moveSouth) this.x += 40;
 	}
 
 	this.resetSprite = function() {
@@ -94,6 +91,9 @@ function vehicleClass() {
 		gameCoordToIsoCoord(this.x, this.y);
 		canvasContext.save();
 		canvasContext.translate(isoDrawX+this.vehicleImageOffset, isoDrawY);
+		if(this.moveSouth) {
+			canvasContext.scale(-1, 1);
+		}
 		canvasContext.drawImage(vehiclesSheet,
 								this.spriteSheetOffSet, 0, // sx, sy
 								CAR_WIDTH, CAR_HEIGHT, // sWidth, sHeight
