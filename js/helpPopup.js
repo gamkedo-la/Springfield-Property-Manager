@@ -19,12 +19,13 @@ function helpMenu()
 		"Pause Game",
 		"Purchase",
 		"Display Properties Info",
+		"Zoom In / Out",
 		"Reset Zoom",
 		"Toggle HUD",
 		"Mute/Unmute",
 	];
 
-	this.keys=["W","S","A","D","P","SPACE","I","Z","TAB","1"];
+	this.keys=["W / Right-Click & Drag Up","S / Right-Click & Drag Down","A / Right-Click & Drag Left","D / Right-Click & Drag Right","P","SPACE","I", "Mouse Scroll Up / Down", "Z","TAB","1"];
 
 	this.fontSize=14;
 	this.line=1;
@@ -79,7 +80,7 @@ function helpMenu()
 		
 		for(var i=0; i<this.keys.length-1; i++)
 		{
-			colorText(this.keys[i],this.popupX+(14*15),this.popupY+(this.fontSize*(i+6)));
+			colorText(this.keys[i],this.popupX+(12*15),this.popupY+(this.fontSize*(i+6)));
 		}
 		
 		
