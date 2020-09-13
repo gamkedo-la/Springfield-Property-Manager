@@ -149,7 +149,7 @@ function calculateMousePos(evt) {
   var mouseY = evt.clientY - rect.top - root.scrollTop;
   mouseX += -mouseX * zoom + (zoom * canvas.width) / 2;
   mouseY += -mouseY * zoom + (zoom * canvas.height) / 2;
-  // console.log(mouseX + " / "+ mouseY)
+  // console.log(mouseX + " / "+ mouseY)  
   return {
     x: mouseX,
     y: mouseY,
@@ -182,6 +182,11 @@ function drawEverything() {
     drawOpenningStory();
   } else {
     //in game
+
+    if (rightClicked) {
+      camPanX += mouseMovementX;
+      camPanY += mouseMovementY * 2;
+    }
 
     canvasContext.save();
 

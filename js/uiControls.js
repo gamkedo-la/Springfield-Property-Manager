@@ -26,13 +26,17 @@ const KEY_DOWN_ARROW = 40;
 
 var mousePosX = 0;
 var mousePosY = 0;
+var mouseMovementX = 0;
+var mouseMovementY = 0;
+var rightClicked = false;
 var mouseOverIdx = -1;
 var gesture = false;
 var isHudShown = true;
 
 function initInput() {
-  canvas.addEventListener("mousemove", mouseMove);
-  canvas.addEventListener("mousedown", handleMouseClick);
+  window.addEventListener("mousemove", mouseMove);
+  window.addEventListener("mousedown", handleMouseClick);  
+  window.addEventListener("mouseup", handleMouseUp);
   document.addEventListener("keydown", keyPressed);
   document.addEventListener("keyup", keyReleased);
 }
@@ -41,10 +45,15 @@ function mouseMove(evt) {
   var mousePos = calculateMousePos(evt);
   mousePosX = mousePos.x;
   mousePosY = mousePos.y;
+  mouseMovementX = evt.movementX;
+  mouseMovementY = evt.movementY;
+  
   //mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
 }
 
 function handleMouseClick(evt) {
+  rightClicked = evt.button == 2;
+
   if (gameIsStarted === false) {
     Menu.menuMouse();
     return;
@@ -63,6 +72,12 @@ function handleMouseClick(evt) {
     helpButton.setShow();
   }
   checkForPropertySelection();
+}
+
+function handleMouseUp(evt) {
+  rightClicked = false;
+  mouseMovementX = 0;
+  mouseMovementY = 0;
 }
 
 function keyPressed(evt) {
