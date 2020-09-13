@@ -5,7 +5,7 @@ const LIGHTNING_FREQ_FRAME_RANGE = 100;
 
 const FRAMES_PER_ANIM_STEP = 5;
 
-var isStorming = true;
+var isStorming = false;
 var isLightingStrikingNow = false;
 
 function setUpClouds(){
@@ -58,7 +58,7 @@ function weatherClass() {
 		}
 		
 		this.timeTillStrike--;
-		if(this.timeTillStrike == 0){
+		if(this.timeTillStrike == 0 && isStorming){
 			this.animFrame = 0;
 			isLightingStrikingNow = true;
 		}

@@ -39,6 +39,12 @@ function changeMonth(){
     
     if (USE_STATSGRAPH) statsData.months++;
 	
+	isStorming = false;
+	var chanceOfThunderStorm = randomIntFromInterval(0,10)
+	if(chanceOfThunderStorm < 2){
+		isStorming = true;
+	}
+	
 	var chanceToAddAPerson = randomIntFromInterval(0,1)
 	if(chanceToAddAPerson == 1){
 		addPerson();	
