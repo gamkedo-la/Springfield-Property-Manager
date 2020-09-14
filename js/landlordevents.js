@@ -1,8 +1,15 @@
+var possibleEvents = [
+{message: "Bank Error in your favor, win $1,000.", func: function (){ownerList[OWNER_HUMAN].cash += 1000; }},
+{message: "Bank Error in banks favor, lose $1,000.", func: function (){ownerList[OWNER_HUMAN].cash -= 1000;}},
+];
 var eventText = "";
 
+
 function announceLandlordEvent(){
-	console.log("function reached");
-	eventText = "Bank Error in your favor";
+	var whichAnnouncment = Math.floor(Math.random()*possibleEvents.length);
+	console.log("Announcement Number: " + whichAnnouncment);
+	eventText = possibleEvents[whichAnnouncment].message;
+	possibleEvents[whichAnnouncment].func();
 }
 
 function drawLandLordEventAnnouncementIfActive(){
