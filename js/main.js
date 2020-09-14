@@ -113,7 +113,7 @@ function moveEverything() {
     Menu.update();
     return;
   }
-  if (paused || openningStoryScreen) {
+  if (paused || openningStoryScreen || announcementIsPosted()) {
     return;
   }
 
@@ -182,7 +182,6 @@ function drawEverything() {
     drawOpenningStory();
   } else {
     //in game
-
     if (rightClicked) {
       camPanX += mouseMovementX;
       camPanY += mouseMovementY * 2;
@@ -239,6 +238,8 @@ function drawEverything() {
     ui.draw();
 
     canvasContext.restore();
+	
+	drawLandLordEventAnnouncementIfActive();
 
     canvasContext.restore();
 

@@ -58,6 +58,8 @@ function changeMonth(){
 		}
 	}
 	
+	announceLandlordEvent();
+	
 	callPurchaseProperty();
 
 	whichMonth++;

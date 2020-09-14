@@ -18,6 +18,7 @@ const KEY_Q = 81; // Decide to purchase a property
 const KEY_1 = 49; // Turn music on
 const KEY_Y = 89; //storming
 const KEY_Z = 90; // reset zoom
+const KEY_3 = 51; // jump month
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -53,6 +54,11 @@ function mouseMove(evt) {
 
 function handleMouseClick(evt) {
   rightClicked = evt.button == 2;
+  
+  if(announcementIsPosted()){
+	eraseAnnouncements();
+	return;	
+  }
 
   if (gameIsStarted === false) {
     Menu.menuMouse();
@@ -183,6 +189,9 @@ function keyPressed(evt) {
       case KEY_Z:
         zoom = 0;
         break;
+	  case KEY_3:
+		changeMonth();
+		break;
     }
   }
   if (typeof evt.preventDefault !== "undefined") {
