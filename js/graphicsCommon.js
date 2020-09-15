@@ -40,7 +40,16 @@ function colorText(showWords, textX, textY, fillColor, font = "14px Arial Black"
   canvasContext.fillText(showWords, textX, textY);
 }
 
-function colorTextShadow(showWords, textX, textY, fillColor="black", font = "14px Arial Black") {
+function colorTextCenter(showWords, textX, textY, fillColor, font = "14px Arial Black") {
+    textX = Math.round(textX); // snap to integer coords for clearer text
+    textY = Math.round(textY);
+    canvasContext.textAlign = "center";
+    canvasContext.fillStyle = fillColor;
+    canvasContext.font = font;
+    canvasContext.fillText(showWords, textX, textY);
+  }
+  
+  function colorTextShadow(showWords, textX, textY, fillColor="black", font = "14px Arial Black") {
     textX = Math.round(textX); // snap to integer coords for clearer text
     textY = Math.round(textY);
     canvasContext.textAlign = "left";

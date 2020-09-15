@@ -140,6 +140,7 @@ function rowColToArrayIndex(col, row) {
 }
 
 
+var _lastTileCol, _lastTileRow; // used by people debug
 function getTileIndexAtPixelCoord(pixelX,pixelY){ // pixelX and pixelY are in Game Space not Screen Space
 	var tileCol = pixelX / TILE_W;
 	var tileRow = pixelY / TILE_H;
@@ -153,7 +154,12 @@ function getTileIndexAtPixelCoord(pixelX,pixelY){ // pixelX and pixelY are in Ga
 		return undefined; // checking for out of bounds
 	}
 
-	var tileIndex = roomTileToIndex(tileCol, tileRow);
+    var tileIndex = roomTileToIndex(tileCol, tileRow);
+    
+    // remember for optional use after running this function
+    _lastTileCol = tileCol;
+    _lastTileRow = tileRow;
+
 	return tileIndex;
 }
 

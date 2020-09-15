@@ -1,3 +1,5 @@
+
+const DEBUG_PEOPLE = true; // draw extra debug dot and iso rectangle to show where they think they are
 const PEOPLE_FONT = "10px Arial Black"; // used for thought bubbles
 const EAST = 1;
 const WEST = 2;
@@ -94,6 +96,7 @@ function peopleClass() {
       this.checkForDanger();
     }
     else {
+      this.checkForDanger(); // FIXME: this interferes with moving toward houses
       this.moveToProperty();
       this.buyFromProperty();
     }
@@ -197,17 +200,23 @@ function peopleClass() {
         ///////////////////////////////////////////////////////////////////////////
         // this function returns the wrong tile
         var HACK = TILE_W/2; // temp workaround using guesswork
+        //var tileType = isWallAtTileCoord(tileIndex) // this function is broken
         ///////////////////////////////////////////////////////////////////////////
         var tileIndex = getTileIndexAtPixelCoord(this.x-HACK-HACK,this.y+HACK); // FIXME!!!!
-        ///////////////////////////////////////////////////////////////////////////
-        //var tileType = isWallAtTileCoord(tileIndex) // function is broken
-
         var tileFound = roomGrid[tileIndex];
+
+        this.standingOnTileIndex = tileIndex;
+        this.standingOnTileRow = _lastTileRow;
+        this.standingOnTileCol = _lastTileCol;
+        this.standingOnTileType = tileFound;
+        this.standingOnTileDesc = "UNKNOWN";
+
         //console.log("WALKING ON TILE TYPE " + tileFound);
         switch (tileFound) {
             case TILE_ROAD_NS:
             case TILE_ROAD_WE:
             case TILE_ROAD_INT:
+                this.standingOnTileDesc = "ROAD";
                 // on the street! lets shift over a bit
                 //console.log("crossing the street at "+this.x+","+this.y+" which is tile type " + tileFound);
                 // handle diagonal movement
@@ -224,6 +233,7 @@ function peopleClass() {
             case TILE_GRASS:
             case TILE_SNOW:
                 // we are perfectly safe here!
+                this.standingOnTileDesc = "GROUND";
                 break;
         }
     }
@@ -259,11 +269,12 @@ function peopleClass() {
 		if (drawPlayerDesignsOnly) {
 			return;
 		}
-		gameCoordToIsoCoord(this.x, this.y);
+        gameCoordToIsoCoord(this.x, this.y); // warning: mangles globals
+        // used for debugging
+        //if (DEBUG_PEOPLE) colorIsoRect(isoDrawX,isoDrawY,TILE_W / 2,TILE_H / 2,"red");
+
         // FIXME: these feel offset from where the game thinks they are at
         drawBitmapAtLocation(human, isoDrawX-peopleFootOffsetX, isoDrawY-peopleFootOffsetY);
-        // the dot is at the foot position
-        colorCircle(isoDrawX, isoDrawY, 1, this.color[this.whichColor]);
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
@@ -291,6 +302,17 @@ function peopleClass() {
 			}
 		} else if(this.displayMessageTimer > randomIntFromInterval(1000,2000)) {// reset displayMessageTimer
 			this.displayMessageTimer = 0;
-		}
-	}
-}
+        }
+        if (DEBUG_PEOPLE) {
+            // the dot is at the foot position
+            colorCircle(isoDrawX, isoDrawY, 1, this.color[this.whichColor]);
+            colorTextCenter("Standing on " + this.standingOnTileDesc,isoDrawX,isoDrawY+10,'black',"7px Arial");
+            colorTextCenter('TILE #'+this.standingOnTileIndex+' ('+this.standingOnTileRow+','+this.standingOnTileCol+')',isoDrawX,isoDrawY+20,'black',"7px Arial");
+            colorTextCenter('POS:'+this.x.toFixed(0)+','+this.y.toFixed(0),isoDrawX,isoDrawY+30,'black',"7px Arial");
+            // draw a tile at the TILE location we are standing on to bugfix stuff
+            // careful! this changes isoDrawX and isoDrawY globals!
+            tileCoordToIsoCoord(this.standingOnTileRow, this.standingOnTileCol); // WARNING mangles globals
+            colorIsoRect(isoDrawX,isoDrawY,TILE_W / 2,TILE_H / 2,"rgba(0,0,0,0.15)",0,'black');
+        }
+	} // draw
+} // class
