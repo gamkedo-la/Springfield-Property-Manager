@@ -45,10 +45,20 @@ function changeMonth(){
 		isStorming = true;
 	}
 	
-	var chanceToAddAPerson = randomIntFromInterval(0,1)
+	var chanceToAddAPerson = randomIntFromInterval(0,4)
 	if(chanceToAddAPerson == 1){
 		addPerson();	
 	}
+	if(chanceToAddAPerson == 2){
+		for(i = 0; i < 2; i++){
+			addPerson();
+		}	}
+	if(chanceToAddAPerson == 3){
+		for(i = 0; i < 3; i++){
+			addPerson();
+		}	
+	}
+	
 
 	for (var i = 0; i < peopleList.length; i++) {
 		peopleList[i].characteristics.isHungry = true;
@@ -58,7 +68,10 @@ function changeMonth(){
 		}
 	}
 	
-	announceLandlordEvent();
+	var chanceOfLandLordEvent = randomIntFromInterval(0,10)
+	if(chanceOfLandLordEvent > 8){
+		announceLandlordEvent();
+	}
 	
 	callPurchaseProperty();
 
