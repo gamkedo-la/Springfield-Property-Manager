@@ -92,7 +92,7 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 45);
+        let randomZone = randomIntFromInterval(1, 50);
 
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
@@ -135,8 +135,12 @@ function propertyClass() {
             this.zoned = "Commercial";
             this.building = "italianRestaurant";
             this.salePrice = 32000;
+        } else if (randomZone >= 46 && randomZone <= 50) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "Park";
+            this.salePrice = 5000;
         }
-
+        
         this.reset();
     }
 
@@ -188,6 +192,9 @@ function propertyClass() {
         } else if (this.building == "LuxuryOffice") {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(this.variation, isoDrawX, isoDrawY - this.isoBuildingHeight);
+        } else if (this.building == "Park") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(parkTilePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else { // no building, draw a for sale sign based on commercial or residential
             drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);
             if (this.zoned == "Commercial") {

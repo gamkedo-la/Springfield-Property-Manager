@@ -35,6 +35,7 @@ var helpButtonPic = document.createElement("img");
 var cityHallPic = document.createElement("img");
 var streetLightPic = document.createElement("img");
 var eventCardPic = document.createElement("img");
+var parkTilePic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -96,7 +97,8 @@ function loadImages() {
 			{varName: italianRestaurant, theFile: "italianRestaurant.png"},
 			{varName: helpButtonPic, theFile:"help.png"},
 			{varName: streetLightPic, theFile:"streetlight1.png"},	
-			{varName: eventCardPic, theFile:"eventCard.png"},
+            {varName: eventCardPic, theFile:"eventCard.png"},
+            {varName: parkTilePic, theFile:"park.png"},
 
 			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
