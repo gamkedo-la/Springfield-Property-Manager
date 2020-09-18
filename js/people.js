@@ -1,5 +1,5 @@
 
-const DEBUG_PEOPLE = true; // draw extra debug dot and iso rectangle to show where they think they are
+const DEBUG_PEOPLE = false; // draw extra debug dot and iso rectangle to show where they think they are
 const PEOPLE_FONT = "10px Arial Black"; // used for thought bubbles
 const EAST = 1;
 const WEST = 2;
