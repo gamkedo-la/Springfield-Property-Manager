@@ -29,7 +29,8 @@ function peopleClass() {
 
   const RANDOM_DIR_CHANGE_CHANCE = 0.01; // per frame per person
 
-	this.x = 0;
+    this.name = "Person" + Math.round(1000+Math.random()*9000); // for debugging
+    this.x = 0;
 	this.y = 100;
 	this.velX = .5;
 	this.velY = .5;
@@ -306,7 +307,7 @@ function peopleClass() {
         if (DEBUG_PEOPLE) {
             // the dot is at the foot position
             colorCircle(isoDrawX, isoDrawY, 1, this.color[this.whichColor]);
-            colorTextCenter("Standing on " + this.standingOnTileDesc,isoDrawX,isoDrawY+10,'black',"7px Arial");
+            colorTextCenter(this.name+ " standing on " + this.standingOnTileDesc,isoDrawX,isoDrawY+10,'black',"7px Arial");
             colorTextCenter('TILE #'+this.standingOnTileIndex+' ('+this.standingOnTileRow+','+this.standingOnTileCol+')',isoDrawX,isoDrawY+20,'black',"7px Arial");
             colorTextCenter('POS:'+this.x.toFixed(0)+','+this.y.toFixed(0),isoDrawX,isoDrawY+30,'black',"7px Arial");
             // draw a tile at the TILE location we are standing on to bugfix stuff
