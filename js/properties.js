@@ -57,7 +57,7 @@ function propertyClass() {
                     var tileCol = i % MAP_COLS;
                     this.homeX = tileCol * TILE_W;
                     this.homeY = tileRow * TILE_H;
-					if(gameMonth == "January" || gameMonth == "February" || gameMonth == "December"){
+                    if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December"){
 						roomGrid[i] = TILE_SNOW;
 					} else {
 						roomGrid[i] = TILE_GRASS;
