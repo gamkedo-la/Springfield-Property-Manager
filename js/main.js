@@ -231,6 +231,8 @@ function drawEverything() {
 
     drawLandScape(!isBackground); // Draw in the foreground, so that other properties are not drawn above buildings that are too high (e.g. the city hall).
 
+    critters.draw(); // birds, butterflies, cats, and dogs
+
     for (var i = 0; i < cloudList.length; i++) {
       cloudList[i].draw();
     }

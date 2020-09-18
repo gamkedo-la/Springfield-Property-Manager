@@ -37,6 +37,7 @@ var streetLightPic = document.createElement("img");
 var eventCardPic = document.createElement("img");
 var parkTilePic = document.createElement("img");
 var parkWinterTilePic = document.createElement("img");
+var crittersPic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -101,6 +102,7 @@ function loadImages() {
             {varName: eventCardPic, theFile:"eventCard.png"},
             {varName: parkTilePic, theFile:"park.png"},
             {varName: parkWinterTilePic, theFile:"parkWinter.png"},
+            {varName: crittersPic, theFile:"critters.png"},
 
 			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
