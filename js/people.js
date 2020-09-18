@@ -1,5 +1,6 @@
 
 const DEBUG_PEOPLE = false; // draw extra debug dot and iso rectangle to show where they think they are
+const AVOID_WALKING_ON_STREET  = false; // turned off due to iso coord bugs
 const PEOPLE_FONT = "10px Arial Black"; // used for thought bubbles
 const EAST = 1;
 const WEST = 2;
@@ -94,10 +95,10 @@ function peopleClass() {
     if (this.characteristics.propertyToGo == null) {
       this.checkBoundaries();
       this.checkIntersections();
-      this.checkForDanger();
+      if (AVOID_WALKING_ON_STREET) this.checkForDanger(); // avoid walking on the street
     }
     else {
-      this.checkForDanger(); // FIXME: this interferes with moving toward houses
+        if (AVOID_WALKING_ON_STREET) this.checkForDanger(); // FIXME: this interferes with moving toward houses
       this.moveToProperty();
       this.buyFromProperty();
     }
