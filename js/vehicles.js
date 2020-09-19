@@ -41,6 +41,8 @@ function vehicleClass() {
 	}
 
 	this.resetSprite = function() {
+		this.velX = 1 + (-0.25 + Math.random() / 2);
+		this.velY = 1 + (-0.25 + Math.random() / 2);
 		this.spriteSheetOffSet = randomIntFromInterval(0, vehiclesSheet.width/CAR_WIDTH - 1)*CAR_WIDTH;
 		// There can only be one Biker Brick cameo on screen!
 		if (this.spriteSheetOffSet == BIKER_SPRITE_OFFSET && vehicleList.filter(v => v.spriteSheetOffSet == BIKER_SPRITE_OFFSET).length > 1) {
@@ -56,12 +58,36 @@ function vehicleClass() {
 	this.move = function() {
 		this.checkBoundaries();
 
-		if(this.moveWest){
+		if(this.moveWest) {
 			this.x = this.x - this.velX;
 		} else if(this.moveEast){
 			this.x = this.x + this.velX;
+			const eastVehicles = vehicleList.filter(v => v.moveEast == true)
+			for (const v of eastVehicles) {
+				if(v !== this) {
+					if((v.x - this.x > 0) && (v.x - this.x < 60)) {
+						this.velX *= 0.99;
+						break;
+					} else if((v.x - this.x < 0) && (v.x - this.x > -60)) {
+						this.velX *= 1.01;
+						break;
+					}
+				}
+			}
 		} else if(this.moveSouth){
 			this.y = this.y + this.velY;
+			const southVehicles = vehicleList.filter(v => v.moveSouth == true)
+			for (const v of southVehicles) {
+				if(v !== this) {
+					if((this.y - v.y > 0) && (this.y - v.y < 60)) {
+						this.velY *= 0.99;
+						break;
+					} else if((this.y - v.y < 0) && (this.y - v.y > -60)) {
+						this.velY *= 1.01;
+						break;
+					}
+				}
+			}
 		} else if(this.moveNorth){
 			this.x = this.y - this.velY;
 		} else {
@@ -71,16 +97,16 @@ function vehicleClass() {
 	}
 
 	this.checkBoundaries = function(){
-		if(this.x > GAME_WIDTH){
-			this.x = 0;
+		if(this.x > GAME_WIDTH + 60){
+			this.x = -60 * Math.random();
 			this.resetSprite();
-		} else if (this.x < 0){
-			this.x = GAME_WIDTH;
-		} else if (this.y > GAME_HEIGHT){
-			this.y = 0;
+		} else if (this.x < -60){
+			this.x = GAME_WIDTH + 60 * Math.random();
+		} else if (this.y > GAME_HEIGHT + 60){
+			this.y = -60 * Math.random();
 			this.resetSprite();
-		} else if (this.y < 0){
-			this.y = GAME_HEIGHT;
+		} else if (this.y < -60){
+			this.y = GAME_HEIGHT + 60 * Math.random();
 		}
 	}
 
