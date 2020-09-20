@@ -14,7 +14,7 @@ var ownerList = [];
 function callPurchaseProperty(){
 	for(var i = 1; i < ownerList.length; i++){
 		ownerList[i].decidingIfBuyingProperty();
-	}	
+	}
 }
 
 function setUpOwners(){
@@ -59,7 +59,7 @@ function ownerClass() {
 	this.propertyOwned = [];
 	this.computerWillingessToPurchase = randomIntFromInterval(1,10);
 	this.preferenceToEmptyLot = true;
-	
+
 	this.reset = function(myID){
 		this.cash = INITIAL_CASH;
 		this.myOwnerID = myID;
@@ -71,14 +71,14 @@ function ownerClass() {
 			this.preferenceToEmptyLot = false;
 		}
 	}
-	
+
 	this.buyProperty = function(propertyToBuy){
-		
+
 		if(this.myOwnerID == propertyToBuy.owner){
 			console.log("I already own this");
 			return;
 		}
-		
+
 		if(this.cash < propertyToBuy.salePrice){
 			console.log(this.myOwnerID + "tried to buy, can't afford.  Sales Price: " + propertyToBuy.salePrice);
 			return;
@@ -88,11 +88,11 @@ function ownerClass() {
 			ownerList[propertyToBuy.owner].cash += propertyToBuy.salePrice;
 		}
 		propertyToBuy.owner = this.myOwnerID;
-		console.log("Purchase to Buy Complete. " + propertyToBuy.zoned + " " + propertyToBuy.building + " " + this.myOwnerID); 
+		console.log("Purchase to Buy Complete. " + propertyToBuy.zoned + " " + propertyToBuy.building + " " + this.myOwnerID);
 	}
-	
+
 	this.checkForPropertiesOwned = function(){
-		this.propertyOwned = []; 
+		this.propertyOwned = [];
 		for(var i = 0; i < propertyList.length; i++){
 			if(this.myOwnerID == propertyList[i].owner){
 				newProperty = propertyList[i].propertyTileMapIndex;
@@ -100,7 +100,7 @@ function ownerClass() {
 			}
 		}
 	}
-	
+
 	this.drawStatus = function(){
 		var textX = 140 * (1+this.myOwnerID);
 		var textY = 25;
@@ -120,15 +120,15 @@ function ownerClass() {
 			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, "yellow");
 		}
 	}
-	
+
 	this.decidingIfBuyingProperty = function(){
 		consideringAPurchase = randomIntFromInterval(2,10);
-	
+
 		if(consideringAPurchase >= this.computerWillingessToPurchase){
-			
+
 			var propertyToBuy = null;
 			for(var i = 0; i < propertyList.length; i++){
-				if(this.preferenceToEmptyLot){ 
+				if(this.preferenceToEmptyLot){
 					if(propertyList[i].building == "none"){
 						propertyToBuy = propertyList[i];
 					}
@@ -141,7 +141,7 @@ function ownerClass() {
 
 			if(propertyToBuy != null){
 				ownerList[this.myOwnerID].buyProperty(propertyToBuy);
-				
+
 			} else {
 				console.log(this.myOwnerID + "failed to buy a property and preference to an empty lot is " + this.preferenceToEmptyLot);
 			}

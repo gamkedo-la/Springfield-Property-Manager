@@ -166,7 +166,7 @@ function propertyClass() {
 
     this.draw = function() {
         gameCoordToIsoCoord(this.x, this.y);
-        if (drawPlayerDesignsOnly && this.owner != OWNER_HUMAN) {
+        if (drawPlayerDesignsOnly && this.owner != whichPlayerDesignsToShow) {
           return;
         }
         if (this.building == "restaurant") {
@@ -193,12 +193,12 @@ function propertyClass() {
             this.isoBuildingHeight = 50;
             drawBitmapAtLocation(this.variation, isoDrawX, isoDrawY - this.isoBuildingHeight);
         } else if (this.building == "Park") {
-            
+
             this.isoBuildingHeight = 50;
             if(whichMonth==11 || whichMonth==0 || whichMonth==1) { // dec, jan, feb
                 // winter snowy version
                 drawBitmapAtLocation(parkWinterTilePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
-            } else { 
+            } else {
                 // summer green grass version
                 drawBitmapAtLocation(parkTilePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
             }

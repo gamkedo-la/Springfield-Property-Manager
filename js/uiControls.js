@@ -19,6 +19,10 @@ const KEY_1 = 49; // Turn music on
 const KEY_Y = 89; //storming
 const KEY_Z = 90; // reset zoom
 const KEY_3 = 51; // jump month
+const KEY_4 = 52;
+const KEY_5 = 53;
+const KEY_6 = 54;
+const KEY_7 = 55;
 
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -36,7 +40,7 @@ var isHudShown = true;
 
 function initInput() {
   window.addEventListener("mousemove", mouseMove);
-  window.addEventListener("mousedown", handleMouseClick);  
+  window.addEventListener("mousedown", handleMouseClick);
   window.addEventListener("mouseup", handleMouseUp);
   document.addEventListener("keydown", keyPressed);
   document.addEventListener("keyup", keyReleased);
@@ -48,16 +52,16 @@ function mouseMove(evt) {
   mousePosY = mousePos.y;
   mouseMovementX = evt.movementX;
   mouseMovementY = evt.movementY;
-  
+
   //mouseOverIdx = getTileIndexAtPixelCoord(mousePosX,mousePosY);
 }
 
 function handleMouseClick(evt) {
   rightClicked = evt.button == 2;
-  
+
   if(announcementIsPosted()){
 	eraseAnnouncements();
-	return;	
+	return;
   }
 
   if (gameIsStarted === false) {
@@ -188,6 +192,26 @@ function keyPressed(evt) {
         break;
       case KEY_Z:
         zoom = 0;
+        break;
+      case KEY_4:
+        drawPlayerDesignsOnly = !drawPlayerDesignsOnly;
+        paused = drawPlayerDesignsOnly;
+        whichPlayerDesignsToShow = OWNER_CPU_1;
+        break;
+      case KEY_5:
+        drawPlayerDesignsOnly = !drawPlayerDesignsOnly;
+        paused = drawPlayerDesignsOnly;
+        whichPlayerDesignsToShow = OWNER_CPU_2;
+        break;
+      case KEY_6:
+        drawPlayerDesignsOnly = !drawPlayerDesignsOnly;
+        paused = drawPlayerDesignsOnly;
+        whichPlayerDesignsToShow = OWNER_CPU_3;
+        break;
+      case KEY_7:
+        drawPlayerDesignsOnly = !drawPlayerDesignsOnly;
+        paused = drawPlayerDesignsOnly;
+        whichPlayerDesignsToShow = OWNER_CPU_4;
         break;
 	  case KEY_3:
 		changeMonth();
