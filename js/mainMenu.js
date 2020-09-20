@@ -210,18 +210,20 @@ const Menu = new (function () {
         currentPage = MENU_PAGE;
       }
       this.redraw();
-
-      canvasContext.drawImage(logo, 0, 0);
+      
+      canvasContext.fillStyle = "white";
+      canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+      canvasContext.drawImage(logo, canvas.width / 2 - 230.5, canvas.height / 2 - 118);
       canvasContext.drawImage(
         arrow,
-        itemsX - 390,
+        itemsX,
         topItemY + this.cursor * rowHeight - 30
       );
 
       for (let i = 0; i < menuPageText[currentPage].length; i++) {
         colorTextShadow(
           menuPageText[currentPage][i].split("").join(" "),
-          itemsX - 350,
+          itemsX + 50,
           topItemY + rowHeight * i,
           "#94216a",
           "35px Arial"
