@@ -150,7 +150,7 @@ function getTileIndexAtPixelCoord(pixelX,pixelY){ // pixelX and pixelY are in Ga
 
 	if(tileCol < 0 || tileCol >= MAP_COLS ||
 		tileRow < 0 || tileRow >= MAP_ROWS) {
-		document.getElementById("debugText").innerHTML = "out of bounds: " +pixelX+", "+pixelY;
+		//document.getElementById("debugText").innerHTML = "out of bounds: " +pixelX+", "+pixelY;
 		return undefined; // checking for out of bounds
 	}
 
