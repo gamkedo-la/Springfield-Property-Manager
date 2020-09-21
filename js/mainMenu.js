@@ -211,8 +211,8 @@ const Menu = new (function () {
       }
       this.redraw();
       
-      canvasContext.fillStyle = "white";
-      canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+      //canvasContext.fillStyle = "white";
+      //canvasContext.fillRect(0, 0, canvas.width, canvas.height);
       canvasContext.drawImage(logo, canvas.width / 2 - 230.5, canvas.height / 2 - 118);
       canvasContext.drawImage(
         arrow,

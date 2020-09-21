@@ -1,8 +1,14 @@
-body, canvas { 
-  margin:0; 
-  padding:0; 
-  overflow:hidden; 
-  background:black; 
+body {
+    margin:0; 
+    padding:0; 
+    overflow:hidden; 
+    background:url(../images/snow-rectangle-tile.png);
+}
+
+canvas { 
+    margin:0; 
+    padding:0; 
+    overflow:hidden; 
 }
 
 #debugText { 

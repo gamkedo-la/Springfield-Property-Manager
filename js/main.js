@@ -168,7 +168,8 @@ function drawEverything() {
     isLightingStrikingNow = false;
     colorRect(0, 0, canvas.width, canvas.height, "#36373a");
   } else {
-    colorRect(0, 0, canvas.width, canvas.height, "#16171a");
+    //colorRect(0, 0, canvas.width, canvas.height, "rgba(255,0,0,0)");//"#16171a"); // draw near black
+    canvasContext.clearRect(0,0,canvas.width, canvas.height); // leave empty (see thru)
   }
   var showInGameUI = gameIsStarted && openningStoryScreen == false;
   if (isHudShown && showInGameUI && uiContainerMain.style.display == "none") {
@@ -253,7 +254,7 @@ function drawEverything() {
     if (isHudShown) {
       if (inGameMenu != null) {
         canvasContext.globalAlpha = 0.5;
-        colorRect(0, 0, canvas.width, canvas.height, "black");
+        colorRect(0, 0, canvas.width, canvas.height, "black"); // 50% black overlay
         canvasContext.globalAlpha = 1.0;
         inGameMenu.draw();
       }

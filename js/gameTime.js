@@ -38,6 +38,13 @@ function displayGameTime(){
 function changeMonth(){
     
     if (USE_STATSGRAPH) statsData.months++;
+    
+    // make the empty space in the html background match the ground tiles
+    if(whichMonth==11 || whichMonth==0 || whichMonth==1) { // dec, jan, feb
+        document.body.style.background = "url(images/snow-rectangle-tile.png)";
+    } else {
+        document.body.style.background = "url(images/grass-rectangle-tile.png)";
+    }
 	
 	isStorming = false;
 	var chanceOfThunderStorm = randomIntFromInterval(0,10)
