@@ -8,6 +8,12 @@ const OWNER_CPU_3 = 3;
 const OWNER_CPU_4 = 4;
 const HOW_MANY_OWNERS = 5;
 
+//const COLOR_HUMAN = "white"
+//const COLOR_CPU_1 = "blue"
+//const COLOR_CPU_2 = "green"
+//const COLOR_CPU_3 = "purple"
+//const COLOR_CPU_4 = "yellow"
+
 const INITIAL_CASH = 20000;
 var ownerList = [];
 
@@ -108,16 +114,16 @@ function ownerClass() {
 
 		var ownerName = getOwnerName(this.myOwnerID);
 
-		colorTextShadow(ownerName, textX, textY, "yellow");
+		colorTextShadow(ownerName, textX, textY, "lightgreen");
 		textY += textSkipY;
 		colorTextShadow("$:" + this.cash, textX, textY, "yellow");
 		textY += textSkipY;
-		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "yellow");
+		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "lightblue");
 		textY += textSkipY;
-		colorTextShadow("Lots Owned: ", textX, textY, "yellow");
+		colorTextShadow("Lots Owned: ", textX, textY, "lightblue");
 		for(var i = 0; i < this.propertyOwned.length; i++){
 			textY += textSkipY;
-			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, "yellow");
+			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, "lightblue");
 		}
 	}
 

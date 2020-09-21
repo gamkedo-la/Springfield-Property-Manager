@@ -56,6 +56,7 @@ function colorTextCenter(showWords, textX, textY, fillColor, font = "14px Arial 
     canvasContext.font = font;
     canvasContext.fillStyle = "black";
     canvasContext.fillText(showWords, textX+1, textY+1);
+    canvasContext.strokeText(showWords, textX, textY);
     canvasContext.fillStyle = fillColor;
     canvasContext.fillText(showWords, textX, textY);
 }
