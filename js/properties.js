@@ -92,7 +92,7 @@ function propertyClass() {
 
     this.init = function(propertyTileMapIndex) {
         this.propertyTileMapIndex = propertyTileMapIndex;
-        let randomZone = randomIntFromInterval(1, 50);
+        let randomZone = randomIntFromInterval(1, 63);
 
 		if (randomZone >= 1 && randomZone <= 10) {
 			this.zoned = "Commercial";
@@ -135,9 +135,29 @@ function propertyClass() {
             this.zoned = "Commercial";
             this.building = "italianRestaurant";
             this.salePrice = 32000;
-        } else if (randomZone >= 46 && randomZone <= 50) {
+		} else if (randomZone >= 46 && randomZone <= 50) {
             this.zoned = "Commercial"; // not sure what to use here! FIXME
             this.building = "Park";
+            this.salePrice = 5000;
+        } else if (randomZone >= 51 && randomZone <= 52) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "bank";
+            this.salePrice = 50000;
+        } else if (randomZone >= 53 && randomZone <= 54) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "School";
+            this.salePrice = 50000;
+		} else if (randomZone >= 55 && randomZone <= 57) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "Mall";
+            this.salePrice = 50000;
+		} else if (randomZone >= 58 && randomZone <= 60) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "Diner";
+            this.salePrice = 5000;
+        } else if (randomZone >= 61 && randomZone <= 63) {
+            this.zoned = "Commercial"; // not sure what to use here! FIXME
+            this.building = "PizzaRest";
             this.salePrice = 5000;
         }
 
@@ -202,8 +222,22 @@ function propertyClass() {
                 // summer green grass version
                 drawBitmapAtLocation(parkTilePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
             }
-
-        } else { // no building, draw a for sale sign based on commercial or residential
+		} else if (this.building == "Bank") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(bankPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+		} else if (this.building == "Mall") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(mallPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+		} else if (this.building == "School") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(schoolPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+		} else if (this.building == "Diner") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(dinerPic, isoDrawX, isoDrawY - this.isoBuildingHeight)
+	    } else if (this.building == "PizzaRest") {
+            this.isoBuildingHeight = 50;
+            drawBitmapAtLocation(pizzaRestPic, isoDrawX, isoDrawY - this.isoBuildingHeight);
+		} else { // no building, draw a for sale sign based on commercial or residential
             drawBitmapAtLocation(propertyPic, isoDrawX, isoDrawY);
             if (this.zoned == "Commercial") {
                 drawBitmapAtLocation(commercialForSaleSignPic, isoDrawX, isoDrawY);

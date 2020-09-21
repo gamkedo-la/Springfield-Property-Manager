@@ -3,6 +3,11 @@ var arrow = document.createElement("img");
 var propertyPic = document.createElement("img");
 var residentialForSaleSignPic = document.createElement("img");
 var commercialForSaleSignPic = document.createElement("img");
+var bankPic = document.createElement("img");
+var schoolPic = document.createElement("img");
+var mallPic = document.createElement("img");
+var dinerPic = document.createElement("img");
+var pizzaRestPic = document.createElement("img");
 var buildingPic = document.createElement("img");
 var building2Pic = document.createElement("img");
 var building3Pic = document.createElement("img");
@@ -103,6 +108,11 @@ function loadImages() {
             {varName: parkTilePic, theFile:"park.png"},
             {varName: parkWinterTilePic, theFile:"parkWinter.png"},
             {varName: crittersPic, theFile:"critters.png"},
+			{varName: bankPic, theFile:"bank.png"},
+			{varName: mallPic, theFile:"mall.png"},
+			{varName: pizzaRestPic, theFile:"pizzaRestaurant.png"},
+			{varName: schoolPic, theFile:"school.png"},
+			{varName: dinerPic, theFile:"diner.png"},
 
 			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
