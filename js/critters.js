@@ -48,30 +48,45 @@ window.critters = new function() {
         cx = 150;
         cy = 360;
         animspd = 15;
-        spdx = 300;
-        spdy = 111;
+        spdx = 1300;
+        spdy = 611;
         distx = 420;
         disty = 224;
         for (i=0; i<numbutterflies; i++) {
             f = Math.round(frame/animspd)%animlen;
-            x = cx+Math.sin(frame/spdx+i*ofs)*distx;
-            y = cy+Math.cos(frame/spdy+i*ofs)*disty;
+            x = Math.round(cx+Math.sin(frame/spdx+i*ofs)*distx);
+            y = Math.round(cy+Math.cos(frame/spdy+i*ofs)*disty);
             canvasContext.drawImage(crittersPic,(2+f)*w,0,w,h,x,y,w,h);
         }
 
         cx = 250;
-        cy = 360;
+        cy = 330;
         animspd = 25;
-        spdx = 200;
-        spdy = 111;
+        spdx = 950;
+        spdy = 944;
         distx = 15;
-        disty = 100;
+        disty = 80;
         for (i=0; i<numcats; i++) {
             f = Math.round(frame/animspd)%animlen;
-            x = cx+Math.sin(frame/spdx+i*ofs)*distx;
-            y = cy+Math.cos(frame/spdy+i*ofs)*disty;
+            x = Math.round(cx+Math.sin(frame/spdx+i*ofs)*distx);
+            y = Math.round(cy+Math.cos(frame/spdy+i*ofs)*disty);
             canvasContext.drawImage(crittersPic,(4+f)*w,0,w,h,x,y,w,h);
         }
+        
+        cx = 320;
+        cy = 360;
+        animspd = 10;
+        spdx = 933;
+        spdy = 966;
+        distx = -90;
+        disty = 20;
+        for (i=0; i<numdogs; i++) {
+            f = Math.round(frame/animspd)%animlen;
+            x = Math.round(cx+Math.sin(frame/spdx+i*ofs)*distx);
+            y = Math.round(cy+Math.cos(frame/spdy+i*ofs)*disty);
+            canvasContext.drawImage(crittersPic,(6+f)*w,0,w,h,x,y,w,h);
+        }        
+
 
     }
 
