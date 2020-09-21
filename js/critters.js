@@ -17,8 +17,8 @@ window.critters = new function() {
     const h = 16;
     const numbirds = 5;
     const numbutterflies = 3;
-    const numcats = 2;
-    const numdogs = 2;
+    const numcats = 1;
+    const numdogs = 1;
 
     var frame = 0;
     var i,f,x,y,cx,cy;
@@ -48,15 +48,29 @@ window.critters = new function() {
         cx = 150;
         cy = 360;
         animspd = 15;
-        spdx = 800;
+        spdx = 300;
         spdy = 111;
         distx = 420;
-        disty = 24;
+        disty = 224;
         for (i=0; i<numbutterflies; i++) {
-            f = Math.round(frame/animspd)%animlen; // sprite frame
+            f = Math.round(frame/animspd)%animlen;
             x = cx+Math.sin(frame/spdx+i*ofs)*distx;
             y = cy+Math.cos(frame/spdy+i*ofs)*disty;
             canvasContext.drawImage(crittersPic,(2+f)*w,0,w,h,x,y,w,h);
+        }
+
+        cx = 250;
+        cy = 360;
+        animspd = 25;
+        spdx = 200;
+        spdy = 111;
+        distx = 15;
+        disty = 100;
+        for (i=0; i<numcats; i++) {
+            f = Math.round(frame/animspd)%animlen;
+            x = cx+Math.sin(frame/spdx+i*ofs)*distx;
+            y = cy+Math.cos(frame/spdy+i*ofs)*disty;
+            canvasContext.drawImage(crittersPic,(4+f)*w,0,w,h,x,y,w,h);
         }
 
     }
