@@ -1,3 +1,5 @@
+const USE_FULLSCREEN_LIGHTNING_FLASHES = false;
+
 var framesPerSecond = 60;
 
 var canvas;
@@ -164,13 +166,16 @@ function handleMouseWheel(evt) {
 }
 
 function drawEverything() {
+  
+  canvasContext.clearRect(0,0,canvas.width, canvas.height); // leave empty (see thru)
+
   if (isLightingStrikingNow) {
     isLightingStrikingNow = false;
-    colorRect(0, 0, canvas.width, canvas.height, "#36373a");
-  } else {
-    //colorRect(0, 0, canvas.width, canvas.height, "rgba(255,0,0,0)");//"#16171a"); // draw near black
-    canvasContext.clearRect(0,0,canvas.width, canvas.height); // leave empty (see thru)
+    if (USE_FULLSCREEN_LIGHTNING_FLASHES) {
+        colorRect(0, 0, canvas.width, canvas.height, "#36373a");
+    }
   }
+
   var showInGameUI = gameIsStarted && openningStoryScreen == false;
   if (isHudShown && showInGameUI && uiContainerMain.style.display == "none") {
     uiContainerMain.style.display = "flex";
