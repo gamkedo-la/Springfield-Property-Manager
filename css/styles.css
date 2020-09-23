@@ -2,7 +2,7 @@ body {
     margin:0; 
     padding:0; 
     overflow:hidden; 
-    background:url(../images/snow-rectangle-tile.png);
+    background:url(../images/snow-rectangle-tile-bright.png);
 }
 
 canvas { 
