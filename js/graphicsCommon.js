@@ -49,10 +49,10 @@ function colorTextCenter(showWords, textX, textY, fillColor, font = "14px Arial 
     canvasContext.fillText(showWords, textX, textY);
   }
   
-  function colorTextShadow(showWords, textX, textY, fillColor="black", font = "14px Arial Black") {
+  function colorTextShadow(showWords, textX, textY, fillColor="black", font = "14px Arial Black", align="left") {
     textX = Math.round(textX); // snap to integer coords for clearer text
     textY = Math.round(textY);
-    canvasContext.textAlign = "left";
+    canvasContext.textAlign = align;
     canvasContext.font = font;
     canvasContext.fillStyle = "black";
     canvasContext.fillText(showWords, textX+1, textY+1);

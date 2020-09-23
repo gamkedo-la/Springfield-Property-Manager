@@ -30,9 +30,8 @@ function updateTime(){
 }
 
 function displayGameTime(){
-	//colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "#fafdff", "14px 'b612regular'");
-	colorTextShadow(gameMonth[whichMonth] + " " + gameYear, 800,  900, "#ffd100", "30px 'lexendpeta'");
-	colorTextShadow("- Day: " + gameDay, 1100,  900, "#ffd100", "30px 'lexendpeta'");
+    //colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "#fafdff", "14px 'b612regular'");
+    colorTextShadow(gameMonth[whichMonth] + " " + gameYear + " - Day: " + gameDay, 800,  900, "#ffd100", "30px 'lexendpeta'","center");
 }
 
 function changeMonth(){
