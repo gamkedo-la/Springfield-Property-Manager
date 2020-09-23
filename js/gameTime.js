@@ -39,7 +39,9 @@ function changeMonth(){
     if (USE_STATSGRAPH) statsData.months++;
     
     // make the empty space in the html background match the ground tiles
-    if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December") { // dec, jan, feb
+    // bugfix: corrected for off-by-one since the month has already advanced +1 at this point in code
+    console.log("whichMonth="+whichMonth);
+    if(whichMonth==11 || whichMonth==0 || whichMonth==1) {
         document.body.style.background = "url(images/snow-rectangle-tile.png)";
     } else {
         document.body.style.background = "url(images/grass-rectangle-tile.png)";

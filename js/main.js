@@ -251,8 +251,6 @@ function drawEverything() {
 
     helpButton.draw();
 
-    displayGameTime();
-
     if (isHudShown) {
       if (inGameMenu != null) {
         canvasContext.globalAlpha = 0.5;

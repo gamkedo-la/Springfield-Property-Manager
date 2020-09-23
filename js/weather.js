@@ -67,7 +67,7 @@ function weatherClass() {
 	}
 	
     this.drawRainDrops = function(){
-        console.log("makin it rain!");
+        //console.log("makin it rain!");
         if (!this.rainFrames) this.rainFrames = 0; // lazy init
         const numDrops = 3;
         const dropOffset = 0.333;
