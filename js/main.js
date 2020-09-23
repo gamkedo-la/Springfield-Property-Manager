@@ -201,6 +201,8 @@ function drawEverything() {
 
     drawLandScape(isBackground); // Draw in the background, snow, grass, etc.
 
+    critters.drawFlowers();
+
     for (var i = 0; i < vehicleList.length; i++) {
       vehicleList[i].draw();
     }

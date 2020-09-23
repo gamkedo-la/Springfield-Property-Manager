@@ -90,4 +90,24 @@ window.critters = new function() {
 
     }
 
+    // pseudo random - looks random but always the same each run
+    function PRNG() {
+        this.seed = 777;
+        this.next = function() {return(this.gen()/2147483647 );};
+        this.nextRange = function(min,max) {return min+((max-min)*this.next());};
+        this.gen = function() {return this.seed=(this.seed*16807)%2147483647;};
+    };
+
+    this.drawFlowers = function() {
+        var x,y;
+        if (whichMonth==0||whichMonth==1||whichMonth==11) return // no flowers in winter
+        var rando = new PRNG(); // same every time
+        for (i=0; i<100; i++) {
+            x=Math.round(rando.nextRange(0,450))-100;
+            y=Math.round(rando.nextRange(0,250))+225;
+            canvasContext.drawImage(crittersPic,(i%8)*w,16,16,16,x,y,16,16);
+        }
+    }
+
 }();
+
