@@ -66,9 +66,17 @@ function weatherClass() {
 
 	}
 	
-	this.draw = function(){
+    this.drawRainDrops = function(){
+        console.log("makin it rain!");
+        
+    }
+
+    this.draw = function(){
 		if(isStorming){
-			drawBitmapAtLocation(cloud3Pic, this.x, this.y);
+            drawBitmapAtLocation(cloud3Pic, this.x, this.y);
+            
+            this.drawRainDrops();
+
 			if(this.timeTillStrike <= 0){
 				canvasContext.drawImage(lightningSpritePic,
 					this.animFrame * LIGHTNING_FRAME_W,0,LIGHTNING_FRAME_W,lightningSpritePic.height,

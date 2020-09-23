@@ -215,7 +215,7 @@ function propertyClass() {
         } else if (this.building == "Park") {
 
             this.isoBuildingHeight = 50;
-            if(whichMonth==11 || whichMonth==0 || whichMonth==1) { // dec, jan, feb
+            if(gameMonth[whichMonth] == "January" || gameMonth[whichMonth] == "February" || gameMonth[whichMonth] == "December") { // dec, jan, feb
                 // winter snowy version
                 drawBitmapAtLocation(parkWinterTilePic, isoDrawX, isoDrawY - this.isoBuildingHeight);
             } else {
