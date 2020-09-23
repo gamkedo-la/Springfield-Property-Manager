@@ -239,15 +239,15 @@ function drawEverything() {
       cloudList[i].draw();
     }
 
-    ui.draw();
-
     canvasContext.restore();
-
-	drawLandLordEventAnnouncementIfActive();
 
     canvasContext.restore();
 
     audioButton.draw();
+	
+	ui.draw();
+	
+	drawLandLordEventAnnouncementIfActive();
 
     helpButton.draw();
 
