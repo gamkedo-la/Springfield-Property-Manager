@@ -68,15 +68,31 @@ function weatherClass() {
 	
     this.drawRainDrops = function(){
         console.log("makin it rain!");
-        
+        if (!this.rainFrames) this.rainFrames = 0; // lazy init
+        const numDrops = 3;
+        const dropOffset = 0.333;
+        const rainSpeed = 0.2;
+        const rainDist = 50;
+        const rainWobble = 10;
+        const rainWobbleSpd = 0.1;
+        var rx, ry, i;
+        for (i=0; i<numDrops; i++) {
+            rx = this.x + Math.sin((numDrops*dropOffset+this.rainFrames)*rainWobbleSpd) * rainWobble;
+            // the % is so we only fall down never up: skips half the sin wave
+            ry = 15 + this.y + Math.sin(((i*dropOffset+this.rainFrames)*rainSpeed) % (Math.PI/2)) * rainDist; 
+            canvasContext.drawImage(rainEffect, rx, ry);
+        }
+
+        this.rainFrames++;
     }
 
     this.draw = function(){
+
+        this.drawRainDrops();
+
 		if(isStorming){
             drawBitmapAtLocation(cloud3Pic, this.x, this.y);
             
-            this.drawRainDrops();
-
 			if(this.timeTillStrike <= 0){
 				canvasContext.drawImage(lightningSpritePic,
 					this.animFrame * LIGHTNING_FRAME_W,0,LIGHTNING_FRAME_W,lightningSpritePic.height,

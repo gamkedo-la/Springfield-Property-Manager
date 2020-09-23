@@ -43,6 +43,7 @@ var eventCardPic = document.createElement("img");
 var parkTilePic = document.createElement("img");
 var parkWinterTilePic = document.createElement("img");
 var crittersPic = document.createElement("img");
+var rainEffect = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -108,6 +109,7 @@ function loadImages() {
             {varName: parkTilePic, theFile:"park.png"},
             {varName: parkWinterTilePic, theFile:"parkWinter.png"},
             {varName: crittersPic, theFile:"critters.png"},
+            {varName: rainEffect, theFile:"rain-effect.png"},
 			{varName: bankPic, theFile:"bank.png"},
 			{varName: mallPic, theFile:"mall.png"},
 			{varName: pizzaRestPic, theFile:"pizzaRestaurant.png"},
