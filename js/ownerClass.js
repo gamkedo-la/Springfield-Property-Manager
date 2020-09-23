@@ -29,6 +29,11 @@ function setUpOwners(){
 		ownerList[i] = new ownerClass();
 		ownerList[i].reset(i);
 	}
+	ownerList[OWNER_HUMAN].teamColor = "#FF4444";
+	ownerList[OWNER_CPU_1].teamColor = "CYAN";
+	ownerList[OWNER_CPU_2].teamColor = "#77FF77";
+	ownerList[OWNER_CPU_3].teamColor = "#FF77FF";
+	ownerList[OWNER_CPU_4].teamColor = "yellow";
 }
 
 function getOwnerName(ownedBy) {
@@ -54,12 +59,12 @@ function getOwnerName(ownedBy) {
 			owner = 'Player 4';
 			break;
 	}
-
 	return owner;
 }
 
 function ownerClass() {
 	this.cash = INITIAL_CASH;
+	this.teamColor = "black";
 	this.myOwnerID = null;
 	this.atProperty = null;
 	this.propertyOwned = [];
@@ -114,16 +119,16 @@ function ownerClass() {
 
 		var ownerName = getOwnerName(this.myOwnerID);
 
-		colorTextShadow(ownerName, textX, textY, "lightgreen");
+		colorTextShadow(ownerName, textX, textY, this.teamColor);
 		textY += textSkipY;
-		colorTextShadow("$:" + this.cash, textX, textY, "yellow");
+		colorTextShadow("$:" + this.cash, textX, textY, this.teamColor);
 		textY += textSkipY;
-		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, "lightblue");
+		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, this.teamColor);
 		textY += textSkipY;
-		colorTextShadow("Lots Owned: ", textX, textY, "lightblue");
+		colorTextShadow("Lots Owned: ", textX, textY, this.teamColor);
 		for(var i = 0; i < this.propertyOwned.length; i++){
 			textY += textSkipY;
-			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, "lightblue");
+			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, this.teamColor);
 		}
 	}
 
