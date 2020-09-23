@@ -70,6 +70,7 @@ function ownerClass() {
 	this.propertyOwned = [];
 	this.computerWillingessToPurchase = randomIntFromInterval(1,10);
 	this.preferenceToEmptyLot = true;
+	this.IsOnlyShowingThisOwnersProperties = false;
 
 	this.reset = function(myID){
 		this.cash = INITIAL_CASH;
@@ -126,10 +127,35 @@ function ownerClass() {
 		colorTextShadow("At: " + (this.atProperty != null ? this.atProperty.building : "no"), textX, textY, this.teamColor);
 		textY += textSkipY;
 		colorTextShadow("Lots Owned: ", textX, textY, this.teamColor);
+		if (mousePosX < textX + 100 && mousePosX > textX &&
+			mousePosY < textY && mousePosY > textY -15)
+		{
+			this.showOwnedProperties();
+		}
+		else {
+			this.IsOnlyShowingThisOwnersProperties = false;
+			var isShowingAnyPlayersPropertyOnly = false;
+			for (var i = 0; i < ownerList.length; i++) {
+				if (ownerList[i].IsOnlyShowingThisOwnersProperties) {
+					isShowingAnyPlayersPropertyOnly = true;
+				}
+			}
+			if (!isShowingAnyPlayersPropertyOnly) {
+				drawPlayerDesignsOnly = false;
+				paused = drawPlayerDesignsOnly;
+			}
+		}
 		for(var i = 0; i < this.propertyOwned.length; i++){
 			textY += textSkipY;
 			colorTextShadow("Lot " + this.propertyOwned[i], textX, textY, this.teamColor);
 		}
+	}
+
+	this.showOwnedProperties = function(){
+		drawPlayerDesignsOnly = true;
+		paused = drawPlayerDesignsOnly;
+		whichPlayerDesignsToShow = this.myOwnerID;
+		this.IsOnlyShowingThisOwnersProperties = true;
 	}
 
 	this.decidingIfBuyingProperty = function(){
