@@ -83,7 +83,9 @@ function changeMonth(){
 
 	whichMonth++;
 	gameDay = 0;
-	if(whichMonth > gameMonth.length){
+    
+    // FIXME the >= is a possible bugfix to avoid off-by-one error (no month 12, we use 0-11)
+    if(whichMonth >= gameMonth.length){
 		whichMonth = 0;
 		gameYear++;
 	}
