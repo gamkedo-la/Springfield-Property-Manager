@@ -128,7 +128,9 @@ const Menu = new (function () {
     const selectedItemOnPage = menuPageText[currentPage][this.cursor];
 
     if (selectedItemOnPage === "New City") {
-      gameIsStarted = true;
+        console.log("Player started a new city!");
+        document.body.style.background = "url(images/snow-rectangle-tile.png)";
+        gameIsStarted = true;
     }
 
     this.cursor = 0;
