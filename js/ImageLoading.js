@@ -20,7 +20,13 @@ var openningStory1Pic = document.createElement("img");
 var openningStory2Pic = document.createElement("img");
 var brazilianSteakhousePic = document.createElement("img");
 const vehiclesSheet = document.createElement("img");
-var human = document.createElement("img");
+var humanPic = document.createElement("img");
+var human2Pic = document.createElement("img");
+var human3Pic = document.createElement("img");
+var human4Pic = document.createElement("img");
+var human5Pic = document.createElement("img");
+var human6Pic = document.createElement("img");
+var human7Pic = document.createElement("img");
 var textBubblePic = document.createElement("img");
 var cloud1Pic = document.createElement("img");
 var cloud2Pic = document.createElement("img");
@@ -87,7 +93,17 @@ function loadImages() {
 			{varName: openningStory1Pic, theFile: "openningStory1.png"},
 			{varName: openningStory2Pic, theFile: "openningStory2.png"},
 			{varName: vehiclesSheet, theFile: "vehicles.png"},
-            {varName: human, theFile: "human.png"},
+            {varName: humanPic, theFile: "human.png"},
+			{varName: human2Pic, theFile: "human2.png"},
+			{varName: human3Pic, theFile: "human3.png"},
+			{varName: human4Pic, theFile: "human4.png"},
+			{varName: human5Pic, theFile: "human5.png"},
+			{varName: human6Pic, theFile: "human6.png"},
+			{varName: human7Pic, theFile: "human7.png"},
+			
+			
+			
+			
             {varName: textBubblePic, theFile: "textBubble.png"},
 			{varName: cloud1Pic, theFile: "cloud1.png"},
             {varName: cloud2Pic, theFile: "cloud2.png"},

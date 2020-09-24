@@ -37,6 +37,7 @@ function peopleClass() {
 	this.velY = .5;
 	this.color = ["purple", "blue", "yellow","white","red","green","grey", "red"];
 	this.whichColor = 0;
+	this.myPic = humanPic;
 	this.moveWest = false;
 	this.moveEast = false;
 	this.moveSouth = false;
@@ -86,9 +87,38 @@ function peopleClass() {
 	this.init = function(whichName) {
         console.log("Person init: " + whichName);
         this.myName = whichName;
+		this.randomPicture();
 		this.reset();
 
         this.characteristics = new peopleCharacteristics();
+	}
+	
+	this.randomPicture = function(){
+		var randomPictureNumber = randomIntFromInterval(1,7);
+		console.log(randomPictureNumber);
+		switch (randomPictureNumber) {
+			case 1:
+				this.myPic = humanPic;
+			break;
+			case 2:
+				this.myPic = human2Pic;
+			break;
+			case 3:
+				this.myPic = human3Pic;
+			break;
+			case 4:
+				this.myPic = human4Pic;
+			break;
+			case 5:
+				this.myPic = human5Pic;
+			break;
+			case 6:
+				this.myPic = human6Pic;
+			break;
+			case 7:
+				this.myPic = human7Pic;
+			break;
+		}
 	}
 
 	this.move = function() {
@@ -276,7 +306,7 @@ function peopleClass() {
         //if (DEBUG_PEOPLE) colorIsoRect(isoDrawX,isoDrawY,TILE_W / 2,TILE_H / 2,"red");
 
         // FIXME: these feel offset from where the game thinks they are at
-        drawBitmapAtLocation(human, isoDrawX-peopleFootOffsetX, isoDrawY-peopleFootOffsetY);
+        drawBitmapAtLocation(this.myPic, isoDrawX-peopleFootOffsetX, isoDrawY-peopleFootOffsetY);
 
 		this.displayMessageTimer++;
 		if(this.displayMessageTimer > this.messageStartTimer && this.displayMessageTimer < this.messageStopTimer){ // turn message on and off
