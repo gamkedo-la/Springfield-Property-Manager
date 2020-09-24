@@ -18,7 +18,9 @@ window.critters = new function() {
     const numbirds = 5;
     const numbutterflies = 3;
     const numcats = 1;
+    const catPos = Math.round(100 * Math.random()) % 2;
     const numdogs = 1;
+    const dogPos = Math.round(100 * Math.random()) % 2;
 
     var frame = 0;
     var i,f,x,y,cx,cy;
@@ -59,8 +61,8 @@ window.critters = new function() {
             canvasContext.drawImage(crittersPic,(2+f)*w,0,w,h,x,y,w,h);
         }
 
-        cx = 250;
-        cy = 330;
+        cx = catPos === 0 ? 250 : 10;
+        cy = catPos === 0 ? 330 : 210;
         animspd = 25;
         spdx = 950;
         spdy = 944;
@@ -73,8 +75,8 @@ window.critters = new function() {
             canvasContext.drawImage(crittersPic,(4+f)*w,0,w,h,x,y,w,h);
         }
         
-        cx = 320;
-        cy = 360;
+        cx = dogPos === 0 ? 320 : 80;
+        cy = dogPos === 0 ? 360 : 240;
         animspd = 10;
         spdx = 933;
         spdy = 966;
