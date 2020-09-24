@@ -21,11 +21,16 @@ function vehicleClass() {
 				if( roomGrid[i] == TILE_VEHICLE) {
 					var tileRow = Math.floor(i/MAP_COLS);
 					var tileCol	= i%MAP_COLS;
-					if(tileRow === 2 || tileRow === 9) this.moveEast = true;
-					if(tileCol === 2 || tileCol === 13) this.moveSouth = true;
+					if(tileRow === 2 || tileRow === 9) {
+						this.moveEast = true;
+						roomGrid[i] = TILE_ROAD_WE;
+					}
+					if(tileCol === 2 || tileCol === 13) {
+						this.moveSouth = true;
+						roomGrid[i] = TILE_ROAD_NS;
+					}
 					this.homeX = tileCol * TILE_W;
 					this.homeY = tileRow * TILE_H;
-					roomGrid[i] = TILE_ROAD_WE;
 					break;
 				}
 			}
