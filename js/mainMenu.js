@@ -21,12 +21,12 @@ const Menu = new (function () {
   let colHeight = 60;
 
   let menuList = [
-    "New City",
-    "Continue",
-    "Options",
-    "Keys",
-    "Tutorials",
-    "Credits",
+    "NEW CITY",
+    "CONTINUE",
+    "OPTIONS",
+    "KEYS",
+    "TUTORIALS",
+    "CREDITS",
   ];
   let optionsList = ["Sound", "Captions", "Resolution"];
   let keysList = [
@@ -227,8 +227,8 @@ const Menu = new (function () {
           menuPageText[currentPage][i].split("").join(" "),
           itemsX + 50,
           topItemY + rowHeight * i,
-          "#94216a",
-          "35px Arial"
+          "#f7f7f7", //#94216a
+          "36px Helvetica"
         );
       }
     } else {
