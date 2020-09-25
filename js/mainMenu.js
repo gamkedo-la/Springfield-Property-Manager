@@ -14,8 +14,8 @@ const Menu = new (function () {
   const CREDITS_PAGE = 5;
   const PAUSED_PAGE = 6;
 
-  let itemsX = 540;
-  let topItemY = 240;
+  let itemsX = 920;
+  let topItemY = 770;
   let itemsWidth = 300;
   let rowHeight = 40;
   let colHeight = 60;
@@ -62,7 +62,7 @@ const Menu = new (function () {
     //colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
     for (let i = 0; i < menuPageText[currentPage].length; i++) {
       if (
-        //mousePosX > itemsX - 350 && mousePosX + itemsWidth &&
+        mousePosX > itemsX - 350 && mousePosX + itemsWidth &&
         mousePosY + rowHeight / 2 > topItemY + i * rowHeight &&
         mousePosY + rowHeight / 2 < topItemY + (i + 1) * rowHeight
       ) {
