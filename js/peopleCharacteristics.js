@@ -62,7 +62,7 @@ function peopleCharacteristics() {
     };
 
     this.decideHomePreference = function(){
-      // TODO: If new residential buildings are added, it should be included here too
+      // TODO: If new 'LuxuryResidential' are added, it should be included here too
       let rand = randomIntFromInterval(1, 2);
       switch (rand) {
           case 1:
