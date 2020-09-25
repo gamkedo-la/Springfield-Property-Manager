@@ -28,23 +28,24 @@ const Menu = new (function () {
     "TUTORIALS",
     "CREDITS",
   ];
-  let optionsList = ["Sound", "Captions", "Resolution"];
+  let optionsList = ["SOUND", "CAPTIONS", "RESOLUTION", "BACK"];
   let keysList = [
-    "Move Camera: ",
+    "MOVE CAMERA: ",
     "- Up: W",
     "- Down: S",
     "- Left: A",
     "- Right: D",
-    "Buy Property: SPACE",
-    "Pause: P",
-    "Mute: M",
-    "Property Info: I",
-    "Puchase Info: L ",
-    "Toggle HUD: TAB",
+    "BUY PROPERTY: SPACE",
+    "PAUSE: P",
+    "MUTE: M",
+    "PROPERTY INFO: I",
+    "PURCHASE INFO: L ",
+    "TOGGLE HUD: TAB",
+    "BACK",
   ];
-  let tutorialsList = [];
-  let pausedList = ["Save", "Mute", "Back"];
-  let creditsList = [];
+  let tutorialsList = ["BACK"];
+  let pausedList = ["SAVE", "MUTE", "BACK"];
+  let creditsList = ["BACK"];
   let menuPageText = [
     menuList,
     pausedList,
@@ -228,7 +229,7 @@ const Menu = new (function () {
           itemsX + 50,
           topItemY + rowHeight * i,
           "#f7f7f7", //#94216a
-          "36px Helvetica"
+          "35px Helvetica"
         );
       }
     } else {
