@@ -102,7 +102,7 @@ function keyPressed(evt) {
     switch (evt.keyCode) {
       case KEY_ENTER:
       case KEY_SPACEBAR:
-        Menu.setCursorAndCurrentPage();
+        Menu.setCursorAndCurrentPage(); // FIXME this function uses mouse coordinates
         break;
       case KEY_UP_ARROW:
       case KEY_W:

@@ -122,13 +122,16 @@ const Menu = new (function () {
   this.setCursorAndCurrentPage = function (cursor = this.cursor) {
     // For now, only allow selection of an option on the main menu page
     if (currentPage !== 0) {
+        console.log("Ignoring ENTER/SPACE/CLICK because we are not on the main menu");
       return;
     }
 
     this.cursor = cursor;
     // Change page
     currentPage = this.cursor;
-
+    
+    console.log("setting current menu page: "+ currentPage);
+    
     // Set the cursor at the first option of the new screen
     this.checkState();
     selectionSFX.play();
@@ -138,7 +141,11 @@ const Menu = new (function () {
     // Not using the PAGE consts because they don't match the menuPageText array
     const selectedItemOnPage = menuPageText[currentPage][this.cursor];
 
-    if (selectedItemOnPage === "New City") {
+    console.log("menu checkstate: currentPage:"+currentPage+" cursor:"+this.cursor+" selectedItemOnPage is " + selectedItemOnPage);
+
+    // bugfix: if we change the meu text this breaks
+    //if (selectedItemOnPage === "New City") { 
+    if (currentPage==0 && this.cursor==0) { 
         console.log("Player started a new city!");
         document.body.style.background = "url(images/snow-rectangle-tile.png)";
         gameIsStarted = true;
