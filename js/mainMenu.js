@@ -59,6 +59,11 @@ const Menu = new (function () {
   let currentPage = 0;
 
   this.menuMouse = function () {
+    if(currentPage == CREDITS_PAGE) {
+      currentPage = 0;
+      return;
+    }
+
     //colorTextShadow(menuPageText[currentPage][i].split('').join(' '), itemsX - 350, topItemY + rowHeight * i, "#09A9A9", "35px Arial");
     for (let i = 0; i < menuPageText[currentPage].length; i++) {
       if (
@@ -208,6 +213,7 @@ const Menu = new (function () {
   };
 
   this.draw = function () {
+    
     if (gameIsStarted === false) {
       if (currentPage == PAUSED_PAGE) {
         currentPage = MENU_PAGE;
@@ -216,21 +222,25 @@ const Menu = new (function () {
       
       //canvasContext.fillStyle = "white";
       //canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-      canvasContext.drawImage(logo, canvas.width / 2 - 230.5, canvas.height / 2 - 118);
-      canvasContext.drawImage(
-        arrow,
-        itemsX,
-        topItemY + this.cursor * rowHeight - 30
-      );
-
-      for (let i = 0; i < menuPageText[currentPage].length; i++) {
-        colorTextShadow(
-          menuPageText[currentPage][i].split("").join(" "),
-          itemsX + 50,
-          topItemY + rowHeight * i,
-          "#f7f7f7", //#94216a
-          "35px Helvetica"
+      if(currentPage == CREDITS_PAGE) {
+        drawCredits();
+      } else {
+        canvasContext.drawImage(logo, canvas.width / 2 - 230.5, canvas.height / 2 - 118);
+        canvasContext.drawImage(
+          arrow,
+          itemsX,
+          topItemY + this.cursor * rowHeight - 30
         );
+
+        for (let i = 0; i < menuPageText[currentPage].length; i++) {
+          colorTextShadow(
+            menuPageText[currentPage][i].split("").join(" "),
+            itemsX + 50,
+            topItemY + rowHeight * i,
+            "#f7f7f7", //#94216a
+            "35px Helvetica"
+          );
+        }
       }
     } else {
       currentPage = PAUSED_PAGE;
@@ -255,3 +265,118 @@ function drawOpenningStory() {
     "black"
   );
 }
+
+var creditsList = [
+" ",
+" CLICK ANYWHERE TO GO BACK TO THE MAIN MENU",
+" ",
+"Vince McKeown: Project lead, core gameplay, property system, main manager AI, time of year, isometric rendering, camera control, additional buildings, art integration, opening story, citizen complaints, seasons, clouds code, landlord events",
+"Jeff \"Axphin\" Hanlon: Cloud variations, 3 story building, storm clouds, status bubble, hunger icon, human art variations, sleep status, readability improvements, ground tiles, road alignment correction, mall improvement, updated logo, background texture, 100th game title badge",
+"I-wei Chen: Duplex, steakhouse, town house, town center, luxury building, office building, residential duplex, additional art integration, audio code bug fixes, initial draft of help",
+"Gabriel Cornish: Unified color palette & retroactive application of it, initial people and car sprites, day counter, sound bug fix, city hall integration, tab sounds, additional vehicle variations",
+"Christer \"McFunkypants\" Kaitila: Resolution resizing, camera centering, debug heatmap, input event optimization, scrollbar removal, dynamic month stats graph,  UI selection fix, typo fixing, text shadow feature, thought bubble, zone count tracking, street avoidance, unique naming, park with trees, additional debug displays, birds & butterflies, pets code, rain, assorted bug fixing, flowers",
+"Gonzalo Delgado: Case-sensitivity fix, vehicle density increase, car animation support, biker easter egg, vehicle wrap, street light and related integration, drop shadow",
+"Randy Tan Shaoxian: HUD hide option, resolved UI sprite order issue, isometric click position, tab key addition, city hall drawer layer, scroll wheel zoom, mouse camera pan, new controls instructions, main menu resize",
+"Vaan Hope Khani: Main menu, initial logo draft, navigation sounds, shopping mall, bank, school",
+"Chris Markle: CSS styling and font selection, UI tabs panel and related images, highlights fix",
+"Barış Köklü: Property buying, character desires, restaurant selling, hunger, building tab improvement, property debug view, hover over functionality",
+"H Trayford: Vehicle speed and direction variations, collision avoidance, pets sprites",
+"Michelly Oliveira: Pause functionality, defined people data, UI layout adjustment, keys help screen",
+"Alan Zaring: Gameplay music",
+"Michael \"Misha\" Fewkes: Sound engine, city ambience",
+"Bilal A. Cheema: Duplexes, property selection bug fix",
+"Charlene A.: Diner and pizza restaurant",
+"Kise: Italian restaurant",
+"Ryan Gaillard: Display for property ownership",
+"Muhammed \"EyeForcz\" Durmusoglu: Debug cheats",
+"Chris DeLeon: Small bug fix, compiled credits",
+  " ",
+  "Game made in HomeTeam GameDev, apply to join us at",
+  "HomeTeamGameDev.com"
+];
+
+function lineWrapCredits() { // note: gets calling immediately after definition!
+  const newCut = [];
+  var maxLineChar = 200;
+  var findEnd;
+
+  for(let i = 0; i < creditsList.length; i++) {
+    const currentLine = creditsList[i];
+    for(let j = 0; j < currentLine.length; j++) {
+      const aChar = currentLine[j];
+      if(aChar === ":") {
+        if(i !== 0) {
+          //newCut.push("\n");
+        }
+
+        newCut.push(currentLine.substring(0, j + 1));
+        newCut.push(currentLine.substring(j + 2, currentLine.length));
+        break;
+      } else if(j === currentLine.length - 1) {
+        if((i === 0) || (i >= creditsList.length - 2)) {
+          newCut.push(currentLine);
+        } else {
+          newCut.push(currentLine.substring(1, currentLine.length));
+        }
+      }
+    }
+  }
+
+  const newerCut = [];
+  for(var i=0;i<newCut.length;i++) {
+    while(newCut[i].length > 0) {
+      findEnd = maxLineChar;
+      if(newCut[i].length > maxLineChar) {
+        for(var ii=findEnd;ii>0;ii--) {
+          if(newCut[i].charAt(ii) == " ") {
+            findEnd=ii;
+            break;
+          }
+        }
+      }
+      newerCut.push(newCut[i].substring(0, findEnd));
+      newCut[i] = newCut[i].substring(findEnd, newCut[i].length);
+    }
+  }
+
+  creditsList = newerCut;
+}
+lineWrapCredits(); // note: calling immediately as part of init, outside the function
+
+const drawCredits = function() {
+  var creditPosY = 10;
+  var creditsW = 1280;
+  var leftX = 20;//gameCanvas.width/2-creditsW/2;
+  var wasFont = canvasContext.font;
+  var wasAlign = canvasContext.textAlign;
+
+    for(var i=0; i<creditsList.length; i++) {
+      var yPos = creditPosY + i * 12;
+      //if (200 < yPos && yPos < 600) {
+        if((i > 0) && (creditsList[i].charAt(creditsList[i].length-1) === ":")) {
+          canvasContext.font= "13px Arial";
+          canvasContext.fillStyle="yellow";
+          canvasContext.textAlign="left";
+          canvasContext.fillText(creditsList[i],leftX,yPos);
+        } else if(i === creditsList.length - 1 || i == 1) {
+          canvasContext.font= "15px Arial";
+          canvasContext.fillStyle="yellow";
+          canvasContext.textAlign="center";
+          canvasContext.fillText(creditsList[i],gameCanvas.width/2,yPos+2);
+        } else if(i === creditsList.length - 2) {
+          canvasContext.font= "10px Arial";
+          canvasContext.fillStyle="white";
+          canvasContext.textAlign="center";
+          canvasContext.fillText(creditsList[i],gameCanvas.width/2,yPos);
+        } else {
+          canvasContext.font= "10px Arial";
+          canvasContext.fillStyle="white";
+          canvasContext.textAlign="left";
+          canvasContext.fillText(creditsList[i],leftX,yPos);
+          creditPosY+=1;
+        }
+      // }
+    }
+    canvasContext.font= wasFont;
+    canvasContext.textAlign=wasAlign; // cleaning up after itself
+  };
