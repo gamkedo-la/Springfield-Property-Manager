@@ -14,8 +14,8 @@ const Menu = new (function () {
   const CREDITS_PAGE = 5;
   const PAUSED_PAGE = 6;
 
-  let itemsX = 920;
-  let topItemY = 770;
+  let itemsX = 640;//920;
+  let topItemY = 320;//770;
   let itemsWidth = 300;
   let rowHeight = 40;
   let colHeight = 60;
@@ -77,6 +77,11 @@ const Menu = new (function () {
   };
 
   this.update = function () {
+
+    // the screen can change size
+    itemsX = canvas.width/2 - 180;
+    topItemY = logo.height/2 + 40;//canvas.height / 2 - 80;
+
     //this.menuMouse();
 
     // Position arrow at last option on screen
@@ -225,7 +230,7 @@ const Menu = new (function () {
       if(currentPage == CREDITS_PAGE) {
         drawCredits();
       } else {
-        canvasContext.drawImage(logo, canvas.width / 2 - 230.5, canvas.height / 2 - 118);
+        canvasContext.drawImage(logo,0,0,logo.width,logo.height,canvas.width/2-logo.width/4,0,logo.width/2,logo.height/2);
         canvasContext.drawImage(
           arrow,
           itemsX,
