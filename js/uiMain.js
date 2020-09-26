@@ -128,3 +128,10 @@ settingsTab.appendChild(settingsImg);
 settingsTab.classList.add('settingsTab', 'tabs');
 settingsImg.src = 'images/tab_settings.png';
 settingsWindow.classList.add('windowContainer', 'hidden', 'settings');
+
+// tooltips
+settingsTab.title = "Settings";
+incomeTab.title = "Income";
+buildTab.title = "Buildings";
+propertiesTab.title = "Properties";
+residentsTab.title = "Residents";
