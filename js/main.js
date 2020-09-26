@@ -59,7 +59,7 @@ window.onload = function () {
 };
 
 function onResize() {
-  // console.log("screen resized");
+  console.log("resizing screen to "+window.innerWidth+"x"+window.innerHeight);
   // make the canvas full size
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;

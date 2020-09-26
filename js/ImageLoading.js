@@ -57,7 +57,7 @@ var picsToLoad = 0;
 
 function countLoadedImagesAndLaunchIfReady(){
 		picsToLoad--;
-		console.log("Images left to load: " +picsToLoad);
+		//console.log("Images left to load: " +picsToLoad);
 		if(picsToLoad == 0) {
 			imageLoadingDoneSoStartGame();
 	}

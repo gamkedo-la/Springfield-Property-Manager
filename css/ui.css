@@ -12,10 +12,6 @@ body {
   display: flex;
 }
 
-#gameCanvas {
-  display: flex;
-}
-
 li {
   list-style: none;
 }
