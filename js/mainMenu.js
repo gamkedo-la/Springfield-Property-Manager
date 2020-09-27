@@ -7,12 +7,11 @@ var openningStoryBoxWidth = 700;
 
 const Menu = new (function () {
   const NEW_CITY = 0;
-  const RESUME_PAGE = 1;
-  const OPTIONS_PAGE = 2;
-  const KEYS_PAGE = 3;
-  const TUTORIALS_PAGE = 4;
-  const CREDITS_PAGE = 5;
-  const PAUSED_PAGE = 6;
+ // const RESUME_PAGE = 1;
+ // const SOUND_PAGE = 2;
+  const KEYS_PAGE = 1;
+  const CREDITS_PAGE = 2;
+  const PAUSED_PAGE = 3;
 
   let itemsX = 640;//920;
   let topItemY = 320;//770;
@@ -21,14 +20,13 @@ const Menu = new (function () {
   let colHeight = 60;
 
   let menuList = [
-    "NEW CITY",
-    "CONTINUE",
-    "OPTIONS",
+    "START",
+    //"CONTINUE",
+   // "SOUND",
     "KEYS",
-    "TUTORIALS",
     "CREDITS",
   ];
-  let optionsList = ["SOUND", "CAPTIONS", "RESOLUTION", "BACK"];
+  //let optionsList = ["SOUND", "CAPTIONS", "RESOLUTION", "BACK"];
   let keysList = [
     "MOVE CAMERA: ",
     "- Up: W",
@@ -43,15 +41,13 @@ const Menu = new (function () {
     "TOGGLE HUD: TAB",
     "BACK",
   ];
-  let tutorialsList = ["BACK"];
-  let pausedList = ["SAVE", "MUTE", "BACK"];
+  let pausedList = ["SAVE", "LOAD", "BACK"];
   let creditsList = ["BACK"];
   let menuPageText = [
     menuList,
-    pausedList,
-    optionsList,
+    //0,
+    //soundList,
     keysList,
-    tutorialsList,
     creditsList,
   ];
 
@@ -126,6 +122,15 @@ const Menu = new (function () {
         console.log("Player started a new city!");
         document.body.style.background = "url(images/snow-rectangle-tile.png)";
         gameIsStarted = true;
+    }
+
+    // if (currentPage!=0  && this.cursor == selectedItemOnPage.length-1) { 
+    //   currentPage = 0;
+    //   console.log("BACKBACK");
+    // }
+
+    if (currentPage==1 && this.cursor==1) { 
+      console.log("LOADING");
     }
 
     this.cursor = 0;
