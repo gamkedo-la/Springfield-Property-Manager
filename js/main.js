@@ -165,6 +165,7 @@ function handleMouseWheel(evt) {
   zoom += evt.deltaY * -0.01;
   zoom = Math.min(Math.max(ZOOM_MIN, zoom), ZOOM_MAX);
   isZooming = true;
+  evt.preventDefault(); // stop itch from scrolling
 }
 
 function drawEverything() {
