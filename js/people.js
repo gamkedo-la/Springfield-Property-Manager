@@ -85,7 +85,7 @@ function peopleClass() {
 	}
 
 	this.init = function(whichName) {
-        console.log("Person init: " + whichName);
+        // console.log("Person init: " + whichName);
         this.myName = whichName;
 		this.randomPicture();
 		this.reset();
@@ -95,7 +95,7 @@ function peopleClass() {
 	
 	this.randomPicture = function(){
 		var randomPictureNumber = randomIntFromInterval(1,7);
-		console.log(randomPictureNumber);
+		// console.log(randomPictureNumber);
 		switch (randomPictureNumber) {
 			case 1:
 				this.myPic = humanPic;

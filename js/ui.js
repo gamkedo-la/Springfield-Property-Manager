@@ -32,8 +32,8 @@ function uiClass() {
 
     this.drawPropertyUI = function(drawing, x, y, width, height, tilemapIndex, salePrice, zoned, ownedBy) {
         this.propertyUI.drawing = drawing;
-        this.propertyUI.x = x-camPanX;
-        this.propertyUI.y = y-camPanY*0.5;
+        this.propertyUI.x = x-camPanX*(1.0+zoom*0.125); // not quite right, couldn't figure out for launch, but close enough to be playable
+        this.propertyUI.y = y-camPanY*0.5*(1.0+zoom);
         this.propertyUI.width = width;
         this.propertyUI.height = height;
         this.propertyUI.tilemapIndex = tilemapIndex;
