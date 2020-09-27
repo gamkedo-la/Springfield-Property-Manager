@@ -64,10 +64,15 @@ const Menu = new (function () {
     for (let i = 0; i < menuPageText[currentPage].length; i++) {
       if (
         mousePosX > itemsX - 350 && mousePosX + itemsWidth &&
-        mousePosY + rowHeight / 2 > topItemY + i * rowHeight &&
-        mousePosY + rowHeight / 2 < topItemY + (i + 1) * rowHeight
+        mousePosY + rowHeight / 2 > topItemY + i * rowHeight-17 &&
+        mousePosY + rowHeight / 2 < topItemY + (i + 1) * rowHeight-17
       ) {
-        this.setCursorAndCurrentPage(i);
+        // this.setCursorAndCurrentPage(i);
+        if(this.cursor == i) {
+          this.setCursorAndCurrentPage();
+        } else {
+            this.cursor = i;
+          }
       }
     }
   };
@@ -85,12 +90,12 @@ const Menu = new (function () {
 
     // Position arrow at last option on screen
     if (this.cursor < 0) {
-      this.cursor = menuPageText[currentPage].length - 1;
+      this.cursor = 0;
     }
 
     // Position arrow at first option on screen
     if (this.cursor >= menuPageText[currentPage].length) {
-      this.cursor = 0;
+      this.cursor = menuPageText[currentPage].length-1;
     }
   };
 
@@ -114,13 +119,13 @@ const Menu = new (function () {
 
   this.checkState = function () {
     // Not using the PAGE consts because they don't match the menuPageText array
-    const selectedItemOnPage = menuPageText[currentPage][this.cursor];
-
-    console.log("menu checkstate: currentPage:"+currentPage+" cursor:"+this.cursor+" selectedItemOnPage is " + selectedItemOnPage);
-
     // bugfix: if we change the meu text this breaks
     //if (selectedItemOnPage === "New City") { 
     if (currentPage==0 && this.cursor==0) { 
+      const selectedItemOnPage = menuPageText[currentPage][this.cursor];
+
+      console.log("menu checkstate: currentPage:"+currentPage+" cursor:"+this.cursor+" selectedItemOnPage is " + selectedItemOnPage);
+
         console.log("Player started a new city!");
         document.body.style.background = "url(images/snow-rectangle-tile.png)";
         gameIsStarted = true;
@@ -135,7 +140,7 @@ const Menu = new (function () {
     //  console.log("LOADING");
     //}
 
-    if (currentPage == 1) {
+    if (currentPage != 0) { // exit keys or credits page
       currentPage = 0;
     }
 

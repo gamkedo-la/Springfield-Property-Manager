@@ -117,7 +117,7 @@ function moveEverything() {
     Menu.update();
     return;
   }
-   console.log(paused);
+   // console.log(paused);
   if (paused || playerPaused || openningStoryScreen || announcementIsPosted()) {
     return;
   }
