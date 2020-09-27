@@ -132,7 +132,7 @@ function keyPressed(evt) {
         break;
       case KEY_P:
         if (!drawPlayerDesignsOnly) {
-          paused = !paused;
+          playerPaused = !playerPaused;
         }
         break;
       case KEY_I:

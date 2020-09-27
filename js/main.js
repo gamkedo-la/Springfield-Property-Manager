@@ -22,6 +22,7 @@ var camPanY = 0;
 var camPanSpeed = 5;
 
 var paused = false;
+var playerPaused = false;
 var gameIsStarted = false;
 
 var siteActivatedWithClick = false;
@@ -116,7 +117,8 @@ function moveEverything() {
     Menu.update();
     return;
   }
-  if (paused || openningStoryScreen || announcementIsPosted()) {
+   console.log(paused);
+  if (paused || playerPaused || openningStoryScreen || announcementIsPosted()) {
     return;
   }
 
@@ -240,15 +242,23 @@ function drawEverything() {
 
     drawLandScape(!isBackground); // Draw in the foreground, so that other properties are not drawn above buildings that are too high (e.g. the city hall).
 
-    critters.draw(); // birds, butterflies, cats, and dogs
+    if(playerPaused == false){
+      critters.draw(); // birds, butterflies, cats, and dogs
 
-    for (var i = 0; i < cloudList.length; i++) {
-      cloudList[i].draw();
-    }
+      for (var i = 0; i < cloudList.length; i++) {
+        cloudList[i].draw();
+      }
+   } 
+   
+   canvasContext.restore();
+   canvasContext.restore();
 
-    canvasContext.restore();
-
-    canvasContext.restore();
+   if (playerPaused) {
+      canvasContext.globalAlpha = 0.5;
+      colorRect(0, 0, canvas.width, canvas.height, "black"); // 50% black overlay
+      canvasContext.globalAlpha = 1.0;
+      colorTextShadow("Press P To UNPAUSE",  350, 350, "#FFFFFF", "35px Arial");
+   }
 
     audioButton.draw();
 	
