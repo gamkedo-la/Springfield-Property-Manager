@@ -15,7 +15,7 @@ var peopleList = [];
 
 var ui = new uiClass();
 var inGameMenu = null;
-var openningStoryScreen = false;
+var openningStoryScreen = true;
 
 var camPanX = 0;
 var camPanY = 0;
