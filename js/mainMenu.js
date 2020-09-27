@@ -93,29 +93,6 @@ const Menu = new (function () {
     if (this.cursor >= menuPageText[currentPage].length) {
       this.cursor = 0;
     }
-
-    // if (keyPressed(KEY_SPACEBAR) || keyPressed(KEY_ENTER)) {
-    //   this.checkState();
-    // } else if (keyPressed(KEY_BACKSPACE)) {
-    //   currentPage = MENU_PAGE;
-    //   this.cursor = 0;
-    // }
-
-    // if(keyPressed(KEY_UP_ARROW)) {
-    // 	cursor--;
-    // 	//navigationSound.play();
-    // 	if(cursor < 0) {
-    // 		cursor = menuPageText[currentPage].length - 1;
-    // 	}
-    // }
-
-    // if(keyPressed(KEY_DOWN_ARROW)) {
-    // 	cursor++;
-    // 	//navigationSound.play();
-    // 	if (cursor >= menuPageText[currentPage].length) {
-    // 		cursor = 0;
-    // 	}
-    // }
   };
 
   // One function to deal with selection by mouse or ENTER/SPACE
@@ -152,69 +129,6 @@ const Menu = new (function () {
     }
 
     this.cursor = 0;
-
-    // if (currentPage == CREDITS_PAGE) {
-    //   currentPage = MENU_PAGE;
-    //   this.cursor = 0;
-    //   return;
-    // }
-
-    // switch (menuPageText[currentPage][this.cursor]) {
-    //   case "New City":
-    //     gameIsStarted = true;
-    //     this.cursor = 0;
-    //     break;
-    //   case "Continue":
-    //     //loadGame();
-    //     console.log("load game not yet implmented");
-    //     this.cursor = 0;
-    //     break;
-    //   case "Options":
-    //     this.cursor = 0;
-    //     curentPage = OPTIONS_PAGE;
-    //     console.log("Options not yet implmented");
-    //     break;
-    //   case "Keys":
-    //     this.cursor = 0;
-    //     curentPage = KEYS_PAGE;
-    //     console.log("Keys ot yet implmented");
-    //     break;
-    //   case "Tutorials":
-    //     this.cursor = 0;
-    //     curentPage = TUTORIALS_PAGE;
-    //     console.log("Tutorials not yet implmented");
-    //     break;
-    //   case "Credits":
-    //     this.cursor = 0;
-    //     curentPage = CREDITS_PAGE;
-    //     console.log("Credits not yet implmented");
-    //     break;
-    //   // case "Sound":
-    //   //   console.log("sound>>TODO implement volume changer");
-    //   //   break;
-    //   // case "Paused":
-    //   //   paused = true;
-    //   //   curentPage = PAUSED_PAGE;
-    //   //   console.log("Paused not yet implmented");
-    //   //   break;
-    //   // case "Back":
-    //   //   currentPage = MENU_PAGE;
-    //   //   this.cursor = 0;
-    //   //   break;
-    //   // case "Mute":
-    //   //   //toggleMute();
-    //   //   console.log("mute not tested");
-    //   //   this.cursor = 0;
-    //   //   break;
-    //   // case "Save":
-    //   //   //saveGame();
-    //   //   //saveConfirmed = " (done!)";
-    //   //   console.log("save not yet implmented");
-    //   //   this.cursor = 0;
-    //   //   break;
-    //   default:
-    //     break;
-    // }
   };
 
   this.redraw = function () {
