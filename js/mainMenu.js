@@ -224,6 +224,7 @@ const Menu = new (function () {
     canvasContext.restore();
   };
 
+  var menuFrameCount = 0;
   this.draw = function () {
     
     if (gameIsStarted === false) {
@@ -237,7 +238,9 @@ const Menu = new (function () {
       if(currentPage == CREDITS_PAGE) {
         drawCredits();
       } else {
-        canvasContext.drawImage(logo,0,0,logo.width,logo.height,canvas.width/2-logo.width/4,0,logo.width/2,logo.height/2);
+        menuFrameCount++;
+        canvasContext.drawImage(badgePic,0,0,badgePic.width,badgePic.height,Math.min(0,-badgePic.width/2+menuFrameCount*2),0,badgePic.width/2,badgePic.height/2);
+        canvasContext.drawImage(logo,0,0,logo.width,logo.height,canvas.width/2-logo.width/4,Math.min(0,-logo.height/2+menuFrameCount*2),logo.width/2,logo.height/2);
         canvasContext.drawImage(
           arrow,
           itemsX,

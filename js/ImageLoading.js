@@ -50,6 +50,7 @@ var parkTilePic = document.createElement("img");
 var parkWinterTilePic = document.createElement("img");
 var crittersPic = document.createElement("img");
 var rainEffect = document.createElement("img");
+var badgePic = document.createElement("img");
 
 //var titlepagePic = document.createElement("img");
 var trackPics = [];
@@ -131,6 +132,7 @@ function loadImages() {
 			{varName: pizzaRestPic, theFile:"pizzaRestaurant.png"},
 			{varName: schoolPic, theFile:"school.png"},
 			{varName: dinerPic, theFile:"diner.png"},
+			{varName: badgePic, theFile:"htgd-100-badge.png"},
 
 			{trackType: TILE_CITY_HALL, theFile:"town_house.png"},
 			{trackType: TILE_ROAD_NS, theFile: "road_NS.png"},
