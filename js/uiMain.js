@@ -4,11 +4,17 @@ const gameCanvas = document.getElementById('gameCanvas');
 const uiContainerMain = document.createElement('div');
 document.body.appendChild(uiContainerMain);
 uiContainerMain.classList.add('uiContainerMain');
+document.getElementsByClassName(
+  "uiContainerMain"
+)[0].setAttribute("oncontextmenu", "return false;");
 
 /* CITY LIMIT SIGN CONTAINER */
 const citySignContainer = document.createElement('div');
 uiContainerMain.appendChild(citySignContainer);
-citySignContainer.classList.add('citySignContainer')
+citySignContainer.classList.add('citySignContainer');
+document.getElementsByClassName(
+  "citySignContainer"
+)[0].setAttribute("oncontextmenu", "return false;");
 
 // Wood Posts Container
 const woodPostsContainer = document.createElement('ul');
@@ -67,7 +73,10 @@ function updatePopulationGUI() {
 /* STATS CONTAINER */
 const statsContainerMain = document.createElement('div');
 uiContainerMain.appendChild(statsContainerMain);
-statsContainerMain.classList.add('statsContainerMain')
+statsContainerMain.classList.add('statsContainerMain');
+document.getElementsByClassName(
+  "statsContainerMain"
+)[0].setAttribute("oncontextmenu", "return false;");
 
 // TABS ROW //
 const tabsContainer = document.createElement('ul');
