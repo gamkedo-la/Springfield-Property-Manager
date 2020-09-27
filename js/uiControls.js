@@ -57,6 +57,10 @@ function mouseMove(evt) {
 }
 
 function handleMouseClick(evt) {
+  if (!siteActivatedWithClick) {
+    siteActivatedWithClick = true;
+  }
+
   rightClicked = evt.button == 2;
 
   if(announcementIsPosted()){
@@ -68,10 +72,12 @@ function handleMouseClick(evt) {
     Menu.menuMouse();
     return;
   }
-  //gesture();   //current bug, crashes when mouse clicks
-  if (!siteActivatedWithClick) {
-    siteActivatedWithClick = true;
+  if(openningStoryScreen) {
+    advanceStory();
+    return;
   }
+
+  //gesture();   //current bug, crashes when mouse clicks
   if (USE_STATSGRAPH) {
     statsCountClick();
   }
@@ -106,6 +112,7 @@ function keyPressed(evt) {
         break;
       case KEY_UP_ARROW:
       case KEY_W:
+
         Menu.cursor--;
         navigationSFX.play();
         break;

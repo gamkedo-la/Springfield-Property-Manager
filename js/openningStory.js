@@ -18,8 +18,23 @@ var storyData = [
 	{displaySec: 1, img: openningStory1Pic, lines: []}
 ]
 
+function advanceStory() {
+	var timeIntoStep = openningStoryTimer/framesPerSecond;
+	console.log("trying to skip");
+	if(openningStoryScreen) {
+		for(storyStep = 0; storyStep < storyData.length; storyStep++){
+			if(timeIntoStep < storyData[storyStep].displaySec) {
+				openningStoryTimer += (storyData[storyStep].displaySec-timeIntoStep)*framesPerSecond;
+				console.log("skipping " + storyStep);
+				break;
+			}
+			timeIntoStep -= storyData[storyStep].displaySec;	
+		}
+	}
+}
+
 function drawOpenningStory(){
-	colorRect(0, 0, 800, 600, "green");
+	colorRect(0, 0, canvas.width, canvas.height, "green");
 	openningStoryTimer++;
 	var storyLine = []; 
 	var storyPic = null;
@@ -42,14 +57,16 @@ function drawOpenningStory(){
 		openningStoryScreen = false;
 	}
 	
+	var storyOffsetX = canvas.width/2-storyPic.width/2;
+	var storyOffsetY = canvas.height/2-storyPic.height/2;
 	if(storyPic != null){
-		canvasContext.drawImage(storyPic, 0, 0);
+		canvasContext.drawImage(storyPic, storyOffsetX, storyOffsetY);
 	}
 	if(storyLine.length > 0){
-		colorRect(openningStoryBoxXPos, openningStoryBoxYPos, openningStoryBoxWidth, openningStoryBoxHeight, "white");
+		colorRect(storyOffsetX+openningStoryBoxXPos, storyOffsetY+openningStoryBoxYPos, openningStoryBoxWidth, openningStoryBoxHeight, "white");
 	}
 	for(var i=0; i < storyLine.length; i++){
-		colorText(storyLine[i], openningStoryTextXPos, openningStoryTextYPos + i * openningStoryLineSpace, "black");
+		colorText(storyLine[i], storyOffsetX+openningStoryTextXPos, storyOffsetY+openningStoryTextYPos + i * openningStoryLineSpace, "black");
 	}
 }
 

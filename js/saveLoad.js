@@ -26,3 +26,4 @@ function SaveLoad() {
             console.log("update your browser to be able to load/save your game.");
         }
     }
+}
