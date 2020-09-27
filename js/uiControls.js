@@ -96,6 +96,9 @@ function handleMouseUp(evt) {
   mouseMovementY = 0;
 }
 
+var camPanXV = 0;
+var camPanYV = 0;
+
 function keyPressed(evt) {
   if (typeof inGameMenu !== "undefined" && inGameMenu != inGameMenu) {
     if (typeof evt.keyCode != null) {
@@ -126,16 +129,16 @@ function keyPressed(evt) {
     cheats(evt.key);
     switch (evt.keyCode) {
       case KEY_W:
-        camPanY -= camPanSpeed;
+        camPanYV = -camPanSpeed;
         break;
       case KEY_S:
-        camPanY += camPanSpeed;
+        camPanYV = camPanSpeed;
         break;
       case KEY_A:
-        camPanX -= camPanSpeed;
+        camPanXV = -camPanSpeed;
         break;
       case KEY_D:
-        camPanX += camPanSpeed;
+        camPanXV = camPanSpeed;
         break;
       case KEY_P:
         if (!drawPlayerDesignsOnly) {
@@ -143,10 +146,10 @@ function keyPressed(evt) {
         }
         break;
       case KEY_I:
-        changeState(menuState_propertyInformation);
+        //changeState(menuState_propertyInformation);
         break;
       case KEY_L:
-        changeState(menuState_purchasingLand);
+        //changeState(menuState_purchasingLand);
         break;
       case KEY_SPACEBAR:
         if (ownerList[OWNER_HUMAN].atProperty != null) {
@@ -230,6 +233,17 @@ function keyPressed(evt) {
   }
 }
 
-function keyReleased(evt) {}
+function keyReleased(evt) {
+  switch (evt.keyCode) {
+      case KEY_W:
+      case KEY_S:
+        camPanYV = 0;
+        break;
+      case KEY_A:
+      case KEY_D:
+        camPanXV = 0;
+        break;
+  }
+}
 
 function setKeyHoldState(thisKey, thisSelection, setTo) {}

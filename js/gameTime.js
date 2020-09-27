@@ -32,8 +32,8 @@ function updateTime(){
 function displayGameTime(){
     //colorText("X: " + mousePosX + " Y: " + mousePosY, 15, 10, "#fafdff", "14px 'b612regular'");
     var textX = Math.round(canvas.width/2);
-    if(textX < 575) {
-    	textX = 575; // offset for when played in itch iframe to not overlap UI
+    if(textX < PROPERTY_UI_WIDTH) {
+    	textX = PROPERTY_UI_WIDTH; // offset for when played in itch iframe to not overlap UI
     }
     colorTextShadow(gameMonth[whichMonth] + " " + gameYear + " - Day: " + gameDay, textX, canvas.height-18, "#ffd100", "24px 'lexendpeta'","center");
 }

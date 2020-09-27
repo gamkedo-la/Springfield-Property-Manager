@@ -18,15 +18,26 @@ function helpMenu()
 		"Move Screen RIGHT",
 		"Pause Game",
 		"Purchase",
-		"Display Properties Info",
+		// "Display Properties Info",
 		"Zoom In / Out",
 		"Reset Zoom",
 		"Toggle HUD",
-		"Mute/Unmute",
+		// "Mute/Unmute",
 		"Check Opponents Properties"
 	];
 
-	this.keys=["W / Right-Click & Drag Up","S / Right-Click & Drag Down","A / Right-Click & Drag Left","D / Right-Click & Drag Right","P","SPACE","I", "Mouse Scroll Up / Down", "Z","TAB","1","4-5-6-7"];
+	this.keys=["W / Right-Click & Drag Up",
+	"S / Right-Click & Drag Down",
+	"A / Right-Click & Drag Left",
+	"D / Right-Click & Drag Right",
+	"P",
+	"SPACE",
+	// "I",
+	"Mouse Scroll Up / Down",
+	"Z",
+	"TAB",
+	// "1",
+	"4-5-6-7"];
 
 	this.fontSize=14;
 	this.line=1;
@@ -60,6 +71,11 @@ function helpMenu()
 
 	this.showHelp= function()
 	{
+		this.popupX =canvas.width/2-this.popupDimX/2;
+		if(this.popupX < PROPERTY_UI_WIDTH - this.popupDimX/2) 
+		{
+			this.popupX = PROPERTY_UI_WIDTH - this.popupDimX/2;
+		}
 		colorRect(this.popupX-5,this.popupY-5,this.popupDimX+10,this.popupDimY+10,"#000000");
 		colorRect(this.popupX,this.popupY,this.popupDimX,this.popupDimY,"#FFFFFF");
 

@@ -19,7 +19,7 @@ var openningStoryScreen = true;
 
 var camPanX = 0;
 var camPanY = 0;
-var camPanSpeed = 5;
+var camPanSpeed = 6; // since iso, does less if vertical
 
 var paused = false;
 var playerPaused = false;
@@ -170,6 +170,9 @@ function handleMouseWheel(evt) {
 function drawEverything() {
   
   canvasContext.clearRect(0,0,canvas.width, canvas.height); // leave empty (see thru)
+
+  camPanX += camPanXV;
+  camPanY += camPanYV*0.75; // technically should be half since iso but this feels better
 
   if (isLightingStrikingNow) {
     isLightingStrikingNow = false;

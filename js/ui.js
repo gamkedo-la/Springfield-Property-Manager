@@ -1,3 +1,5 @@
+const PROPERTY_UI_WIDTH = 592;
+
 function uiClass() {
     this.propertyUI = {
         "drawing": false,
