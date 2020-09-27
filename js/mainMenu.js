@@ -39,7 +39,7 @@ const Menu = new (function () {
     "PROPERTY INFO: I",
     "PURCHASE INFO: L ",
     "TOGGLE HUD: TAB",
-    "BACK",
+    "CLICK TO RETURN",
   ];
   let pausedList = ["SAVE", "LOAD", "BACK"];
   let creditsList = ["BACK"];
@@ -55,7 +55,7 @@ const Menu = new (function () {
   let currentPage = 0;
 
   this.menuMouse = function () {
-    if(currentPage == CREDITS_PAGE) {
+    if(currentPage !=  0) {
       currentPage = 0;
       return;
     }
@@ -79,6 +79,9 @@ const Menu = new (function () {
     topItemY = logo.height/2 + 40;//canvas.height / 2 - 80;
 
     //this.menuMouse();
+    if(currentPage !=  0) {
+      return;
+    }
 
     // Position arrow at last option on screen
     if (this.cursor < 0) {
@@ -94,11 +97,11 @@ const Menu = new (function () {
   // One function to deal with selection by mouse or ENTER/SPACE
   this.setCursorAndCurrentPage = function (cursor = this.cursor) {
     // For now, only allow selection of an option on the main menu page
-    if (currentPage !== 0) {
+  /*  if (currentPage !== 0) {
         console.log("Ignoring ENTER/SPACE/CLICK because we are not on the main menu");
       return;
-    }
-
+    }*/
+    this.checkState();
     this.cursor = cursor;
     // Change page
     currentPage = this.cursor;
@@ -106,7 +109,6 @@ const Menu = new (function () {
     console.log("setting current menu page: "+ currentPage);
     
     // Set the cursor at the first option of the new screen
-    this.checkState();
     selectionSFX.play();
   };
 
@@ -129,8 +131,12 @@ const Menu = new (function () {
     //   console.log("BACKBACK");
     // }
 
-    if (currentPage==1 && this.cursor==1) { 
-      console.log("LOADING");
+    //if (currentPage==1 && this.cursor==1) { 
+    //  console.log("LOADING");
+    //}
+
+    if (currentPage == 1) {
+      currentPage = 0;
     }
 
     this.cursor = 0;
@@ -148,7 +154,7 @@ const Menu = new (function () {
     
     if (gameIsStarted === false) {
       if (currentPage == PAUSED_PAGE) {
-        currentPage = MENU_PAGE;
+        currentPage = 0;
       }
       this.redraw();
       
@@ -160,11 +166,13 @@ const Menu = new (function () {
         menuFrameCount++;
         canvasContext.drawImage(badgePic,0,0,badgePic.width,badgePic.height,Math.min(0,-badgePic.width/2+menuFrameCount*2),0,badgePic.width/2,badgePic.height/2);
         canvasContext.drawImage(logo,0,0,logo.width,logo.height,canvas.width/2-logo.width/4,Math.min(0,-logo.height/2+menuFrameCount*2),logo.width/2,logo.height/2);
-        canvasContext.drawImage(
-          arrow,
-          itemsX,
-          topItemY + this.cursor * rowHeight - 30
-        );
+        if (currentPage == 0) {
+          canvasContext.drawImage(
+            arrow,
+            itemsX,
+            topItemY + this.cursor * rowHeight - 30
+          );
+        }
 
         for (let i = 0; i < menuPageText[currentPage].length; i++) {
           colorTextShadow(
