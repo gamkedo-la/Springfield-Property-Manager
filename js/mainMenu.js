@@ -235,6 +235,7 @@ var creditsList = [
 "Charlene A.: Diner and pizza restaurant",
 "Kise: Italian restaurant",
 "Ryan Gaillard: Display for property ownership",
+"Jose Reque Martinez: Luxury property preference",
 "Muhammed \"EyeForcz\" Durmusoglu: Debug cheats",
 "Chris DeLeon: Small bug fix, compiled credits",
   " ",
