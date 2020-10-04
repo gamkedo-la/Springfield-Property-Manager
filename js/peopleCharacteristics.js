@@ -3,7 +3,7 @@ function peopleCharacteristics() {
 
     // person stats
     this.cash = 0; // number
-    this.preferences = null; // objct - restaurantTypes - favorite food
+    this.preferences = null; // object - restaurantTypes - favorite food
     this.isHungry = false; // boolean
     this.isHomeless = false; // boolean
     this.homePreference = ''; //string - home preference
@@ -62,8 +62,7 @@ function peopleCharacteristics() {
     };
 
     this.decideHomePreference = function(){
-      // TODO: If new 'LuxuryResidential' are added, it should be included here too
-      let rand = randomIntFromInterval(1, 2);
+      let rand = randomIntFromInterval(1, 3);
       switch (rand) {
           case 1:
               this.homePreference = 'apartment';
@@ -71,6 +70,8 @@ function peopleCharacteristics() {
           case 2:
               this.homePreference = 'basicDuplex';
               break;
+          case 3:
+              this.homePreference = 'LuxuryResidential';
       }
     };
 
